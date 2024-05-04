@@ -1,0 +1,50 @@
+{% if paginate.pages > 1 %}
+    <nav class="c-pagination" aria-label="Page navigation">
+        <ul class="c-pagination_list">
+
+            <li class="c-pagination_list_item">
+                <a class="c-button -pagination -pagination-arrow -hover-fill-primary {% unless paginate.previous.is_link %} is-disabled {% endunless %}" href="{{ paginate.previous.url }}" aria-label="Previous page">
+                    <span class="c-button_icon">
+                        <svg role="img" aria-hidden="true">>
+                            <use xlink:href="#arrow-dropdown"></use>
+                        </svg>
+                    </span>
+                </a>
+            </li>
+
+            {% assign count = paginate.pages %}
+            {% assign paginate_index = 0 %}
+            {% for part in paginate.parts %}
+                {% assign paginate_index = paginate_index | plus: 1 %}
+                {% if part.is_link %}
+                    <li class="c-pagination_list_item">
+                        <a class="c-button -pagination -hover-fill-primary {% if paginate.current_page == part %} is-active {% endif %}"  href="{{ part.url }}" aria-label="Page {{ paginate_index }}">
+                            <span class="c-button_label || c-label -aeonik -pagination">
+                                {{ part.title }}
+                            </span>
+                        </a>
+                    </li>
+                {%- else  -%}
+                    <li class="c-pagination_list_item">
+                        <span class="c-button -pagination {% if paginate.current_page and part.title > 0 %} is-active {% endif %}">
+                            <span class="c-button_label || c-label -aeonik -pagination">
+                                {{ part.title }}
+                            </span>
+                        </span>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            <li class="c-pagination_list_item">
+                <a class="c-button -pagination -pagination-arrow -hover-fill-primary -next {% unless paginate.next.is_link %} is-disabled {% endunless %}" href="{{ paginate.next.url }}" aria-label="Next page">
+                    <span class="c-button_icon">
+                        <svg role="img" aria-hidden="true">>
+                            <use xlink:href="#arrow-dropdown"></use>
+                        </svg>
+                    </span>
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+{% endif %}

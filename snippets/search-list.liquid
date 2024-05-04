@@ -1,0 +1,16 @@
+<div class="c-section">
+    <div class="o-container -default">
+        <ul class="c-search-list || o-grid u-grid-col-2@from-small u-grid-col-3@from-medium u-grid-col-4@from-large -gutter-x-small -gutter-y-medium">
+            {% for product in product_collection %}
+            <li class="c-search-list_item">
+                {% include 'product-tile', with
+                    product: product
+                %}
+            </li>
+            {% endfor %}
+        </ul>
+
+        {% include 'pagination' %}
+    </div>
+</div>
+

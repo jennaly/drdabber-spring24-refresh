@@ -1,0 +1,84 @@
+{% comment %}
+{% assign terms = search.terms %}
+{% assign terms_size = terms | size | minus: 1 %}
+{% endcomment %}
+
+
+{% comment %} --------------------- {% endcomment %}
+
+
+<div class="c-page">
+
+  {% paginate search.results by 12 %}
+  
+    {% if search.performed %}
+
+      {% if search.results.size > 0 %}
+        <div class="c-search-header">
+          <div class="o-container -default">
+            <div class="c-search-header_inner">
+              <p class="c-search-header_content || u-color-cyan">
+                <span class="c-label -mono -medium">
+                  {{ search.results_count }} for search results for
+                </span>
+                <span class="c-search-header_terms">
+                  "{{ search.terms }}"
+                </span>
+              </p>
+              <form
+                autocomplete="off"
+                class="c-search-header_form"
+                action="/search"
+                method="get"
+                role="search"
+              >
+                <div class="c-search-header_form_inner"> 
+                  <input type="hidden" name="options[unavailable_products]" value="last" />
+                  <input type="hidden" name="options[prefix]" value="last" />
+                  <input type="hidden" name="type" value="product" />
+                  <input
+                    ref="input"
+                    autocomplete="off"
+                    class="c-form_input"
+                    type="search"
+                    name="q"
+                    value="{{ search.terms | escape }}"
+                    placeholder="Search products..."
+                  />
+                  <button class="c-button -icon -light" type="submit">
+                    <span class="c-button_icon">
+                      <svg role="img" aria-label="Search">
+                        <use xlink:href="#search"></use>
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        {% include 'search-list' with 
+            product_collection: search.results
+        %}
+
+      {% else %}
+        {% include 'search-no-result' with
+          title: 'Your search returns no results.',
+          is_search_performed: true
+        %}
+      {% endif %}
+
+    {% else %}
+    
+      {% include 'search-no-result' with
+        title: 'What are you looking for?',
+        is_search_performed: false
+      %}
+
+    {% endif %}
+
+  
+  {% endpaginate %}
+
+</div>

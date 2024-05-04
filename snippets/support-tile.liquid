@@ -1,0 +1,24 @@
+<div class="c-support-tile">
+    <h2 class="c-support-tile_title">{{ title }}</h2>
+    <div class="c-support-tile_bottom">
+        <p class="c-support-tile_description || c-text -aeonik -body1">{{ description }}</p>
+
+        {% if is_chat %}
+            <!-- <button class="c-support-tile_cta || c-button -transparent">{{ button_label }}</button> -->
+
+            <a class="c-support-tile_cta || c-button -transparent -hover-fill-primary" href="mailto:info@drdabber.com">
+                <span class="c-button_label">
+                    {{ button_label }}
+                </span>
+            </a>
+        {% else %}
+            {% if button_link != blank and button_label != blank %}
+                <a class="c-support-tile_cta || c-button -transparent -hover-fill-primary" href="{{ button_link }}" target="_blank" rel="noopener">
+                    <span class="c-button_label">
+                        {{ button_label }}
+                    </span>
+                </a>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,101 @@
+{% assign product_title = product.title | strip %}
+{% assign product_variants_json = product.variants | json %}
+{% assign product_first_available_variant_id = product.selected_or_first_available_variant.id %}
+
+{% if product.images.size > 0 %}
+    {% assign product_images_json = '' %}
+
+    {% for image in product.images  %}
+        {% if product.images.size == 1 %}
+            {% capture product_images_object %}[{"rawId":"{{ image.alt | escape }}","preview":"{{ image | img_url: '80x80' }}","image":"{{ image | img_url: '880x880', crop: 'center' }}"}]{% endcapture %}
+        {% elsif forloop.first == true %}
+            {% capture product_images_object %}[{"rawId":"{{ image.alt | escape }}","preview":"{{ image | img_url: '80x80' }}","image":"{{ image | img_url: '880x880', crop: 'center' }}"},{% endcapture %}
+        {% elsif forloop.last == true %}
+            {% capture product_images_object %}{"rawId":"{{ image.alt | escape }}","preview":"{{ image | img_url: '80x80' }}","image":"{{ image | img_url: '880x880', crop: 'center' }}"}]{% endcapture %}
+        {% else %}
+            {% capture product_images_object %}{"rawId":"{{ image.alt | escape }}","preview":"{{ image | img_url: '80x80' }}","image":"{{ image | img_url: '880x880', crop: 'center' }}"},{% endcapture %}
+        {% endif %}
+        {% assign product_images_json = product_images_json | append: product_images_object %}
+    {% endfor %}
+
+{% else %}
+    {% assign product_images_json = '[]' %}
+{% endif %}
+
+
+{% comment %} --------------------- {% endcomment %}
+
+<script data-product-gallery="productVariants" type="application/json" id="productGalleryVariants">
+    {{ product_variants_json }}
+</script>
+
+<div 
+    class="c-product-gallery"
+    :class="{'is-loading': isGalleryLoading}"
+    data-module-product-gallery
+    data-product-gallery-title='{{ product_title }}'
+    data-product-gallery-current-variant-id='{{ product_first_available_variant_id }}'
+    data-product-gallery-images='{{ product_images_json | escape }}'
+>   
+
+    <div class="c-product-gallery_container">
+        {% comment %} Carousel {% endcomment %}
+        <div class="c-product-gallery_carousel || swiper-container" ref="carousel">
+    
+            {% comment %} Swiper {% endcomment %}
+            <div class="swiper-wrapper">
+                <div
+                    class="c-product-gallery_slide || swiper-slide"
+                    v-for="(image, index) in galleryImages"
+                    :key="index"
+                > 
+                    <div class="c-product-gallery_inner">
+                        <div class="c-product-gallery_ratio">
+                            <div class="c-product-gallery_ratio_inner">
+                                <img v-if="image.imageObj.url" class="c-product-gallery_image" :src="image.imageObj.url" alt="{{ product_title | escape }}" :width="image.imageObj.width" :height="image.imageObj.height">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            {% comment %} Bullets {% endcomment %}
+            <div class="c-product-gallery_bullets" v-if="galleryImages.length">
+                <div
+                    v-for="(image, index) in galleryImages"
+                    :key="index"
+                    class="c-product-gallery_bullets_item"
+                    :class="{'is-active': index === activeSwiperIndex}"
+                    @click="slideTo(index)"
+                >
+                </div>
+            </div>
+        </div>
+
+        <div class="c-product-gallery_thumbs_carousel">
+            <div class="c-product-gallery_thumbs_carousel_inner || swiper-container" ref="carouselThumbs">
+    
+                {% comment %} Swiper {% endcomment %}
+                <div class="swiper-wrapper">
+                    <div
+                        class="swiper-slide"
+                        v-for="(image, index) in galleryImages"
+                        :key="index"
+                    > 
+                        <button class="c-product-gallery_thumbs_carousel_button" :class="{'is-active': index === activeSwiperIndex}" :aria-label="`Go to slide ${index + 1}`" @click="slideTo(index)">
+                            <img v-if="image.imageObj.url" :src="image.imageObj.url" alt="{{ product_title | escape }} vignette" :width="image.imageObj.width" :height="image.imageObj.height">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% comment %} Spinner {% endcomment %}
+        <div class="c-product-gallery_spinner">
+            <div class="c-spinner">
+                <svg role="img"><use xlink:href="#spinner"></use></svg>
+            </div>
+        </div>
+    </div>
+
+</div>

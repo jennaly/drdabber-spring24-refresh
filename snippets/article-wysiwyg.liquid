@@ -1,0 +1,12 @@
+
+{% if wysiwyg != blank and wysiwyg != nil %}
+    <div class="c-article-wysiwyg" data-module-rich-wysiwyg>
+        <div class="o-container -default || u-relative">
+            <div class="c-article-wysiwyg_content || c-wysiwyg -rich">
+                <div class="c-article-wysiwyg_content_inner" data-rich-wysiwyg="content">
+                    {{ wysiwyg }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

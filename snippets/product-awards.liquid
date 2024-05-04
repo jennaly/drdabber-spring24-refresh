@@ -1,0 +1,61 @@
+{% assign array_length = award_description_arr.size | minus: 1 %}
+
+{% capture list_str %}
+    {% for i in (0..array_length) %}
+        {{ award_image_arr[i] }}|||
+        {{ award_description_arr[i] | strip_html }}
+        {% if forloop.last == false %}::{% endif%}
+    {% endfor %}
+{% endcapture %}
+
+{% assign list_arr = list_str | split: "::" %}
+
+
+{% comment %} --------------------- {% endcomment %}
+
+
+{% if list_arr.size > 0 and list_arr[0] != blank  %}
+    <li class="c-product-awards || c-accordions_item" data-accordions="item">
+        
+        <button type="button" class="c-accordions_item_toggler" data-accordions="toggler">
+            <span class="c-accordions_item_toggler_label">
+                {{ accordion_title }}
+                <span class="c-accordions_item_toggler_plus"></span>
+            </span>
+        </button>
+        
+        <div class="c-accordions_item_content" data-accordions="content">
+            <div class="c-accordions_item_inner" data-accordions="inner">
+                <ul class="c-product-awards_list || o-grid u-grid-col-2@from-small -gutter-x-small -gutter-y">
+
+                    {% for list_item in list_arr %}
+                        <li class="c-product-awards_item">
+
+                            {% assign values = list_item | split: "|||" %}
+
+                            {% if values[0] != blank and values[0] != nil %}
+                                <div class="c-product-awards_visual">
+                                    <div class="c-lazy">
+                                        <img
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                                            data-src="{{values[0]}}"
+                                            alt="alt text"
+                                            data-lazy
+                                        >
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            {% if values[1] != blank and values[1] != nil %}
+                                <p class="c-product-awards_content">
+                                    {{values[1]}}
+                                </p>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+    </li>
+{% endif %}

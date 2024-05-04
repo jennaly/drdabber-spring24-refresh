@@ -1,0 +1,79 @@
+<div class="c-page">
+    <header class="c-page-header -alpha || c-section">
+        <div class="o-container">
+            <div class="c-page-header_inner">
+                <div class="c-page-header_heading">
+                    <h1 class="c-page-header_title">{{page.title}}</h1>
+                </div>
+
+                <div class="c-page-header_description -alpha">
+                    {{ page.content }}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% section 'block-cards-large' %}
+
+    <section class="c-section">
+        <div class="o-container -default">
+            <div class="c-form_wrapper">
+                <!-- Form Shopify -->
+                {% form 'contact' %}
+                    <h3 class="c-heading -subtitle1 -aeonik || c-form_title">
+                        Request additional information
+                    </h3>
+
+                    {% if form.posted_successfully? %}
+                        <div class="c-form_success" data-module-form-feedback>
+                            {{ form.errors | default_errors }}
+                        </div>
+                    {% elsif form.errors %}
+                        <div class="c-form_error" data-module-form-feedback>
+                            {{ form.errors | default_errors }}
+                        </div>
+                    {% endif %}
+
+                    <div class="o-layout -gutter-small">
+                        <div class="o-layout_item u-1/2@from-small">
+                            <div class="c-form_item">
+                                <label for="name" class="c-form_label">Name</label>
+                                <input class="c-form_input" type="text" placeholder="Name*" required id="name" name="contact[name]">
+                            </div>
+                        </div>
+                        <div class="o-layout_item u-1/2@from-small">
+                            <div class="c-form_item">
+                                <label for="email" class="c-form_label">Email</label>
+                                <input class="c-form_input" type="email" placeholder="Email*" required id="email" name="contact[email]">
+                            </div>
+                        </div>
+                        <div class="o-layout_item u-1/2@from-small || u-screen-reader-text">
+                            <input type="hidden" name="contact[subject]" value="wholesale_inquiry">
+                        </div>
+                        <div class="o-layout_item u-1/2@from-small">
+                            <div class="c-form_item">
+                                <label for="company" class="c-form_label">Company</label>
+                                <input class="c-form_input" type="text" placeholder="Company" id="company" name="contact[company]">
+                            </div>
+                        </div>
+                          <div class="o-layout_item u-1/2@from-small">
+                            <div class="c-form_item">
+                                <label for="phone-number" class="c-form_label">Phone Number</label>
+                                <input class="c-form_input" type="text" placeholder="Phone Number" id="phone-number" name="contact[phone-number]">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="c-form_item">
+                        <label for="message" class="c-form_label">Message</label>
+                        <textarea class="c-form_textarea" placeholder="Message*" name="contact[message]" id="message" required cols="30" rows="10"></textarea>
+                    </div>
+                    <button class="c-button -transparent -hover-fill-primary" type="submit">
+                        Submit
+                    </button>
+                {% endform %}
+            </div>
+        </div>
+    </section>
+
+    {% section 'support-footer' %}
+</div>

@@ -1,0 +1,17 @@
+<div class="c-page">
+
+  {% paginate blog.articles by 8 %}
+
+      {% include 'blog-header' %}
+
+      {% if blog.articles.size > 0 %}
+          {% include 'blog-list' %}
+      {% endif %}
+
+  {% endpaginate %}
+
+  {% include 'featured-splash' %}
+
+  {% include 'article-featured-collection' %}
+
+</div>

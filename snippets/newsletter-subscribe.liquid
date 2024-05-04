@@ -1,0 +1,30 @@
+<div class="c-newsletter">
+    <h2 class="c-newsletter_label || c-form_label">{{ settings.newsletter_title }}</h2>
+
+    <p class="c-newsletter_title || c-heading -aeonik -cyan -subtitle2">{{ settings.newsletter_description }}</p>
+
+    {%- form 'customer', class: 'c-newsletter-form' -%}
+        {{ form.errors | default_errors }}
+        {%- if form.posted_successfully? -%}
+            {% if settings.subscription_feedback != blank %}
+                <div class="c-form_item">
+                    <p class="c-label -mono -medium -uppercase">{{ settings.subscription_feedback }}</p>
+                </div>
+            {% endif %}
+        {%- endif -%}
+        <div class="c-form_item">
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <input type="email"
+                name="contact[email]"
+                class="c-form_input -stroke"
+                value="{% if customer %}{{ customer.email }}{% endif %}"
+                placeholder="name@email.com"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false" >
+        </div>
+        <button type="submit" class="c-button -stroke -transparent -hover-fill-primary" name="commit">
+            <span class="c-button_label">Subscribe</span>
+        </button>        
+    {%- endform -%}
+</div>

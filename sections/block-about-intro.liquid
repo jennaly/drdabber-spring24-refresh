@@ -1,0 +1,27 @@
+{% schema %}
+  {
+    "name": "About Intro",
+        "settings": [
+            {
+                "id": "about_intro",
+                "type": "textarea",
+                "label": "About Intro",
+                "default": "For years the team behind Dr. Dabber had searched high and low for the ultimate vaporizing experience. An experience that minimized health risks without sacrificing enjoyment or flavor. Although many novel concepts were available, none were able to achieve the perfect balance we were looking for. So, we set out on a mission in 2013 to create the perfect vaporizer."
+            }
+        ]
+    }
+{% endschema %}
+
+{% if section.settings.about_intro != blank %}
+    <div class="c-section">
+        <div class="o-container -default">
+            <div class="c-block-multi-text-wide">
+                <div class="u-color-cyan">
+                    <div class="c-block-multi-text-wide_inner || c-text -aeonik -body3 || u-indent-wide">
+                        <p>{{ section.settings.about_intro }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,42 @@
+{% assign product_description_condition = product.description|strip_html %}
+{% assign product_additional_description = product.metafields.product.additional_description|strip %}
+{% assign product_main_video_url = product.metafields.product.main_embed_url|strip %}
+
+
+{% comment %} --------------------- {% endcomment %}
+
+
+<div class="c-product-content">
+
+  {% if product_description_condition != "" and product_description_condition != nil %}
+    <div class="o-container -default">
+      {% include 'block-multi-text-wide' with 
+        text: product.description
+      %}
+    </div>
+  {% endif %}
+
+  {% if product_additional_description != blank and product_additional_description != nil %}
+    <div class="o-container -default">
+      <div class="c-product-additional-description">
+        <div class="c-product-text">
+          <p class="c-text -aeonik -body1 || u-indent-small">{{ product_additional_description }}</p>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if product_main_video_url != blank %}
+    <div class="o-container -default">
+      <div class="c-product-main-video">
+        <div class="c-product-main-video_inner">
+          {% include 'block-multi-embed' with 
+              embed_url: product_main_video_url
+          %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+

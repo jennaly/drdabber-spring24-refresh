@@ -1,0 +1,104 @@
+{% schema %}
+    {
+        "name": "Footer",
+        "settings": [
+            {
+                "id": "footer_card1_title",
+                "type": "text",
+                "label": "First card title",
+                "default": "Dr.Dabber®<br> Knowledge Base"
+            },
+            {
+                "id": "footer_card1_description",
+                "type": "text",
+                "label": "First card description",
+                "default": "Assistance and full documentation about our products and accessories."
+            },
+            {
+                "id": "footer_card1_button_label",
+                "type": "text",
+                "label": "First card button label",
+                "default": "Help center"
+            },
+            {
+                "id": "footer_card1_button_link",
+                "type": "url",
+                "label": "First card link"
+            },
+            {
+                "id": "footer_card1_is_chat",
+                "type": "checkbox",
+                "label": "First card start chat?",
+                "default": false
+            },
+            {
+                "id": "footer_card2_title",
+                "type": "text",
+                "label": "Second card title",
+                "default": "Visit Dr.Dabber<br> YouTube channel"
+            },
+            {
+                "id": "footer_card2_description",
+                "type": "text",
+                "label": "Second card description",
+                "default": "Our award winning support team is ready to take charge on your issues."
+            },
+            {
+                "id": "footer_card2_button_label",
+                "type": "text",
+                "label": "Second card button label",
+                "default": "Let’s chat"
+            },
+            {
+                "id": "footer_card2_button_link",
+                "type": "url",
+                "label": "Second card link"
+            },
+            {
+                "id": "footer_card2_is_chat",
+                "type": "checkbox",
+                "label": "Second card start chat?",
+                "default": true
+            }
+        ]
+    }
+{% endschema %}
+
+{% assign title_card_1 = section.settings.footer_card1_title | strip %}
+{% assign description_card_1 = section.settings.footer_card1_description | strip %}
+{% assign label_card_1 = section.settings.footer_card1_button_label | strip %}
+{% assign link_card_1 = section.settings.footer_card1_button_link | strip %}
+{% assign is_chat_card_1 = section.settings.footer_card1_is_chat %}
+
+{% assign title_card_2 = section.settings.footer_card2_title | strip %}
+{% assign description_card_2 = section.settings.footer_card2_description | strip %}
+{% assign label_card_2 = section.settings.footer_card2_button_label | strip %}
+{% assign link_card_2 = section.settings.footer_card2_button_link | strip %}
+{% assign is_chat_card_2 = section.settings.footer_card2_is_chat %}
+
+
+{% comment %} --------------------- {% endcomment %}
+
+
+<div class="c-support-footer">
+    <div class="c-support-access -footer">
+        <div class="o-container -default">
+            <div class="o-grid u-grid-col-2@from-small -gutter-x-small">
+                {% include 'support-tile' with
+                    title: title_card_1,
+                    description: description_card_1,
+                    button_label: label_card_1,
+                    button_link: link_card_1,
+                    is_chat: is_chat_card_1
+                %}
+                {% include 'support-tile' with
+                    title: title_card_2,
+                    description: description_card_2,
+                    button_label: label_card_2,
+                    button_link: link_card_2,
+                    is_chat: is_chat_card_2
+                %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="c-page">
+    <div class="c-section -padding-top-small">
+        <div class="o-container -default">
+            <div class="u-text-center">
+                <h1 class="c-heading -druk -h3 -cyan">Create an account</h1>
+            </div>
+        </div>
+
+        <div class="o-container -small">
+            {% form 'create_customer', return_to: routes.account_url %}
+                {% include 'form-feedback' %}
+
+                <div class="c-form_wrapper">
+                    <h2 class="c-heading -subtitle1 -aeonik || c-form_title">
+                        New account
+
+                        <span class="c-form_logo">
+                            <svg aria-hidden="true" focusable="false">
+                                <use xlink:href="#logotype"></use>
+                            </svg>
+                        </span>
+                    </h2>
+
+                    <div class="c-form_item">
+                       <label for="first_name" class="c-form_label">First Name*</label>
+                       <input type="text" value="" name="customer[first_name]" size="30" class="c-form_input"  />
+                    </div>
+
+                    <div class="c-form_item">
+                       <label for="last_name" class="c-form_label">Last Name*</label>
+                       <input type="text" value="" name="customer[last_name]" size="30" class="c-form_input"  />
+                    </div>
+
+                    <div class="c-form_item">
+                       <label for="email" class="c-form_label">Email Address*</label>
+                       <input type="email" value="" name="customer[email]" size="30" class="c-form_input"  />
+                    </div>
+
+                    <div class="c-form_item">
+                       <label for="password" class="c-form_label">Password*</label>
+                       <input type="password" value="" name="customer[password]" size="30" class="c-form_input"  />
+                    </div>
+
+                    <div class="c-form_bottom">
+                        <div class="c-form_bottom_item">
+                            <button type="submit" class="c-button -transparent -hover-fill-primary">
+                                <span class="c-button_label">Submit</span>
+                            </button>
+                        </div>
+
+                        <div class="c-form_bottom_item">
+                            <a class="c-form_link" href="/account/login" data-login="toggler">Already registered?</a>
+                        </div>
+                    </div>
+                </div>
+            {% endform %}
+        </div>
+    </div>
+</div>

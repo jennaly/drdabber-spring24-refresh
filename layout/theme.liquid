@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" data-template="{{ template }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="{{ page_description | escape }}">
+        <link rel="canonical" href="{{ canonical_url }}">
+        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ 'apple-touch-icon.png' | asset_url }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon-32x32.png' | asset_url }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ 'favicon-16x16.png' | asset_url }}">
+        <link rel="manifest" href="{{ 'site.webmanifest' | asset_url }}">
+        <link rel="mask-icon" href="{{ 'safari-pinned-tab.svg' | asset_url }}" color="#000000">
+        <meta name="msapplication-TileColor" content="#000000">
+        <meta name="theme-color" content="#000000">
+
+        <!-- Title and description ================================================== -->
+        {%- capture seo_title -%}
+            {{ page_title }}
+
+            {%- if current_tags -%}
+                {%- assign meta_tags = current_tags | join: ', ' -%} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+            {%- endif -%}
+
+            {%- if current_page != 1 -%}
+                &ndash; {{ 'general.meta.page' | t: page: current_page }}
+            {%- endif -%}
+
+            {%- unless page_title contains shop.name -%}
+                &ndash; {{ shop.name }}
+            {%- endunless -%}
+        {%- endcapture -%}
+
+        
+        <title>{{ seo_title | strip | replace: "&amp;" , "&" }} </title>
+
+        {%- if page_description -%}
+            <meta name="description" content="{{ page_description | strip | replace: "&amp;" , "&" }}">
+        {%- endif -%}
+
+        {%- if settings.use_countdown_timezone -%}<meta name="timezone" content="{{ settings.countdown_timezone }}">{%- endif -%}
+
+        <!-- Social meta ================================================== -->
+        {%- include 'social-meta-tags' -%}
+
+        <!-- Header hook for plugins ================================================== -->
+        {{ content_for_header }}
+
+        <!-- Critical styles -->
+        <style>
+            .c-preloader{position:fixed;top:0;left:0;height:100%;width:100%;background-color:#111114;z-index:999;visibility:visible;opacity:1;display:flex;justify-content:center;align-items:center;color:#fff}html.is-first-hit .c-preloader{transition:opacity 0.2s linear 0.2s, visibility 0.2s linear 0.2s}html.is-first-hit .c-preloader .c-spinner{transition:opacity 0.2s linear 0.2s, visibility 0.2s linear 0.2s}html.is-loaded.is-fonts-loaded .c-preloader{visibility:hidden;opacity:0}html.is-loaded.is-fonts-loaded .c-preloader .c-spinner{opacity:0;visibility:hidden}.c-preloader .c-spinner{transition-duration:0s;opacity:1;visibility:visible;animation-play-state:running;position:absolute;top:50%}@keyframes spin{0%{transform:translate3d(0, -50%, 0) rotate(0deg)}100%{transform:translate3d(0, -50%, 0) rotate(360deg)}}.c-spinner{display:inline-block;width:100%;height:100%;border-radius:50%;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .6s cubic-bezier(0.4, 0, 0, 1),visibility .6s cubic-bezier(0.4, 0, 0, 1);animation:spin 0.8s infinite linear;color:#00E2ED}.c-spinner.-preloader{position:absolute;width:36px;height:36px}.c-spinner.is-active,.is-pending .c-spinner,.is-loading .c-spinner{opacity:1;visibility:visible;transition:opacity .6s cubic-bezier(0.4, 0, 0, 1),visibility 0s linear;animation-play-state:running}.c-spinner svg{display:block;width:100%;height:100%;stroke:currentColor;stroke-width:1px;fill:none;transition:stroke .6s cubic-bezier(0.4, 0, 0, 1)}
+        </style>
+        <!-- Styles -->
+        <link id="stylesheet" rel="stylesheet" href="{{ 'main.css' | asset_url }}" media="print" onload="this.media='all'; this.onload=null; this.isLoaded=true">
+            <!-- Nifty Widget -->
+<!--         <link rel="stylesheet" href="{{ 'embeddableWidget.css' | asset_url }}"> -->
+      
+        <!-- Yieldify tag -->
+        <script>(function(d){var e=d.createElement('script');e.src='https://td.yieldify.com/yieldify/code.js?w_uuid=4691a7eb-5732-41bc-b0b5-d407ef81b727&k=1&loca='+window.location.href;e.async=true;d.getElementsByTagName('head')[0].appendChild(e);}(document));</script>
+        
+        <!-- Sharesale tag -->
+        <script src="https://www.dwin1.com/52171.js" type="text/javascript" defer="defer"></script>
+        
+        <!-- Twitter conversion tracking base code -->
+        <script>
+        !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+        },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
+        a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+        twq('config','oe5ox');
+        </script>
+        <!-- End Twitter conversion tracking base code -->
+        <!-- SMS Tracking Code -->
+        <script src ="https://up.pixel.ad/assets/up.js?um=1"></script>
+        <script type="text/javascript">
+        cntrUpTag.track('cntrData', '28446eccbb5529ef');
+        </script>
+        <!-- Mantis -->
+        <script type="text/javascript">
+            var mantis = mantis || [];
+            mantis.push(['analytics', 'load', {
+                advertiser: '5387cc8e7cbdeef86296935f',
+                transaction: '',
+                revenue: ''
+            }]);
+            </script>
+        <script type="text/javascript" data-cfasync="false" data-src="https://assets.mantisadnetwork.com/analytics.min.js" async></script>
+        <noscript><img src="//mantodea.mantisadnetwork.com/analytics/pixel?advertiser=5387cc8e7cbdeef86296935f&transaction=" /></noscript>
+        <meta name="google-site-verification" content="5R2Fx1jUzICwreEZ12NeXfFnULIBSxlnYNp443Zb7Wo" />
+        <script type="text/javascript" src="https://aggle.net/js?publisher=herb.co&pid=CYEUHETN" async=""></script>
+  
+      {% if collection.title == 'Accessories & Attachments' %}
+          <script type="application/ld+json">
+            {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "@id":"https://www.drdabber.com/collections/accessories",
+            "name":"Dr. Dabber",
+            "alternateName":"Dr. Dabber Vape Accessories",
+            "headline":"Accessories | Dr. Dabber",
+            "mainEntityOfPage":"https://www.drdabber.com/",
+            "url": "https://www.drdabber.com/collections/accessories",
+            "sameAs": ["https://www.facebook.com/drdabber/",
+            "https://www.instagram.com/drdabber/",
+            "https://discord.gg/eAgBQDQ7Sp",
+            "https://twitter.com/drdabber",
+            "https://www.linkedin.com/company/dr.-dabber/",
+            "https://www.youtube.com/c/DrDabberofficial"],
+            "accessMode": ["auditory","tactile","textual","visual","textOnVisual"],
+            "keywords": ["Vape","Dr. Dabber Vaporizers","Vaporizer Accessories","Vape Kits","Portable Vaporizers","Vape Nation","Vaporizers Collection","Dr. Dabber Collection","Gift Card","Budder Cutter","Honeymat","Vaporizers Universal Battery", "Vape Accessories"],
+            "about": "Dr. Dabber has all the accessories for your vaping needs. Need an extra battery? Shatter Jar? Budder Cutter? Dr. Dabber has the accessories for you.",
+            "publisher": "Dr. Dabber",
+            "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": [
+            {
+            "@type": "ItemPage",
+            "name": "Universal Battery Blue",
+            "url": ["https://www.drdabber.com/products/universal-battery-dabber-blue?variant=39644352872521"]
+            },
+            {
+            "@type": "ItemPage",
+            "name": "Budder Cutter™",
+            "url": ["https://www.drdabber.com/products/budder-cutter?variant=19975709059"]
+            },
+            {
+            "@type": "ItemPage",
+            "name": "Gift Card $10.00",
+            "url": ["https://www.drdabber.com/products/gift-card?variant=25280605251"]
+            },
+            {
+            "@type": "ItemPage",
+            "name": "Iso-Snaps 24",
+            "url": ["https://www.drdabber.com/products/iso-snaps?variant=39541635088457"]
+            },
+            {
+            "@type": "ItemPage",
+            "name": "Switch® Silicone Packs Camo",
+            "url": ["https://www.drdabber.com/products/switch-silicone-packs?variant=39782002753609"]
+            },
+            {
+            "@type": "ItemPage",
+            "name": "Honeymat",
+            "url": ["https://www.drdabber.com/products/dr-dabber-honeymat?variant=31878762365001"]
+            }
+            ]
+            }
+            }
+          </script>
+      {% endif %}
+      
+      {% if collection.title == 'Atomizers' %}
+      <script type="application/ld+json">
+          {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "@id": "https://www.drdabber.com/collections/atomizers",
+          "name": "Dr. Dabber",
+          "alternateName": "The #1 Online Store for Vape Pens, Wax Pen, Dab pen & Electric Dab Rig",
+          "headline": "Vape Atomizers | Dr. Dabber",
+          "mainEntityOfPage": "https://www.google.com/maps?cid=3003601092723817067", 
+          "url": "https://www.drdabber.com/collections/atomizers",
+          "sameAs" : ["https://www.instagram.com/drdabber/","https://www.linkedin.com/company/dr.-dabber/","https://www.facebook.com/drdabber/","https://twitter.com/drdabber","https://discord.gg/eAgBQDQ7Sp","https://www.youtube.com/channel/UC0NVkIgwKy-ttYw9RSumj6w","https://g.page/DrDabber","kg:/g/11h38fss8s"],
+          "accessMode": ["auditory","tactile","textual","visual","textOnVisual"],
+          "keywords": ["Vape","Atomizers","Vape Atomizers","Quartz Atomizer","Ceramic Atomizers","Replacement Atomizers","Vaporizer","Vaporizer Pens","Vape Accessories"],
+          "about": "Vape Atomizers | Dr. Dabber",
+          "publisher": "Dr. Dabber",
+          "mainEntity": {
+          "@type": "ItemList",
+          "itemListElement": [
+          {
+          "@type": "ItemPage",
+          "name": "Boost Evo™ Quartz Atomizer",
+          "url": "https://www.drdabber.com/products/boost-evo-quartz-atomizer",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_ATM_Quartz_PERS_1_880x880_crop_center.jpg",
+            "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_ATM_SIDE_1_880x880_crop_center.jpg",
+            "https://cdn.shopify.com/s/files/1/1102/6350/products/image_18_880x880_crop_center.png"
+          ]
+          },
+          {
+          "@type": "ItemPage",
+          "name": "Stella™ Replacement Atomizer",
+          "url": "https://www.drdabber.com/products/stella-replacement-atomizer",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_STELLAATM_SIDE_2_880x880_crop_center.jpg",
+            "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_STELLAATM_PERS_2_880x880_crop_center.jpg"
+          ]
+          },
+          {
+          "@type": "ItemPage",
+          "name": "Stella™ Full Top Replacement",
+          "url": "https://www.drdabber.com/products/stella-full-top-replacement",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_STELLAMouthpiece_ATM_SIDE_880x880_crop_center.jpg",
+            "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_STELLAMouthpiece_ATM_PERS_880x880_crop_center.jpg"
+          ]
+          },
+          {
+          "@type": "ItemPage",
+          "name": "Ghost™ Atomizer",
+          "url": "https://www.drdabber.com/products/ghost-atomizer-single",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_GHOST_ATM_SIDE_2_880x880_crop_center.jpg",
+            "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_GHOST_ATM_standard_PERS_2_880x880_crop_center.jpg",
+            "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_GHOST_ATM_standard_TOP_1_880x880_crop_center.jpg"
+          ]
+          },
+          {
+          "@type": "ItemPage",
+          "name": "Ghost™ Ceramic Atomizer",
+          "url": "https://www.drdabber.com/products/ceramic-ghost-atomizer-single",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_GHOST_ATM_SIDE_3_880x880_crop_center.jpg",
+            "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_GHOST_ATM_ceramic_PERS_1_880x880_crop_center.jpg",
+            "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_GHOST_ATM_ceramic_TOP_1_880x880_crop_center.jpg"
+          ]
+          },
+          {
+          "@type": "ItemPage",
+          "name": "Ghost™ Globe Attachment (full)",
+          "url": "https://www.drdabber.com/products/globe-attachment-full",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_GHOSTGLOBEATT_FRONT_1_880x880_crop_center.jpg",
+            "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_GHOSTGLOBEATT_PERS_880x880_crop_center.jpg",
+            "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_GHOST_GLOBEATM_SIDE_880x880_crop_center.jpg"
+          ]
+          },
+          {
+          "@type": "ItemPage",
+          "name": "Ghost™ Globe Atomizer",
+          "url": "https://www.drdabber.com/products/globe-atomizer-single",
+          "image": "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_GHOST_GLOBEATM_SIDE_12e9c41f-9ba5-4155-a48e-37d8b4a86f8d_880x880_crop_center.jpg"
+          },
+          {
+          "@type": "ItemPage",
+          "name": "Ghost™ Replacement Top",
+          "url": "https://www.drdabber.com/products/dr-dabber-ghost-top-for-essential-oils",
+          "image": "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_GHOSTREPLACEMENT_FRONT_880x880_crop_center.jpg"
+          },
+          {
+          "@type": "ItemPage",
+          "name": "Light™ Replacement Top",
+          "url": "https://www.drdabber.com/products/light-top-for-essential-oils",
+          "image": [
+            "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_LIGHTREPLACEMENTTOP_FRONT_1_880x880_crop_center.jpg",
+            "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_LIGHTREPLACEMENTTOP_PERS_880x880_crop_center.jpg"
+          ]
+          }
+          ]
+          }
+          }
+        </script>
+      {% endif %}
+      {% if collection.title == 'Vape Kits' %}
+        <script type="application/ld+json">
+            {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "@id": "https://www.drdabber.com/collections/vape-kits",
+            "name": "Dr. Dabber",
+            "alternateName": "The #1 Online Store for Vape Kits, Vape Pens, Wax Pen, Dab pen & Electric Dab Rig",
+            "headline": "Vape Kits - Dr. Dabber",
+            "mainEntityOfPage": "https://www.google.com/maps?cid=3003601092723817067", 
+            "url": "https://www.drdabber.com/collections/vape-kits",
+            "sameAs" : ["https://www.instagram.com/drdabber/","https://www.linkedin.com/company/dr.-dabber/","https://www.facebook.com/drdabber/","https://twitter.com/drdabber","https://discord.gg/eAgBQDQ7Sp","https://www.youtube.com/channel/UC0NVkIgwKy-ttYw9RSumj6w","https://g.page/DrDabber","kg:/g/11h38fss8s"],
+            "accessMode": ["auditory","tactile","textual","visual","textOnVisual"],
+            "keywords": ["Vape","Vape Kits","Vape Pen","Wax Pen"," Dab Pen","Vaporizer","Vaporizer Pens","Vape Accessories"],
+            "about": "Vape Kits - Dr. Dabber",
+            "publisher": "Dr. Dabber",
+            "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": [
+            {
+            "@type": "ItemPage",
+            "name": "Premium Switch™ Bundle",
+            "url": "https://www.drdabber.com/products/premium-switch-bundle",
+            "image": [
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_SWITCHPREMIUMBUNDLE_bluedichro_marinesiliconepack_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/Switch_2_880x880_crop_center.jpghttps://cdn.shopify.com/s/files/1/1102/6350/products/BK_SWITCH_PERC_HIVEBALL_RIGHT_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_SWITCH_PERC_HIVEBALL_RIGHT_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_SWITCH_CARBCAP_BLUEFLAKEDICHROcab_FRONT_ae0e7bbf-287c-4572-b201-1c9954873f46_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_INDUCTIONsapphiredoublePERS_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_BUDDERCUTTER_FRONT_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_SiliconePack_MARINE_eb538939-6ad2-4fb0-9133-549ca137bba6_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/SwitchSiliconeBase_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/Iso-Snaps_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_NB_SWITCHBOXOPEN_1_543593c8-2e93-44ff-9e34-0b5239b5b6b0_880x880_crop_center.jpg"
+            ]
+            },
+            {
+            "@type": "ItemPage",
+            "name": "Switch™ Bundle",
+            "url": "https://www.drdabber.com/products/switch-bundle",
+            "image": [
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_SWITCHBUNDLE_pastelsiliconepack_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/Switch_2_f02d47f5-eb06-4891-8359-bc78ee16146f_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_SWITCH_PERC_BALLRIG_RIGHT_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_SWITCH_CARBCAP_BUBBLEcap_FRONT_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_INDUCTIONquartzdoublePERS_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_BUDDERCUTTER_FRONT_a0ab1a7a-3a22-4ed3-b286-b299bf6f1f6d_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_SiliconePack_PASTEL_64f88161-7942-4881-baf4-e3b3b1e1a383_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_NB_HONEYMATFRONT_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/Iso-Snaps_b1901ea4-2caa-4a7b-b9e0-c797663f60b1_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_NB_SWITCHBOXOPEN_1_134b2ace-3622-4743-87e0-17c36a48bc90_880x880_crop_center.jpg"
+            ]
+            },
+            {
+            "@type": "ItemPage",
+            "name": "Premium Boost Evo™ Bundle",
+            "url": "https://www.drdabber.com/products/premium-boost-evo-bundle",
+            "image": [
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/PremiumBoostEvoBundle_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BoostEvo_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_EVOTDEJPERCBLACK_RIGHT_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BoostEvoQuartzAtomizer_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_BUDDERCUTTER_FRONT_98ccbe6e-d648-413b-ad47-f0f79cf4b951_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BoostEvoSiliconeMat_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/Iso-Snaps_6b3ad943-4140-49ee-a714-16d597a76a25_880x880_crop_center.jpg"
+            ]
+            },
+            {
+            "@type": "ItemPage",
+            "name": "Boost Evo™ Bundle",
+            "url": "https://www.drdabber.com/products/boost-evo-bundle",
+            "image": [
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BoostEvoBundle_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BoostEvo_ba3fd242-27eb-4907-a117-5fefe96b29d8_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BoostEvoQuartzAtomizer_a3e589d2-62e7-4e0d-9156-7c6a0232c1be_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_NB_HONEYMATFRONT_8a9c70c0-6b4e-4562-bf57-7d54037339b6_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/Iso-Snaps_9c44c62f-4888-429c-adb0-f511e4f18cab_880x880_crop_center.jpg"
+            ]
+            },
+            {
+            "@type": "ItemPage",
+            "name": "Stella™ Full RX Kit",
+            "url": "https://www.drdabber.com/products/stella-full-rx-kit",
+            "image": [
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_OLDSTELLARXKITSETwithcarryingcase_FRONT_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_STELLA_FRONT_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_STELLAGlassMouthpiece_pers_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_STELLAATM_PERS_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_CARRYINGCASE_PERS_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_SiliconeJar_PERS_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_STELLAchargingcable_PERS_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_STELLA_LIGHT_LOADINGTOOL_SIDE_880x880_crop_center.jpg"
+            ]
+            },
+            {
+            "@type": "ItemPage",
+            "name": "Ghost™ Bundle",
+            "url": "https://www.drdabber.com/products/ghost-bundle",
+            "image": [
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_GHOSTBUNDLESET_FRONT_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_GHOST_FRONT_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_GHOSTGLOBEATT_FRONT_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_BUDDERCUTTER_FRONT_0d062486-9506-4bb9-93de-2ebc6efe2745_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_SiliconeBall_PERS_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_CARRYINGCASE_PERS_894cc356-e8b9-4328-8b9b-b8b0d4a6f141_880x880_crop_center.jpg"
+            ]
+            },
+            {
+            "@type": "ItemPage",
+            "name": "Ghost™ Full RX Kit",
+            "url": "https://www.drdabber.com/products/full-prescription-vape-pen-bundle",
+            "image": [
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_GHOSTRXKITSET_FRONT_1_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_GHOST_FRONT_b9257cd8-ce4e-4c46-a5e9-3a5a45bab889_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_GHOSTGLOBEATT_FRONT_4617c0af-f39e-4633-bbce-d20887997a22_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_SiliconeBall_PERS_08981619-b7dd-470b-8ca0-4d6a5ba3ba01_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_CARRYINGCASE_PERS_d63185e2-8223-4d87-b7b9-141ea7d7f916_880x880_crop_center.jpg"
+            ]
+            },
+            {
+            "@type": "ItemPage",
+            "name": "Light™ Bundle",
+            "url": "https://www.drdabber.com/products/light-bundle",
+            "image": [
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_LIGHTBUNDLE_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_LIGHT_FRONT_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_LIGHTSOFTBAGOPEN_PERS_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_LIGHTREPLACEMENTTOP_FRONT_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_BUDDERCUTTER_FRONT_d8dba9c3-1882-4b9d-8be5-6665b3b41633_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_CARRYINGCASE_FRONT_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_SiliconeBall_PERS_f4ff21f6-6086-4465-912a-b5361b23ff39_880x880_crop_center.jpg"
+            ]
+            },
+            {
+            "@type": "ItemPage",
+            "name": "Light™ Full RX Kit",
+            "url": "https://www.drdabber.com/products/light-vaporizer-pen-bundle",
+            "image": [
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_LIGHTRXKIT_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_LIGHT_FRONT_1bc799fb-a9d7-4428-8f86-eade204664dd_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_LIGHTSOFTBAGOPEN_PERS_d8df031f-0d1c-4de8-9f30-fcf0c558a0af_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_LIGHTREPLACEMENTTOP_FRONT_aa20dfcb-40a5-42bf-bc77-ce06acc0891f_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_CARRYINGCASE_FRONT_537adacc-de3b-43fa-9f11-77d1165d1635_880x880_crop_center.jpg",
+              "https://cdn.shopify.com/s/files/1/1102/6350/products/BK_SiliconeBall_PERS_c3ab44ae-daa3-4e88-89cd-d8f1aead9589_880x880_crop_center.jpg"
+            ]
+            }
+            ]
+            }
+            }
+        </script>
+      {% endif %}
+      {% if collection.title == 'Vaporizers' %}
+        <script type="application/ld+json">
+            {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "@id":"https://www.drdabber.com/collections/vaporizers",
+            "name":"Dr. Dabber",
+            "alternateName":"Dr. Dabber Vaporizers",
+            "headline":"Vaporizers | Dr. Dabber",
+            "mainEntityOfPage":"https://www.drdabber.com/",
+            "url": "https://www.drdabber.com/collections/vaporizers",
+            "sameAs": ["https://www.facebook.com/drdabber/",
+            "https://www.instagram.com/drdabber/",
+            "https://discord.gg/eAgBQDQ7Sp",
+            "https://twitter.com/drdabber",
+            "https://www.linkedin.com/company/dr.-dabber/",
+            "https://www.youtube.com/c/DrDabberofficial"],
+            "accessMode": ["auditory","tactile","textual","visual","textOnVisual"],
+            "keywords": ["Vape","Dr.Drabber Vaporizers","Vaporizers","Vape Kits","Portable Vaporizers","Vape Nation"],
+            "about": "If you are looking for the best portable vaporizer for your needs, Dr. Dabber has you covered. Whether you need a discreet vape pen that fits in your pocket when you’re on the go, like the Dr. Dabber Stella, or you’re in the market for a full fledged, top of the line desktop vaporizer like the Dr. Dabber SWITCH, we have worked tirelessly to develop something that fits everyone’s lifestyle. Our wax vaporizers are tried and tested, and backed by an industry leading warranty program.",
+            "publisher": "Dr. Dabber",
+            "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": [
+            {
+            "@type": "ItemPage",
+            "name": "Premium Switch® Bundle",
+            "url": ["https://www.drdabber.com/products/premium-switch-bundle?variant=31123184189513"]
+            },
+            {
+            "@type": "ItemPage",
+            "name": "Switch® Bundle",
+            "url": ["https://www.drdabber.com/products/switch-bundle?variant=17097457565769"]
+            },
+            {
+            "@type": "ItemPage",
+            "name": "Premium Boost Evo™ Bundle Eclipse Black",
+            "url": ["drdabber.com/products/premium-boost-evo-bundle?variant=39394088910921"]
+            },
+            {
+            "@type": "ItemPage",
+            "name": "Stella™ Full RX Kit",
+            "url": ["https://www.drdabber.com/products/stella-full-rx-kit?variant=31736340480073"]
+            }
+            ]
+            }
+            }
+            </script>
+      {% endif %}
+
+      {% if template.name == "index" %}
+          <script type="application/ld+json">
+          
+          {"@context": "https://schema.org",
+          
+          "@type": "Organization",
+          
+          "@id": "https://www.drdabber.com/",
+          
+          "additionalType": 
+          [
+          "https://en.wikipedia.org/wiki/Vaporizer_(inhalation_device)"],
+          
+          "url": "https://www.drdabber.com/",
+          
+          "sameAs": ["https://www.facebook.com/drdabber/",
+          "https://www.instagram.com/drdabber/",
+          "https://discord.gg/eAgBQDQ7Sp",
+          "https://twitter.com/drdabber",
+          "https://www.linkedin.com/company/dr.-dabber/",
+          "https://www.youtube.com/c/DrDabberofficial"],
+          
+          "name": "Dr. Dabber",
+          
+          "alternatename": "Dr. Dabber Vaporizers",
+          
+          "disambiguatingdescription": "The originator of the Low Heat Vaporizer Pen. Created out of Necessity, Fueled by Desire. Dr. Dabber is an award winning purveyor of high quality vaporizer goods paired with our award winning customer support.",
+          
+          "mainEntityOfPage": "https://goo.gl/maps/dZxeV3SPyGrpfnwQA",
+          
+          "description": "Dr. Dabber is a technology driven vaporizer company. Dr. Dabber focuses on creating products that are custom tailored to our customers’ needs. We understand those needs better than most because we’re just like you. We created Dr. Dabber in 2013 to solve the issue of questionable quality and dated technology that we had experienced ourselves as unsatisfied customers. We set out with a goal to create a better quality vaporizer, built out of the best materials and backed by an awesome customer support team.",
+          
+          "image": "https://cdn.shopify.com/s/files/1/1102/6350/files/about-us-logo_d03bbf53-b7ea-4cbe-8ce0-e81b0c198d01_240x240.png?v=1580536691",
+          
+          "email": "info@drdabber.com",
+          
+          "telephone": "1-855-362-3227",
+          
+          "address":
+          {"@type": "PostalAddress",
+          
+          "addressLocality": "Las Vegas",
+          
+          "addressRegion": "NV",
+          
+          "postalCode": "89118",
+          
+          "streetAddress": "5016 Schuster St, Las Vegas"
+          }
+          }
+          </script>
+      {% endif %}
+      {% include 'sca.storelocator' %}
+</head>
+    <body>
+      {% comment %}
+          SVGS tags. Need to be included in templates because Shopify structure
+          doesn't allow sprite.svg in /assets
+      {% endcomment %}
+      <div class="u-none">{% include 'sprite' %}</div>
+
+        {% include 'outdated' %}
+
+        {% include 'preloader' %}
+
+        {% if request.path != '/challenge' %}
+            {% include 'header' %}
+            {% include 'menu' %}
+            {% include 'search-bar' %}
+        {% endif %}
+      
+        <main data-module-scroll="main" role="main">
+            {% if request.path == '/challenge' %}
+                <div class="c-page">
+                    <div class="c-section">
+                        <div class="u-text-center">
+                            <a href="{{ shop.secure_url }}" class="c-challenge_logo">
+                                <svg role="presentation" aria-label="Dr Dabber Logo">
+                                    <use xlink:href="#logotype"></use>
+                                </svg>
+                            </a>
+                        </div>
+
+                        {{ content_for_layout }}
+                    </div>
+                </div>
+            {% else %}
+                {{ content_for_layout }}
+            {% endif %}
+
+            {% if request.path != '/challenge' %}
+                {% include 'share' with
+                    title: 'Share',
+                    copy_label: settings.share_copy_label,
+                    copy_feedback: settings.share_copy_success
+                %}
+                {% include 'cart-modal' %}
+                {% include 'footer' %}
+            {% endif %}
+        </main>
+
+        <script>
+            window.storefrontAccessToken = `e740cb3a6c8e892ff520141d06378632`
+            window.shopUrl = `{{ shop.secure_url }}`
+        </script>
+
+        {% if settings.chat_enabled %}
+            <!-- begin olark code -->
+            <script type="text/lazyload">
+                ;(function(o,l,a,r,k,y){if(o.olark)return;
+                r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0];
+                y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r);
+                y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)};
+                y.extend=function(i,j){y("extend",i,j)};
+                y.identify=function(i){y("identify",k.i=i)};
+                y.configure=function(i,j){y("configure",i,j);k.c[i]=j};
+                k=y._={s:[],t:[+new Date],c:{},l:a};
+                })(window,document,"static.olark.com/jsclient/loader.js");
+                /* Add configuration calls below this comment */
+                olark.identify('8010-549-10-2229');</script>
+            <!-- end olark code -->
+        {% endif %}
+
+        {{ 'vendors.js' | asset_url | script_tag }}
+        {{ 'app.js' | asset_url | script_tag }}
+            	<!-- Nifty Widget -->
+<!--         {{ 'embeddableWidget.bundle.js' | asset_url | script_tag}} -->
+<!--       	{{ 'nftWidgetDiscount.js' | asset_url | script_tag}} -->
+<!--         {{ 'nftWidgetGate.js' | asset_url | script_tag}} -->
+        
+     {% include 'smile-initializer' %}
+<style>
+    #scasl-tab-radius {
+      background-color: #000 !important;
+      border-color: #cccccc !important;
+      border-width: 1px !important;
+      color:#00e0ec;
+    }
+    #bh-sl-submit {
+      background-color: #00e2ed !important;
+      border: 1px solid #000000;
+    }
+    /*#scapl-geocode-btn {
+      background-color: #00aeef !important;
+      border: 1px solid #000000;
+    }*/
+    .scasl-location-list,
+    #bh-sl-map {
+      border-color: #cccccc !important;
+      border-width: 1px !important;
+    }
+    .bh-sl-form-container,
+    .bh-sl-form-container label,
+    .bh-sl-form-container button {
+      font-family: !important;
+    }
+  #page-header .bh-sl-title{
+    color:#FFF;
+  }
+  .scasl-address-wrap > #scapl-geocode-btn,
+  .scasl-search-btn > #bh-sl-submit{
+    background-color: #00e2ed !important;
+    border: 1px solid #000000;
+}
+  @media only screen and (max-width: 3000px) and (min-width: 701px) {  
+    .desktop{
+      display:block;
+    }
+     .movile{
+    display:none;
+    }
+  }
+
+  @media only screen and (max-width: 700px) and (min-width: 1px) {  
+    .desktop{
+      display:none;
+    }
+     .movile{
+    display:block;
+    }
+  }
+  </style>
+</body>
+</html>

@@ -1,0 +1,179 @@
+{% assign cart_title = settings.cart_title %}
+{% assign cart_message_empty = settings.cart_empty %}
+{% assign cart_message_taxes = settings.cart_taxes_hint %}
+{% assign cart_conditions = settings.cart_conditions %}
+
+
+{% comment %} --------------------- {% endcomment %}
+
+
+<div
+    class="c-cart-modal"
+    data-module-cart-modal
+>
+    <focus-trap v-model="isActive">
+        <div class="c-cart-modal_wrapper">
+            <div class="c-cart-modal_background" @click="onClose" ref="cartBackground"></div>
+
+            <div class="c-cart-modal_inner" ref="cartInner">
+
+                <div
+                    class="c-cart-modal_header"
+                    @touchstart.passive="onDragStart"
+                    @touchmove="onDrag"
+                    @touchend.passive="onDragEnd"
+                    @touchleave.passive="onDragEnd"
+                >
+
+                    <div class="o-grid -center-items-y u-grid-col-2">
+                        {% comment %} Title {% endcomment %}
+                        <h2 class="c-cart_title">
+                            <span>{{ cart_title }}</span>
+                            <span>(${ cartCounter })</span>
+                        </h2>
+
+                        {% comment %} Close button {% endcomment %}
+                        <div class="u-text-right">
+                            <button id='widget-cart-close' class="c-cart_close || c-button -grey -small -hover-fill-black" @click="onClose">
+                                <span class="c-button_label">Continue Shopping</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="c-cart -modal">
+                    <div class="c-cart_content" :class="{'is-loading': isCartLoading}" ref="cartContent">
+                        {% comment %} Empty message {% endcomment %}
+                        <p class="c-cart_empty" v-if='!cartItems.length'>{{ cart_message_empty }}</p>
+
+                        {% comment %} Items {% endcomment %}
+                        <div v-if='cartItems.length' class="c-cart_items">
+
+                            <div class="c-cart-product" ref="cartProduct" v-for="(item, itemIndex) in cartItems" :key="itemIndex">
+
+                                <a class="c-cart-product_visual" :href="item.url">
+                                    <div class="c-cart-product_visual_inner">
+                                        {% comment %} Item Image {% endcomment %}
+                                        <img v-if="item.image" :src="item.image" class="c-cart-product_image" width="80" height="80"/>
+                                    </div>
+                                </a>
+
+                                <div class="c-cart-product_content">
+                                    {% comment %} Item Title {% endcomment %}
+                                    <h2 class="c-cart-product_title || c-text -aeonik -body1">${ item.title }</h2>
+
+                                    {% comment %} Item Options {% endcomment %}
+                                    <ul class="c-cart-product_options">
+                                        <li class="c-text -aeonik -body1" v-for="(option, optionIndex) in item.options" v-if="option.value != 'Default Title'" :key="optionIndex">
+                                            {% comment %}<span>${option.name}</span>{% endcomment %}
+                                            <span v-if="optionIndex > 0">&nbsp;-</span>
+                                            <span>${option.value}</span>
+                                        </li>
+                                    </ul>
+
+                                    <div class="c-cart-product_pricing || o-grid -center-items-y u-grid-col-2">
+
+                                        {% comment %} Item Quantity {% endcomment %}
+                                        <div class="c-cart-product_quantity || c-form_quantity -cart || c-label -mono -big">
+                                            <label class="u-screen-reader-text" for="productQuantity">Quantity</label>
+                                            <button class="c-form_quantityButton" @click="onRemoveItem(item.key)">
+                                                <span>-</span>
+                                            </button>
+                                            <input class="c-form_quantityInput" type="number" name="productQuantity" readonly="readonly" min="1" v-model.number="item.quantity" tabindex="-1">
+                                            <button class="c-form_quantityButton" @click="onAddItem(item.key)">
+                                                <span>+</span>
+                                            </button>
+                                        </div>
+
+                                        {% comment %} Item Price {% endcomment %}
+                                        <p class="c-cart-product_price">
+                                            <span>{{cart.currency.symbol}}</span>
+                                            <span>${item.price}</span>
+                                            {% comment %}<span>{{ cart.currency.iso_code }}</span>{% endcomment %}
+                                        </p>
+                                    </div>
+
+                                    {% comment %} Item State Loading {% endcomment %}
+                                    {% comment %}<div class="c-cart-product_loading" :class="{'is-loading': item.isLoading }">
+                                        <div class="c-spinner">
+                                            <svg role="img"><use xlink:href="#spinner"></use></svg>
+                                        </div>
+                                    </div>{% endcomment %}
+                                </div>
+
+                                {% comment %} Item Delete {% endcomment %}
+                                <div class="c-cart-product_delete">
+                                    <button class="c-button -delete" @click="onDeleteItem(item.key)" aria-label="Delete item">
+                                        <span class="c-button_icon">
+                                            <svg role="img">
+                                                <use xlink:href="#icon-trash"></use>
+                                            </svg>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="c-cart_content_loading">
+                            <div class="c-spinner">
+                                <svg role="img"><use xlink:href="#spinner"></use></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="c-cart_footer" :class="{'is-loading': isCheckoutLoading}">
+
+                        <div class="o-grid -center-items-y u-grid-col-2">
+                            {% comment %} Taxes message {% endcomment %}
+                            <p class="c-cart_taxes || c-label -mono -medium">{{ cart_message_taxes }}</p>
+
+                            {% comment %} Total {% endcomment %}
+                            <div class="c-cart_total">
+                                <div class="c-cart_total_inner u-align-left">
+                                    <p class="c-cart_total_label || c-label -aeonik -subtitle -uppercase">Total</p>
+
+                                    {% comment %}<p class="c-cart_total_price -original">
+                                        <span>{{ cart.currency.symbol }}</span>
+                                        <span>${ cartTotal.originalTotal }</span>
+                                        <span>{{ cart.currency.iso_code }}</span>
+                                    </p>{% endcomment %}
+
+                                    <p class="c-cart_total_price -final || c-label -aeonik -popup">
+                                        <span>{{cart.currency.symbol}}</span>
+                                        <span>${cartTotal.total}</span>
+                                        {% comment %}<span>{{ cart.currency.iso_code }}</span>{% endcomment %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% comment %} Checkout Form {% endcomment %}
+                        <form class="c-cart_checkout" @submit="onCheckout" action="/cart" method="post">
+                            <div class="c-cart_checkout_conditions">
+                                <input class="c-form_checkbox" type="checkbox" id="conditionsModal" name="conditionsModal" required v-model="checkoutChecked">
+                                <label class="c-form_checkboxLabel" for="conditionsModal">I am over 21</label>
+                                <p class="c-form_checkbox_hint || c-text -mono -body2">{{ cart_conditions }}</p>
+                            </div>
+                          	<div>
+                              <button id="nftDiscountCheckout" class="c-cart_checkout_button || c-button -big -dark -fluid"  type="submit" name="checkout" :disabled="!isCheckoutAvailable">
+                                  <span class="c-button_label">Checkout</span>
+                              </button>
+                               <div id="nftDiscountWidget" style="margin-top: 7px" ></div>
+                          	</div>
+                        </form>
+                       
+
+                        <div class="c-cart_footer_loading">
+                            <div class="c-spinner">
+                                <svg role="img"><use xlink:href="#spinner"></use></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </focus-trap>
+</div>

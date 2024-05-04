@@ -1,0 +1,17 @@
+<div class="c-collection-list_wrapper">
+    <div class="c-section">
+        <div class="o-container">
+            <ul class="c-collection-list || o-grid u-grid-col-2@from-small u-grid-col-3@from-medium -gutter-x-small -gutter-y">
+                {% for product in product_collection %}
+                <li class="c-collection-list_item">
+                    {% include 'product-tile', with
+                        product: product
+                    %}
+                </li>
+                {% endfor %}
+            </ul>
+
+            {% include 'pagination' %}
+        </div>
+    </div>
+</div>

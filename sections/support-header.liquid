@@ -1,0 +1,139 @@
+{% schema %}
+    {
+        "name": "Header",
+        "settings": [
+            {
+                "id": "header_title",
+                "type": "text",
+                "label": "Header title",
+                "default": "Get Support"
+            },
+            {
+                "id": "header_text",
+                "type": "text",
+                "label": "Header text",
+                "default": "Earth™ special support unit A009546"
+            },          
+            {
+                "id": "header_card1_title",
+                "type": "text",
+                "label": "First card title",
+                "default": "Dr.Dabber®<br> Knowledge Base"
+            },
+            {
+                "id": "header_card1_description",
+                "type": "text",
+                "label": "First card description",
+                "default": "We have provided a list of common customer questions. Lorem ipsum."
+            },
+            {
+                "id": "header_card1_button_label",
+                "type": "text",
+                "label": "First card button label",
+                "default": "Help center"
+            },
+            {
+                "id": "header_card1_button_link",
+                "type": "text",
+                "label": "First card link",
+                "default": "https://drdabber.helpscoutdocs.com/"
+            },
+            {
+                "id": "header_card1_is_chat",
+                "type": "checkbox",
+                "label": "First card start chat ?",
+                "default": false
+            },
+            {
+                "id": "header_card2_title",
+                "type": "text",
+                "label": "Second card title",
+                "default": "An Award Winning<br> Support Team"
+            },
+            {
+                "id": "header_card2_description",
+                "type": "text",
+                "label": "Second card description",
+                "default": "Our award winning support team is ready to take charge on your issues."
+            },
+            {
+                "id": "header_card2_button_label",
+                "type": "text",
+                "label": "Second card button label",
+                "default": "Let’s chat"
+            },
+            {
+                "id": "header_card2_button_link",
+                "type": "text",
+                "label": "Second card link"
+            },
+            {
+                "id": "header_card2_is_chat",
+                "type": "checkbox",
+                "label": "Second card start chat ?",
+                "default": true
+            }
+        ]
+    }
+{% endschema %}
+
+{% assign title = section.settings.header_title | strip %}
+{% assign text = section.settings.header_text | strip %}
+{% assign tel = section.settings.header_phone | strip %}
+
+{% assign title_card_1 = section.settings.header_card1_title | strip %}
+{% assign description_card_1 = section.settings.header_card1_description | strip %}
+{% assign label_card_1 = section.settings.header_card1_button_label | strip %}
+{% assign link_card_1 = section.settings.header_card1_button_link | strip %}
+{% assign is_chat_card_1 = section.settings.header_card1_is_chat %}
+
+{% assign title_card_2 = section.settings.header_card2_title | strip %}
+{% assign description_card_2 = section.settings.header_card2_description | strip %}
+{% assign label_card_2 = section.settings.header_card2_button_label | strip %}
+{% assign link_card_2 = section.settings.header_card2_button_link | strip %}
+{% assign is_chat_card_2 = section.settings.header_card2_is_chat %}
+
+
+{% comment %} --------------------- {% endcomment %}
+
+
+<div class="c-support-header">
+
+    <div class="o-container -default">
+        <div class="c-support-header_inner">
+            <div class="c-support-header_infos">
+                <p class="c-support-header_subtitle || c-label -mono -micro -uppercase u-color-cyan">
+                    <span>{{text}}</span>
+                </p>
+                
+                    </span>
+                    <span class="c-button_label">
+                        {{tel}}
+                    </span>
+                </a>
+            </div>
+            <h1 class="c-support-header_title">{{title}}</h1>
+        </div>
+    </div>
+
+    <div class="c-support-access -header">
+        <div class="o-container -default">
+            <div class="o-grid u-grid-col-2@from-small -gutter-x-small">
+                {% include 'support-tile' with
+                    title: title_card_1,
+                    description: description_card_1,
+                    button_label: label_card_1,
+                    button_link: link_card_1,
+                    is_chat: is_chat_card_1
+                %}
+                {% include 'support-tile' with
+                    title: title_card_2,
+                    description: description_card_2,
+                    button_label: label_card_2,
+                    button_link: link_card_2,
+                    is_chat: is_chat_card_2
+                %}
+            </div>
+        </div>
+    </div>
+</div>

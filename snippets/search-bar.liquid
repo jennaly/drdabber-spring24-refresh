@@ -1,0 +1,171 @@
+<div class="c-search-bar" data-module-search>
+    <focus-trap v-model="isActive">
+        <div class="c-search-bar_inner">
+            <div class="c-search-bar_mask">
+                <div class="c-search-bar_wrapper">
+                    <button class="c-search-bar_close || c-button -icon" type="button" @click="onToggle">
+                        <span class="c-button_icon">
+                            <svg role="img" aria-label="Close">
+                                <use xlink:href="#icon-cross"></use>
+                            </svg>
+                        </span>
+                    </button>
+                
+                    <form
+                        autocomplete="off"
+                        class="c-search-bar_form"
+                        action="/search"
+                        method="get"
+                        role="search"
+                    >
+                      <div class="c-search-bar_form_inner"> 
+                            <input type="hidden" name="options[unavailable_products]" value="hide" />
+                            <input type="hidden" name="options[prefix]" value="last" />
+                            <input type="hidden" name="type" value="product" />
+                            <input
+                                ref="input"
+                                autocomplete="off"
+                                class="c-form_input"
+                                type="search"
+                                name="q"
+                                value="{{ search.terms | escape }}"
+                                v-model="searchInput"
+                                placeholder="Search products..."
+                            />
+                            <button class="c-button -search" type="submit">
+                                <span class="c-button_icon">
+                                    <svg role="img" aria-label="Search">
+                                        <use xlink:href="#search"></use>
+                                    </svg>
+                                </span>
+                                <span class="c-button_label">Search</span>
+                            </button>
+                      </div>
+                    </form>
+                
+                    <transition name="search-list">
+                        <div v-if="products.length || articles.length" class="c-search-bar_suggest">
+                            <div class="c-search-bar_suggest_inner">
+                                <div class="c-search-suggest" ref="suggest">
+                                    <div class="c-search-suggest_header">
+                                        <p>Search results for "${searchInput}"</p>
+                                        <form
+                                            autocomplete="off"
+                                            action="/search"
+                                            method="get"
+                                            role="search"
+                                        >
+                                            <input type="hidden" name="type" value="product" />
+                                            <input
+                                                type="hidden"
+                                                name="q"
+                                                v-model="searchInput"
+                                            />
+                                            <button class="c-button -grey -small" type="submit">
+                                                <span class="c-button_label"
+                                                    >See more results</span
+                                                >
+                                            </button>
+                                        </form>
+                                    </div>
+                                    
+                                    <div class="c-search-suggest_scrollable">
+                                        
+                                        <ul class="c-search-suggest_list">
+                                        <!-- <transition-group class="c-search-suggest_list" name="search-list" tag="ul"> -->
+                                            <li
+                                                class="c-search-suggest_item"
+                                                v-for="(product, productIndex) in products"
+                                                :key="productIndex"
+                                            >
+                                                <div class="c-search-suggest_item_image">
+                                                    <div class="c-search-suggest_item_image_inner">
+                                                        <img
+                                                            :src="product.featured_image.url"
+                                                            :alt="product.featured_image.alt"
+                                                            :width="product.featured_image.width"
+                                                            :height="product.featured_image.height"
+                                                        />
+                                                    </div>
+                                                </div>
+                        
+                                                <div class="c-search-suggest_item_infos">
+                                                    <div class="c-search-suggest_item_infos_inner">
+                                                        <h3 class="c-text -aeonik -body1">
+                                                            ${product.title}
+                                                        </h3>
+                                                        <p class="c-search-suggest_item_price">
+                                                            <span>{{ cart.currency.symbol }}</span>
+                                                            <span>${product.price}</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                        
+                                                <div class="c-search-suggest_item_cta">
+                                                    <div class="c-search-suggest_item_cta_inner">
+                                                        <span
+                                                            v-if="!product.available"
+                                                            class="c-button -small -light || is-disabled"
+                                                        >
+                                                            <span class="c-button_label"
+                                                                >Out of stock</span
+                                                            >
+                                                        </span>
+                                                    </div>
+                                                </div>
+                        
+                                                <a
+                                                    class="c-search-suggest_item_link"
+                                                    :href="product.url"
+                                                ></a>
+                                            </li>
+                                        <!-- </transition-group> -->
+                                        </ul>
+                                        <ul class="c-search-suggest_list">
+                                        <!-- <transition-group class="c-search-suggest_list" name="search-list" tag="ul"> -->
+                                            <li
+                                                class="c-search-suggest_item"
+                                                v-for="(article, articleIndex) in articles"
+                                                :key="articleIndex"
+                                            >
+                                                <div class="c-search-suggest_item_image">
+                                                    <div class="c-search-suggest_item_image_inner">
+                                                        <img
+                                                            :src="article.featured_image.url"
+                                                            :alt="article.featured_image.alt"
+                                                            :width="article.featured_image.width"
+                                                            :height="article.featured_image.height"
+                                                        />
+                                                    </div>
+                                                </div>
+                        
+                                                <div class="c-search-suggest_item_infos">
+                                                    <div class="c-search-suggest_item_infos_inner">
+                                                        <h3 class="c-text -aeonik -body1">
+                                                            ${article.title}
+                                                        </h3>
+                                                        <p class="c-search-suggest_item_price">
+                                                            <span>${displayDate(article.published_at)} by ${article.author}</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                        
+                                                <a
+                                                    class="c-search-suggest_item_link"
+                                                    :href="article.url"
+                                                ></a>
+                                            </li>
+                                        <!-- </transition-group> -->
+                                        </ul>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </transition>
+                </div>
+            </div>
+            <div class="c-search-bar_background" @click="onToggle"></div>
+        </div>
+    </focus-trap>
+</div>

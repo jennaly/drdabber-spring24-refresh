@@ -1,0 +1,34 @@
+{% assign array_length = titles_arr.size | minus: 1 %}
+
+{% capture list_str %}
+    {% for i in (0..array_length) %}
+        {{ titles_arr[i] }}|||
+        {{ descriptions_arr[i] }}
+        {% if forloop.last == false %}::{% endif%}
+    {% endfor %}
+{% endcapture %}
+
+
+{% comment %} --------------------- {% endcomment %}
+
+
+{% if list_str != blank and list_str != nil %}
+
+<li class="c-product-specs || c-accordions_item" data-accordions="item">
+    <button type="button" class="c-accordions_item_toggler" data-accordions="toggler">
+        <span class="c-accordions_item_toggler_label">
+            {{ accordion_title }}
+            <span class="c-accordions_item_toggler_plus"></span>
+        </span>
+    </button>
+
+    <div class="c-accordions_item_content" data-accordions="content">
+        <div class="c-accordions_item_inner" data-accordions="inner">
+            {% include 'block-multi-list' with 
+                list: list_str
+            %}
+        </div>
+    </div>
+</li>
+
+{% endif %}

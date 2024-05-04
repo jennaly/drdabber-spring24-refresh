@@ -1,0 +1,16 @@
+{% assign article_featured_collection = collections[settings.product_carousel_article_page] %}
+
+
+{% comment %} --------------------- {% endcomment %}
+
+
+{% if article_featured_collection != blank and article_featured_collection != nil and article_featured_collection.products.size > 0 %}
+    <div class="c-featured-collection">
+        {% include 'block-carousel' with
+            title: article_featured_collection.title, 
+            collection_items: article_featured_collection.products,
+            tile_type: "product",
+            loop_limit: 9
+        %}
+    </div>
+{% endif %}

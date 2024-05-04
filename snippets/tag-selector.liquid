@@ -1,0 +1,25 @@
+{%- comment -%} https://shopify.dev/tutorials/customize-theme-filter-collections-with-product-tags {%- endcomment -%}
+
+{% capture query_url %}{{reset_url}}{{query_parameter}}{% endcapture %}
+
+
+{% comment %} --------------------- {% endcomment %}
+
+
+ <div 
+    class="c-selector || c-form_select -tiny" 
+    data-module-tag-selector
+    data-tag-selector-reset-url="{{reset_url}}"
+    data-tag-selector-query-url="{{query_url}}"
+>
+    <select class="c-form_select_input || c-label -aeonik -subtitle -uppercase -bold" data-tag-selector="select">
+        <option value="">{{ default_label }}</option>
+        {% for tag in entity.all_tags %} 
+            {% if current_tags contains tag %}
+                <option value="{{ tag | handle }}" selected>{{ tag | capitalize }}</option>
+            {% else %}
+                <option value="{{ tag | handle }}">{{ tag | capitalize }}</option>
+            {% endif %} 
+        {% endfor %}
+    </select>
+</div>

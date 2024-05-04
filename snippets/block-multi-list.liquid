@@ -1,0 +1,29 @@
+{% assign list_arr = list_str | split: "::" %}
+
+{% comment %} --------------------- {% endcomment %}
+
+{% if list_str != blank and list_str != nil %}
+
+<ul class="c-block-multi-list">
+
+    {% for list_item in list_arr %}
+
+        {% assign values = list_item | split: "|||" %}
+
+        <li class="c-block-multi-list_item">
+            <div class="o-grid u-grid-col-2">
+                <div class="c-block-multi-list_key">
+                    <p class="c-block-multi-list_content">
+                        {{values[0]}}
+                    </p>
+                </div>
+                <div class="c-block-multi-list_value">
+                    <p class="c-block-multi-list_content">
+                        {{values[1]}}
+                    </p>
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+{% endif %}

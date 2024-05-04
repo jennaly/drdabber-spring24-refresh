@@ -1,0 +1,71 @@
+{% assign new_loop_limit = loop_limit | plus: 1 %}
+{% assign loop_index = 0 %}
+
+
+{% case collection_type %}
+  {% when "blogs" %}
+    {% assign collection_items = blogs[collection_handle].articles %}
+{% endcase %}
+
+
+{% comment %} --------------------- {% endcomment %}
+
+
+{% if collection_items.size > 0 %}
+    <div class="c-section -carousel || js-carousel-section">
+        <div class="o-container">
+
+            <div class="c-section_header">
+                <h2 class="c-section_title">
+                    {{ title }}
+                </h2>
+
+                {% if collection_link != blank and collection_link != nil and collection_link_label != blank and collection_link_label != nil %}
+                    <div>
+                        <a href="{{ collection_link }}" class="c-button -small -dark -mono">
+                            <span class="c-button_label">{{ collection_link_label }}</span>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="c-block-carousel" data-module-carousel>
+                <div class="c-block-carousel_container || swiper-container" data-carousel="carousel">
+                    <div class="c-block-carousel_wrapper || swiper-wrapper" data-carousel="wrapper">
+                        {% for item in collection_items limit:new_loop_limit %}
+                            {% if item.handle != item_avoid_handle %}
+
+                                {% assign loop_index = loop_index | plus: 1%}
+                                {% if loop_index > loop_limit %}
+                                    {% break %}
+                                {% endif %}
+
+
+                                <div class="c-block-carousel_slide || swiper-slide">
+
+                                    {%- comment -%} Include your tile {%- endcomment -%}
+                                    {% case tile_type %}
+                                        {% when "product" %}
+                                            {% include 'product-tile', with
+                                                product: item,
+                                                is_carousel: true
+                                            %}
+                                        {% when "article" %}
+                                            {% include 'article-tile', with
+                                                article: item
+                                            %}
+                                    {% endcase %}
+
+                                </div>
+
+
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="c-block-carousel_pagination || swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+

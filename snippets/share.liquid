@@ -1,0 +1,92 @@
+<div 
+    class="c-share"
+    data-module-share
+>
+    {%- comment -%} Box {%- endcomment -%}
+    <div class="c-share_box">
+
+        {%- comment -%} Title {%- endcomment -%}
+        <h2 class="c-share_box_title || c-heading -aeonik -h6">{{title}}</h2>
+
+        {%- comment -%} Close {%- endcomment -%}
+        <button 
+            class="c-share_close || c-button -icon -dark-lighter" 
+            data-share="close"
+            aria-label="Close"
+        >
+            <span class="c-button_icon">
+                <svg role="img" aria-label="Close">
+                    <use xlink:href="#icon-cross"></use>
+                </svg>
+            </span>
+        </button>
+
+        {%- comment -%} Links {%- endcomment -%}
+        <ul class="c-share_socials">
+            <li>
+                <button 
+                    class="c-share_socials_facebook || c-button -light -icon-label -icon-label-static -hover-fill-grey"
+                    data-share="share"
+                    data-share-platform="facebook"
+                    aria-label="Share on Facebook"
+                >
+                    <span class="c-button_icon">
+                        <svg role="img" aria-label="Facebook Icon">
+                            <use xlink:href="#social-facebook"></use>
+                        </svg>
+                    </span>
+                    <span class="c-button_label">Facebook</span>
+                </button>
+            </li>
+            <li>
+                <button 
+                    class="c-button -light -icon-label -icon-label-static -hover-fill-grey"
+                    data-share="share"
+                    data-share-platform="twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <span class="c-button_icon">
+                        <svg role="img" aria-label="Twitter icon">
+                            <use xlink:href="#social-twitter"></use>
+                        </svg>
+                    </span>
+                    <span class="c-button_label">Twitter</span>
+                </button>
+            </li>
+            <li>
+                <button 
+                    class="c-button -light -icon-label -icon-label-static -hover-fill-grey"
+                    data-share="share"
+                    data-share-platform="linkedin"
+                    aria-label="Share on LinkedIn"
+                >
+                    <span class="c-button_icon">
+                        <svg role="img" aria-label="Linkedin icon">
+                            <use xlink:href="#social-linkedin"></use>
+                        </svg>
+                    </span>
+                    <span class="c-button_label">Linkedin</span>
+                </button>
+            </li>
+        </ul>
+
+        {%- comment -%} Copy {%- endcomment -%}
+        <button
+            class="c-share_box_copy_button || c-button -light -hover-fill-grey"
+            type="button"
+            data-share="share"
+            data-share-platform="copy"
+        >
+            <span class="c-button_label">
+                {{copy_label}}
+            </span>
+        </button>
+
+        {%- comment -%}Copy feedback{%- endcomment -%}
+        <p class="c-share_box_copy_feedback || c-label -mono -small -uppercase || u-color-cyan">{{copy_feedback}}</p>
+
+    </div>
+
+    {%- comment -%} Overlay {%- endcomment -%}
+    <div class="c-share_overlay" data-share="close"></div>
+</div>

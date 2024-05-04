@@ -1,0 +1,90 @@
+<footer class="c-footer || c-section -padding-top">
+    <div class="o-container -default">
+        <div class="c-footer_container">
+            <div class="c-footer_main">
+                <div class="main-div">
+                  <div class="c-footer_newsletter">
+                      {% render 'newsletter-subscribe' %}
+                  </div>
+  
+                  
+                </div>
+
+                <nav class="c-footer_nav">
+                    {% assign footer_menu = linklists.footer %}
+                    <ul class="c-footer_nav_list">
+                        {% for link in footer_menu.links %}
+                            <li class="c-footer_nav_list_item">
+                                <a href="{{ link.url }}" class="c-footer_nav_list_item_link">{{ link.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                    {% assign footer_secondary_menu_a = linklists.footer-secondary-menu-a %}
+                    <ul class="c-footer_nav_list">
+                        {% for link in footer_secondary_menu_a.links %}
+                            <li class="c-footer_nav_list_item">
+                                <a href="{{ link.url }}" class="c-footer_nav_list_item_link">{{ link.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                    {% assign footer_secondary_menu_b = linklists.footer-secondary-menu-b %}
+                    <ul class="c-footer_nav_list">
+                        {% for link in footer_secondary_menu_b.links %}
+                            <li class="c-footer_nav_list_item">
+                                <a href="{{ link.url }}" class="c-footer_nav_list_item_link">{{ link.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+
+                <div class="c-footer_bottom">
+                    <div class="c-footer_bottom_item">
+                        <span class="c-label -mono -cyan -uppercase -small">DRD LLC &copy; {{ 'now' | date: "%Y" }}</span>
+                    </div>
+
+                    <div class="c-footer_bottom_item">
+                        {% include 'socials' %}
+                    </div>                   
+                </div>
+            </div>
+
+            {% if settings.support_url != blank %}
+                <div class="c-footer_phone">
+                    <a href="{{ settings.support_url }}" class="c-phone -primary">
+                        <div class="c-phone_inner">
+                            <span class="c-phone_infos -top">
+                                Earth™ special <br>
+                                support unit <br>
+                                A009546
+                            </span>
+
+                            <span class="c-phone_ellipses">
+                                <svg role="img" aria-hidden="true">
+                                    <use xlink:href="#ellipses"></use>
+                                </svg>
+                            </span>
+
+                            <span class="c-phone_infos -bottom">
+                                <div>All systems</div>
+                                <br>
+                                <div class="u-relative">
+                                    online
+                                    <span class="c-phone_infos_blink"></span>
+                                </div>
+                            </span>
+
+                            <span class="c-phone_title">Get<br> support</span>
+
+                            <div class="c-phone_globe">
+                                {% include 'globe' %}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</footer>
+<script src="//cdn.shopify.com/s/files/1/0617/7298/8603/files/optimizer.js?v=1659207041" type="text/javascript"></script>

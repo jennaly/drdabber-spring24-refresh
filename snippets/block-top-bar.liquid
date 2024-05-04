@@ -1,0 +1,77 @@
+{% assign top_bar_visible = settings.top_bar_visible %}
+{% assign top_bar_url = settings.top_bar_url %}
+{% assign top_bar_button_label = settings.top_bar_button_label %}
+{% assign top_bar_text= settings.top_bar_text %}
+
+
+{% comment %} --------------------- {% endcomment %}
+
+
+<div class="c-header_notification">
+    <div class="c-header_notification_item">
+        {% if settings.top_bar_shipping != blank %}
+            <span class="c-header_notification_item_label -icon">
+
+                <svg class="c-header_notification_item_label_icon" aria-hidden="true" focusable="false">
+                    <use xlink:href="#shipping"></use>
+                </svg>
+
+                <span class="c-header_notification_item_label_text">
+                    {{ settings.top_bar_shipping }}
+                </span>
+            </span>
+        {% endif %}
+    </div>
+
+    {% if top_bar_visible %}
+        <div class="c-header_notification_cta">
+            {% comment %} Text {% endcomment %}
+            {% if top_bar_text != blank %}
+                <p>{{ top_bar_text }}</p>
+            {% endif %}
+
+            {% comment %} Button {% endcomment %}
+            {% if top_bar_url != blank && top_bar_button_label != blank %}
+                <a href="{{ top_bar_url }}" class="c-header_notification_cta_button">
+                    {{ top_bar_button_label }}
+                </a>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <div class="c-header_notification_item -multiple">
+        {% if shop.customer_accounts_enabled %}
+            {% if customer %}
+                <span class="c-header_notification_item_label">
+                    <a href="/account">My account</a>
+                </span>
+
+                <span class="c-header_notification_item_label" data-module-rewards>
+                    <button type="button">Rewards</button>
+                </span>
+
+                <span class="c-header_notification_item_label">
+                    {{ 'log out'  | customer_logout_link }}
+                </span>
+            {% else %}
+                <span class="c-header_notification_item_label">
+                    {{ 'log in' | customer_login_link }}
+                </span>
+
+                <span class="c-header_notification_item_label">
+                    {{ 'register' | customer_register_link }}
+                </span>
+
+                <span class="c-header_notification_item_label" data-module-rewards>
+                    <button type="button">Rewards</button>
+                </span>
+            {% endif %}
+        {% endif %}
+
+        {% if settings.support_url != blank %}
+            <span class="c-header_notification_item_label">
+                <a class="c-link" href="{{ settings.support_url }}">Get support</a>
+            </span>
+        {% endif %}
+    </div>
+</div>

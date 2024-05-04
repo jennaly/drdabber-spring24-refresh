@@ -1,0 +1,7 @@
+{% if embed_url != blank and embed_url != nil %}
+<div class="c-block-multi-embed">
+    <div class="c-block-multi-embed_inner">
+        <iframe class="c-block-multi-embed_iframe" width="560" height="315" src="{{ embed_url|strip }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+{% endif %}

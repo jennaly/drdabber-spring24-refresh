@@ -1,0 +1,18 @@
+{% assign related_product_title = related_product_title %}
+{% assign related_products_collection = related_products_collection %}
+
+{% comment %} --------------------- {% endcomment %}
+
+{% if related_products_collection != blank and related_products_collection != nil and related_products_collection.products.size > 0 %}
+    <div class="c-product-related">
+        {% include 'block-carousel' with
+            title: related_product_title
+            collection_items: related_products_collection.products,
+            tile_type: "product",
+            loop_limit: 9,
+            item_avoid_handle: product.handle,
+            collection_link: related_products_collection.url,
+            collection_link_label: 'Shop now'
+        %}
+    </div>
+{% endif %}

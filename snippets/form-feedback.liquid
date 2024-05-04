@@ -1,0 +1,9 @@
+{% if form.posted_successfully? %}
+    <div class="c-form_success">
+        {{ form.errors | default_errors }}
+    </div>
+{% elsif form.errors %}
+    <div class="c-form_error">
+        {{ form.errors | default_errors }}
+    </div>
+{% endif %}

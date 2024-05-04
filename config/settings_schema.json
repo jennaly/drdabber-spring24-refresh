@@ -1,0 +1,434 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Dr. Dabber",
+    "theme_version": "1.0.0",
+    "theme_author": "Locomotive Inc.",
+    "theme_documentation_url": "https:\/\/github.com\/Shopify\/themekit",
+    "theme_support_url": "https:\/\/github.com\/Shopify\/themekit\/issues"
+  },
+  {
+    "name": "Chat",
+    "settings": [
+      {
+        "id": "chat_enabled",
+        "type": "checkbox",
+        "label": "Enable Olark Chat",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Support",
+    "settings": [
+      {
+        "id": "support_url",
+        "type": "url",
+        "label": "Support page URL"
+      },
+      {
+        "id": "warranty_content",
+        "type": "html",
+        "label": "Warranty info",
+        "info": "HTML format.",
+        "default": "<p>All Dr. Dabber Vaporizers are backed by our industry leading 1 year warranty (note: Dr. Dabber SWITCH has a 2 year warranty). If your product isn't working properly, you can reach out to our award winning customer service team by email, phone or live chat and we will get you up and running. We believe in building quality products that we can support, so feel free to reach out with any questions or concerns you may have.<\/p>"
+      },
+      {
+        "id": "shipping_content",
+        "type": "html",
+        "label": "Shipping info",
+        "info": "HTML format.",
+        "default": "<h6>Shipping<\/h6>\n<ul>\n<li>Free Domestic Shipping on all orders over $39.95<\/li>\n<li>Expedited delivery options also available<\/li>\n<li>Purchases are delivered in a plain cardboard box or envelope, with the exception of certain items<\/li>\n<li>See the delivery FAQs for details on shipping methods, costs and delivery times<\/li>\n<\/ul>\n\n<h6>Returns and exchanges<\/h6>\n<ul>\n<li>Items can be returned within 30 days of purchase as long as they are unopened, in original packaging<\/li>\n<li>See conditions and procedure in our return FAQs<\/li>\n<\/ul>"
+      }
+    ]
+  },
+  {
+    "name": "Top Bar",
+    "settings": [
+      {
+        "id": "top_bar_visible",
+        "type": "checkbox",
+        "label": "Promotion visible",
+        "default": true
+      },
+      {
+        "id": "top_bar_shipping",
+        "type": "text",
+        "label": "Shipping mention",
+        "default": "Free shipping over $39.95"
+      },
+      {
+        "id": "top_bar_url",
+        "type": "url",
+        "label": "Link"
+      },
+      {
+        "id": "top_bar_text",
+        "type": "text",
+        "label": "Text",
+        "placeholder": "The Boost Evo is here"
+      },
+      {
+        "id": "top_bar_button_label",
+        "type": "text",
+        "label": "Button label",
+        "placeholder": "Shop now",
+        "default": "Shop now"
+      }
+    ]
+  },
+  {
+    "name": "Product state messages",
+    "settings": [
+      {
+        "id": "product_message_out_of_stock",
+        "type": "text",
+        "label": "Product out of stock",
+        "placeholder": "Currently out of stock."
+      },
+      {
+        "id": "product_message_variant_doesnt_exist",
+        "type": "text",
+        "label": "Product variant doesn't exist",
+        "placeholder": "The variant does not exist."
+      },
+      {
+        "id": "product_message_quantity_not_available",
+        "type": "text",
+        "label": "Product quantity is not available",
+        "placeholder": "Quantity is not available."
+      },
+      {
+        "id": "product_message_quantity_exceed",
+        "type": "text",
+        "label": "Product quantity exceed",
+        "placeholder": "Sorry you can't add more items."
+      }
+    ]
+  },
+  {
+    "name": "About",
+    "settings": [
+      {
+        "id": "about_excerpt",
+        "type": "textarea",
+        "label": "Excerpt",
+        "placeholder": "About Dr. Dabber"
+      },
+      {
+        "id": "about_button_link",
+        "type": "url",
+        "label": "Button Link"
+      },
+      {
+        "id": "about_button_label",
+        "type": "text",
+        "label": "Button Label",
+        "placeholder": "About us"
+      },
+      {
+        "id": "about_image",
+        "type": "image_picker",
+        "label": "About Image",
+        "info": "Size: 740x1440"
+      },
+      {
+        "id": "about_decorative_label_a",
+        "type": "text",
+        "label": "Decorative Label A",
+        "placeholder": "Elevate Higher™"
+      },
+      {
+        "id": "about_decorative_label_b",
+        "type": "text",
+        "label": "Decorative Label B",
+        "placeholder": "Ultimate Dabbing Experience"
+      },
+      {
+        "id": "about_decorative_label_c",
+        "type": "text",
+        "label": "Decorative Label C",
+        "placeholder": "Since 2010"
+      }
+    ]
+  },
+  {
+    "name": "Cards",
+    "settings": [
+      {
+        "id": "cards_visible",
+        "type": "checkbox",
+        "label": "Cards Visible",
+        "default": true
+      },
+      {
+        "id": "card_title_a",
+        "type": "text",
+        "label": "Card Title A",
+        "placeholder": "Fast and Free Shipping"
+      },
+      {
+        "id": "card_text_a",
+        "type": "textarea",
+        "label": "Card Text A",
+        "placeholder": "We process all orders within 24-48 hours and offer..."
+      },
+      {
+        "id": "card_icon_a",
+        "type": "image_picker",
+        "label": "Card Icon A",
+        "info": "Size: 140x140 (PNG)"
+      },
+      {
+        "id": "card_title_b",
+        "type": "text",
+        "label": "Card Title B",
+        "placeholder": "Fast and Free Shipping"
+      },
+      {
+        "id": "card_text_b",
+        "type": "textarea",
+        "label": "Card Text B",
+        "placeholder": "We process all orders within 24-48 hours and offer..."
+      },
+      {
+        "id": "card_icon_b",
+        "type": "image_picker",
+        "label": "Card Icon B",
+        "info": "Size: 140x140 (PNG)"
+      },
+      {
+        "id": "card_title_c",
+        "type": "text",
+        "label": "Card Title C",
+        "placeholder": "Fast and Free Shipping"
+      },
+      {
+        "id": "card_text_c",
+        "type": "textarea",
+        "label": "Card Text C",
+        "placeholder": "We process all orders within 24-48 hours and offer..."
+      },
+      {
+        "id": "card_icon_c",
+        "type": "image_picker",
+        "label": "Card Icon C",
+        "info": "Size: 140x140 (PNG)"
+      },
+      {
+        "id": "card_title_d",
+        "type": "text",
+        "label": "Card Title D",
+        "placeholder": "Fast and Free Shipping"
+      },
+      {
+        "id": "card_text_d",
+        "type": "textarea",
+        "label": "Card Text D",
+        "placeholder": "We process all orders within 24-48 hours and offer..."
+      },
+      {
+        "id": "card_icon_d",
+        "type": "image_picker",
+        "label": "Card Icon D",
+        "info": "Size: 140x140 (PNG)"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "id": "cart_title",
+        "type": "text",
+        "label": "Cart title",
+        "placeholder": "My cart."
+      },
+      {
+        "id": "cart_empty",
+        "type": "text",
+        "label": "Cart empty",
+        "placeholder": "Your cart is empty."
+      },
+      {
+        "id": "cart_taxes_hint",
+        "type": "text",
+        "label": "Taxes & Shipping",
+        "placeholder": "Shipping and taxes calculated at checkout."
+      },
+      {
+        "id": "cart_conditions",
+        "type": "text",
+        "label": "Cart conditions"
+      }
+    ]
+  },
+  {
+    "name": "[Developers] - Stamped",
+    "settings": [
+      {
+        "id": "stamped_apikey",
+        "type": "text",
+        "label": "Stamped API Key (public)",
+        "placeholder": "pubkey-2******"
+      },
+      {
+        "id": "stamped_storeurl",
+        "type": "text",
+        "label": "Stamped Store Url",
+        "placeholder": "www.mySite.com",
+        "default": "www.drdabber.com"
+      }
+    ]
+  },
+  {
+    "name": "Share Modal",
+    "settings": [
+      {
+        "id": "share_copy_label",
+        "type": "text",
+        "label": "Label clipboard button",
+        "placeholder": "Label clipboard button",
+        "default": "Copy to clipboard"
+      },
+      {
+        "id": "share_copy_success",
+        "type": "text",
+        "label": "Label clipboard success",
+        "placeholder": "Label clipboard success",
+        "default": "Copied!"
+      }
+    ]
+  },
+  {
+    "name": "General Products Carousels",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "product_carousel_product_page",
+        "label": "Product Collection Carousel [Products Pages]",
+        "info": "Product carousel at the end of the products pages"
+      },
+      {
+        "type": "collection",
+        "id": "product_carousel_article_page",
+        "label": "Product Collection Carousel [Blog Pages]",
+        "info": "Product carousel at the end of the blogs pages"
+      }
+    ]
+  },
+  {
+    "name": "General Product Splash",
+    "settings": [
+      {
+        "id": "general_splash_title_1",
+        "type": "text",
+        "label": "Main text line 1"
+      },
+      {
+        "id": "general_splash_title_2",
+        "type": "text",
+        "label": "Main text line 2"
+      },
+      {
+        "id": "general_splash_subtitle",
+        "type": "text",
+        "label": "Subtitle"
+      },
+      {
+        "id": "general_splash_cta",
+        "type": "url",
+        "label": "Call to action"
+      },
+      {
+        "id": "general_splash_cta_description",
+        "type": "text",
+        "label": "CTA Description"
+      },
+      {
+        "id": "general_splash_cta_button_label",
+        "type": "text",
+        "label": "CTA Button label",
+        "default": "Shop now"
+      },
+      {
+        "id": "general_splash_image",
+        "type": "image_picker",
+        "label": "Image"
+      }
+    ]
+  },
+  {
+    "name": "Socials",
+    "settings": [
+      {
+        "id": "socials_instagram_url",
+        "type": "url",
+        "label": "Instagram page URL"
+      },
+      {
+        "id": "socials_facebook_url",
+        "type": "url",
+        "label": "Facebook page URL"
+      },
+      {
+        "id": "socials_twitter_url",
+        "type": "url",
+        "label": "Twitter page URL"
+      },
+      {
+        "id": "socials_linkedin_url",
+        "type": "url",
+        "label": "LinkedIn page URL"
+      },
+      {
+        "id": "socials_youtube_url",
+        "type": "url",
+        "label": "Youtube page URL"
+      },
+      {
+        "id": "socials_discord_url",
+        "type": "url",
+        "label": "Discord server URL"
+      }
+    ]
+  },
+  {
+    "name": "Contact",
+    "settings": [
+      {
+        "id": "contact_phone",
+        "type": "text",
+        "label": "Phone number"
+      },
+      {
+        "id": "contact_email",
+        "type": "text",
+        "label": "Email Address"
+      }
+    ]
+  },
+  {
+    "name": "Newsletter",
+    "settings": [
+      {
+        "id": "newsletter_title",
+        "type": "text",
+        "label": "Newsletter Title",
+        "default": "Newsletter"
+      },
+      {
+        "id": "newsletter_description",
+        "type": "text",
+        "label": "Newsletter Description",
+        "default": "Gain access to exclusive dabber offers, discounts, product launches, and more."
+      },
+      {
+        "id": "subscription_feedback",
+        "type": "text",
+        "label": "Subscription feedback",
+        "default": "Thank you for subscribing!"
+      }
+    ]
+  }
+]

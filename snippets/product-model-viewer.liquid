@@ -1,0 +1,50 @@
+{% assign first_3d_model = product.media | where: "media_type", "model" | first %}
+
+
+{% comment %} --------------------- {% endcomment %}
+
+
+{% if first_3d_model != blank and first_3d_model != nil %}
+    <div 
+        class="c-product-model-viewer" 
+        data-module-product-model-viewer
+    >
+        <div class="c-product-model-viewer_modal">
+
+            <model-viewer
+                data-product-model-viewer="model"
+                class="c-product-model-viewer_model"
+                alt="{{first_3d_model.alt}}"
+                auto-rotate="true"
+                src="{{ first_3d_model.sources[0].url }}"
+                ios-src="{{ first_3d_model.sources[1].url }}"
+                loading="auto"
+                max-camera-orbit="Infinity 157.5deg 150%"
+                camera-orbit="0deg 75deg 150%"
+                reveal="manual"
+                ar
+                ar-modes="scene-viewer quick-look webxr"
+                camera-controls
+                quick-look-browsers="safari chrome"
+                data-shopify-feature="1.2"
+            />
+
+            <button class="c-product-model-viewer_hide-button || c-button -icon -light" data-product-model-viewer="buttonClose">
+                <span class="c-button_icon">
+                    <svg role="img" aria-label="Close 3D modal">
+                        <use xlink:href="#icon-cross"></use>
+                    </svg>
+                </span>
+            </button>
+
+        </div>
+
+        <button class="c-product-model-viewer_show-button || c-button -icon -light" data-product-model-viewer="buttonOpen">
+            <span class="c-button_icon">
+                <svg role="img" aria-label="Show 3D">
+                    <use xlink:href="#icon-ar"></use>
+                </svg>
+            </span>
+        </button>
+    </div>
+{% endif %}

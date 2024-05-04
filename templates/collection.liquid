@@ -1,0 +1,32 @@
+<div class="c-page">
+  
+  {% paginate collection.products by 12 %}
+  
+    {% include 'collection-header' %}
+    
+    {% if collection.products.size > 0 %}
+        <h2 class="u-screen-reader-text">Collection</h2>
+        
+        {% include 'collection-list' with 
+            product_collection: collection.products 
+        %}
+
+    {% else %}
+      <div class="c-collection-no-results">
+          <div class="o-container -default">
+              <div class="c-collection-no-results_inner">
+                  <p class="c-collection-no-results_content">
+                    The collection returns no products.
+                  </p>
+              </div>
+          </div>
+      </div>
+    {% endif %}
+  
+  {% endpaginate %}
+  
+  {% include 'featured-splash' %}
+  
+  {% include 'product-featured-collection' %}
+  
+</div>

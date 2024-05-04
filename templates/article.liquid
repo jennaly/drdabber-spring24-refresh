@@ -1,0 +1,55 @@
+{% assign article_title = article.title %}
+{% assign article_author = article.author %}
+{% assign article_date = article.published_at | date: "%b %d, %Y" %}
+{% assign article_tags = article.tags %}
+{% assign article_excerpt = article.excerpt %}
+{% assign article_cover_image = article.image %}
+
+{% assign article_wysiwyg = article.content | strip %}
+
+
+{% comment %} --------------------- {% endcomment %}
+
+
+<div class="c-page">
+  <article>
+    {%- comment -%} Article Header {%- endcomment -%}
+    {% include 'article-header' with 
+      title: article_title,
+      author: article_author,
+      date: article_date,
+      tags: article_tags,
+      excerpt: article_excerpt,
+      cover: article_cover_image
+    %}
+  
+    {%- comment -%} Article Wysiwyg {%- endcomment -%}
+    {% include 'article-wysiwyg' with 
+      wysiwyg: article_wysiwyg,
+    %}
+
+    {%- comment -%} Article Footer {%- endcomment -%}
+    {% include 'article-footer' with 
+      tags: article_tags,
+      blog_url: blog.url
+    %}
+  </article>
+
+  <div class="c-article-others">
+    {% if blog.articles.size > 1 %}
+      {% include 'block-carousel' with
+        title: 'More articles' 
+        collection_link: blog.url,
+        collection_link_label: "View all",
+        collection_items: blog.articles,
+        tile_type: "article",
+        loop_limit: 9,
+        item_avoid_handle: article.handle
+      %}
+    {% endif %}
+  </div>
+  
+  {% include 'featured-splash' %}
+  
+  {% include 'article-featured-collection' %}
+</div>

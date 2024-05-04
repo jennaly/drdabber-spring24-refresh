@@ -1,0 +1,246 @@
+<div class="c-page">
+    <div class="c-section -padding-top-small">
+        <div class="o-container -default">
+            <div class="u-text-center">
+                <h1 class="c-heading -druk -h3 -cyan">My account</h1>
+            </div>
+        </div>
+
+        <div class="o-container -default">
+            <div class="c-form_wrapper">
+                <h2 class="c-heading -subtitle1 -aeonik || c-form_title">
+                    Addresses ({{customer.addresses.size}})
+                </h2>
+
+                {% if customer.addresses.size > 0 %}
+                    {% for address in customer.addresses %}
+                        <div class="c-address" data-address-id="{{address.id}}" data-module-address="{{address.id}}">
+                            <h3 class="c-heading -subtitle1 -aeonik || c-form_title">
+                                {{ address.street }}{% if address == customer.default_address %} (Default address){% endif %}
+                            </h3>
+
+                            <div class="c-address_static || c-addresses-table_wrapper">
+                                <table class="c-addresses-table">
+                                    <tbody>
+                                        <tr>
+                                            <td class="c-addresses-table_name">Name</td>
+                                            <td>{{ address.first_name }} {{address.last_name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="c-addresses-table_name">Email</td>
+                                            <td>{{ customer.email }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="c-addresses-table_name">Company</td>
+                                            <td>{{ address.company }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="c-addresses-table_name">Address</td>
+                                            <td>{{ address.street }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="c-addresses-table_name">Country</td>
+                                            <td>{{ address.country }}, {{ address.city }} {% if address.province_code %}, {{ address.province_code }}{% endif %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="c-addresses-table_name">Zip</td>
+                                            <td>{{ address.zip }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="c-addresses-table_name">Phone</td>
+                                            <td>{{ address.phone }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="c-form_bottom">
+                                    <div class="c-form_bottom_item">
+                                        <button class="c-button -transparent -hover-fill-primary" type="button" data-address="edit-toggler">
+                                            Edit
+                                        </button>
+                                    </div>
+                                    <div class="c-form_bottom_item">
+                                        <form
+                                            class="address-delete-form"
+                                            method="post"
+                                            action="/account/addresses/{{ address.id }}"
+                                            data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}"
+                                        >
+                                            <input type="hidden" name="_method" value="delete" />
+                                            <button class="c-form_link -red" type="submit">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="c-address_edit" data-address="form-wrapper">
+                                {% form 'customer_address', address %}
+                                    <div data-address="form-wrapper-inner">
+                                        <div class="c-form_item">
+                                            <label for="first_name" class="c-form_label">First Name</label>
+                                            <input type="text" value="{{ address.first_name }}" name="address[first_name]" size="30" class="c-form_input" />
+                                        </div>
+
+                                        <div class="c-form_item">
+                                            <label for="last_name" class="c-form_label">Last Name</label>
+                                            <input type="text" value="{{ address.last_name }}" name="address[last_name]" size="30" class="c-form_input" />
+                                        </div>
+
+                                        <div class="c-form_item">
+                                            <label for="company" class="c-form_label">Company</label>
+                                            <input type="text" value="{{ address.company }}" name="address[company]" class="c-form_input" />
+                                        </div>
+
+                                        <div class="c-form_item">
+                                            <label for="address1" class="c-form_label">Address 1</label>
+                                            <input type="text" value="{{ address.address1 }}" name="address[address1]" class="c-form_input" required />
+                                        </div>
+
+                                        <div class="c-form_item">
+                                            <label for="address2" class="c-form_label">Address 2</label>
+                                            <input type="text" value="{{ address.address2 }}" name="address[address2]" class="c-form_input" />
+                                        </div>
+
+                                        <div class="c-form_item">
+                                            <label for="city" class="c-form_label">City</label>
+                                            <input type="text" value="{{ address.city }}" name="address[city]" class="c-form_input" />
+                                        </div>
+
+                                        <div class="c-form_item || c-form_select -address">
+                                            <label for="country" class="c-form_label">Country</label>
+                                            <select name="address[country]" class="c-form_select_input" data-default="{{ address.country_code }}" id="AddressCountry_{{address.id}}"></select>
+                                        </div>
+
+                                        <div class="c-form_item || c-form_select -address" id="address_province_wrapper_new">
+                                            <label for="province" class="c-form_label">Province</label>
+                                            <select name="address[province]" class="c-form_select_input" data-default="{{ address.province_code }}" id="AddressProvince_{{address.id}}"></select>
+                                        </div>
+
+                                        <div class="c-form_item">
+                                            <label for="zip" class="c-form_label">Zip/Post Code</label>
+                                            <input type="text" value="{{ address.zip }}" name="address[zip]" class="c-form_input" autocapitalize="characters" />
+                                        </div>
+
+                                        <div class="c-form_item">
+                                            <label for="phone" class="c-form_label">Phone Number</label>
+                                            <input type="tel" value="{{ address.phone }}" name="address[phone]" class="c-form_input" />
+                                        </div>
+                                    </div>
+
+                                    <div class="c-form_item">
+                                        <input type="checkbox" id="address_default_address_new_{{address.id}}" name="address[default]" value="1" class="c-form_checkbox">
+                                        <label for="address_default_address_new_{{address.id}}" class="c-form_checkboxLabel">
+                                            Set as default address?
+                                        </label>
+                                    </div>
+
+                                    <div class="c-form_bottom">
+                                        <div class="c-form_bottom_item">
+                                            <button class="c-button -transparent -hover-fill-primary" type="submit">
+                                                Submit
+                                            </button>
+                                        </div>
+                                        <div class="c-form_bottom_item">
+                                            <button type="button" class="c-form_link" data-address="edit-toggler">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                {% endform %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p><a href="#new_address" class="c-form_link" data-scroll-to>Add new address</a></p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="o-container -default" id="new_address">
+            <div class="c-form_wrapper">
+                <h2 class="c-heading -subtitle1 -aeonik || c-form_title">
+                    New address
+                </h2>
+
+                <div data-module-address>
+                    {% form 'customer_address', customer.new_address %}
+
+                        {% include 'form-feedback' %}
+
+                        <div data-address="form-wrapper-inner">
+                            <div class="c-form_item">
+                                <label for="first_name" class="c-form_label">First Name</label>
+                                <input type="text" value="" name="address[first_name]" size="30" class="c-form_input" />
+                            </div>
+
+                            <div class="c-form_item">
+                                <label for="last_name" class="c-form_label">Last Name</label>
+                                <input type="text" value="" name="address[last_name]" size="30" class="c-form_input" />
+                            </div>
+
+                            <div class="c-form_item">
+                                <label for="company" class="c-form_label">Company</label>
+                                <input type="text" value="" name="address[company]" class="c-form_input" />
+                            </div>
+
+                            <div class="c-form_item">
+                                <label for="address1" class="c-form_label">Address 1</label>
+                                <input type="text" value="" name="address[address1]" class="c-form_input" required />
+                            </div>
+
+                            <div class="c-form_item">
+                                <label for="address2" class="c-form_label">Address 2</label>
+                                <input type="text" value="" name="address[address2]" class="c-form_input" />
+                            </div>
+
+                            <div class="c-form_item">
+                                <label for="city" class="c-form_label">City</label>
+                                <input type="text" value="" name="address[city]" class="c-form_input" />
+                            </div>
+
+                            <div class="c-form_item || c-form_select -address">
+                                <label for="country" class="c-form_label">Country</label>
+                                <select name="address[country]" class="c-form_select_input" id="AddressCountry"></select>
+                            </div>
+
+                            <div class="c-form_item || c-form_select -address" id="address_province_wrapper_new">
+                                <label for="province" class="c-form_label">Province</label>
+                                <select name="address[province]" class="c-form_select_input" id="AddressProvince"></select>
+                            </div>
+
+                            <div class="c-form_item">
+                                <label for="zip" class="c-form_label">Zip/Post Code</label>
+                                <input type="text" value="" name="address[zip]" class="c-form_input" autocapitalize="characters" />
+                            </div>
+
+                            <div class="c-form_item">
+                                <label for="phone" class="c-form_label">Phone Number</label>
+                                <input type="tel" value="" name="address[phone]" class="c-form_input" />
+                            </div>
+                        </div>
+
+                        <div class="c-form_bottom">
+                            <div class="c-form_bottom_item">
+                                <button type="submit" class="c-button -transparent -hover-fill-primary">
+                                    <span class="c-button_label">Add address</span>
+                                </button>
+                            </div>
+
+                            <div class="c-form_bottom_item">
+                                <div>
+                                    <input type="checkbox" id="address_default_address_new" name="address[default]" value="1" class="c-form_checkbox">
+                                    <label for="address_default_address_new" class="c-form_checkboxLabel">
+                                        Set as default address?
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    {% endform %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

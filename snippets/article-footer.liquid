@@ -1,0 +1,29 @@
+<footer class="c-article-footer">
+    <div class="c-section">
+        <div class="o-container -default || u-relative">
+            <div class="c-article-footer_inner">
+                <div class="c-article-footer_content">
+                    {% if tags.size > 0 %}
+                        <ul class="c-article-footer_tags">
+                            {% for tag in tags %}
+                                {% assign tag_url = blog_url | append: '/tagged/' | append: tag.handle %}
+                                <li>
+                                    <a href="{{tag_url}}" class="c-tag -stroke -cyan">
+                                        <span class="c-tag_label || c-label -aeonik -overline -uppercase">{{tag}}</span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        
+                    {% endif %}
+    
+                    {%- comment -%} Share button {%- endcomment -%}
+                    {% include 'share-button' with 
+                        label: 'share'
+                    %}
+    
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

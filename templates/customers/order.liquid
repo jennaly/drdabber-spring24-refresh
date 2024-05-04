@@ -1,0 +1,84 @@
+
+<div class="c-page">
+    <div class="c-section -padding-top-small">
+        <div class="o-container -default">
+            <div class="u-text-center">
+                <h1 class="c-heading -druk -h3 -cyan">Order {{ order.name }}</h1>
+            </div>
+        </div>
+
+        <div class="o-container -default">
+            <div class="c-form_wrapper">
+                <span class="c-label -mono -small -cyan -uppercase u-margin-bottom-small">{{ order.created_at | time_tag: format: 'date_at_time' }}</span>
+
+                <div class="o-layout -gutter-small">
+                    <div class="o-layout_item u-1/2@from-small">
+                        <h2 class="c-heading -subtitle1 -aeonik || c-form_title">
+                            Billing Address
+                        </h2>
+
+                        <div class="c-form_item">
+                            <p><span>Payment Status:</span> <span class="status_{{ order.financial_status }}">{{ order.financial_status }}</span></p>
+                            <p>{{ order.billing_address.name }}</p>
+                            <p>{{ order.billing_address.company }}</p>
+                            <p>{{ order.billing_address.street }}</p>
+                            <p>{{ order.billing_address.city }}{% if order.billing_address.province != blank %}, {{ order.billing_address.province }}{% endif %}</p>
+                            <p>{{ order.billing_address.country }} {{ order.billing_address.zip }}</p>
+                            <p>{{ order.billing_address.phone }}</p>
+                        </div>
+                    </div>
+
+                    <div class="o-layout_item u-1/2@from-small">
+                        <h2 class="c-heading -subtitle1 -aeonik || c-form_title">
+                            Shipping Address
+                        </h2>
+
+                        <div class="c-form_item">
+                            <p>
+                                <span>Fulfillment Status: </span>
+                                <a href="{{ order.order_status_url }}" class="c-form_link status_{{ order.fulfillment_status }}">{{ order.fulfillment_status_label }}</a>
+                            </p>
+                            <p>{{ order.shipping_address.name }}</p>
+                            <p>{{ order.shipping_address.company }}</p>
+                            <p>{{ order.shipping_address.street }}</p>
+                            <p>{{ order.shipping_address.city }}{% if order.shipping_address.province != blank %}, {{ order.shipping_address.province }}{% endif %}</p>
+                            <p>{{ order.shipping_address.country }} {{ order.shipping_address.zip }}</p>
+                            <p>{{ order.shipping_address.phone }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="c-form_wrapper">
+                <h2 class="c-heading -subtitle1 -aeonik || c-form_title">
+                    Order summary
+                </h2>
+
+                <div class="c-orders-table_wrapper">
+                    <table class="c-orders-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>SKU</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for line_item in order.line_items %}
+                                <tr>
+                                    <td class="c-orders-table_name">{{ line_item.title | link_to: line_item.product.url }}</td>
+                                    <td>{{ line_item.sku }}</td>
+                                    <td>{{ line_item.original_price | money }}</td>
+                                    <td>{{ line_item.quantity }}</td>
+                                    <td>{{ line_item.line_price | money }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

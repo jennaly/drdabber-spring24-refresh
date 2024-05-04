@@ -1,0 +1,44 @@
+<div class="c-search-header">
+    <div class="o-container -default">
+        <div class="c-search-header_inner">
+
+            <p class="c-search-header_content || u-color-cyan">
+                <span class="c-search-header_noresults">{{ title }}</span>
+
+                {% if is_search_performed %}
+                    <span class="c-label -mono -medium">Search results for "{{ search.terms }}"</span>
+                {% endif %}
+            </p>
+
+            <form
+                autocomplete="off"
+                class="c-search-header_form"
+                action="/search"
+                method="get"
+                role="search"
+            >
+                <div class="c-search-header_form_inner"> 
+                <input type="hidden" name="options[unavailable_products]" value="hide" />
+                <input type="hidden" name="options[prefix]" value="last" />
+                <input type="hidden" name="type" value="product" />
+                <input
+                    ref="input"
+                    autocomplete="off"
+                    class="c-form_input"
+                    type="search"
+                    name="q"
+                    value="{{ search.terms | escape }}"
+                    placeholder="Search products..."
+                />
+                <button class="c-button -icon -light" type="submit">
+                    <span class="c-button_icon">
+                    <svg role="img" aria-label="Search">
+                        <use xlink:href="#search"></use>
+                    </svg>
+                    </span>
+                </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

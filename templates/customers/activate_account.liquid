@@ -1,0 +1,44 @@
+<div class="c-page">
+    <div class="c-section -padding-top-small">
+        <div class="o-container -default">
+            <div class="u-text-center">
+                <h1 class="c-heading -druk -h3 -cyan">New account</h1>
+            </div>
+        </div>
+
+        <div class="o-container -small">
+            <div class="c-form_wrapper">
+                <h2 class="c-heading -subtitle1 -aeonik || c-form_title">
+                    Activate your account
+
+                    <span class="c-form_logo">
+                        <svg aria-hidden="true" focusable="false">
+                            <use xlink:href="#logotype"></use>
+                        </svg>
+                    </span>
+                </h2>
+
+                {% form 'activate_customer_password' %}
+                {{ form.errors | default_errors }}
+                    <div class="c-form_item">
+                        <label for="password" class="c-form_label">Password</label>
+                        <input type="password" name="customer[password]" class="c-form_input" />
+                    </div>
+                    <div class="c-form_item">
+                        <label for="password_confirmation" class="c-form_label">Password Confirmation</label>
+                        <input type="password" name="customer[password_confirmation]" class="c-form_input"/>
+                    </div>
+                    <div class="c-form_bottom">
+                        <div class="c-form_bottom_item">
+                            <input type="submit" value="Activate Account" class="c-button -light"/>
+                        </div>
+
+                        <div class="c-form_bottom_item">
+                            <input type="submit" name="decline" value="Decline Invitation" class="c-button -transparent -hover-fill-primary" />
+                        </div>
+                    </div>
+                {% endform %}
+            </div>
+        </div>
+    </div>
+</div>

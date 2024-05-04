@@ -1,0 +1,41 @@
+<header class="c-page-header">
+    <div class="o-container">
+        <div class="c-page-header_inner">
+            <div class="c-page-header_top">
+                <div class="c-page-header_heading">
+                    <h1 class="c-page-header_title">{{collection.title}}</h1>
+                </div>
+                <div class="c-page-header_counter">
+                    <p>({{paginate.items}})</p>
+                </div>
+            </div>
+            {% if collection.description != blank and collection.description != nil %}
+            <div class="c-page-header_bottom -grid">
+            {% else %}
+            <div class="c-page-header_bottom">                    
+            {% endif %}
+                <div class="c-page-header_bottom_col">
+                    <div class="c-page-header_pagination">
+                        <p class="c-page-header_pagination_label || c-label -mono -medium -uppercase -bold">
+                            <span>Page</span><br>
+                            <span>{{ paginate.current_page }} of {{ paginate.pages }}</span>
+                        </p>
+                    </div>
+                    <div class="c-page-header_selector">
+                        {% include 'sortby-selector' with
+                            default_label: "Sort by"
+                        %}
+                    </div>
+                </div>
+
+                {% if collection.description != blank and collection.description != nil %}
+                    <div class="c-page-header_bottom_col">
+                        <div class="c-page-header_description">
+                            <p>{{collection.description}}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>

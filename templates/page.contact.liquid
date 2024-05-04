@@ -1,0 +1,36 @@
+<div class="c-page">
+    <header class="c-page-header || c-section">
+        <div class="o-container">
+            <div class="c-page-header_inner">
+                <div class="c-page-header_heading">
+                    <h1 class="c-page-header_title">{{page.title}}</h1>
+                </div>
+            </div>
+            <div class="c-contact-header_content">
+                <div class="c-contact-header_content_item">
+                    {% include 'socials' %}
+                </div>
+
+                <div class="c-contact-header_content_item || c-wysiwyg -header-page">
+                    {{page.content}}
+                </div>
+
+                <div class="c-contact-header_content_item || u-text-right">
+                    {% if settings.contact_phone != blank %}
+                        <div>
+                            <a href="tel:{{ settings.contact_phone }}" class="c-button -transparent -hover-fill-primary || c-contact-header_button">{{ settings.contact_phone }}</a>
+                        </div>
+                    {% endif %}
+
+                    {% if settings.contact_email != blank %}
+                        <div>
+                            <a href="mailto:{{ settings.contact_email }}" class="c-button -transparent -hover-fill-primary || c-contact-header_button">{{ settings.contact_email }}</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% section 'support-footer' %}
+</div>

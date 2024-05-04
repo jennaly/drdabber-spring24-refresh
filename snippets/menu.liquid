@@ -1,0 +1,204 @@
+<div class="c-menu" data-module-menu>
+    <div class="c-menu_container">
+        <div class="c-menu_inner">
+            <div class="c-menu_top">
+                <div>
+                    <p class="c-menu_logo">
+                        <svg role="img" aria-hidden="true">
+                            <use xlink:href="#logo-text"></use>
+                        </svg>
+                    </p>
+                </div>
+
+                <a href="/" class="c-menu_logotype">
+                    <svg role="presentation" aria-label="Dr Dabber Logo">
+                        <use xlink:href="#logotype"></use>
+                    </svg>
+                </a>
+
+                <button class="c-menu_close" aria-label="Close Menu" data-menu="close">
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="c-menu_top_tools">
+                    <div class="c-menu_top_tools_item">
+                        <button class="c-button-round || c-menu_search" data-module-search-toggler>
+                            <span class="c-button-round_icon">
+                                <svg role="presentation" aria-label="Search">
+                                    <use xlink:href="#search"></use>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+
+                    <button class="c-menu_top_tools_item" data-module-cart-modal-toggler>
+                        <span>Cart</span>&nbsp;<span data-module-cart-counter>({{ cart.item_count }})</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="c-menu_content">
+                <div class="c-menu_mobile-buttons">
+                    {% if shop.customer_accounts_enabled %}
+                        {% if customer %}
+                            <a class="c-button -dark -small -hover-stroke-black" href="/account">
+                                <span class="c-button_label">My account</span>
+                            </a>
+
+                            <a class="c-button -dark -small -hover-stroke-black" href="/account/logout">
+                                <span class="c-button_label">Logout</span>
+                            </a>
+
+                            <button class="c-button -dark -small -hover-stroke-black" type="button" data-module-rewards>
+                                <span class="c-button_label">Rewards</span>
+                            </button>
+                        {% else %}
+                            <a class="c-button -dark -small -hover-stroke-black" href="/account/login">
+                                <span class="c-button_label">Log in</span>
+                            </a>
+
+                            <a class="c-button -dark -small -hover-stroke-black" href="/account/register">
+                                <span class="c-button_label">Register</span>
+                            </a>
+
+                            <button class="c-button -dark -small -hover-stroke-black" type="button" data-module-rewards>
+                                <span class="c-button_label">Rewards</span>
+                            </button>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if settings.support_url != blank %}
+                        <a class="c-button -dark -small" href="{{ settings.support_url }}">
+                            <span class="c-button_label">Get support</span>
+                        </a>
+                    {% endif %}
+                </div>
+
+                {% assign main_menu = linklists.main-menu %}
+
+                <div class="c-accordions" data-module-accordions="menu">
+                    {% for link in main_menu.links %}
+                        {% assign child_list_handle = link.handle %}
+
+                        {% if linklists[child_list_handle].links != blank %}
+                            {% if link.type == "collection_link" %}
+                                <div class="c-accordions_item" data-accordions="item">
+                                    <button type="button" class="c-accordions_item_toggler" data-accordions="toggler">
+                                        <span class="c-accordions_item_toggler_label">
+                                            {{ link.title }}
+                                            <span class="c-accordions_item_toggler_plus"></span>
+                                        </span>
+                                    </button>
+
+                                    <div class="c-accordions_item_content" data-accordions="content">
+                                        <div class="c-accordions_item_inner" data-accordions="inner">
+                                            {% assign links = linklists[child_list_handle].links %}
+
+                                            <ul class="c-menu_products -menu" data-header="sublist">
+                                                {% for link in links %}
+                                                    <li class="c-products-nav_item">
+                                                        <a href="{{ link.url }}" class="c-products-nav_item_link">
+                                                            <div class="c-products-nav_item_image-wrap">
+                                                                <div class="c-products-nav_item_title-wrap">
+                                                                    <p class="c-products-nav_item_title">{{ link.title | escape }}</p>
+                                                                </div>
+
+                                                                <span class="c-label -mono -medium -cyan || c-products-nav_item_count">
+                                                                    {{ link.object.all_products_count | prepend: '00' | slice: -2, 2 }}
+                                                                </span>
+
+                                                                <span class="c-products-nav_item_hover || c-label -aeonik -standard">
+                                                                    Shop Collection
+                                                                </span>
+
+                                                                <div class="c-lazy">
+                                                                    <img
+                                                                        class="c-products-nav_item_image"
+                                                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                                                                        data-src="{{ link.object.image | img_url: '1000x1000', crop: 'center' }}"
+                                                                        alt="{{ link.title | escape }}"
+                                                                        data-lazy
+                                                                    >
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+
+                                        <a href="{{ link.url }}" class="c-button -dark -small -hover-stroke-black || c-accordions_item_cta">
+                                            <span class="c-button_label">Shop All</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <a href="{{ link.url }}" class="c-accordions_item" data-accordions="item">
+                                    <span class="c-accordions_item_toggler">
+                                        <span class="c-accordions_item_toggler_label">
+                                            {{ link.title }}
+                                        </span>
+                                    </span>
+                                </a>
+                            {% endif %}
+                        {% else %}
+                            <a href="{{ link.url }}" class="c-accordions_item" data-accordions="item">
+                                <span class="c-accordions_item_toggler">
+                                    <span class="c-accordions_item_toggler_label">
+                                        {{ link.title }}
+                                    </span>
+                                </span>
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <div class="c-menu_bottom">
+                    {% assign main_menu_bottom = linklists.main-menu-bottom %}
+
+                    {% for link in main_menu_bottom.links %}
+                        <div class="c-menu_bottom_item">
+                            <a class="c-link" href="{{ link.url }}">{{ link.title }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {% if settings.support_url != blank %}
+                <a href="{{ settings.support_url }}" class="c-menu_phone || c-phone">
+                    <div class="c-phone_inner">
+                        <span class="c-phone_infos -top">
+                            Earth™ special <br>
+                            support unit <br>
+                            A009546
+                        </span>
+
+                        <span class="c-phone_ellipses">
+                            <svg role="img" aria-hidden="true">
+                                <use xlink:href="#ellipses"></use>
+                            </svg>
+                        </span>
+
+                        <span class="c-phone_infos -bottom">
+                            <div>All systems</div>
+                            <br>
+                            <div class="u-relative">
+                                online
+                                <span class="c-phone_infos_blink"></span>
+                            </div>
+                        </span>
+
+                        <span class="c-phone_title">Get<br> support</span>
+
+                        <div class="c-phone_globe">
+                            {% include 'globe' with
+                                type: 'menu',
+                            %}
+                        </div>
+                    </div>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+{%- comment -%} https://shopify.dev/tutorials/customize-theme-add-sort-order-menu {%- endcomment -%}
+
+ <div
+    class="c-selector || c-form_select -tiny"
+    data-module-sortby-selector
+>
+    <select class="c-form_select_input || c-label -aeonik -subtitle -uppercase -bold" data-sortby-selector="select">
+        {% for option in collection.sort_options %}
+            {% if option.value == 'created-ascending' or option.value == 'created-descending' %}
+                {% continue %}
+            {% endif %}
+
+            <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% endif %}>{{ option.name | capitalize }}</option>
+        {% endfor %}
+    </select>
+</div>

@@ -1,0 +1,93 @@
+{% schema %}
+    {
+        "name": "Documents",
+        "blocks": [
+            {
+                "type": "document",
+                "name": "Document", 
+                "settings": [
+                    {
+                        "id": "document_product",
+                        "type": "product",
+                        "label": "Document Product"
+                    },
+                    {
+                        "id": "document_guide",
+                        "type": "url",
+                        "label": "Document Guide Link"
+                    },
+                    {
+                        "id": "document_manual",
+                        "type": "url",
+                        "label": "Document Manual Link"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}
+
+
+{% assign title = 'Documents' %}
+{% assign link_label = 'View All' %}
+{% assign link = 'https://drdabber.helpscoutdocs.com/' %}
+
+{% comment %} --------------------- {% endcomment %}
+
+
+<div class="c-block-documents_wrapper || c-section -no-padding-bottom">
+    <div class="o-container -default">
+
+        <div class="c-section_header">
+            <h2 class="c-section_title">
+                {{ title }}
+            </h2>
+            <div>
+                <a class="c-button -small -dark -mono" href="{{ link }}" rel="noopener">
+                    <span class="c-button_label">{{ link_label }}</span>
+                </a>
+            </div>
+        </div>
+
+        {% if section.blocks.size > 0 %}
+
+        <ul class="c-block-documents">
+            {% for block in section.blocks %}
+                {% case block.type %}
+
+                    {% when 'document' %}
+                        {% assign product_handle = block.settings.document_product %}
+                        {% assign product_title = all_products[product_handle].title %}
+                        
+
+                        <li class='c-block-documents_item'>
+                            <h3 class="c-block-documents_item_title">
+                                {{product_title}}
+                            </h3>
+                            <div class="c-block-documents_item_ctas">
+
+                                {% if block.settings.document_guide != blank and block.settings.document_guide != nil %}
+                                    <a class="c-button -dark -hover-fill-primary" href="{{block.settings.document_guide }}" target="_blank" rel="noopener">
+                                        <span class="c-button_label">
+                                            Knowledge Base
+                                        </span>
+                                    </a>
+                                {% endif %}
+
+                                {% if block.settings.document_manual != blank and block.settings.document_manual != nil %}
+                                    <a class="c-button -dark -hover-fill-primary" href="{{block.settings.document_manual}}" target="_blank" rel="noopener">
+                                        <span class="c-button_label">
+                                            User Manual
+                                        </span>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </li>
+
+                {% endcase %}
+            {% endfor %}
+        </ul>
+
+        {% endif %}
+    </div>
+</div>

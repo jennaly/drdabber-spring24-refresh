@@ -1,0 +1,116 @@
+<div class="c-header" data-module-header>
+
+    {% include 'block-top-bar' %}
+
+    <div class="c-header_wrapper">
+        <nav class="c-header_container">
+            <div class="c-header_inner">
+                <a href="/" class="c-header_logo">
+                    <svg role="img" aria-label="Dr Dabber Logo">
+                        <use xlink:href="#logo-text"></use>
+                    </svg>
+                </a>
+
+                {% assign menu_header = linklists.desktop-quick-nav %}
+
+                <ul class="c-header_list">
+                    {% for link in menu_header.links %}
+                        {% assign child_list_handle = link.handle %}
+
+                        {% if linklists[child_list_handle].links != blank %}
+                            {% if link.type == "collection_link" %}
+                                <li class="c-header_list_item -sublist">
+                                    <button class="c-header_list_item_link" data-header="sublist-toggler" data-id="{{child_list_handle}}">
+                                        {{ link.title }}
+                                        <svg class="c-header_list_item_link_arrow" aria-hidden="true" focusable="false">
+                                            <use xlink:href="#arrow-dropdown"></use>
+                                        </svg>
+                                    </button>
+                                </li>
+                                <li class="c-header_list_item -sublist-link">
+                                    <a href="{{ link.url }}" class="c-header_list_item_link">{{ link.title }}</a>
+                                </li>
+                            {% else %}
+                                <li class="c-header_list_item">
+                                    <a href="{{ link.url }}" class="c-header_list_item_link">{{ link.title }}</a>
+                                </li>
+                            {% endif %}
+                        {% else %}
+                            <li class="c-header_list_item">
+                                <a href="{{ link.url }}" class="c-header_list_item_link">{{ link.title }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+
+                <button class="c-header_burger" type="button" aria-label="Open menu" data-module-menu-toggler>
+                    <span class="c-header_burger_inner">
+                        <span class="c-header_burger_item"></span>
+                        <span class="c-header_burger_item"></span>
+                    </span>
+                </button>
+
+                <div class="c-header_tools">
+                    <button class="c-header_tools_item" data-module-search-toggler>
+                        <span class="c-header_search">
+                            <svg role="img" aria-label="Search">
+                                <use xlink:href="#search"></use>
+                            </svg>
+                        </span>
+                    </button>
+
+                    <button class="c-header_tools_item" data-module-cart-modal-toggler>
+                        <span>Cart</span>&nbsp;<span data-module-cart-counter>({{ cart.item_count }})</span>
+                    </button>
+                </div>
+            </div>
+
+            {% for link in menu_header.links %}
+                {% assign child_list_handle = link.handle %}
+
+                {% if linklists[child_list_handle].links != blank %}
+                    <div class="c-header_sublist" data-header="sublist" data-id="{{child_list_handle}}">
+                        <ul class="c-header_sublist_list">
+                            {% if link.type == "collection_link" %}
+                                {% assign links = linklists[child_list_handle].links %}
+
+                                {% for link in links %}
+                                    <li class="c-header_sublist_item">
+                                        <a href="{{ link.url }}" class="c-products-nav_item_link">
+                                            <div class="c-products-nav_item_image-wrap">
+                                                <div class="c-products-nav_item_title-wrap">
+                                                    <p class="c-products-nav_item_title">{{ link.title | escape }}</p>
+                                                </div>
+
+                                                <span class="c-label -mono -medium -cyan || c-products-nav_item_count">
+                                                    {{ link.object.all_products_count | prepend: '00' | slice: -2, 2 }}
+                                                </span>
+
+                                                <span class="c-products-nav_item_hover || c-label -aeonik -standard">
+                                                    Shop Collection
+                                                </span>
+
+                                                <div class="c-lazy">
+                                                    <img
+                                                        class="c-products-nav_item_image"
+                                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                                                        data-src="{{ link.object.image | img_url: '500x500', crop: 'center' }}"
+                                                        alt="{{ link.title | escape }}"
+                                                        data-lazy
+                                                    >
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <a href="{{ link.url }}" class="c-header_sublist_link || c-button -dark -small -hover-stroke-black">
+                            <span class="c-button_label">View all {{linklists[child_list_handle].title}}</span>
+                        </a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </nav>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+{% assign article_title = article.title %}
+{% assign article_author = article.author %}
+{% assign article_url = article.url %}
+{% assign article_cover_image = article.image %}
+
+
+{% comment %} --------------------- {% endcomment %}
+
+
+<article class="c-article-tile">
+
+    <div class="c-article-tile_figure || c-lazy">
+        <img
+            class="c-lazy_image || c-article-tile_figure_image"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 3'%3E%3C/svg%3E"
+            {% if article_cover_image.src != blank and article_cover_image.src != nil %}
+                data-src="{{ article_cover_image.src | img_url: '820x492', crop: 'center' }}"
+                data-scroll
+                data-scroll-call="lazyLoad, Scroll"
+            {% endif %}
+            alt="{{article_cover_image.alt}}"
+        >
+    </div>
+
+    <div class="c-article-tile_content">
+        <div class="c-article-tile_content_col">
+            <h3 class='c-article-tile_title || c-heading -aeonik -article-tile'>{{ article_title }}</h3>
+        </div>
+        <div class="c-article-tile_content_col">
+            {% if article_date != blank and article_date != nil %}
+                <p class='c-article-tile_author || c-label -mono -small || u-color-cyan'>By {{ article_author }}</p>
+            {% endif %}
+        </div>
+
+        <a href="{{ article_url }}" class="c-article-tile_link"></a>
+    </div>
+</article>

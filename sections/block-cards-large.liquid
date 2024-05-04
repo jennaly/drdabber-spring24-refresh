@@ -1,0 +1,84 @@
+{% schema %}
+    {
+        "name": "Cards",
+        "blocks": [
+            {
+                "type": "card",
+                "name": "Card",
+                "settings": [
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": "Card Title",
+                        "placeholder": "Fast and Free Shipping"
+                    },
+                    {
+                        "id": "content",
+                        "type": "textarea",
+                        "label": "Card Text",
+                        "placeholder": "We process all orders within 24-48 hours and offer..."
+                    },
+                    {
+                        "id": "icon",
+                        "type": "image_picker",
+                        "label": "Card Icon",
+                        "info": "Size: 140x140 (PNG)"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}
+
+{% assign loop_index = 0 %}
+
+{% if section.blocks.size > 0 %}
+    <div class="c-section">
+
+        <h2 class="u-screen-reader-text">Services</h2>
+
+        <div class="o-container -default">
+            <div class="c-block-cards_wrapper -large">
+                {% for block in section.blocks %}
+                     <div class="c-card -large">
+                        {% if block.settings.title != blank %}
+                            <div class="c-card_top">
+                                <h3 class="c-heading -h6 -cyan -aeonik || c-card_title">{{ block.settings.title }}</h3>
+                            </div>
+                        {% endif %}
+
+                        <div class="c-card_bottom">
+                            {% if block.settings.icon != blank %}
+                                <div class="c-card_top_image-wrapper || c-lazy">
+                                    <img
+                                        class="c-lazy_image || c-card_top_image"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                                        data-src="{{ block.settings.icon | img_url: "165x165" }}"
+                                        data-scroll
+                                        data-scroll-call="lazyLoad, Scroll"
+                                        alt="{{ block.settings.content }}"
+                                    >
+                                </div>
+                            {% endif %}
+
+                            {% if block.settings.content != blank %}
+                                <div class="c-card_bottom_content">
+                                    <p>{{ block.settings.content }}</p>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <span class="c-card_count || c-label -mono -medium -cyan">
+                            {% assign loop_index = loop_index | plus: 1 %}
+                            {% if loop_index > loop_limit %}
+                                {% break %}
+                            {% endif %}
+
+                            {{ loop_index | prepend: '00' | slice: -2, 2 }}
+                        </span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

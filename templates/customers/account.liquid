@@ -1,0 +1,114 @@
+
+<div class="c-page">
+    <div class="c-section -padding-top-small">
+        <div class="o-container -default">
+            <div class="u-text-center">
+                <h1 class="c-heading -druk -h3 -cyan">My account</h1>
+            </div>
+        </div>
+
+        <div class="o-container -default">
+            <div class="c-form_wrapper">
+                <h2 class="c-heading -subtitle1 -aeonik || c-form_title">
+                    Orders history
+                </h2>
+
+                <div id="customer_orders">
+                    {% paginate customer.orders by 10 %}
+                        {% if customer.orders.size != 0 %}
+                            <div class="c-orders-table_wrapper">
+                                <table class="c-orders-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Order</th>
+                                            <th>Date</th>
+                                            <th>Payment status</th>
+                                            <th>Fulfillment status</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for order in customer.orders %}
+                                            <tr>
+                                                <td class="c-orders-table_name">{{ order.name | link_to: order.customer_url }}</td>
+                                                <td>{{ order.created_at | date: format: 'short' }}</td>
+                                                {% if order.cancelled %}
+                                                    <td>Cancelled</td>
+                                                {% else %}
+                                                    <td>{{ order.financial_status_label }}</td>
+                                                {% endif %}
+                                                <td>{{ order.fulfillment_status_label }}</td>
+                                                <td>{{ order.total_price | money }}</td>
+                                            </tr>
+                                      {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% else %}
+                            <p>You haven't placed any orders yet.</p>
+                        {% endif %}
+
+                        {{ paginate | default_pagination }}
+                    {% endpaginate %}
+                </div>
+            </div>
+
+            <div class="c-form_wrapper">
+                <h2 class="c-heading -subtitle1 -aeonik || c-form_title">
+                    Account details
+                </h2>
+
+                <div class="c-addresses-table_wrapper">
+                    <table class="c-addresses-table">
+                        <tbody>
+                            <tr>
+                                <td class="c-addresses-table_name">Name</td>
+                                <td>{{ customer.first_name }} {{customer.last_name }}</td>
+                            </tr>
+                            <tr>
+                                <td class="c-addresses-table_name">Email</td>
+                                <td>{{ customer.email }}</td>
+                            </tr>
+
+                            {% if customer.default_address %}
+                                <tr>
+                                    <td class="c-addresses-table_name">Address</td>
+                                    <td>{{ customer.default_address.address1 }}</td>
+                                </tr>
+                                {% if customer.default_address.address2 != "" %}
+                                    <tr>
+                                        <td class="c-addresses-table_name">Address 2</td>
+                                        <td>{{ customer.default_address.address2  }}</td>
+                                    </tr>
+                                {% endif %}
+
+                                <tr>
+                                    <td class="c-addresses-table_name">City</td>
+                                    <td>{{ customer.default_address.city}}, {% if address.province_code %}{{ customer.default_address.province_code }}, {% endif %}{{ customer.default_address.country }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="c-addresses-table_name">Zip</td>
+                                    <td>{{ customer.default_address.zip }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="c-addresses-table_name">Phone</td>
+                                    <td>{{ customer.default_address.phone }}</td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="c-form_item">
+                    <a href="/account/addresses" class="c-button -transparent -hover-fill-primary">View addresses ({{ customer.addresses_count }})</a>
+                </div>
+
+                <div>
+                    <a href="/account/logout" class="c-form_link -red">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

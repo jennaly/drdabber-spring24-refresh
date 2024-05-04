@@ -1,0 +1,74 @@
+{% schema %}
+    {
+        "name": "FAQ List",
+        "blocks": [
+            {
+                "type": "faq_item",
+                "name": "FAQ Item",
+                "settings": [
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": "Title"
+                    },
+                    {
+                        "id": "text",
+                        "type": "richtext",
+                        "label": "Text"
+                    },
+                    {
+                        "id": "featured_cta_label",
+                        "type": "text",
+                        "label": "Featured Call to action label"
+                    },
+                    {
+                        "id": "featured_cta_url",
+                        "type": "url",
+                        "label": "Featured Call to action url"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}
+
+<div class="c-section">
+    <div class="o-container -default">
+        <h2 class="u-screen-reader-text">Questions</h2>
+
+        <ul class="c-accordions -rich" data-module-accordions="product">
+            {% for block in section.blocks %}
+                {% case block.type %}
+
+                    {% when 'faq_item' %}
+                        <li class="c-product-features || c-accordions_item" data-accordions="item">
+
+                            <h3 class="u-screen-reader-text">{{ block.settings.title }}</h3>
+
+                            <button type="button" class="c-accordions_item_toggler" data-accordions="toggler">
+                                <span class="c-accordions_item_toggler_label" aria-hidden="true">
+                                    <span class="c-accordions_item_toggler_plus"></span>
+                                    {{ block.settings.title }}
+                                </span>
+                                <span class="u-screen-reader-text">Discover</span>
+                            </button>
+
+                            <div class="c-accordions_item_content" data-accordions="content">
+                                <div class="c-accordions_item_inner" data-accordions="inner">
+                                    <div class="c-wysiwyg -faq">
+                                        {{ block.settings.text }}
+                                    </div>
+
+                                    {% if block.settings.featured_cta_label != blank and block.settings.featured_cta_url != blank %}
+                                        <a href="{{ block.settings.featured_cta_url }}" class="c-button -transparent -hover-fill-primary || u-margin-top-small">
+                                            {{ block.settings.featured_cta_label }}
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </li>
+                {% endcase %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>

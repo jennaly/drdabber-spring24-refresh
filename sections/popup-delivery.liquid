@@ -1,0 +1,21 @@
+{% if settings.shipping_content != blank %}
+    <div class="c-popup -delivery" data-module-popup="delivery">
+        <div class="c-popup_inner">
+            <div class="c-popup_header">
+                <h2 class="c-popup_header_title || c-label -aeonik -popup">Delivery</h2>
+                <button class="c-popup_header_close || c-button -icon -transparent" data-popup="close">
+                    <span class="c-button_icon">
+                        <svg role="img" aria-label="Close popup">
+                            <use xlink:href="#icon-cross"></use>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+
+            <div class="c-popup_content || c-wysiwyg -popup || u-color-black">
+                {{ settings.shipping_content }}
+            </div>
+        </div>
+        <div class="c-popup_background" data-popup="close"></div>
+    </div>
+{% endif %}

@@ -1,0 +1,56 @@
+{% assign blog_title = blog.title %}
+{% assign blog_description = blog.metafields.blog.blog_description %}
+
+{% if paginate.parts.size < 1 %}
+    {% assign paginate_length = 1 %}
+{% else %}
+    {% assign paginate_length = paginate.parts.size %}
+{% endif %}
+
+
+{% comment %} --------------------- {% endcomment %}
+
+<header class="c-page-header">
+    <div class="o-container">
+        <div class="c-page-header_inner">
+            <div class="c-page-header_top">
+                <div class="c-page-header_heading">
+                    <h1 class="c-page-header_title">{{blog_title}}</h1>
+                </div>
+                <div class="c-page-header_counter">
+                    <p>({{paginate.items}})</p>
+                </div>
+            </div>
+            {% if collection.description != blank and collection.description != nil %}
+            <div class="c-page-header_bottom -grid">
+            {% else %}
+            <div class="c-page-header_bottom">
+            {% endif %}
+                <div class="c-page-header_bottom_col">
+                    <div class="c-page-header_pagination">
+                        <p class="c-page-header_pagination_label || c-label -mono -medium -uppercase -bold">
+                            <span>Page</span><br>
+                            <span>{{ paginate.current_page }} of {{ paginate.pages }}</span>
+                        </p>
+                    </div>
+                    <div class="c-page-header_selector">
+                        {% include 'tag-selector' with
+                            entity: blog,
+                            default_label: "All tags",
+                            reset_url: blog.url,
+                            query_parameter: '/tagged/'
+                        %}
+                    </div>
+                </div>
+
+                {% if blog_description != blank and blog_description != nil %}
+                    <div class="c-page-header_bottom_col">
+                        <div class="c-page-header_description">
+                            <p>{{blog_description}}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,75 @@
+<div class="c-socials">
+    <ul class="c-socials_list">
+        {% if settings.socials_instagram_url != blank %}
+            <li class="c-socials_item">
+                <a href="{{ settings.socials_instagram_url }}" target="_blank" rel="noopener" class="c-socials_item_link" aria-label="Instagram">
+                    <span class="c-socials_item_icon">
+                        <svg aria-hidden="true" focusable="false">
+                            <use xlink:href="#social-small-instagram"></use>
+                        </svg>
+                    </span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if settings.socials_linkedin_url != blank %}
+            <li class="c-socials_item">
+                <a href="{{ settings.socials_linkedin_url }}" target="_blank" rel="noopener" class="c-socials_item_link" aria-label="LinkedIn">
+                    <span class="c-socials_item_icon">
+                        <svg aria-hidden="true" focusable="false">
+                            <use xlink:href="#social-small-linkedin"></use>
+                        </svg>
+                    </span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if settings.socials_facebook_url != blank %}
+            <li class="c-socials_item">
+                <a href="{{ settings.socials_facebook_url }}" target="_blank" rel="noopener" class="c-socials_item_link" aria-label="Facebook">
+                    <span class="c-socials_item_icon">
+                        <svg aria-hidden="true" focusable="false">
+                            <use xlink:href="#social-small-facebook"></use>
+                        </svg>
+                    </span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if settings.socials_twitter_url != blank %}
+            <li class="c-socials_item">
+                <a href="{{ settings.socials_twitter_url }}" target="_blank" rel="noopener" class="c-socials_item_link" aria-label="Twitter">
+                    <span class="c-socials_item_icon">
+                        <svg aria-hidden="true" focusable="false">
+                            <use xlink:href="#social-small-twitter"></use>
+                        </svg>
+                    </span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if settings.socials_discord_url != blank %}
+            <li class="c-socials_item">
+                <a href="{{ settings.socials_discord_url }}" target="_blank" rel="noopener" class="c-socials_item_link" aria-label="Discord">
+                    <span class="c-socials_item_icon">
+                        <svg aria-hidden="true" focusable="false">
+                            <use xlink:href="#social-small-discord"></use>
+                        </svg>
+                    </span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if settings.socials_youtube_url != blank %}
+            <li class="c-socials_item">
+                <a href="{{ settings.socials_youtube_url }}" target="_blank" rel="noopener" class="c-socials_item_link" aria-label="Youtube">
+                    <span class="c-socials_item_icon">
+                        <svg aria-hidden="true" focusable="false">
+                            <use xlink:href="#social-small-youtube"></use>
+                        </svg>
+                    </span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</div>

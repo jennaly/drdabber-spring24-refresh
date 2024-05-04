@@ -1,0 +1,37 @@
+<div class="c-page">
+    <header class="c-page-header">
+        <div class="o-container">
+            <div class="c-page-header_inner">
+                <div class="c-page-header_top">
+                    <div class="c-page-header_heading">
+                        <h1 class="c-page-header_title">{{page.title}}</h1>
+                    </div>
+                </div>
+                {% if page.content != blank and page.content != nil %}
+                <div class="c-page-header_bottom -grid">
+                {% else %}
+                <div class="c-page-header_bottom">                    
+                {% endif %}
+                    <div class="c-page-header_bottom_col">
+                        <div class="c-page-header_pagination">
+                            <p class="c-page-header_pagination_label || c-label -mono -medium -uppercase -bold">
+                                <span>VAPE PEN QUESTIONS <br> & VAPORIZER HOW-TO</span>
+                            </p>
+                        </div>
+                    </div>
+    
+                    {% if page.content != blank and page.content != nil %}
+                        <div class="c-page-header_bottom_col">
+                            <div class="c-page-header_description">
+                                <p>{{page.content}}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% section 'block-faq' %}
+    {% section 'support-footer' %}
+</div>

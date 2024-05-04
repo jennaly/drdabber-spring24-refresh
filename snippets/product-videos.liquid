@@ -1,0 +1,45 @@
+{% if videos_arr.size > 0 %}
+<li class="c-product-videos || c-accordions_item" data-accordions="item">
+    
+    <button type="button" class="c-accordions_item_toggler" data-accordions="toggler">
+        <span class="c-accordions_item_toggler_label">
+            {{ accordion_title }}
+            <span class="c-accordions_item_toggler_plus"></span>
+        </span>
+    </button>
+
+    <div class="c-accordions_item_content" data-accordions="content">
+        <div class="c-accordions_item_inner" data-accordions="inner">
+            {% if videos_arr.size > 1 %}
+                <div class="o-grid u-grid-col-2@from-small -gutter-x-small -gutter-y">
+                    {% for video_id in videos_arr %}
+                        {% if video_id != blank and video_id != nil %}
+                            <div class="c-block-multi-embed">
+                                <div class="c-block-multi-embed_inner">
+                                  <iframe class="c-block-multi-embed_iframe" width="560" height="315" 
+                                          src="{% if is_vimeo %}https://player.vimeo.com/video/{{ video_id | strip }}
+                                               {% else %}https://www.youtube-nocookie.com/embed/{{ video_id|strip }}?controls=0{% endif %}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                                  </iframe>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% else %}
+                {% for video_id in videos_arr %}
+                    {% if video_id != blank and video_id != nil %}
+                        <div class="c-block-multi-embed">
+                            <div class="c-block-multi-embed_inner">
+                                <iframe class="c-block-multi-embed_iframe" width="560" height="315" src={% if is_vimeo %}https://player.vimeo.com/video/{{ video_id | strip }}
+                                               {% else %}https://www.youtube-nocookie.com/embed/{{ video_id|strip }}?controls=0{% endif %}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</li>
+{% endif %}
+
+

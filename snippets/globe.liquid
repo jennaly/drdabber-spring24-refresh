@@ -1,0 +1,39 @@
+
+{% if type and type == 'menu' %}
+    {% assign wires_color          = '000000' %}
+    {% assign wires_color_hover    = '00E2ED' %}
+{% else %}
+    {% assign wires_color          = '00E2ED' %}
+    {% assign wires_color_hover    = '000000' %}
+{% endif %}
+
+
+{% if type and type == 'menu' %}
+
+<div
+    class="c-globe"
+    data-module-globe="menu" data-globe-gltf= "{{ "wires.glb" | asset_url }}"
+    data-globe-wires-color={{ wires_color }}
+    data-globe-wires-color-hover={{ wires_color_hover }}
+>
+    <div class="c-globe_wrap" data-globe="wrap"></div>
+    <div class="c-globe_panel" data-blob="panel"></div>
+</div>
+
+{% else %}
+
+<div
+    class="c-globe"
+    data-module-globe = "footer"
+    data-globe-gltf = "{{ "wires.glb" | asset_url }}"
+    data-globe-wires-color = {{ wires_color }}
+    data-globe-wires-color-hover = {{ wires_color_hover }}
+    data-scroll
+    data-scroll-repeat
+    data-scroll-call="onToggle, Globe, footer"
+>
+    <div class="c-globe_wrap" data-globe="wrap"></div>
+    <div class="c-globe_panel" data-blob="panel"></div>
+</div>
+
+{% endif %}

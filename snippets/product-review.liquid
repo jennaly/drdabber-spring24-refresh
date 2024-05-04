@@ -1,0 +1,193 @@
+{% assign product_id = product.id %}
+{%- comment -%}{% assign product_id = '9110503054' %}{%- endcomment -%}
+{% assign api_key = settings.stamped_apikey %}
+{% assign store_url = settings.stamped_storeurl %}
+
+{% if product_id != blank and api_key != blank and store_url != blank %}
+
+    <div
+        class="c-product-review"
+        data-scroll
+        data-scroll-call="fetchData, ProductReview"
+    >
+        <div
+            class="c-product-review_inner"
+            data-module-product-review
+            data-product-review-id="{{ product_id }}"
+            data-product-review-api-key="{{ api_key }}"
+            data-product-review-store-url="{{ store_url }}"
+            v-if="reviews.length"
+        >
+            <div class="o-container -default">
+
+                <div class="c-product-review_summary" :class="{'is-loading': isLoadingSummary}">
+                    <div class="c-product-review_summary_inner">
+                        <div class="c-product-review_summary_col">
+                            <div class="c-product-review_summary_col_inner">
+                                <p class="c-product-review_summary_title || c-heading -aeonik -h6">${metrics.rating}</p>
+                                <ul class="c-rating-stars -wide">
+                                    <li class="c-rating-stars_item" :class="{'is-active': index - .5 <= metrics.rating}" v-for="index in 5" :key="index">
+                                        <svg role="img" aria-label="Star">
+                                            <use xlink:href="#icon-star"></use>
+                                        </svg>
+                                    </li>
+                                </ul>
+                                <p class="c-product-review_summary_base || c-label -mono -small -uppercase || u-color-cyan" v-if="reviewTotal">Based on ${reviewTotal} reviews</p>
+                                <p class="c-product-review_summary_base || c-label -mono -small -uppercase || u-color-cyan" v-else="reviewTotal">No reviews</p>
+                            </div>
+                        </div>
+                        <div class="c-product-review_summary_col">
+                            <div class="c-product-review_summary_col_inner">
+                                <ul class="c-product-ratings">
+                                    <li class="c-product-ratings_items" v-for="(reviews, reviewsIndex) in metrics.breakdown" :key="reviewsIndex">
+                                        <ul class="c-rating-stars">
+                                            <li class="c-rating-stars_item" :class="{'is-active': index <= 5 - reviewsIndex}" v-for="index in 5" :key="index">
+                                                <p class="u-screen-reader-text">Rating ${5 - reviewsIndex}</p>
+                                                <svg role="img" aria-label="Star">
+                                                    <use xlink:href="#icon-star"></use>
+                                                </svg>
+                                            </li>
+                                        </ul>
+
+                                        <div class="c-product-ratings_chart">
+                                            <span class="c-product-ratings_chart_bar" :style="{ transform: 'translateX('+ metrics.breakdownPercents[reviewsIndex] +'%'}"></span>
+                                        </div>
+
+                                        <p class="c-product-ratings_index || c-label -mono -small || u-color-cyan">${reviews}</p>
+                                    </li>
+                                </ul>
+                                <!-- <ul class="c-product-review_summary_ctas">
+                                    <li>
+                                        <button class="c-button -transparent -small">
+                                            <span class="c-button_label">Write a review</span>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="c-button -transparent -small">
+                                            <span class="c-button_label">Ask a question</span>
+                                        </button>
+                                    </li>
+                                </ul> -->
+                            </div>
+                        </div>
+                    </div>
+                    {% comment %} Spinner {% endcomment %}
+                    <div class="c-product-review_spinner">
+                        <div class="c-spinner">
+                            <svg role="img"><use xlink:href="#spinner"></use></svg>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="c-product-review_reviews" :class="{'is-loading': isLoadingReviews}">
+
+                    <div class="c-product-review_header">
+                        <div class="c-product-review_heading">
+                            <div class="c-product-review_heading_inner">
+                                <h2 class="c-label -aeonik -tab">Reviews</h2>
+                                <span class="c-product-review_number || c-label -mono -small">${reviewTotal}</span>
+                            </div>
+                        </div>
+
+                        <div class="c-product-review_sort">
+                            <label class="u-screen-reader-text" for="sort">Sort review</label>
+                            <div class="c-form_select -tiny">
+                                <select class="c-form_input c-form_select_input -review" name="sort" id="sort" v-model="sortedBy">
+                                    <option v-for="(sortObj, sortIndex) in sortOptions" :key="sortIndex" :value="sortObj.value">${sortObj.label}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="c-product-review_list_wrapper">
+                        <ul class="c-product-review_list" v-if="reviews.length">
+                            <li class="c-review" v-for="(review, reviewIndex) in reviews" :key="reviewIndex">
+
+                                <div class="c-review_col">
+
+                                    <div class="c-review_infos">
+
+                                        <div class="c-review_infos_col">
+                                            <div class="c-review_avatar">
+                                                <img :src="review.avatar" :alt="review.author">
+                                            </div>
+                                        </div>
+
+                                        <div class="c-review_infos_col">
+                                            <h3 class="c-review_author || c-text -aeonik -body1">${review.author}</h3>
+                                            <p v-if="review.status" class="c-review_status || c-label -mono -small -uppercase || u-color-cyan">${review.status}</p>
+                                            <ul class="c-review_rating || c-rating-stars">
+                                                <li class="c-rating-stars_item" :class="{'is-active': index <= review.reviewRating}" v-for="index in 5" :key="index">
+                                                    <svg role="img" aria-label="Star">
+                                                        <use xlink:href="#icon-star"></use>
+                                                    </svg>
+                                                </li>
+                                            </ul>
+                                            <p class="c-review_date || c-label -mono -small -uppercase">${review.reviewDate}</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="c-review_col">
+                                    <div class="c-review_content">
+                                        <h4 class="c-review_title || c-text -aeonik -body1">${review.reviewTitle}</h4>
+                                        <p class="c-review_message || c-text -mono -small || u-color-grey-light">${review.reviewMessage}</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div v-else class="c-review -min">
+                            <div class="c-review_col"></div>
+                            <div class="c-review_col">
+                                <div class="c-review_content">
+                                    <p class="c-review_message || c-text -mono -small || u-color-grey-light">No reviews</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% comment %} Spinner {% endcomment %}
+                        <div class="c-product-review_spinner">
+                            <div class="c-spinner">
+                                <svg role="img"><use xlink:href="#spinner"></use></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="c-pagination">
+                        <ul class="c-pagination_list" v-if="reviewPagination.length">
+                            <li class="c-pagination_list_item">
+                                <button class="c-button -pagination -pagination-arrow" :disabled="reviewCurrentPageIndex <= 1" @click="fetchProductReviews(reviewCurrentPageIndex - 1)">
+                                    <span class="c-button_icon">
+                                      <svg role="img" aria-label="Prev">
+                                        <use xlink:href="#arrow-dropdown"></use>
+                                      </svg>
+                                    </span>
+                                </button>
+                            </li>
+
+                            <li class="c-pagination_list_item" v-for="(page, pageIndex) in reviewPagination" :key="pageIndex">
+                                <button class="c-button -pagination" :class="{'is-active': reviewCurrentPageIndex === page.index}" @click="fetchProductReviews(page.index)">
+                                    <span class="c-button_label || c-label -aeonik -pagination">
+                                        ${page.label}
+                                    </span>
+                                </button>
+                            </li>
+
+                            <li class="c-pagination_list_item">
+                                <button class="c-button -pagination -pagination-arrow -next" :disabled="reviewCurrentPageIndex >= reviewPaginationLength" @click="fetchProductReviews(reviewCurrentPageIndex + 1)">
+                                    <span class="c-button_icon">
+                                      <svg role="img" aria-label="Next">
+                                        <use xlink:href="#arrow-dropdown"></use>
+                                      </svg>
+                                    </span>
+                                </button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endif %}

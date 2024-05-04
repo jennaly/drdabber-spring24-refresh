@@ -1,0 +1,278 @@
+{% assign product_variant = product.variants %}
+{% assign product_selected_or_first_available_variant = product.selected_or_first_available_variant %}
+{% assign product_options_with_values = product.options_with_values %}
+
+{% assign color_name = shop.metafields.color.color_name %}
+{% assign color_hex = shop.metafields.color.color_hex %}
+
+
+
+{%- comment -%} ------------------------------- {%- endcomment -%}
+
+<article class="c-product-tile" {% if product.has_only_default_variant or is_recommended %}{% else %}data-module-variant-tile{% endif %}  data-hovered>
+
+    {%- comment -%} Header {%- endcomment -%}
+    <header class="c-product-tile_header">
+
+        {%- comment -%} Title {%- endcomment -%}
+        <h3 class="c-heading -aeonik -product-tile">{{ product.title }}</h3>
+
+        {%- comment -%} Price {%- endcomment -%}
+        {% if product.has_only_default_variant or is_recommended%}
+            {% comment %} NO VARIANT {% endcomment %}
+            <div class="c-product-tile_price -no-variant">
+                <div class="c-product-tile_price_item -current-price">
+                    <p class="u-screen-reader-text">Price {{ product.title }}</p>
+                    <p class="c-product-tile_price_content"><span class="c-label -aeonik -product-tile-price">{{product_selected_or_first_available_variant.price | money}}</span></p>
+                </div>
+    
+                {% if product_selected_or_first_available_variant.compare_at_price > product_selected_or_first_available_variant.price%}  
+                    <div class="c-product-tile_price_item -old-price">
+                        <p class="u-screen-reader-text">Original price {{ product.title }}</p>
+                        <p class="c-product-tile_price_content"><span class="c-label -aeonik -product-tile-price">{{product_selected_or_first_available_variant.compare_at_price | money}}</span></p>
+                    </div>
+                {% endif %}
+            </div>
+        {% else %}
+            {% comment %} HAS VARIANT {% endcomment %}
+            {% for variant in product_variant %}
+            <div class="c-product-tile_price" data-variant="{{ variant.title | strip | handleize }}" data-variant-tile="price">
+                <div class="c-product-tile_price_item -current-price">
+                    <p class="u-screen-reader-text">Price - {{ variant.title }}</p>
+                    <p class="c-product-tile_price_content"><span class="c-label -aeonik -product-tile-price">{{variant.price | money}}</span></p>
+                </div>
+    
+                {% if variant.compare_at_price > variant.price%}  
+                    <div class="c-product-tile_price_item -old-price">
+                        <p class="u-screen-reader-text">Original price - {{ variant.title }}</p>
+                        <p class="c-product-tile_price_content"><span class="c-label -aeonik -product-tile-price">{{variant.compare_at_price | money}}</span></p>
+                    </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        {% endif %}
+
+
+        {%- comment -%} Sale {%- endcomment -%}
+        {% if product.has_only_default_variant or is_recommended %}
+            {% comment %} NO VARIANT {% endcomment %}
+            {% assign sale_percent = 0 %}
+            {% assign sale_percent = product_selected_or_first_available_variant.compare_at_price | minus: product_selected_or_first_available_variant.price | times: 100.0 | divided_by: product_selected_or_first_available_variant.compare_at_price | round %}
+
+            <div class="c-product-tile_sale-ribbon_wrapper">
+                {% if sale_percent != nil and sale_percent > 0 %}
+                    <p class="c-product-tile_sale-ribbon -no-variant || c-label -aeonik -product-tile-price">
+                        <span class="u-screen-reader-text">{{ product.title }}'s</span>
+                        Sale {{ sale_percent }}%
+                    </p>
+                {% endif %}
+            </div>
+
+        {% else %}
+            {% for variant in product_variant %}  
+                {% comment %} HAS VARIANT {% endcomment %}
+                {% assign sale_percent = 0 %}
+                {% assign sale_percent = variant.compare_at_price | minus: variant.price | times: 100.0 | divided_by: variant.compare_at_price | round %}
+                
+                <div class="c-product-tile_sale-ribbon_wrapper" data-variant="{{ variant.title | strip | handleize }}" data-variant-tile="sale">
+                    {% if sale_percent != nil and sale_percent > 0 %}
+                        <p class="c-product-tile_sale-ribbon">
+                            <span class="u-screen-reader-text">{{ variant.title }}'s</span>
+                            Sale {{ sale_percent }}%
+                        </p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        
+    </header>
+
+
+    <div class="c-product-tile_content">
+        {% if product.has_only_default_variant or is_recommended %}
+            {% comment %} NO VARIANT {% endcomment %}
+
+            <figure class="c-product-tile_figure -no-variant || c-lazy">
+                <img
+                    class="c-product-tile_figure_image || c-lazy_image"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                    {% if product.featured_image != blank %}
+                    data-src="{{ product.featured_image | img_url: '700x700' }}"
+                    data-scroll
+                    data-scroll-call="lazyLoad, Scroll"
+                    {% endif %}
+                    alt="{{product.title}}"
+                >
+            </figure>
+            
+        {% else %}
+            {% comment %} Has Variant {% endcomment %}
+            {% for variant in product_variant %}
+            <figure class="c-product-tile_figure || c-lazy" data-variant="{{ variant.title | strip | handleize }}" data-variant-tile="image">
+                <img
+                    class="c-product-tile_figure_image || c-lazy_image"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                    {% if variant.image != blank %}
+                    data-src="{{ variant.image | img_url: '700x700' }}"
+                    data-scroll
+                    data-scroll-call="lazyLoad, Scroll"
+                    {% endif %}
+                    alt="{{variant.title}}"
+                >
+            </figure>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <footer class="c-product-tile_footer">
+
+        <div class="c-product-tile_footer_col">
+            {% comment %} Select {% endcomment %}
+            {% if product.has_only_default_variant or is_recommended %}
+                {% comment %} NO VARIANT {% endcomment %}
+            {% else %}
+                {% comment %} Options {% endcomment %}
+                <div class="c-product-options">
+    
+                    <h4 class="u-screen-reader-text">Options</h4>
+    
+                    {% for option in product_options_with_values %}
+    
+                        {% assign option_name_handle = option.name | strip | handleize %}
+                        {% assign option_index = forloop.index0 %}
+    
+                        {% comment %} Options Group{% endcomment %}
+                        <div
+                            {% if option_name_handle == "color" %}
+                                class="c-product-options_item || -color"
+                            {% else %}
+                                class="c-product-options_item"
+                                style="display: none;"
+                            {% endif %}
+                        >
+                            {% comment %} Option Title {% endcomment %}
+                            <h5 class="u-screen-reader-text">{{option.name}}</h5>
+    
+                            <p class="u-screen-reader-text">
+                                <span>{{ option.name }}&nbsp;:&nbsp;</span>
+                                <span data-product-tile='selectedValue'>{{ option.values[0] | capitalize}}</span>
+                            </p>
+    
+                            {% comment %} Option Radio Buttons {% endcomment %}
+                            <div class="c-product-options_item_inner">
+    
+                                {% for value in option.values %}
+    
+                                    {% assign value_handle = value | strip | handleize %}
+                                    {% assign first_available_variant_option_handle = product_selected_or_first_available_variant.title | strip | handleize %}
+    
+                                    {% assign current_color_index = nil %}
+                                    {% if option_name_handle == "color" %}
+                                        {% for color in color_name %}
+                                            {% assign color_handle = color | strip | handleize %}
+                                            {% if color_handle == value_handle %}
+                                                {% assign current_color_index = forloop.index0 %}
+                                                {% break %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                    
+                                    <div
+                                        {% if current_color_index != nil %}
+                                            class="c-product-options_item_values {{value_handle}} -color-input"
+                                        {% else %}
+                                            class="c-product-options_item_values {{value_handle}}"
+                                        {% endif %}
+                                    >
+    
+                                        <input
+                                            class="c-product-options_radio || c-form_radio"
+                                            type="radio"
+                                            id="{{product.handle}}-{{value_handle}}"
+                                            name="{{product.handle}}-{{option_name_handle}}"
+                                            value="{{value_handle}}"
+                                            data-variant-tile="radio"
+    
+                                            {% if first_available_variant_option_handle contains value_handle %}
+                                                checked
+                                            {% endif %}
+                                        >
+    
+                                        {% if current_color_index != nil %}
+                                            <label class="c-product-options_radioLabel || c-form_radioLabel" for="{{product.handle}}-{{value_handle}}" style="color:{{color_hex[current_color_index]}};">
+                                                <span>{{ value | capitalize | strip }}</span>
+                                            </label>
+                                        {% else %}
+                                            <label class="c-product-options_radioLabel || c-form_radioLabel" for="{{product.handle}}-{{value_handle}}">
+                                                <span>{{ value | capitalize | strip }}</span>
+                                            </label>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="c-product-tile_footer_col">
+
+            {% if is_recommended %}
+                {% if product.available %}
+
+                {% else %}                    
+                    <div class="c-product-tile_variant-cta">
+                        <p class="c-label -uppercase -aeonik -small || u-color-out-of-stock">
+                            <span class="u-screen-reader-text">{{ product.title }} - {{ variant.title }} is </span>
+                            Out of stock
+                        </p>
+                    </div>
+                {% endif %}
+            {% else %}
+                {% comment %} CTA {% endcomment %}
+                {% for variant in product_variant %}
+                    <div class="c-product-tile_variant-cta" data-variant="{{ variant.title | strip | handleize }}" data-variant-tile="cta">
+                        {% if variant.available %}    
+                            <button 
+                                class="c-button -cart -grey-darker -hover-fill-primary"
+                                aria-label="Add {{ product.title }} - {{ variant.title }} to cart" 
+                                type="button"
+                                data-module-add-to-cart
+                                data-add-to-cart-id="{{ variant.id }}"
+                            >
+                                <span class="c-button_label || u-screen-reader-text">Add {{ product.title }} - {{ variant.title }} to cart</span>
+                                <span class="c-button_icon">
+                                    <svg role="img" aria-label="Add to cart" aria-hidden="true" focusable="false">
+                                        <use xlink:href="#icon-cart"></use>
+                                    </svg>
+                                </span>
+                            </button>
+                        {% else %}
+                            <p class="c-label -uppercase -aeonik -small || u-color-out-of-stock">
+                                <span class="u-screen-reader-text">{{ product.title }} - {{ variant.title }} is </span>
+                                Out of stock
+                            </p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>        
+    </footer>
+    
+    {% if product.has_only_default_variant or is_recommended %}
+        {% comment %} NO VARIANT {% endcomment %}
+        <a class="c-product-tile_link" href="{{ product.url }}" data-module-hovered>
+            <span class="u-screen-reader-text">Link to {{ product.title }}</span>
+        </a>
+        {% else %}
+        {% comment %} HAS VARIANTS {% endcomment %}
+        {% for variant in product_variant %}
+            <a class="c-product-tile_link" href="{{ variant.url }}" data-variant="{{ variant.title | strip | handleize }}" data-variant-tile="link" data-module-hovered>
+                <span class="u-screen-reader-text">Link to {{ variant.title }}</span>
+            </a>
+        {% endfor %}
+    {% endif %}
+    
+</article>

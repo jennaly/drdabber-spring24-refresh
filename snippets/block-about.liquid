@@ -1,0 +1,87 @@
+{% assign about_excerpt = settings.about_excerpt %}
+{% assign about_button_link = settings.about_button_link %}
+{% assign about_button_label = settings.about_button_label %}
+
+{% assign about_image = settings.about_image %}
+
+{% assign about_decorative_label_a = settings.about_decorative_label_a %}
+{% assign about_decorative_label_b = settings.about_decorative_label_b %}
+{% assign about_decorative_label_c = settings.about_decorative_label_c %}
+
+<div class="c-section -padding-top || c-block-about" data-scroll data-scroll-repeat>
+    <div class="o-container -default">
+        <div class="c-block-about_top">
+            {% if about_excerpt != blank %}
+                <div class="c-text -aeonik -body3 -cyan || u-indent-wide || u-margin-bottom-small">
+                    <p>{{ about_excerpt }}</p>
+                </div>
+            {% endif %}
+
+            {% if about_button_link != blank && about_button_label != blank %}
+                <a href="{{ about_button_link }}" class="c-button -small -stroke -transparent -hover-fill-primary">
+                    <span class="c-button_label">{{ about_button_label }}</span>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="c-block-about_main">
+        <div class="c-block-about_content">
+            <div class="o-container -default">
+                <div class="c-block-about_content_infos">
+                    {% if about_decorative_label_a != blank %}
+                        <span class="c-block-about_content_infos_item || c-label -mono -small -uppercase">{{ about_decorative_label_a }}</span>
+                    {% endif %}
+
+
+                    {% if about_decorative_label_b != blank %}
+                        <span class="c-block-about_content_infos_item || c-label -mono -small -uppercase">{{ about_decorative_label_b }}</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="c-block-about_marquee">
+                <div class="c-block-about_marquee_inner">
+                    <div class="c-block-about_marquee_item">
+                        <svg role="img" aria-hidden="true">
+                            <use xlink:href="#logo-text"></use>
+                        </svg>
+                    </div>
+
+                    <div class="c-block-about_marquee_item">
+                        <svg role="img" aria-hidden="true">
+                            <use xlink:href="#logo-text"></use>
+                        </svg>
+                    </div>
+
+                    <div class="c-block-about_marquee_item">
+                        <svg role="img" aria-hidden="true">
+                            <use xlink:href="#logo-text"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="o-container -default">
+                <div class="c-block-about_content_infos u-margin-top">
+                    {% if about_decorative_label_c != blank %}
+                        <span class="c-block-about_content_infos_item || c-label -mono -small -uppercase">{{ about_decorative_label_c }}</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if about_image %}
+                <div class="c-block-about_image-wrapper || c-lazy">
+                    <img
+                        class="c-lazy_image || c-block-about_image"
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 748 1444'%3E%3C/svg%3E"
+                        data-src="{{ about_image | img_url: "748x1444", crop: 'center' }}"
+                        data-scroll
+                        data-scroll-call="lazyLoad, Scroll"
+                        alt="Dr Dabber"
+                    >
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

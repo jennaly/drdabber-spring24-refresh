@@ -1,0 +1,54 @@
+<div class="c-blog-list_wrapper">
+    <div class="c-section">
+        <div class="o-container -default">
+            <ul class="c-blog-list">
+                {% for article in blog.articles %}
+                    <li class="c-blog-list_item">
+                        <a class="c-blog-list_item_link" href="{{ article.url }}">
+
+                            <div class="c-blog-list_item_col">
+                                <div class="c-blog-list_item_figure || c-lazy">
+                                    <img
+                                        class="c-lazy_image || c-blog-list_item_figure_image"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 4'%3E%3C/svg%3E"
+                                        {% if article.image.src != blank and article.image.src != nil %}
+                                            data-src="{{ article.image.src | img_url: '652x376', crop: 'center' }}"
+                                            data-scroll
+                                            data-scroll-call="lazyLoad, Scroll"
+                                        {% endif %}
+                                        alt="{{article.image.alt}}"
+                                    >
+                                </div>
+                            </div>
+
+
+                            <div class="c-blog-list_item_col">
+                                <div class="c-blog-list_item_content">
+                                    <div class="c-blog-list_item_infos || u-color-cyan">
+                                        <p class="c-blog-list_item_infos_item || c-label -mono -medium">By {{ article.author }}</p>
+                                        {%- comment -%}
+                                            <p class="c-blog-list_item_date || c-blog-list_item_infos_item || c-label -mono -medium">{{ article.published_at | date: "%b %d, %Y" }}</p>
+                                            <p class="c-blog-list_item_category || c-blog-list_item_infos_item || c-label -mono -medium">{{ article.author }}</p>
+                                        {%- endcomment -%}
+                                    </div>
+                                    <h2 class="c-blog-list_item_title">{{ article.title }}</h2>
+                                </div>
+                            </div>
+
+
+                            <div class="c-blog-list_item_col">
+                                <div class="c-blog-list_item_icon">
+                                    <svg role="img" aria-hidden="true">
+                                        <use xlink:href="#icon-arrow"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            {% include 'pagination' %}
+        </div>
+    </div>
+</div>

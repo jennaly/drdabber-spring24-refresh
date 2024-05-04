@@ -1,0 +1,68 @@
+{% assign excerpt_text = excerpt | strip_html %}
+
+
+{% comment %} --------------------- {% endcomment %}
+
+
+<header class="c-article-header">
+
+    <div class="o-container -default">
+
+        {% comment %} Back button {% endcomment %}
+            {% include 'back-button' 
+            label: "All Articles",
+            url: blog.url,
+            modifier: "-article"
+        %}
+        
+        <div class="c-article-header_content">
+            <!-- {% if tags.size > 0 %}
+                <ul class="c-article-header_tags">
+                    {% for tag in tags %}
+                    {% if forloop.last == true %}
+                        <li class="c-label -mono -medium">{{ tag }}</li>
+                    {% else %}
+                        <li class="c-label -mono -medium">{{ tag }},</li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endif %} -->
+            
+            {% if date != blank and date != nil or author != blank and author != nil %}
+                <p class="c-article-header_infos || c-label -mono -medium">
+                    <!-- {% if date != blank and date != nil %}
+                        <span>{{ date }}</span>
+                    {% endif %}  -->
+                    {% if author != blank and author != nil %}
+                        <span>By {{ author }}</span>
+                    {% endif %}
+                </p>
+            {% endif %}
+
+            <h1 class="c-article-header_title || c-heading -aeonik -article">{{title}}</h1>
+        </div>
+    </div>
+
+
+    <div class="c-article-header_cover || c-lazy">
+        <img
+            class="c-lazy_image"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1013'%3E%3C/svg%3E"
+            {% if cover != blank %}
+                data-src="{{ cover | img_url: "1920x1013" }}"
+                data-scroll
+                data-scroll-call="lazyLoad, Scroll"
+            {% endif %}
+            alt="{{title}}"
+        >
+    </div>
+
+
+    <div class="c-article-header-excerpt || o-container -default">
+        {% if excerpt_text != blank and excerpt_text != nil %}
+            {% include 'block-multi-text-wide' with 
+                text: excerpt_text
+            %}
+        {% endif %}
+    </div>
+</header>

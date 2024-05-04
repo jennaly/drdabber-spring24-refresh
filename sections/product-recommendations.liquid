@@ -1,0 +1,61 @@
+
+<!-- Stamped - Begin main-widget 
+
+<div id="stamped-main-widget" class="stamped-main-widget" data-product-id="{{ product.id }}" data-name="{{ product.title | escape }}" data-url="{{ shop.url }}{{ product.url }}" data-image-url="{{ product.featured_image | product_img_url: "large" |replace: " ? ", " % 3F" | replace: "& "," % 26"}}" data-description="{{ product.description | escape }}" data-product-sku="{{product.handle}}" data-product-type="{{product.type}}"> {{ product.metafields.stamped.reviews }} </div>
+<!-- Stamped - End main-widget -->
+
+<div
+  class="c-product-recommendations"
+  data-scroll
+  data-scroll-call="getRecommendations, ProductRecommendations"
+  data-module-product-recommendations
+  data-product-recommendations-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=6"
+>
+
+{%- if recommendations.performed and recommendations.products_count > 0 -%}
+
+<div class="c-section -carousel || js-carousel-section">
+  <div class="o-container">
+
+      <div class="c-section_header">
+          <h2 class="c-section_title">
+            Recommended Products
+          </h2>
+      </div>
+
+      <div class="c-block-carousel">
+        <div class="c-block-carousel_container || swiper-container">
+            <div class="c-block-carousel_wrapper || swiper-wrapper">
+              {%- for product in recommendations.products -%}
+                  <div class="c-block-carousel_slide || swiper-slide">
+                    {% include 'product-tile', with
+                      is_recommended: true,
+                      product: product
+                    %}
+                  </div>
+              {%- endfor -%}
+            </div>
+            <div class="c-block-carousel_pagination || swiper-pagination"></div>
+        </div>
+      </div>
+
+  </div>
+</div>
+{%- endif -%}
+
+<div class="c-product-recommendations_spinner">
+  <div class="c-spinner">
+      <svg role="img" aria-hidden="true"><use xlink:href="#spinner"></use></svg>
+  </div>
+</div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Product recommendations",
+    "settings": []
+  }
+{% endschema %}
+
+
