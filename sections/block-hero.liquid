@@ -57,7 +57,7 @@
 {% assign title_line2 = section.settings.hero_title_2 | strip %}
 {% assign subtitle = section.settings.hero_subtitle | strip %}
 {% assign image = section.settings.hero_image %}
-{% assign image_movil = section.settings.hero_image_movile %}
+{% assign video = section.settings.hero_video %}
 
 {% comment %} CTA {% endcomment %}
 
@@ -121,6 +121,7 @@
             </div>
 
             <div class="c-figure || c-splash_figure || c-lazy">
+               {% comment %}
                 {% if image != blank %}
                     <img
                         class="desktop c-lazy_image || c-splash_image"
@@ -150,6 +151,16 @@
                         alt="{{title_line1}} {{title_line2}}"
                     >
                 {% endif %}
+  {% endcomment %}
+
+              {% if video != blank %}
+          <iframe
+            src="{{ video.sources[0].url }}"
+            width="{{ video.sources[0].width }}"
+            height="{{ video.sources[0].height }}"
+            frameborder="0"
+            allowfullscreen></iframe>
+        {% endif %}
   
             </div>
         </div>
