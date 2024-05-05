@@ -42,27 +42,6 @@
             "id": "hero_image_movile",
             "type": "image_picker",
             "label": "Image movil"
-        },
-        {
-        "id": "hero_video",
-        "type": "video",
-        "label": "Background Video"
-        },
-        {
-        "id": "hero_background_media",
-        "type": "select",
-        "label": "Choose background media",
-          "options": [
-            {
-              "value": "Image",
-              "label": "Image"
-            },
-            {
-              "value": "Video",
-              "label": "Video"
-            }
-          ],
-          "default": "Video"
         }
     ]
 }
@@ -74,8 +53,7 @@
 {% assign title_line2 = section.settings.hero_title_2 | strip %}
 {% assign subtitle = section.settings.hero_subtitle | strip %}
 {% assign image = section.settings.hero_image %}
-{% assign video = section.settings.hero_video %}
-{% assign bg_media = section.settings.hero_background_media %}
+{% assign image_movil = section.settings.hero_image_movile %}
 
 {% comment %} CTA {% endcomment %}
 
@@ -139,51 +117,34 @@
       </div>
 
       <div class="c-figure || c-splash_figure || c-lazy">
-        {% if bg_media == 'Video' and video != blank %}
-          <video
-            class="c-lazy"
-            style="object-fit:cover; transform:scale(1); opacity:1; position:absolute"
-            src="{{ video.sources[1].url }}"
-            width="{{ video.sources[1].width }}"
-            height="{{ video.sources[1].height }}"
+        {% if image != blank %}
+          <img
+            class="desktop c-lazy_image || c-splash_image"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
+            data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
             data-scroll
             data-scroll-call="lazyLoad, Scroll"
-            loop
-            muted
-            playsinline
-            autoplay
-          />
+            alt="{{title_line1}} {{title_line2}}"
+          >
+        {% endif %}
 
+        {% if image_movil != blank %}
+          <img
+            class="movile c-lazy_image || c-splash_image"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
+            data-src="{{ image_movil | img_url: "1920x950", crop: 'center' }}"
+            data-scroll
+            data-scroll-call="lazyLoad, Scroll"
+          >
         {% else %}
-          {% if image != blank %}
-            <img
-              class="desktop c-lazy_image || c-splash_image"
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
-              data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
-              data-scroll
-              data-scroll-call="lazyLoad, Scroll"
-              alt="{{title_line1}} {{title_line2}}"
-            >
-          {% endif %}
-
-          {% if image_movil != blank %}
-            <img
-              class="movile c-lazy_image || c-splash_image"
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
-              data-src="{{ image_movil | img_url: "1920x950", crop: 'center' }}"
-              data-scroll
-              data-scroll-call="lazyLoad, Scroll"
-            >
-          {% else %}
-            <img
-              class="c-lazy_image || c-splash_image"
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
-              data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
-              data-scroll
-              data-scroll-call="lazyLoad, Scroll"
-              alt="{{title_line1}} {{title_line2}}"
-            >
-          {% endif %}
+          <img
+            class="c-lazy_image || c-splash_image"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
+            data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
+            data-scroll
+            data-scroll-call="lazyLoad, Scroll"
+            alt="{{title_line1}} {{title_line2}}"
+          >
         {% endif %}
       </div>
     </div>
