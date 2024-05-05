@@ -156,6 +156,7 @@
 
         {% if video != blank %}
           <video
+            class="desktop c-lazy_image || c-space_image"
             src="{{ video.sources[0].url }}"
             width="{{ video.sources[0].width }}"
             height="{{ video.sources[0].height }}"
