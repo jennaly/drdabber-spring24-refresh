@@ -84,7 +84,8 @@
               "splash_cta_description": "A proprietary vaporizer built for the discerning connoisseur.",
               "splash_cta_button_label": "Shop now",
               "splash_image": "shopify:\/\/shop_images\/switch_x2_banner_final.jpg",
-              "banner_video": "shopify:\/\/files\/videos\/hive-web-2.mp4"
+              "banner_video": "shopify:\/\/files\/videos\/snowflake-web.mp4",
+              "banner_bg_media": "video"
             }
           },
           "9e2a93b5-f106-4790-9e53-288f9a82191a": {
@@ -102,7 +103,8 @@
               "splash_cta": "shopify:\/\/collections\/boost-evo",
               "splash_cta_description": "Incorporating proprietary technology, with one goal in mind: the perfect dab.",
               "splash_cta_button_label": "SHOP NOW",
-              "splash_image": "shopify:\/\/shop_images\/boost-test-1900x800.jpg"
+              "splash_image": "shopify:\/\/shop_images\/boost-test-1900x800.jpg",
+              "banner_bg_media": "video"
             }
           },
           "87062842-11b5-43ac-8eab-66d321f2b7f8": {
@@ -121,7 +123,8 @@
               "splash_cta": "shopify:\/\/products\/xs",
               "splash_cta_description": "Setting the standard for premium vaporizers.",
               "splash_cta_button_label": "SHOP NOW",
-              "splash_image": "shopify:\/\/shop_images\/xs_cloud_banner_night_3b.png"
+              "splash_image": "shopify:\/\/shop_images\/xs_cloud_banner_night_3b.png",
+              "banner_bg_media": "video"
             }
           },
           "177c5fa0-73bb-4203-bc26-96bf5c4ce194": {
