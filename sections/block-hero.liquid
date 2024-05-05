@@ -153,36 +153,37 @@
             playsinline
             autoplay
           />
-        {% endif %}
 
-        {% if image != blank %}
-          <img
-            class="desktop c-lazy_image || c-splash_image"
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
-            data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
-            data-scroll
-            data-scroll-call="lazyLoad, Scroll"
-            alt="{{title_line1}} {{title_line2}}"
-          >
-        {% endif %}
-
-        {% if image_movil != blank %}
-          <img
-            class="movile c-lazy_image || c-splash_image"
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
-            data-src="{{ image_movil | img_url: "1920x950", crop: 'center' }}"
-            data-scroll
-            data-scroll-call="lazyLoad, Scroll"
-          >
         {% else %}
-          <img
-            class="c-lazy_image || c-splash_image"
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
-            data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
-            data-scroll
-            data-scroll-call="lazyLoad, Scroll"
-            alt="{{title_line1}} {{title_line2}}"
-          >
+          {% if image != blank %}
+            <img
+              class="desktop c-lazy_image || c-splash_image"
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
+              data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
+              data-scroll
+              data-scroll-call="lazyLoad, Scroll"
+              alt="{{title_line1}} {{title_line2}}"
+            >
+          {% endif %}
+
+          {% if image_movil != blank %}
+            <img
+              class="movile c-lazy_image || c-splash_image"
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
+              data-src="{{ image_movil | img_url: "1920x950", crop: 'center' }}"
+              data-scroll
+              data-scroll-call="lazyLoad, Scroll"
+            >
+          {% else %}
+            <img
+              class="c-lazy_image || c-splash_image"
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
+              data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
+              data-scroll
+              data-scroll-call="lazyLoad, Scroll"
+              alt="{{title_line1}} {{title_line2}}"
+            >
+          {% endif %}
         {% endif %}
       </div>
     </div>
