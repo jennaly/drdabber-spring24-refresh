@@ -1,88 +1,98 @@
 {% schema %}
-{
+  {
     "name": "Homepage blocks",
     "blocks": [
-        {
-            "type": "featured_collections",
-            "name": "Two Featured Collections",
-            "settings": [
-                {
-                    "id": "child_collection_1",
-                    "type": "collection",
-                    "label": "Child collection #1"
-                },
-                {
-                    "id": "child_collection_2",
-                    "type": "collection",
-                    "label": "Child collection #2"
-                },
-                {
-                    "id": "parent_collection",
-                    "type": "collection",
-                    "label": "Parent collection"
-                }
-            ]
-        },
-        {
-            "type": "banner",
-            "name": "Banner",
-            "settings": [
-                {
-                    "id": "splash_title_1",
-                    "type": "text",
-                    "label": "Main text line 1"
-                },
-                {
-                    "id": "splash_title_2",
-                    "type": "text",
-                    "label": "Main text line 2"
-                },
-                {
-                    "id": "splash_subtitle",
-                    "type": "text",
-                    "label": "Subtitle"
-                },
-                {
-                    "id": "splash_cta",
-                    "type": "url",
-                    "label": "Call to action"
-                },
-                {
-                    "id": "splash_cta_description",
-                    "type": "text",
-                    "label": "CTA Description"
-                },
-                {
-                    "id": "splash_cta_button_label",
-                    "type": "text",
-                    "label": "CTA Button label",
-                    "default": "Shop now"
-                },
-                {
-                    "id": "splash_image",
-                    "type": "image_picker",
-                    "label": "Image"
-                },
-                {
-                    "id": "hero_image_movile",
-                    "type": "image_picker",
-                    "label": "Image movil"
-                }
-            ]
-        },
-        {
-            "type": "carousel",
-            "name": "Collection",
-            "settings": [
-                {
-                    "id": "collection",
-                    "type": "collection",
-                    "label": "Collection"
-                }
-            ]
-        }
+      {
+        "type": "featured_collections",
+        "name": "Two Featured Collections",
+        "settings": [
+          {
+            "id": "child_collection_1",
+            "type": "collection",
+            "label": "Child collection #1"
+          }, {
+            "id": "child_collection_2",
+            "type": "collection",
+            "label": "Child collection #2"
+          }, {
+            "id": "parent_collection",
+            "type": "collection",
+            "label": "Parent collection"
+          }
+        ]
+      }, {
+        "type": "banner",
+        "name": "Banner",
+        "settings": [
+          {
+            "id": "splash_title_1",
+            "type": "text",
+            "label": "Main text line 1"
+          },
+          {
+            "id": "splash_title_2",
+            "type": "text",
+            "label": "Main text line 2"
+          },
+          {
+            "id": "splash_subtitle",
+            "type": "text",
+            "label": "Subtitle"
+          },
+          {
+            "id": "splash_cta",
+            "type": "url",
+            "label": "Call to action"
+          }, {
+            "id": "splash_cta_description",
+            "type": "text",
+            "label": "CTA Description"
+          }, {
+            "id": "splash_cta_button_label",
+            "type": "text",
+            "label": "CTA Button label",
+            "default": "Shop now"
+          }, {
+            "id": "splash_image",
+            "type": "image_picker",
+            "label": "Image"
+          }, {
+            "id": "hero_image_movile",
+            "type": "image_picker",
+            "label": "Image movil"
+          }, {
+            "id": "banner_video",
+            "type": "video",
+            "label": "Video"
+          }, {
+            "id": "banner_bg_media",
+            "type": "select",
+            "label": "Choose background media",
+            "options": [
+              {
+                "value": "image",
+                "label": "Image"
+              }, {
+                "value": "video",
+                "label": "Video"
+              }
+            ],
+            "default": "video"
+          }
+        ]
+      }, {
+        "type": "carousel",
+        "name": "Collection",
+        "settings": [
+          {
+            "id": "collection",
+            "type": "collection",
+            "label": "Collection"
+          }
+        ]
+      }
     ]
-}
+  }
 {% endschema %}
 {% capture apps %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 
@@ -103,6 +113,8 @@
                 subtitle: block.settings.splash_subtitle,
                 image: block.settings.splash_image,
                 image_movil: block.settings.hero_image_movile,
+                banner_video: block.settings.banner_video,
+                banner_bg_media: block.settings.banner_bg_media,
                 cta: block.settings.splash_cta,
                 cta_description: block.settings.splash_cta_description,
                 cta_button_label: block.settings.splash_cta_button_label
