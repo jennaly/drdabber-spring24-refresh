@@ -1,51 +1,64 @@
 {% schema %}
-    {
-        "name": "Hero",
-        "settings": [
-            {
-                "id": "hero_title_1",
-                "type": "text",
-                "label": "Main text line 1"
-            },
-            {
-                "id": "hero_title_2",
-                "type": "text",
-                "label": "Main text line 2"
-            },
-            {
-                "id": "hero_subtitle",
-                "type": "text",
-                "label": "Subtitle"
-            },
-            {
-                "id": "hero_cta",
-                "type": "url",
-                "label": "Call to action"
-            },
-            {
-                "id": "hero_cta_description",
-                "type": "text",
-                "label": "CTA Description"
-            },
-            {
-                "id": "hero_cta_button_label",
-                "type": "text",
-                "label": "CTA Button label",
-                "default": "Shop now"
-            },
-            {
-                "id": "hero_image",
-                "type": "image_picker",
-                "label": "Image"
-            },
-            {
-                "id": "hero_image_movile",
-                "type": "image_picker",
-                "label": "Image movil"
-            }
-        ]
-    }
-{% endschema %}
+  {
+    "name": "Hero",
+    "settings": [
+      {
+        "id": "hero_title_1",
+        "type": "text",
+        "label": "Main text line 1"
+      },
+      {
+        "id": "hero_title_2",
+        "type": "text",
+        "label": "Main text line 2"
+      },
+      {
+        "id": "hero_subtitle",
+        "type": "text",
+        "label": "Subtitle"
+      },
+      {
+        "id": "hero_cta",
+        "type": "url",
+        "label": "Call to action"
+      }, {
+        "id": "hero_cta_description",
+        "type": "text",
+        "label": "CTA Description"
+      }, {
+        "id": "hero_cta_button_label",
+        "type": "text",
+        "label": "CTA Button label",
+        "default": "Shop now"
+      }, {
+        "id": "hero_image",
+        "type": "image_picker",
+        "label": "Image"
+      }, {
+        "id": "hero_image_movile",
+        "type": "image_picker",
+        "label": "Image movil"
+      }, {
+        "id": "hero_video",
+        "type": "video",
+        "label": "Hero Background Video"
+      }, {
+        "id": "hero_background_media",
+        "type": "select",
+        "label": "Choose background media",
+        "options": [
+          {
+            "value": "image",
+            "label": "Image"
+          }, {
+            "value": "video",
+            "label": "Video"
+          }
+        ],
+        "default": "video"
+      }
+    ]
+  }{% endschema %}
 
 {% comment %} Titles {% endcomment %}
 
@@ -54,14 +67,15 @@
 {% assign subtitle = section.settings.hero_subtitle | strip %}
 {% assign image = section.settings.hero_image %}
 {% assign image_movil = section.settings.hero_image_movile %}
+{% assign video = section.settings.hero_video %}{% assign bg_media = section.settings.hero_background_media %}
+
 
 {% comment %} CTA {% endcomment %}
 
 {% assign cta = section.settings.hero_cta | strip %}
 
 {% comment %} Other CTA {% endcomment %}
-{% assign cta_description = section.settings.hero_cta_description | strip %}
-{% assign cta_button_label = section.settings.hero_cta_button_label | strip %}
+{% assign cta_description = section.settings.hero_cta_description | strip %}{% assign cta_button_label = section.settings.hero_cta_button_label | strip %}
 
 {% comment %} RANDOM {% endcomment %}
 {% assign min = 100000 %}
@@ -72,82 +86,93 @@
 {% comment %} --------------------- {% endcomment %}
 
 {% if title_line1 != blank and title_line2 != blank and subtitle != blank and image != blank and cta != blank %}
-    <header class="c-section">
-        <div class="c-splash -hero">
-            <div class="c-splash_container || o-container">
-                <div class="c-splash_content">
-                    <div class="c-splash_content_col -flex -absolute@to-large">
-                        <span class="c-splash_data">A{{randomNumber}}</span>
+  <header class="c-section">
+    <div class="c-splash -hero">
+      <div class="c-splash_container || o-container">
+        <div class="c-splash_content">
+          <div class="c-splash_content_col -flex -absolute@to-large">
+            <span class="c-splash_data">A{{ randomNumber }}</span>
 
-                        {% if subtitle != blank %}
-                            <p class="c-splash_subtitle">{{subtitle}}</p>
-                        {% endif %}
-                    </div>
+            {% if subtitle != blank %}
+              <p class="c-splash_subtitle">{{ subtitle }}</p>
+            {% endif %}
+          </div>
 
-                    <div class="c-splash_content_col">
-                        <h2 class="c-heading -h2 -druk || c-splash_title">
-                            {% if title_line1 != blank %}
-                                <span class="c-splash_title_item">{{title_line1}}</span>
-                            {% endif %}
+          <div class="c-splash_content_col">
+            <h2 class="c-heading -h2 -druk || c-splash_title">
+              {% if title_line1 != blank %}
+                <span class="c-splash_title_item">{{ title_line1 }}</span>
+              {% endif %}
 
-                            {% if title_line2 != blank %}
-                                <span class="c-splash_title_item">{{title_line2}}</span>
-                            {% endif %}
-                        </h2>
-                    </div>
+              {% if title_line2 != blank %}
+                <span class="c-splash_title_item">{{ title_line2 }}</span>
+              {% endif %}
+            </h2>
+          </div>
 
-                    <div class="c-splash_content_col -flex">
-                        {% if cta_description != blank %}
-                            <p class="c-heading -subtitle2 -aeonik || c-splash_info">
-                                {{ cta_description }}
-                            </p>
-                        {% endif %}
+          <div class="c-splash_content_col -flex">
+            {% if cta_description != blank %}
+              <p class="c-heading -subtitle2 -aeonik || c-splash_info">
+                {{ cta_description }}
+              </p>
+            {% endif %}
 
-                        {% if cta != blank %}
-                            {% if cta_button_label != blank %}
-                                <div>
-                                    <a href="{{ cta }}" class="c-button -transparent -small -hover-fill-primary || c-splash_button">
-                                        <span class="c-button_label">{{ cta_button_label }}</span>
-                                    </a>
-                                </div>
-                            {% endif %}
-                        {% endif %}
-                    </div>
+            {% if cta != blank %}
+              {% if cta_button_label != blank %}
+                <div>
+                  <a href="{{ cta }}" class="c-button -transparent -small -hover-fill-primary || c-splash_button">
+                    <span class="c-button_label">{{ cta_button_label }}</span>
+                  </a>
                 </div>
-            </div>
-
-            <div class="c-figure || c-splash_figure || c-lazy">
-                {% if image != blank %}
-                    <img
-                        class="desktop c-lazy_image || c-splash_image"
-                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
-                        data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
-                        data-scroll
-                        data-scroll-call="lazyLoad, Scroll"
-                        alt="{{title_line1}} {{title_line2}}"
-                    >
-                {% endif %}
-  
-                {% if image_movil != blank %}
-                  <img
-                        class="movile c-lazy_image || c-splash_image"
-                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
-                        data-src="{{ image_movil | img_url: "1920x950", crop: 'center' }}"
-                        data-scroll
-                        data-scroll-call="lazyLoad, Scroll"
-                    >
-                 {% else %}
-                            <img
-                        class="c-lazy_image || c-splash_image"
-                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
-                        data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
-                        data-scroll
-                        data-scroll-call="lazyLoad, Scroll"
-                        alt="{{title_line1}} {{title_line2}}"
-                    >
-                {% endif %}
-  
-            </div>
+              {% endif %}
+            {% endif %}
+          </div>
         </div>
-    </header>
+      </div>
+
+      <div class="c-figure || c-splash_figure || c-lazy">
+        {% if bg_media == "video" and video != blank %}
+          <video
+            class="c-lazy c-banner_video"
+            src="{{ video.sources[1].url }}"
+            width="{{ video.sources[1].width }}"
+            height="{{ video.sources[1].height }}"
+            data-scroll
+            data-scroll-call="lazyLoad, Scroll"
+            loop
+            muted
+            playsinline
+            autoplay />
+
+        {% else %}
+          {% if image != blank %}
+            <img
+              class="desktop c-lazy_image || c-splash_image"
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
+              data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
+              data-scroll
+              data-scroll-call="lazyLoad, Scroll"
+              alt="{{title_line1}} {{title_line2}}">
+          {% endif %}
+
+          {% if image_movil != blank %}
+            <img
+              class="movile c-lazy_image || c-splash_image"
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
+              data-src="{{ image_movil | img_url: "1920x950", crop: 'center' }}"
+              data-scroll
+              data-scroll-call="lazyLoad, Scroll">
+          {% else %}
+            <img
+              class="c-lazy_image || c-splash_image"
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
+              data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
+              data-scroll
+              data-scroll-call="lazyLoad, Scroll"
+              alt="{{title_line1}} {{title_line2}}">
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </header>
 {% endif %}
