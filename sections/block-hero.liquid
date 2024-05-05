@@ -139,19 +139,6 @@
       </div>
 
       <div class="c-figure || c-splash_figure || c-lazy">
-        {% if video != blank %}
-          <video
-            style="width:100%; height:100%; object-fit:cover"
-            src="{{ video.sources[1].url }}"
-            width="{{ video.sources[1].width }}"
-            height="{{ video.sources[1].height }}"
-            loop
-            muted
-            playsinline
-            autoplay
-          />
-        {% endif %}
-
         {% if image != blank %}
           <img
             class="desktop c-lazy_image || c-splash_image"
@@ -180,6 +167,19 @@
             data-scroll-call="lazyLoad, Scroll"
             alt="{{title_line1}} {{title_line2}}"
           >
+        {% endif %}
+
+        {% if video != blank %}
+          <video
+            style="width:100%; height:100%; object-fit:cover"
+            src="{{ video.sources[1].url }}"
+            width="{{ video.sources[1].width }}"
+            height="{{ video.sources[1].height }}"
+            loop
+            muted
+            playsinline
+            autoplay
+          />
         {% endif %}
       </div>
     </div>
