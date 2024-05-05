@@ -1,38 +1,32 @@
 {% comment %} Additional description {% endcomment %}
-{% assign product_additional_description = product.metafields.product.additional_description|strip %}
+{% assign product_additional_description = product.metafields.product.additional_description | strip %}
 
 {% comment %} Main video {% endcomment %}
 {% assign product_main_video_id = product.metafields.product.main_video_id %}
 
 {% comment %} Specifications {% endcomment %}
-{% assign spec_titles_arr = product.metafields.product.spec_title %}
-{% assign spec_descriptions_arr = product.metafields.product.spec_description %}
+{% assign spec_titles_arr = product.metafields.product.spec_title %}{% assign spec_descriptions_arr = product.metafields.product.spec_description %}
 
 {% comment %} Videos {% endcomment %}
 {% assign is_vimeo = false %}
 {% if product.metafields.product.video_id_vimeo != blank %}
-	{% assign is_vimeo = true %}
-	{% assign videos_arr = product.metafields.product.video_id_vimeo %}
+  {% assign is_vimeo = true %}
+  {% assign videos_arr = product.metafields.product.video_id_vimeo %}
 {% else %}
-	{% assign videos_arr = product.metafields.product.video_id %}
-{% endif %}
+  {% assign videos_arr = product.metafields.product.video_id %}{% endif %}
 
 {% comment %} Features {% endcomment %}
-{% assign feature_images_arr = product.metafields.product.feature_image %}
-{% assign feature_descriptions_arr = product.metafields.product.feature_description %}
+{% assign feature_images_arr = product.metafields.product.feature_image %}{% assign feature_descriptions_arr = product.metafields.product.feature_description %}
 
 {% comment %} Kit {% endcomment %}
-{% assign kit_image = product.metafields.product.kit_image %}
-{% assign kit_product_handles = product.metafields.product.kit_product %}
+{% assign kit_image = product.metafields.product.kit_image %}{% assign kit_product_handles = product.metafields.product.kit_product %}
 
 {% comment %} Readme {% endcomment %}
 {% assign readme_text = product.metafields.product.readme_description %}
-{% assign readme_link_labels = product.metafields.product.readme_link_label %}
-{% assign readme_links = product.metafields.product.readme_link %}
+{% assign readme_link_labels = product.metafields.product.readme_link_label %}{% assign readme_links = product.metafields.product.readme_link %}
 
 {% comment %} Award {% endcomment %}
-{% assign award_image_arr = product.metafields.product.award_image %}
-{% assign award_description_arr = product.metafields.product.award_description %}
+{% assign award_image_arr = product.metafields.product.award_image %}{% assign award_description_arr = product.metafields.product.award_description %}
 
 
 {% comment %} Specific {% endcomment %}
@@ -41,8 +35,7 @@
 {% assign specific_subtitle = product.metafields.product.splash_subtitle %}
 {% assign specific_image = product.metafields.product.splash_image %}
 {% assign specific_cta = product.metafields.product.splash_cta %}
-{% assign specific_cta_description = product.metafields.product.splash_cta_description %}
-{% assign specific_cta_button_label = product.metafields.product.splash_cta_button_label %}
+{% assign specific_cta_description = product.metafields.product.splash_cta_description %}{% assign specific_cta_button_label = product.metafields.product.splash_cta_button_label %}
 
 {% comment %} Related product {% endcomment %}
 {% assign related_product_title = product.metafields.product.related_products_title %}
@@ -84,67 +77,75 @@
 {% comment %} ----------- DOM ---------- {% endcomment %}
 
 <div class="c-page">
-    {% include 'product-hero' %}
+  {% include 'product-hero' %}
 
     <div class="c-section">
 
-        <div class="c-product-standfirst || o-container -default">
-            {% if product_additional_description != blank and product_additional_description != nil %}
-                {% include 'block-multi-text-wide' with
-                    text: product_additional_description
-                %}
-            {% endif %}
-        </div>
-
-        {%- comment -%} Default Wysiwyg {%- endcomment -%}
-        {% if product.description != blank and product.description != nil %}
-            <div class="c-product-wysiwyg" data-module-rich-wysiwyg>
-                <div class="o-container -default || u-relative">
-                    <div class="c-product-wysiwyg_content || c-wysiwyg -rich">
-                        <div class="c-product-wysiwyg_content_inner" data-rich-wysiwyg="content">
-                            {{ product.description }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-
-        {% include 'product-accordions'%}
-
-        {% if product_main_video_id != blank %}
-            <div class="o-container -default">
-                <div class="c-product-main-video">
-                    <div class="c-product-main-video_inner">
-                        <div class="c-block-multi-embed">
-                            <div class="c-block-multi-embed_inner">
-                                <iframe class="c-block-multi-embed_iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/{{ product_main_video_id|strip }}?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-
-        {%- comment -%} DISABLED PRODUCT CONTENT. PRODUCT MAIN VIDEO NOW INCLUDED ABOVE MANUALLY INSTEAD {%- endcomment -%}
-        {%- comment -%}
-            {% include 'product-content' %}
-        {%- endcomment -%}
-
-        {% include 'product-review' %}
+    <div class="c-product-standfirst || o-container -default">
+      {% if product_additional_description != blank and product_additional_description != nil %}
+        {% include 'block-multi-text-wide' with text: product_additional_description
+        %}
+      {% endif %}
     </div>
-  
-    {% include 'product-related' with
-        related_product_title: related_product_title,
-        related_products_collection: related_products_collection
-    %}
-    {% include 'featured-splash' %}
 
-    {% section 'product-recommendations' %}
+    {% section 'block-product-video' %}
 
-    {% section 'popup-delivery' %}
-    {% section 'popup-warranty' %}
+    {%- comment -%} Default Wysiwyg {%- endcomment -%}
+    {% if product.description != blank and product.description != nil %}
+      <div class="c-product-wysiwyg" data-module-rich-wysiwyg>
+        <div class="o-container -default || u-relative">
+          <div class="c-product-wysiwyg_content || c-wysiwyg -rich">
+            <div class="c-product-wysiwyg_content_inner" data-rich-wysiwyg="content">
+              {{ product.description }}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% include 'product-accordions' %}
+
+    {% if product_main_video_id != blank %}
+      <div class="o-container -default">
+        <div class="c-product-main-video">
+          <div class="c-product-main-video_inner">
+            <div class="c-block-multi-embed">
+              <div class="c-block-multi-embed_inner">
+                <iframe
+                  class="c-block-multi-embed_iframe"
+                  width="560"
+                  height="315"
+                  src="https://www.youtube-nocookie.com/embed/{{ product_main_video_id|strip }}?controls=0"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  {% endif %}
+
+    {%- comment -%} DISABLED PRODUCT CONTENT. PRODUCT MAIN VIDEO NOW INCLUDED ABOVE MANUALLY INSTEAD {%- endcomment -%}
+    {%- comment -%}
+      {% include 'product-content' %}
+    {%- endcomment -%}
+
+    {% include 'product-review' %}
+  </div>
+
+  {% include 'product-related' with related_product_title: related_product_title
+    , related_products_collection: related_products_collection
+  %}
+  {% include 'featured-splash' %}
+
+  {% section 'product-recommendations' %}
+
+  {% section 'popup-delivery' %}
+  {% section 'popup-warranty' %}
 </div>
-{{product.metafields.shogun.below}}
+{{ product.metafields.shogun.below }}
 
 <script src='https://widget.sezzle.com/v1/javascript/price-widget?uuid=5f9d12f0-6e67-469e-997f-c26c56b2313b'></script>
 

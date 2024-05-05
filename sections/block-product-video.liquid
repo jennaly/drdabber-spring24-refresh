@@ -1,0 +1,27 @@
+{% schema %}
+  {
+    "name": "Product Video",
+    "settings": [
+      {
+        "id": "product_video",
+        "type": "video",
+        "label": "Product Video"
+      }
+    ]
+  }
+{% endschema %}
+
+{% if product_video != blank %}
+  <div class="c-figure || c-splash_figure || c-lazy">
+    <video
+      src="{{ product_video.sources[1].url }}"
+      width="{{ product_video.sources[1].width }}"
+      height="{{ product_video.sources[1].height }}"
+      data-scroll
+      data-scroll-call="lazyLoad, Scroll"
+      loop
+      muted
+      playsinline
+      autoplay />
+  </div>
+{% endif %}
