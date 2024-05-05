@@ -360,6 +360,27 @@
         "settings": {
           "about_intro": "As a technology driven vaporizer company, Dr. Dabber focuses on creating products that are custom tailored to our customers’ needs. We understand those needs better than most because we’re just like you. We created Dr. Dabber in 2013 to solve the issue of questionable quality and dated technology that we had experienced ourselves as unsatisfied customers. We set out with a goal to create a better quality vaporizer, built out of the best materials and backed by an awesome customer support team.<br><br>\n\nFast forward to today and we’re proud to offer an entire line of award-winning vaporizers to suit every situation. What started with the Dr. Dabber Ghost, one of the most awarded vaporizer pens of all time, has turned into an operation where the entire design\/engineering process for each of our vaporizers is done in-house, from start to finish by our talented engineers and designers with the solitary goal of building proprietary technologies to improve every aspect of your experience possible. Rest assured when you invest in a Dr. Dabber product as all of our vaporizers are covered by an industry-leading warranty.<br><br>\n\nWhat we believe sets us apart from the rest is our dedication to our customers, which we put as much thought and effort into as we do creating the products you know and love. We believe in our products and our dedication truly shines through with our exceptionally knowledgeable in-house customer support team–a team that has earned multiple awards over the years for the support they’ve provided to countless customers all over the world. We will always go above and beyond to make sure the people that invest in us feel taken care of, no matter what the situation is. We don’t just want you to buy a Dr. Dabber product, we want you to join the Dr. Dabber Family!"
         }
+      },
+      "block-product-video": {
+        "type": "block-product-video",
+        "settings": {
+          "product_video": "shopify:\/\/files\/videos\/electrofunction_shortversion720p.mp4"
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+        }
+      },
+      "popup-delivery": {
+        "type": "popup-delivery",
+        "settings": {
+        }
+      },
+      "popup-warranty": {
+        "type": "popup-warranty",
+        "settings": {
+        }
       }
     },
     "content_for_index": [
