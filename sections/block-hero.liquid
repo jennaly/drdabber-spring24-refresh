@@ -1,54 +1,55 @@
 {% schema %}
-    {
-        "name": "Hero",
-        "settings": [
-            {
-                "id": "hero_title_1",
-                "type": "text",
-                "label": "Main text line 1"
-            },
-            {
-                "id": "hero_title_2",
-                "type": "text",
-                "label": "Main text line 2"
-            },
-            {
-                "id": "hero_subtitle",
-                "type": "text",
-                "label": "Subtitle"
-            },
-            {
-                "id": "hero_cta",
-                "type": "url",
-                "label": "Call to action"
-            },
-            {
-                "id": "hero_cta_description",
-                "type": "text",
-                "label": "CTA Description"
-            },
-            {
-                "id": "hero_cta_button_label",
-                "type": "text",
-                "label": "CTA Button label",
-                "default": "Shop now"
-            },
-            {
-                "id": "hero_image",
-                "type": "image_picker",
-                "label": "Image"
-            },
-            {
-                "id": "hero_image_movile",
-                "type": "image_picker",
-                "label": "Image movil"
-            },{
-        "id": "hero_video",
-        "type": "video",
-        "label": "Hero Background Video"
-      }
-        ]
-    }
+{
+    "name": "Hero",
+    "settings": [
+        {
+            "id": "hero_title_1",
+            "type": "text",
+            "label": "Main text line 1"
+        },
+        {
+            "id": "hero_title_2",
+            "type": "text",
+            "label": "Main text line 2"
+        },
+        {
+            "id": "hero_subtitle",
+            "type": "text",
+            "label": "Subtitle"
+        },
+        {
+            "id": "hero_cta",
+            "type": "url",
+            "label": "Call to action"
+        },
+        {
+            "id": "hero_cta_description",
+            "type": "text",
+            "label": "CTA Description"
+        },
+        {
+            "id": "hero_cta_button_label",
+            "type": "text",
+            "label": "CTA Button label",
+            "default": "Shop now"
+        },
+        {
+            "id": "hero_image",
+            "type": "image_picker",
+            "label": "Image"
+        },
+        {
+            "id": "hero_image_movile",
+            "type": "image_picker",
+            "label": "Image movil"
+        },
+      {
+  "id": "hero_video",
+    "type": "video",
+    "label": "Hero Background Video"
+  }
+    ]
+}
 {% endschema %}
 
 {% comment %} Titles {% endcomment %}
@@ -71,98 +72,98 @@
 {% assign min = 100000 %}
 {% assign max = 999999 %}
 {% assign diff = max | minus: min %}
-{% assign randomNumber = "now" | date: "%N" | modulo: diff | plus: min %}
+{% assign randomNumber = 'now' | date: '%N' | modulo: diff | plus: min %}
 
 {% comment %} --------------------- {% endcomment %}
 
 {% if title_line1 != blank and title_line2 != blank and subtitle != blank and image != blank and cta != blank %}
-    <header class="c-section">
-        <div class="c-splash -hero">
-            <div class="c-splash_container || o-container">
-                <div class="c-splash_content">
-                    <div class="c-splash_content_col -flex -absolute@to-large">
-                        <span class="c-splash_data">A{{randomNumber}}</span>
+  <header class="c-section">
+    <div class="c-splash -hero">
+      <div class="c-splash_container || o-container">
+        <div class="c-splash_content">
+          <div class="c-splash_content_col -flex -absolute@to-large">
+            <span class="c-splash_data">A{{ randomNumber }}</span>
 
-                        {% if subtitle != blank %}
-                            <p class="c-splash_subtitle">{{subtitle}}</p>
-                        {% endif %}
-                    </div>
+            {% if subtitle != blank %}
+              <p class="c-splash_subtitle">{{ subtitle }}</p>
+            {% endif %}
+          </div>
 
-                    <div class="c-splash_content_col">
-                        <h2 class="c-heading -h2 -druk || c-splash_title">
-                            {% if title_line1 != blank %}
-                                <span class="c-splash_title_item">{{title_line1}}</span>
-                            {% endif %}
+          <div class="c-splash_content_col">
+            <h2 class="c-heading -h2 -druk || c-splash_title">
+              {% if title_line1 != blank %}
+                <span class="c-splash_title_item">{{ title_line1 }}</span>
+              {% endif %}
 
-                            {% if title_line2 != blank %}
-                                <span class="c-splash_title_item">{{title_line2}}</span>
-                            {% endif %}
-                        </h2>
-                    </div>
+              {% if title_line2 != blank %}
+                <span class="c-splash_title_item">{{ title_line2 }}</span>
+              {% endif %}
+            </h2>
+          </div>
 
-                    <div class="c-splash_content_col -flex">
-                        {% if cta_description != blank %}
-                            <p class="c-heading -subtitle2 -aeonik || c-splash_info">
-                                {{ cta_description }}
-                            </p>
-                        {% endif %}
+          <div class="c-splash_content_col -flex">
+            {% if cta_description != blank %}
+              <p class="c-heading -subtitle2 -aeonik || c-splash_info">
+                {{ cta_description }}
+              </p>
+            {% endif %}
 
-                        {% if cta != blank %}
-                            {% if cta_button_label != blank %}
-                                <div>
-                                    <a href="{{ cta }}" class="c-button -transparent -small -hover-fill-primary || c-splash_button">
-                                        <span class="c-button_label">{{ cta_button_label }}</span>
-                                    </a>
-                                </div>
-                            {% endif %}
-                        {% endif %}
-                    </div>
+            {% if cta != blank %}
+              {% if cta_button_label != blank %}
+                <div>
+                  <a href="{{ cta }}" class="c-button -transparent -small -hover-fill-primary || c-splash_button">
+                    <span class="c-button_label">{{ cta_button_label }}</span>
+                  </a>
                 </div>
-            </div>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
 
-            <div class="c-figure || c-splash_figure || c-lazy">
-               {% comment %}
-                {% if image != blank %}
-                    <img
-                        class="desktop c-lazy_image || c-splash_image"
-                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
-                        data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
-                        data-scroll
-                        data-scroll-call="lazyLoad, Scroll"
-                        alt="{{title_line1}} {{title_line2}}"
-                    >
-                {% endif %}
-  
-                {% if image_movil != blank %}
-                  <img
-                        class="movile c-lazy_image || c-splash_image"
-                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
-                        data-src="{{ image_movil | img_url: "1920x950", crop: 'center' }}"
-                        data-scroll
-                        data-scroll-call="lazyLoad, Scroll"
-                    >
-                 {% else %}
-                            <img
-                        class="c-lazy_image || c-splash_image"
-                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
-                        data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
-                        data-scroll
-                        data-scroll-call="lazyLoad, Scroll"
-                        alt="{{title_line1}} {{title_line2}}"
-                    >
-                {% endif %}
-  {% endcomment %}
+      <div class="c-figure || c-splash_figure || c-lazy">
+        {% comment %}
+          {% if image != blank %}
+              <img
+                  class="desktop c-lazy_image || c-splash_image"
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
+                  data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
+                  data-scroll
+                  data-scroll-call="lazyLoad, Scroll"
+                  alt="{{title_line1}} {{title_line2}}"
+              >
+          {% endif %}
 
-              {% if video != blank %}
+          {% if image_movil != blank %}
+            <img
+                  class="movile c-lazy_image || c-splash_image"
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
+                  data-src="{{ image_movil | img_url: "1920x950", crop: 'center' }}"
+                  data-scroll
+                  data-scroll-call="lazyLoad, Scroll"
+              >
+           {% else %}
+                      <img
+                  class="c-lazy_image || c-splash_image"
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
+                  data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
+                  data-scroll
+                  data-scroll-call="lazyLoad, Scroll"
+                  alt="{{title_line1}} {{title_line2}}"
+              >
+          {% endif %}
+        {% endcomment %}
+
+        {% if video != blank %}
           <iframe
             src="{{ video.sources[0].url }}"
             width="{{ video.sources[0].width }}"
             height="{{ video.sources[0].height }}"
             frameborder="0"
-            allowfullscreen></iframe>
+            allowfullscreen
+          ></iframe>
         {% endif %}
-  
-            </div>
-        </div>
-    </header>
+      </div>
+    </div>
+  </header>
 {% endif %}
