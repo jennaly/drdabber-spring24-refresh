@@ -142,7 +142,7 @@
         {% if video != blank %}
           <video
             class="c-lazy"
-            style="width:100%; height:100%; object-fit:cover; transform:scale(1); opacity:1; position:absolute"
+            style="object-fit:cover; transform:scale(1); opacity:1; position:absolute"
             src="{{ video.sources[1].url }}"
             width="{{ video.sources[1].width }}"
             height="{{ video.sources[1].height }}"
