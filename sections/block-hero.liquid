@@ -155,13 +155,15 @@
         {% endcomment %}
 
         {% if video != blank %}
-          <iframe
+          <video
             src="{{ video.sources[0].url }}"
             width="{{ video.sources[0].width }}"
             height="{{ video.sources[0].height }}"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
+            loop
+            muted
+            playsinline
+            autoplay
+          />
         {% endif %}
       </div>
     </div>
