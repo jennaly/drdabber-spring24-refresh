@@ -1,16 +1,16 @@
 {% comment %} Titles {% endcomment %}
 
 {% assign title_line_1 = title_line_1 | strip %}
-{% assign title_line_2 = title_line_2 | strip -%}
-{%- assign subtitle = subtitle | strip %}
+{% assign title_line_2 = title_line_2 | strip %}
+{% assign subtitle = subtitle | strip %}
 
 {% comment %} CTA {% endcomment %}
 
 {% assign cta = cta | strip %}
 
 {% comment %} Other CTA {% endcomment %}
-{% assign cta_description = cta_description | strip -%}
-{%- assign cta_button_label = cta_button_label | strip %}
+{% assign cta_description = cta_description | strip %}
+{% assign cta_button_label = cta_button_label | strip %}
 
 {% comment %} RANDOM {% endcomment %}
 {% assign min = 100000 %}
@@ -111,21 +111,6 @@
               {% endif %}
               alt="{{title_line_1}} {{title_line_2}}"
             >
-          {% endif %}
-
-          {% if banner_bg_media == 'video' and banner_video != blank %}
-            <video
-              class="c-lazy c-banner_video"
-              src="{{ banner_video.sources[1].url }}"
-              width="{{ banner_video.sources[1].width }}"
-              height="{{ banner_video.sources[1].height }}"
-              data-scroll
-              data-scroll-call="lazyLoad, Scroll"
-              loop
-              muted
-              playsinline
-              autoplay
-            />
           {% endif %}
         </div>
       </div>
