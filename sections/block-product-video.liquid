@@ -11,10 +11,9 @@
   }
 {% endschema %}
 
-{% assign product_video = block.settings.product_video %}
-
+{% assign product_video = section.settings.product_video %}
 {% if product_video != blank %}
-  <div class="">
+  <div class="" style="padding-top: 9.5rem; display: flex; justify-content: center">
     <video
       src="{{ product_video.sources[1].url }}"
       width="{{ product_video.sources[1].width }}"
