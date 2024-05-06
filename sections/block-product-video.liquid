@@ -13,11 +13,11 @@
 
 {% assign product_video = section.settings.product_video %}
 {% if product_video != blank %}
-  <div class="" style="padding-top: 9.5rem; display: flex; justify-content: center">
+  <div class="" style="padding-top: 9.5rem;">
     <video
       src="{{ product_video.sources[1].url }}"
-      width="{{ product_video.sources[1].width }}"
-      height="{{ product_video.sources[1].height }}"
+      width="100%"
+      height="auto"
       data-scroll
       data-scroll-call="lazyLoad, Scroll"
       loop
