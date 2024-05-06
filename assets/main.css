@@ -6653,6 +6653,15 @@ html.is-loaded .c-product-tile_figure {
   left: 20px;
 }
 
+.section-product-video {
+  padding-top: 5rem;
+}
+
+@media (min-width: 1024px) {
+  .section-product-video {
+    padding-top: 9rem;
+  }
+}
 @media (min-width: 700px) {
   .c-section:not(.-no-padding-bottom) {
     padding-bottom: 110px;
