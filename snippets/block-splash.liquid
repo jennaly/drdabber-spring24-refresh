@@ -64,17 +64,22 @@
 
         <div class="c-figure || c-splash_figure || c-lazy">
           {% if banner_bg_media == "video" and banner_video != blank %}
+
             <video
               class="c-lazy c-banner_video"
-              src="{{ banner_video.sources[1].url }}"
+              poster="{{ banner_video.preview_image.src | img_url: 'master' }}"
               width="{{ banner_video.sources[1].width }}"
               height="{{ banner_video.sources[1].height }}"
+              data-scroll
               data-scroll
               data-scroll-call="lazyLoad, Scroll"
               loop
               muted
               playsinline
-              autoplay />
+              autoplay>
+              <source src="{{ banner_video.sources[1].url }}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
           {% else %}
 
             {% if image != blank %}

@@ -132,16 +132,20 @@
 
       <div class="c-figure || c-splash_figure || c-lazy">
         {% if bg_media == "video" and video != blank %}
+
           <video
             class="c-lazy c-banner_video"
-            src="{{ video.sources[1].url }}"
+            poster="{{ video.preview_image.src | img_url: 'master' }}"
             width="{{ video.sources[1].width }}"
             height="{{ video.sources[1].height }}"
             loop
             muted
             playsinline
             autoplay
-            preload="auto" />
+            preload="auto">
+            <source src="{{ video.sources[1].url }}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
 
         {% else %}
           {% if image != blank %}
