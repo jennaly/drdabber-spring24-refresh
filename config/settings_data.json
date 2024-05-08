@@ -364,6 +364,7 @@
       "block-product-video": {
         "type": "block-product-video",
         "settings": {
+          "product_video": "shopify:\/\/files\/videos\/hive-web-2.mp4"
         }
       },
       "product-recommendations": {
