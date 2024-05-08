@@ -364,7 +364,6 @@
       "block-product-video": {
         "type": "block-product-video",
         "settings": {
-          "product_video": "shopify:\/\/files\/videos\/electrofunction_shortversion720p.mp4"
         }
       },
       "product-recommendations": {
