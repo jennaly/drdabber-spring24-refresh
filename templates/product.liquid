@@ -38,8 +38,10 @@
 {% assign specific_cta_description = product.metafields.product.splash_cta_description %}{% assign specific_cta_button_label = product.metafields.product.splash_cta_button_label %}
 
 {% comment %} Related product {% endcomment %}
-{% assign related_product_title = product.metafields.product.related_products_title %}
-{% assign related_products_collection = collections[product.metafields.product.related_products_collection] %}
+{% assign related_product_title = product.metafields.product.related_products_title %}{% assign related_products_collection = collections[product.metafields.product.related_products_collection] %}
+
+{% comment %} Featured product video {% endcomment %}
+{% assign featured_product_video = product.metafields.custom.featured_product_video %}
 
 
 {% comment %} ----------- KLAVIO ---------- {% endcomment %}
@@ -88,7 +90,25 @@
       {% endif %}
     </div>
 
-    {% section 'block-product-video' %}
+    {%- comment -%} Featured Product Video Section {%- endcomment -%}
+    {% if featured_product_video != blank %}
+      <div class="section-product-video">
+        <video
+          poster="{{ featured_product_video | img_url: 'master'  }}"
+          width="100%"
+          height="auto"
+          data-scroll
+          data-scroll-call="lazyLoad, Scroll"
+          loop
+          muted
+          playsinline
+          autoplay>
+          <source src="{{ featured_product_video | file_url }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    {% endif %}
+
     {%- comment -%} Default Wysiwyg {%- endcomment -%}
     {% if product.description != blank and product.description != nil %}
       <div class="c-product-wysiwyg" data-module-rich-wysiwyg>
