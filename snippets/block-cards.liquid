@@ -1,164 +1,160 @@
 {% if settings.cards_visible %}
-    <div class="c-section -padding-top">
-        <div class="o-container -default">
-            <div class="c-block-cards_wrapper">
+  <div class="c-section -no-padding-bottom -aboutIcons">
+    <div class="o-container -default">
+      <div class="c-block-cards_wrapper">
 
-                {% comment %} Card A {% endcomment %}
+        {% comment %} Card A {% endcomment %}
 
-                {% assign card_title_a = settings.card_title_a %}
-                {% assign card_text_a = settings.card_text_a %}
-                {% assign card_icon_a = settings.card_icon_a %}
+        {% assign card_title_a = settings.card_title_a %}
+        {% assign card_text_a = settings.card_text_a %}
+        {% assign card_icon_a = settings.card_icon_a %}
 
-                {% if card_title_a != blank && card_text_a != blank %}
-                    <div class="c-card">
-                        {% if card_icon_a != blank %}
-                            <div class="c-card_top">
-                                <div class="c-card_top_image-wrapper || c-lazy">
-                                    <img
-                                        class="c-lazy_image || c-card_top_image"
-                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
-                                        data-src="{{ card_icon_a | img_url: "140x140" }}"
-                                        data-scroll
-                                        data-scroll-call="lazyLoad, Scroll"
-                                        alt="{{ card_text_a }}"
-                                    >
-                                </div>
-                            </div>
-                        {% endif %}
+        {% if card_title_a != blank && card_text_a != blank %}
+          <div class="c-card">
+            {% if card_icon_a != blank %}
+              <div class="c-card_top">
+                <div class="c-card_top_image-wrapper || c-lazy">
+                  <img
+                    class="c-lazy_image || c-card_top_image"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                    data-src="{{ card_icon_a | img_url: "140x140" }}"
+                    data-scroll
+                    data-scroll-call="lazyLoad, Scroll"
+                    alt="{{ card_text_a }}">
+                </div>
+              </div>
+            {% endif %}
 
-                        <div class="c-card_bottom">
-                            {% if card_title_a != blank %}
-                                <p class="c-label -standard -cyan -aeonik || c-card_title">{{ card_title_a }}</p>
-                            {% endif %}
+            <div class="c-card_bottom">
+              {% if card_title_a != blank %}
+                <p class="c-label -standard -cyan -aeonik || c-card_title">{{ card_title_a }}</p>
+              {% endif %}
 
-                            {% if card_text_a != blank %}
-                                <div class="c-card_bottom_content">
-                                    <p>{{ card_text_a }}</p>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endif %}
-
-                {% comment %} --------------------- {% endcomment %}
-
-                {% comment %} Card B {% endcomment %}
-
-                {% assign card_title_b = settings.card_title_b %}
-                {% assign card_text_b = settings.card_text_b %}
-                {% assign card_icon_b = settings.card_icon_b %}
-
-                {% if card_title_b != blank && card_text_b != blank %}
-                    <div class="c-card">
-                        {% if card_icon_b != blank %}
-                            <div class="c-card_top">
-                                <div class="c-card_top_image-wrapper || c-lazy">
-                                    <img
-                                        class="c-lazy_image || c-card_top_image"
-                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
-                                        data-src="{{ card_icon_b | img_url: "140x140" }}"
-                                        data-scroll
-                                        data-scroll-call="lazyLoad, Scroll"
-                                        alt="{{ card_text_b }}"
-                                    >
-                                </div>
-                            </div>
-                        {% endif %}
-
-                        <div class="c-card_bottom">
-                            {% if card_title_b != blank %}
-                                <p class="c-label -standard -cyan -aeonik || c-card_title">{{ card_title_b }}</p>
-                            {% endif %}
-
-                            {% if card_text_b != blank %}
-                                <div class="c-card_bottom_content">
-                                    <p>{{ card_text_b }}</p>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endif %}
-
-                {% comment %} --------------------- {% endcomment %}
-
-                {% comment %} Card C {% endcomment %}
-
-                {% assign card_title_c = settings.card_title_c %}
-                {% assign card_text_c = settings.card_text_c %}
-                {% assign card_icon_c = settings.card_icon_c %}
-
-                {% if card_title_c != blank && card_text_c != blank %}
-                    <div class="c-card">
-                        {% if card_icon_c != blank %}
-                            <div class="c-card_top">
-                                <div class="c-card_top_image-wrapper || c-lazy">
-                                    <img
-                                        class="c-lazy_image || c-card_top_image"
-                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
-                                        data-src="{{ card_icon_c | img_url: "140x140" }}"
-                                        data-scroll
-                                        data-scroll-call="lazyLoad, Scroll"
-                                        alt="{{ card_text_c }}"
-                                    >
-                                </div>
-                            </div>
-                        {% endif %}
-
-                        <div class="c-card_cottom">
-                            {% if card_title_c != blank %}
-                                <p class="c-label -standard -cyan -aeonik || c-card_title">{{ card_title_c }}</p>
-                            {% endif %}
-
-                            {% if card_text_c != blank %}
-                                <div class="c-card_bottom_content">
-                                    <p>{{ card_text_c }}</p>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endif %}
-
-                {% comment %} --------------------- {% endcomment %}
-
-                {% comment %} Card D {% endcomment %}
-
-                {% assign card_title_d = settings.card_title_d %}
-                {% assign card_text_d = settings.card_text_d %}
-                {% assign card_icon_d = settings.card_icon_d %}
-
-                {% if card_title_d != blank && card_text_d != blank %}
-                    <div class="c-card">
-                        {% if card_icon_d != blank %}
-                            <div class="c-card_top">
-                                <div class="c-card_top_image-wrapper || c-lazy">
-                                    <img
-                                        class="c-lazy_image || c-card_top_image"
-                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
-                                        data-src="{{ card_icon_d | img_url: "140x140" }}"
-                                        data-scroll
-                                        data-scroll-call="lazyLoad, Scroll"
-                                        alt="{{ card_text_d }}"
-                                    >
-                                </div>
-                            </div>
-                        {% endif %}
-
-                        <div class="c-card_dottom">
-                            {% if card_title_d != blank %}
-                                <p class="c-label -standard -cyan -aeonik || c-card_title">{{ card_title_d }}</p>
-                            {% endif %}
-
-                            {% if card_text_d != blank %}
-                                <div class="c-card_bottom_content">
-                                    <p>{{ card_text_d }}</p>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endif %}
-
-                {% comment %} --------------------- {% endcomment %}
+              {% if card_text_a != blank %}
+                <div class="c-card_bottom_content">
+                  <p>{{ card_text_a }}</p>
+                </div>
+              {% endif %}
             </div>
-        </div>
+          </div>
+      {% endif %}
+
+        {% comment %} --------------------- {% endcomment %}
+
+        {% comment %} Card B {% endcomment %}
+
+        {% assign card_title_b = settings.card_title_b %}
+        {% assign card_text_b = settings.card_text_b %}
+        {% assign card_icon_b = settings.card_icon_b %}
+
+        {% if card_title_b != blank && card_text_b != blank %}
+          <div class="c-card">
+            {% if card_icon_b != blank %}
+              <div class="c-card_top">
+                <div class="c-card_top_image-wrapper || c-lazy">
+                  <img
+                    class="c-lazy_image || c-card_top_image"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                    data-src="{{ card_icon_b | img_url: "140x140" }}"
+                    data-scroll
+                    data-scroll-call="lazyLoad, Scroll"
+                    alt="{{ card_text_b }}">
+                </div>
+              </div>
+            {% endif %}
+
+            <div class="c-card_bottom">
+              {% if card_title_b != blank %}
+                <p class="c-label -standard -cyan -aeonik || c-card_title">{{ card_title_b }}</p>
+              {% endif %}
+
+              {% if card_text_b != blank %}
+                <div class="c-card_bottom_content">
+                  <p>{{ card_text_b }}</p>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+      {% endif %}
+
+        {% comment %} --------------------- {% endcomment %}
+
+        {% comment %} Card C {% endcomment %}
+
+        {% assign card_title_c = settings.card_title_c %}
+        {% assign card_text_c = settings.card_text_c %}
+        {% assign card_icon_c = settings.card_icon_c %}
+
+        {% if card_title_c != blank && card_text_c != blank %}
+          <div class="c-card">
+            {% if card_icon_c != blank %}
+              <div class="c-card_top">
+                <div class="c-card_top_image-wrapper || c-lazy">
+                  <img
+                    class="c-lazy_image || c-card_top_image"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                    data-src="{{ card_icon_c | img_url: "140x140" }}"
+                    data-scroll
+                    data-scroll-call="lazyLoad, Scroll"
+                    alt="{{ card_text_c }}">
+                </div>
+              </div>
+            {% endif %}
+
+            <div class="c-card_cottom">
+              {% if card_title_c != blank %}
+                <p class="c-label -standard -cyan -aeonik || c-card_title">{{ card_title_c }}</p>
+              {% endif %}
+
+              {% if card_text_c != blank %}
+                <div class="c-card_bottom_content">
+                  <p>{{ card_text_c }}</p>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+      {% endif %}
+
+        {% comment %} --------------------- {% endcomment %}
+
+        {% comment %} Card D {% endcomment %}
+
+        {% assign card_title_d = settings.card_title_d %}
+        {% assign card_text_d = settings.card_text_d %}
+        {% assign card_icon_d = settings.card_icon_d %}
+
+        {% if card_title_d != blank && card_text_d != blank %}
+          <div class="c-card">
+            {% if card_icon_d != blank %}
+              <div class="c-card_top">
+                <div class="c-card_top_image-wrapper || c-lazy">
+                  <img
+                    class="c-lazy_image || c-card_top_image"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                    data-src="{{ card_icon_d | img_url: "140x140" }}"
+                    data-scroll
+                    data-scroll-call="lazyLoad, Scroll"
+                    alt="{{ card_text_d }}">
+                </div>
+              </div>
+            {% endif %}
+
+            <div class="c-card_dottom">
+              {% if card_title_d != blank %}
+                <p class="c-label -standard -cyan -aeonik || c-card_title">{{ card_title_d }}</p>
+              {% endif %}
+
+              {% if card_text_d != blank %}
+                <div class="c-card_bottom_content">
+                  <p>{{ card_text_d }}</p>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+
+      {% comment %} --------------------- {% endcomment %}
+      </div>
     </div>
+  </div>
 {% endif %}
