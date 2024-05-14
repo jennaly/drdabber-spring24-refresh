@@ -29,15 +29,19 @@
       }, {
         "id": "hero_image",
         "type": "image_picker",
-        "label": "Image"
+        "label": "Hero Image"
       }, {
-        "id": "hero_image_movile",
+        "id": "hero_image_mobile",
         "type": "image_picker",
-        "label": "Image movil"
+        "label": "Hero Image - mobile"
       }, {
         "id": "hero_video",
         "type": "video",
         "label": "Hero Background Video"
+      }, {
+        "id": "hero_video_mobile",
+        "type": "video",
+        "label": "Hero Background Video - mobile"
       }, {
         "id": "hero_background_media",
         "type": "select",
@@ -60,9 +64,8 @@
 
 {% assign title_line1 = section.settings.hero_title_1 | strip %}{% assign title_line2 = section.settings.hero_title_2 | strip %}
 {% assign image = section.settings.hero_image %}
-{% assign image_movil = section.settings.hero_image_movile %}
-{% assign video = section.settings.hero_video %}{% assign bg_media = section.settings.hero_background_media %}
-
+{% assign image_mobile = section.settings.hero_image_mobile %}
+{% assign video = section.settings.hero_video %}{% assign bg_media = section.settings.hero_background_media %}{% assign video_mobile = section.settings.hero_video_mobile %}
 
 {% comment %} CTA {% endcomment %}
 
@@ -122,21 +125,52 @@
       </div>
 
       <div class="c-figure || c-splash_figure || c-lazy">
-        {% if bg_media == "video" and video != blank %}
+        {% if bg_media == "video" %}
+          {% if video != blank %}
+            <video
+              class="desktop c-lazy c-banner_video"
+              poster="{{ video.preview_image.src | img_url: 'master' }}"
+              width="{{ video.sources[1].width }}"
+              height="{{ video.sources[1].height }}"
+              loop
+              muted
+              playsinline
+              autoplay
+              preload="auto">
+              <source src="{{ video.sources[1].url }}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          {% endif %}
 
-          <video
-            class="c-lazy c-banner_video"
-            poster="{{ video.preview_image.src | img_url: 'master' }}"
-            width="{{ video.sources[1].width }}"
-            height="{{ video.sources[1].height }}"
-            loop
-            muted
-            playsinline
-            autoplay
-            preload="auto">
-            <source src="{{ video.sources[1].url }}" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
+          {% if video_mobile != blank %}
+            <video
+              class="mobile c-lazy c-banner_video"
+              poster="{{ video_mobile.preview_image.src | img_url: 'master' }}"
+              width="{{ video_mobile.sources[1].width }}"
+              height="{{ video_mobile.sources[1].height }}"
+              loop
+              muted
+              playsinline
+              autoplay
+              preload="auto">
+              <source src="{{ video_mobile.sources[1].url }}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          {% else %}
+            <video
+              class="c-lazy c-banner_video"
+              poster="{{ video.preview_image.src | img_url: 'master' }}"
+              width="{{ video.sources[1].width }}"
+              height="{{ video.sources[1].height }}"
+              loop
+              muted
+              playsinline
+              autoplay
+              preload="auto">
+              <source src="{{ video.sources[1].url }}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          {% endif %}
 
         {% else %}
           {% if image != blank %}
@@ -149,11 +183,11 @@
               alt="{{title_line1}} {{title_line2}}">
           {% endif %}
 
-          {% if image_movil != blank %}
+          {% if image_mobile != blank %}
             <img
-              class="movile c-lazy_image || c-splash_image"
+              class="mobile c-lazy_image || c-splash_image"
               src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
-              data-src="{{ image_movil | img_url: "1920x950", crop: 'center' }}"
+              data-src="{{ image_mobile | img_url: "1920x950", crop: 'center' }}"
               data-scroll
               data-scroll-call="lazyLoad, Scroll">
           {% else %}
