@@ -1509,6 +1509,18 @@ html.is-fonts-loaded .shopify-challenge__button .c-button_label,
   letter-spacing: 0.02em;
 }
 
+.c-button.-fill-primary {
+  background-color: #00e2ed;
+  color: #000;
+  border: 1px solid #00e2ed;
+}
+
+.c-button.-fill-primary.-banner-CTA-hover:hover {
+  background-color: #000;
+  border: 1px solid #00e2ed;
+  color: #00e2ed;
+}
+
 .c-button.-hover-fill-primary:hover,
 .-hover-fill-primary.shopify-challenge__button:hover {
   background-color: #00e2ed;
