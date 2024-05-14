@@ -94,16 +94,16 @@
                 alt="{{title_line_1}} {{title_line_2}}">
             {% endif %}
 
-            {% if image_movil != blank %}
+            {% if image_mobile != blank %}
               <img
-                class="movile c-lazy_image || c-splash_image"
+                class="mobile c-lazy_image || c-splash_image"
                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 950'%3E%3C/svg%3E"
-                {% if image_movil contains '://' %}
+                {% if image_mobile contains '://' %}
                 data-src="{{ image }}"
                 data-scroll
                 data-scroll-call="lazyLoad, Scroll"
-                {% elsif image_movil != blank %}
-                data-src="{{ image_movil | img_url: "1920x950", crop: 'center' }}"
+                {% elsif mobile != blank %}
+                data-src="{{ image_mobile | img_url: "1920x950", crop: 'center' }}"
                 data-scroll
                 data-scroll-call="lazyLoad, Scroll"
                 {% endif %}>
