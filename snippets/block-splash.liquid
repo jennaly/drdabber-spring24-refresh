@@ -1,7 +1,6 @@
 {% comment %} Titles {% endcomment %}
 
-{% assign title_line_1 = title_line_1 | strip %}
-{% assign title_line_2 = title_line_2 | strip %}{% assign subtitle = subtitle | strip %}
+{% assign title_line_1 = title_line_1 | strip %}{% assign title_line_2 = title_line_2 | strip %}
 
 {% comment %} CTA {% endcomment %}
 
@@ -26,9 +25,6 @@
           <div class="c-splash_content_col -flex -absolute@to-large">
             <span class="c-splash_data">A{{ randomNumber }}</span>
 
-            {% if subtitle != blank %}
-              <p class="c-splash_subtitle">{{ subtitle }}</p>
-            {% endif %}
           </div>
 
           <div class="c-splash_content_col">

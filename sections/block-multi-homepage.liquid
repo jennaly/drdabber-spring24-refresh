@@ -34,16 +34,13 @@
             "type": "text",
             "label": "Main text line 2"
           },
-          {
-            "id": "splash_subtitle",
-            "type": "text",
-            "label": "Subtitle"
-          },
+
           {
             "id": "splash_cta",
             "type": "url",
             "label": "Call to action"
-          }, {
+          },
+          {
             "id": "splash_cta_description",
             "type": "text",
             "label": "CTA Description"
@@ -110,7 +107,6 @@
             {% include 'block-splash' with
                 title_line_1: block.settings.splash_title_1,
                 title_line_2: block.settings.splash_title_2,
-                subtitle: block.settings.splash_subtitle,
                 image: block.settings.splash_image,
                 image_movil: block.settings.hero_image_movile,
                 banner_video: block.settings.banner_video,

@@ -13,15 +13,11 @@
         "label": "Main text line 2"
       },
       {
-        "id": "hero_subtitle",
-        "type": "text",
-        "label": "Subtitle"
-      },
-      {
         "id": "hero_cta",
         "type": "url",
         "label": "Call to action"
-      }, {
+      },
+      {
         "id": "hero_cta_description",
         "type": "text",
         "label": "CTA Description"
@@ -62,9 +58,7 @@
 
 {% comment %} Titles {% endcomment %}
 
-{% assign title_line1 = section.settings.hero_title_1 | strip %}
-{% assign title_line2 = section.settings.hero_title_2 | strip %}
-{% assign subtitle = section.settings.hero_subtitle | strip %}
+{% assign title_line1 = section.settings.hero_title_1 | strip %}{% assign title_line2 = section.settings.hero_title_2 | strip %}
 {% assign image = section.settings.hero_image %}
 {% assign image_movil = section.settings.hero_image_movile %}
 {% assign video = section.settings.hero_video %}{% assign bg_media = section.settings.hero_background_media %}
@@ -85,7 +79,7 @@
 
 {% comment %} --------------------- {% endcomment %}
 
-{% if title_line1 != blank and title_line2 != blank and subtitle != blank and image != blank and cta != blank %}
+{% if title_line1 != blank and title_line2 != blank and image != blank and cta != blank %}
   <header class="c-section">
     <div class="c-splash -hero">
       <div class="c-splash_container || o-container">
@@ -93,9 +87,6 @@
           <div class="c-splash_content_col -flex -absolute@to-large">
             <span class="c-splash_data">A{{ randomNumber }}</span>
 
-            {% if subtitle != blank %}
-              <p class="c-splash_subtitle">{{ subtitle }}</p>
-            {% endif %}
           </div>
 
           <div class="c-splash_content_col">
