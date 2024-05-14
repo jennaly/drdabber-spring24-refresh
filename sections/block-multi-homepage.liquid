@@ -15,6 +15,10 @@
             "type": "collection",
             "label": "Child collection #2"
           }, {
+            "id": "child_collection_3",
+            "type": "collection",
+            "label": "Child collection #3"
+          }, {
             "id": "parent_collection",
             "type": "collection",
             "label": "Parent collection"
@@ -97,9 +101,10 @@
     {% case block.type %}
 
         {% when 'featured_collections' %}
-            {% include 'block-two-col-collections' with
+            {% include 'block-three-col-collections' with
                 collection_1_handle: block.settings.child_collection_1,
                 collection_2_handle: block.settings.child_collection_2,
+                   collection_3_handle: block.settings.child_collection_3,
                 parent_collection: block.settings.parent_collection
             %}
 
