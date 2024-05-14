@@ -5839,7 +5839,7 @@ html.is-fonts-loaded .c-wysiwyg.-faq a,
 }
 
 .c-splash:not(.-hero) .c-splash_content {
-  padding: 2.5rem 20px;
+  padding: 2.5rem 20px 0 20px;
 }
 
 @media (min-width: 1200px) {
