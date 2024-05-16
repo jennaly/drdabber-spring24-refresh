@@ -42,6 +42,7 @@
 
 {% comment %} Featured product video {% endcomment %}
 {% assign featured_product_video = product.metafields.custom.featured_product_video %}
+{% assign featured_product_video_mobile = product.metafields.custom.featured_product_video_mobile %}
 
 
 {% comment %} ----------- KLAVIO ---------- {% endcomment %}
@@ -92,7 +93,7 @@
 
     {%- comment -%} Featured Product Video Section {%- endcomment -%}
     {% if featured_product_video != blank %}
-      <div class="section-product-video">
+      <div class="desktop section-product-video">
         <video
           poster="{{ featured_product_video | img_url: 'master'  }}"
           width="100%"
@@ -107,6 +108,39 @@
           Your browser does not support the video tag.
         </video>
       </div>
+      {% if featured_product_video_mobile != blank %}
+        <div class="mobile section-product-video">
+          <video
+            poster="{{ featured_product_video_mobile | img_url: 'master'  }}"
+            width="100%"
+            height="auto"
+            data-scroll
+            data-scroll-call="lazyLoad, Scroll"
+            loop
+            muted
+            playsinline
+            autoplay>
+            <source src="{{ featured_product_video_mobile | file_url }}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      {% else %}
+        <div class="mobile section-product-video">
+          <video
+            poster="{{ featured_product_video | img_url: 'master'  }}"
+            width="100%"
+            height="auto"
+            data-scroll
+            data-scroll-call="lazyLoad, Scroll"
+            loop
+            muted
+            playsinline
+            autoplay>
+            <source src="{{ featured_product_video | file_url }}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      {% endif %}
     {% endif %}
 
     {%- comment -%} Default Wysiwyg {%- endcomment -%}
