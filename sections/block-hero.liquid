@@ -1,23 +1,99 @@
+<head>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.shopifycdn.com"
+    crossorigin>
+
+  <link
+    rel="preload"
+    as="font"
+    href="{{ section.settings.hero_title_font_shopify | font_url }}"
+    type="font/woff2"
+    crossorigin>
+
+</head>
+
+{% style %}
+
+  {{ section.settings.hero_title_font_shopify | font_face: font_display: 'swap' }}
+
+  {% if section.settings.hero_title_font_picker == "shopify-font" %}
+    html.is-fonts-loaded .c-heading.-druk,
+    .c-heading.-druk.is-fonts-loaded {
+      font-family: {{ section.settings.hero_title_font_shopify.family }}, 
+      {{ section.settings.hero_title_font_shopify.fallback_families }};
+    }
+  {% endif %}
+
+  {% if section.settings.hero_title_font_picker == "custom-font" %}
+    html.is-fonts-loaded .c-heading.-druk,
+    .c-heading.-druk.is-fonts-loaded {
+      font-family: {{ section.settings.hero_title_font_custom }};
+    }
+  {% endif %}
+
+{% endstyle %}
+
 {% schema %}
   {
     "name": "Hero",
     "settings": [
       {
+        "id": "hero_title_font_shopify",
+        "type": "font_picker",
+        "label": "Hero title - Google font",
+        "default": "helvetica_n4"
+      },
+      {
+        "id": "hero_title_font_custom",
+        "type": "select",
+        "label": "Hero title - Custom font",
+        "options": [
+          {
+            "value": "Druk Wide",
+            "label": "Druk Wide"
+          }, {
+            "value": "Aeonik Pro",
+            "label": "Aeonik Pro"
+          }, {
+            "value": "Maison Neue",
+            "label": "Maison Neue"
+          }, {
+            "value": "MonopolTRIALKompakt",
+            "label": "MonopolTRIALKompakt"
+          }
+        ],
+        "default": "Druk Wide"
+      },
+      {
+        "id": "hero_title_font_picker",
+        "type": "select",
+        "label": "Choose hero title font",
+        "options": [
+          {
+            "value": "shopify-font",
+            "label": "Google font"
+          }, {
+            "value": "custom-font",
+            "label": "Custom font"
+          }
+        ],
+        "default": "custom-font"
+      },
+      {
         "id": "hero_title_1",
         "type": "text",
         "label": "Main text line 1"
-      },
-      {
+      }, {
         "id": "hero_title_2",
         "type": "text",
         "label": "Main text line 2"
-      },
-      {
+      }, {
         "id": "hero_cta",
         "type": "url",
         "label": "Call to action"
-      },
-      {
+      }, {
         "id": "hero_cta_description",
         "type": "text",
         "label": "CTA Description"
@@ -59,27 +135,16 @@
       }
     ]
   }{% endschema %}
-
 {% comment %} Titles {% endcomment %}
 
-{% assign title_line1 = section.settings.hero_title_1 | strip %}{% assign title_line2 = section.settings.hero_title_2 | strip %}
-{% assign image = section.settings.hero_image %}
-{% assign image_mobile = section.settings.hero_image_mobile %}
-{% assign video = section.settings.hero_video %}{% assign bg_media = section.settings.hero_background_media %}{% assign video_mobile = section.settings.hero_video_mobile %}
-
+{% assign title_line1 = section.settings.hero_title_1 | strip %}{% assign title_line2 = section.settings.hero_title_2 | strip %}{% assign image = section.settings.hero_image %}{% assign image_mobile = section.settings.hero_image_mobile %}{% assign video = section.settings.hero_video %}{% assign bg_media = section.settings.hero_background_media %}{% assign video_mobile = section.settings.hero_video_mobile %}
 {% comment %} CTA {% endcomment %}
 
 {% assign cta = section.settings.hero_cta | strip %}
-
 {% comment %} Other CTA {% endcomment %}
 {% assign cta_description = section.settings.hero_cta_description | strip %}{% assign cta_button_label = section.settings.hero_cta_button_label | strip %}
-
 {% comment %} RANDOM {% endcomment %}
-{% assign min = 100000 %}
-{% assign max = 999999 %}
-{% assign diff = max | minus: min %}
-{% assign randomNumber = "now" | date: "%N" | modulo: diff | plus: min %}
-
+{% assign min = 100000 %}{% assign max = 999999 %}{% assign diff = max | minus: min %}{% assign randomNumber = "now" | date: "%N" | modulo: diff | plus: min %}
 {% comment %} --------------------- {% endcomment %}
 
 {% if title_line1 != blank and title_line2 != blank and image != blank and cta != blank %}
@@ -93,7 +158,7 @@
           </div>
 
           <div class="c-splash_content_col">
-            <h2 class="c-heading -h2 -druk || c-splash_title">
+            <h2 class="c-heading -h2 -druk || c-splash_title hero__mainText">
               {% if title_line1 != blank %}
                 <span class="c-splash_title_item">{{ title_line1 }}</span>
               {% endif %}
