@@ -19,16 +19,14 @@
   {{ section.settings.hero_title_font_shopify | font_face: font_display: 'swap' }}
 
   {% if section.settings.hero_title_font_picker == "shopify-font" %}
-    html.is-fonts-loaded .c-heading.-druk,
-    .c-heading.-druk.is-fonts-loaded {
+    #heroMainText {
       font-family: {{ section.settings.hero_title_font_shopify.family }}, 
       {{ section.settings.hero_title_font_shopify.fallback_families }};
     }
   {% endif %}
 
   {% if section.settings.hero_title_font_picker == "custom-font" %}
-    html.is-fonts-loaded .c-heading.-druk,
-    .c-heading.-druk.is-fonts-loaded {
+    #heroMainText {
       font-family: {{ section.settings.hero_title_font_custom }};
     }
   {% endif %}
@@ -158,7 +156,7 @@
           </div>
 
           <div class="c-splash_content_col">
-            <h2 class="c-heading -h2 -druk || c-splash_title hero__mainText">
+            <h2 id="heroMainText" class="c-heading -h2 -druk || c-splash_title">
               {% if title_line1 != blank %}
                 <span class="c-splash_title_item">{{ title_line1 }}</span>
               {% endif %}
