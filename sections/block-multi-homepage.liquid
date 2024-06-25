@@ -38,13 +38,49 @@
             "type": "text",
             "label": "Main text line 2"
           },
-
           {
+            "id": "splash_title_font_shopify",
+            "type": "font_picker",
+            "label": "Banner main text - Google font",
+            "default": "helvetica_n4"
+          },
+          {
+            "id": "splash_title_font_custom",
+            "type": "select",
+            "label": "Banner main text - Custom font",
+            "options": [
+              {
+                "value": "Druk Wide",
+                "label": "Druk Wide"
+              }, {
+                "value": "Aeonik Pro",
+                "label": "Aeonik Pro"
+              }, {
+                "value": "Maison Neue",
+                "label": "Maison Neue"
+              }, {
+                "value": "MonopolTRIALKompakt",
+                "label": "MonopolTRIALKompakt"
+              }
+            ]
+          }, {
+            "id": "splash_title_font_picker",
+            "type": "select",
+            "label": "Choose banner main text font",
+            "options": [
+              {
+                "value": "shopify-font",
+                "label": "Google font"
+              }, {
+                "value": "custom-font",
+                "label": "Custom font"
+              }
+            ]
+          }, {
             "id": "splash_cta",
             "type": "url",
             "label": "Call to action"
-          },
-          {
+          }, {
             "id": "splash_cta_description",
             "type": "text",
             "label": "CTA Description"
@@ -83,6 +119,10 @@
               }
             ],
             "default": "video"
+          }, {
+            "id": "banner_name",
+            "type": "text",
+            "label": "Banner Name"
           }
         ]
       }, {
@@ -116,6 +156,9 @@
             {% include 'block-splash' with
                 title_line_1: block.settings.splash_title_1,
                 title_line_2: block.settings.splash_title_2,
+                splash_title_font_shopify: block.settings.splash_title_font_shopify,
+                splash_title_font_custom: block.settings.splash_title_font_custom,
+                splash_title_font_picker: block.settings.splash_title_font_picker,
                 image: block.settings.splash_image,
                 image_mobile: block.settings.hero_image_mobile,
                 banner_video: block.settings.banner_video,

@@ -1,3 +1,19 @@
+<head>
+  <link
+    rel="preconnect"
+    href="https://fonts.shopifycdn.com"
+    crossorigin>
+
+  <link
+    rel="preload"
+    as="font"
+    href="{{ splash_title_font_shopify | font_url }}"
+    type="font/woff2"
+    crossorigin></head>
+
+{% style %}
+
+  {{ splash_title_font_shopify | font_face: font_display: 'swap' }}{% endstyle %}
 {% comment %} Titles {% endcomment %}
 
 {% assign title_line_1 = title_line_1 | strip %}{% assign title_line_2 = title_line_2 | strip %}
@@ -23,12 +39,13 @@
       <div class="c-splash_container">
         <div class="c-splash_content">
           <div class="c-splash_content_col -flex -absolute@to-large">
-            <span class="c-splash_data">A{{ randomNumber }}</span>
-
+            <span class="c-splash_data">A{{ randomNumber }}
+              {{ splash_title_font_custom }}</span>
           </div>
 
           <div class="c-splash_content_col">
-            <h2 class="c-heading -h2 -druk || c-splash_title">
+            <h2 class="c-heading -h2 -druk bannerMainText || c-splash_title" style="font-family: {% if splash_title_font_picker == 'shopify-font' %}{{ splash_title_font_shopify.family | escape }}, {{ splash_title_font_shopify.fallback_families | escape }}{% else %}{{ splash_title_font_custom }}{% endif %}; !important;">
+
               {% if title_line_1 != blank %}
                 <span class="c-splash_title_item">{{ title_line_1 }}</span>
               {% endif %}
