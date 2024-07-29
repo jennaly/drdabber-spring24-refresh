@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "current": {
     "support_url": "shopify:\/\/pages\/support",
@@ -50,7 +59,13 @@
     "sections": {
       "block-hero": {
         "type": "block-hero",
+        "custom_css": [
+          "h2 {color: black;}"
+        ],
         "settings": {
+          "hero_title_font_shopify": "garamond_n4",
+          "hero_title_font_custom": "Druk Wide",
+          "hero_title_font_picker": "shopify-font",
           "hero_title_1": "Crystal",
           "hero_title_2": "Clear",
           "hero_cta": "shopify:\/\/pages\/store-locator",
@@ -78,12 +93,16 @@
             "settings": {
               "splash_title_1": "Switch",
               "splash_title_2": "",
+              "splash_title_font_shopify": "helvetica_n4",
+              "splash_title_font_custom": "Druk Wide",
+              "splash_title_font_picker": "shopify-font",
               "splash_cta": "shopify:\/\/products\/switch-1",
               "splash_cta_description": "A proprietary vaporizer built for the discerning connoisseur.",
               "splash_cta_button_label": "Shop now",
               "splash_image": "shopify:\/\/shop_images\/switch_x2_banner_final.jpg",
               "banner_video": "shopify:\/\/files\/videos\/snowflake-web.mp4",
-              "banner_bg_media": "video"
+              "banner_bg_media": "video",
+              "banner_name": ""
             }
           },
           "9e2a93b5-f106-4790-9e53-288f9a82191a": {
@@ -97,12 +116,16 @@
             "settings": {
               "splash_title_1": "Boost",
               "splash_title_2": "Evo®",
+              "splash_title_font_shopify": "helvetica_n4",
+              "splash_title_font_custom": "Druk Wide",
+              "splash_title_font_picker": "shopify-font",
               "splash_cta": "shopify:\/\/collections\/boost-evo",
               "splash_cta_description": "Incorporating proprietary technology, with one goal in mind: the perfect dab.",
               "splash_cta_button_label": "SHOP NOW",
               "splash_image": "shopify:\/\/shop_images\/boost-test-1900x800.jpg",
               "banner_video": "shopify:\/\/files\/videos\/boostevo-webvideo-854x480_1.mp4",
-              "banner_bg_media": "video"
+              "banner_bg_media": "video",
+              "banner_name": ""
             }
           },
           "87062842-11b5-43ac-8eab-66d321f2b7f8": {
@@ -117,11 +140,15 @@
             "settings": {
               "splash_title_1": "XS",
               "splash_title_2": "",
+              "splash_title_font_shopify": "helvetica_n4",
+              "splash_title_font_custom": "Druk Wide",
+              "splash_title_font_picker": "shopify-font",
               "splash_cta": "shopify:\/\/products\/xs",
               "splash_cta_description": "Setting the standard for premium vaporizers.",
               "splash_cta_button_label": "SHOP NOW",
               "splash_image": "shopify:\/\/shop_images\/xs_cloud_banner_night_3b.png",
-              "banner_bg_media": "video"
+              "banner_bg_media": "video",
+              "banner_name": ""
             }
           },
           "177c5fa0-73bb-4203-bc26-96bf5c4ce194": {
