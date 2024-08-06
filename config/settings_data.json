@@ -66,9 +66,11 @@
           "hero_subtitle": "-",
           "hero_cta": "shopify://collections/boost-evo-color",
           "hero_cta_description": "",
+
           "hero_cta_button_label": "shop Boost Evo™ Color",
           "hero_image": "shopify://shop_images/DRD-Colors_DesktopHeader.png",
           "hero_image_movile": "shopify://shop_images/DRD-Colors_MobileHeader.png"
+
         }
       },
       "block-multi-homepage": {
