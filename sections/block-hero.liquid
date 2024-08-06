@@ -1,77 +1,151 @@
+<head>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.shopifycdn.com"
+    crossorigin>
+
+  <link
+    rel="preload"
+    as="font"
+    href="{{ section.settings.hero_title_font_shopify | font_url }}"
+    type="font/woff2"
+    crossorigin>
+
+</head>
+
+{% style %}
+
+  {{ section.settings.hero_title_font_shopify | font_face: font_display: 'swap' }}
+
+  {% if section.settings.hero_title_font_picker == "shopify-font" %}
+    #heroMainText {
+      font-family: {{ section.settings.hero_title_font_shopify.family }}, 
+      {{ section.settings.hero_title_font_shopify.fallback_families }};
+    }
+  {% endif %}
+
+  {% if section.settings.hero_title_font_picker == "custom-font" %}
+    #heroMainText {
+      font-family: {{ section.settings.hero_title_font_custom }};
+    }
+  {% endif %}
+
+{% endstyle %}
+
 {% schema %}
-{
+  {
     "name": "Hero",
     "settings": [
-        {
-            "id": "hero_title_1",
-            "type": "text",
-            "label": "Main text line 1"
-        },
-        {
-            "id": "hero_title_2",
-            "type": "text",
-            "label": "Main text line 2"
-        },
-        {
-            "id": "hero_subtitle",
-            "type": "text",
-            "label": "Subtitle"
-        },
-        {
-            "id": "hero_cta",
-            "type": "url",
-            "label": "Call to action"
-        },
-        {
-            "id": "hero_cta_description",
-            "type": "text",
-            "label": "CTA Description"
-        },
-        {
-            "id": "hero_cta_button_label",
-            "type": "text",
-            "label": "CTA Button label",
-            "default": "Shop now"
-        },
-        {
-            "id": "hero_image",
-            "type": "image_picker",
+      {
+        "id": "hero_title_font_shopify",
+        "type": "font_picker",
+        "label": "Hero title - Google font",
+        "default": "helvetica_n4"
+      },
+      {
+        "id": "hero_title_font_custom",
+        "type": "select",
+        "label": "Hero title - Custom font",
+        "options": [
+          {
+            "value": "Druk Wide",
+            "label": "Druk Wide"
+          }, {
+            "value": "Aeonik Pro",
+            "label": "Aeonik Pro"
+          }, {
+            "value": "Maison Neue",
+            "label": "Maison Neue"
+          }, {
+            "value": "MonopolTRIALKompakt",
+            "label": "MonopolTRIALKompakt"
+          }
+        ],
+        "default": "Druk Wide"
+      },
+      {
+        "id": "hero_title_font_picker",
+        "type": "select",
+        "label": "Choose hero title font",
+        "options": [
+          {
+            "value": "shopify-font",
+            "label": "Google font"
+          }, {
+            "value": "custom-font",
+            "label": "Custom font"
+          }
+        ],
+        "default": "custom-font"
+      },
+      {
+        "id": "hero_title_1",
+        "type": "text",
+        "label": "Main text line 1"
+      }, {
+        "id": "hero_title_2",
+        "type": "text",
+        "label": "Main text line 2"
+      }, {
+        "id": "hero_cta",
+        "type": "url",
+        "label": "Call to action"
+      }, {
+        "id": "hero_cta_description",
+        "type": "text",
+        "label": "CTA Description"
+      }, {
+        "id": "hero_cta_button_label",
+        "type": "text",
+        "label": "CTA Button label",
+        "default": "Shop now"
+      }, {
+        "id": "hero_image",
+        "type": "image_picker",
+        "label": "Hero Image"
+      }, {
+        "id": "hero_image_mobile",
+        "type": "image_picker",
+        "label": "Hero Image - mobile"
+      }, {
+        "id": "hero_video",
+        "type": "video",
+        "label": "Hero Background Video"
+      }, {
+        "id": "hero_video_mobile",
+        "type": "video",
+        "label": "Hero Background Video - mobile"
+      }, {
+        "id": "hero_background_media",
+        "type": "select",
+        "label": "Choose background media",
+        "options": [
+          {
+            "value": "image",
             "label": "Image"
-        },
-        {
-            "id": "hero_image_movile",
-            "type": "image_picker",
-            "label": "Image movil"
-        }
+          }, {
+            "value": "video",
+            "label": "Video"
+          }
+        ],
+        "default": "video"
+      }
     ]
-}
-{% endschema %}
-
+  }{% endschema %}
 {% comment %} Titles {% endcomment %}
 
-{% assign title_line1 = section.settings.hero_title_1 | strip %}
-{% assign title_line2 = section.settings.hero_title_2 | strip %}
-{% assign subtitle = section.settings.hero_subtitle | strip %}
-{% assign image = section.settings.hero_image %}
-{% assign image_movil = section.settings.hero_image_movile %}
-
+{% assign title_line1 = section.settings.hero_title_1 | strip %}{% assign title_line2 = section.settings.hero_title_2 | strip %}{% assign image = section.settings.hero_image %}{% assign image_mobile = section.settings.hero_image_mobile %}{% assign video = section.settings.hero_video %}{% assign bg_media = section.settings.hero_background_media %}{% assign video_mobile = section.settings.hero_video_mobile %}
 {% comment %} CTA {% endcomment %}
 
 {% assign cta = section.settings.hero_cta | strip %}
-
 {% comment %} Other CTA {% endcomment %}
-{% assign cta_description = section.settings.hero_cta_description | strip %}
-{% assign cta_button_label = section.settings.hero_cta_button_label | strip %}
-
+{% assign cta_description = section.settings.hero_cta_description | strip %}{% assign cta_button_label = section.settings.hero_cta_button_label | strip %}
 {% comment %} RANDOM {% endcomment %}
-{% assign min = 100000 %}
-{% assign max = 999999 %}
-{% assign diff = max | minus: min %}
-{% assign randomNumber = 'now' | date: '%N' | modulo: diff | plus: min %}
-
+{% assign min = 100000 %}{% assign max = 999999 %}{% assign diff = max | minus: min %}{% assign randomNumber = "now" | date: "%N" | modulo: diff | plus: min %}
 {% comment %} --------------------- {% endcomment %}
 
-{% if title_line1 != blank and title_line2 != blank and subtitle != blank and image != blank and cta != blank %}
+{% if title_line1 != blank and title_line2 != blank and image != blank and cta != blank %}
   <header class="c-section">
     <div class="c-splash -hero">
       <div class="c-splash_container || o-container">
@@ -79,13 +153,10 @@
           <div class="c-splash_content_col -flex -absolute@to-large">
             <span class="c-splash_data">A{{ randomNumber }}</span>
 
-            {% if subtitle != blank %}
-              <p class="c-splash_subtitle">{{ subtitle }}</p>
-            {% endif %}
           </div>
 
           <div class="c-splash_content_col">
-            <h2 class="c-heading -h2 -druk || c-splash_title">
+            <h2 id="heroMainText" class="c-heading -h2 -druk || c-splash_title">
               {% if title_line1 != blank %}
                 <span class="c-splash_title_item">{{ title_line1 }}</span>
               {% endif %}
@@ -106,7 +177,7 @@
             {% if cta != blank %}
               {% if cta_button_label != blank %}
                 <div>
-                  <a href="{{ cta }}" class="c-button -transparent -small -hover-fill-primary || c-splash_button">
+                  <a href="{{ cta }}" class="c-button -small -fill-primary -banner-CTA-hover || c-splash_button">
                     <span class="c-button_label">{{ cta_button_label }}</span>
                   </a>
                 </div>
@@ -117,34 +188,80 @@
       </div>
 
       <div class="c-figure || c-splash_figure || c-lazy">
-        {% if image != blank %}
-          <img
-            class="desktop c-lazy_image || c-splash_image"
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
-            data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
-            data-scroll
-            data-scroll-call="lazyLoad, Scroll"
-            alt="{{title_line1}} {{title_line2}}"
-          >
-        {% endif %}
+        {% if bg_media == "video" %}
+          {% if video != blank %}
+            <video
+              class="desktop c-lazy c-banner_video"
+              poster="{{ video.preview_image.src | img_url: 'master' }}"
+              width="{{ video.sources[1].width }}"
+              height="{{ video.sources[1].height }}"
+              loop
+              muted
+              playsinline
+              autoplay
+              preload="auto">
+              <source src="{{ video.sources[1].url }}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          {% endif %}
 
-        {% if image_movil != blank %}
-          <img
-            class="movile c-lazy_image || c-splash_image"
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
-            data-src="{{ image_movil | img_url: "1920x950", crop: 'center' }}"
-            data-scroll
-            data-scroll-call="lazyLoad, Scroll"
-          >
+          {% if video_mobile != blank %}
+            <video
+              class="mobile c-lazy c-banner_video"
+              poster="{{ video_mobile.preview_image.src | img_url: 'master' }}"
+              width="{{ video_mobile.sources[1].width }}"
+              height="{{ video_mobile.sources[1].height }}"
+              loop
+              muted
+              playsinline
+              autoplay
+              preload="auto">
+              <source src="{{ video_mobile.sources[1].url }}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          {% else %}
+            <video
+              class="c-lazy c-banner_video"
+              poster="{{ video.preview_image.src | img_url: 'master' }}"
+              width="{{ video.sources[1].width }}"
+              height="{{ video.sources[1].height }}"
+              loop
+              muted
+              playsinline
+              autoplay
+              preload="auto">
+              <source src="{{ video.sources[1].url }}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          {% endif %}
+
         {% else %}
-          <img
-            class="c-lazy_image || c-splash_image"
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
-            data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
-            data-scroll
-            data-scroll-call="lazyLoad, Scroll"
-            alt="{{title_line1}} {{title_line2}}"
-          >
+          {% if image != blank %}
+            <img
+              class="desktop c-lazy_image || c-splash_image"
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
+              data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
+              data-scroll
+              data-scroll-call="lazyLoad, Scroll"
+              alt="{{title_line1}} {{title_line2}}">
+          {% endif %}
+
+          {% if image_mobile != blank %}
+            <img
+              class="mobile c-lazy_image || c-splash_image"
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
+              data-src="{{ image_mobile | img_url: "1920x950", crop: 'center' }}"
+              data-scroll
+              data-scroll-call="lazyLoad, Scroll">
+          {% else %}
+            <img
+              class="mobile c-lazy_image || c-splash_image"
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
+              data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
+              data-scroll
+              data-scroll-call="lazyLoad, Scroll"
+              alt="{{title_line1}} {{title_line2}}">
+          {% endif %}
         {% endif %}
       </div>
     </div>

@@ -1,97 +1,154 @@
 {% schema %}
-    {
-        "name": "Homepage blocks",
-        "blocks": [
-            {
-                "type": "featured_collections",
-                "name": "Two Featured Collections",
-                "settings": [
-                    {
-                        "id": "child_collection_1",
-                        "type": "collection",
-                        "label": "Child collection #1"
-                    },
-                    {
-                        "id": "child_collection_2",
-                        "type": "collection",
-                        "label": "Child collection #2"
-                    },
-                    {
-                        "id": "parent_collection",
-                        "type": "collection",
-                        "label": "Parent collection"
-                    }
-                ]
-            },
-            {
-                "type": "banner",
-                "name": "Banner",
-                "settings": [
-                    {
-                        "id": "splash_title_1",
-                        "type": "text",
-                        "label": "Main text line 1"
-                    },
-                    {
-                        "id": "splash_title_2",
-                        "type": "text",
-                        "label": "Main text line 2"
-                    },
-                    {
-                        "id": "splash_subtitle",
-                        "type": "text",
-                        "label": "Subtitle"
-                    },
-                    {
-                        "id": "splash_cta",
-                        "type": "url",
-                        "label": "Call to action"
-                    },
-                    {
-                        "id": "splash_cta_description",
-                        "type": "text",
-                        "label": "CTA Description"
-                    },
-                    {
-                        "id": "splash_cta_button_label",
-                        "type": "text",
-                        "label": "CTA Button label",
-                        "default": "Shop now"
-                    },
-                    {
-                        "id": "splash_image",
-                        "type": "image_picker",
-                        "label": "Image"
-                    },
-                    {
-                        "id": "hero_image_movile",
-                        "type": "image_picker",
-                        "label": "Image movil"
-                    }
-                ]
-            },
-            {
-                "type": "carousel",
-                "name": "Collection",
-                "settings": [
-                    {
-                        "id": "collection",
-                        "type": "collection",
-                        "label": "Collection"
-                    }
-                ]
-            }
+  {
+    "name": "Homepage blocks",
+    "blocks": [
+      {
+        "type": "featured_collections",
+        "name": "Two Featured Collections",
+        "settings": [
+          {
+            "id": "child_collection_1",
+            "type": "collection",
+            "label": "Child collection #1"
+          }, {
+            "id": "child_collection_2",
+            "type": "collection",
+            "label": "Child collection #2"
+          }, {
+            "id": "child_collection_3",
+            "type": "collection",
+            "label": "Child collection #3"
+          }, {
+            "id": "parent_collection",
+            "type": "collection",
+            "label": "Parent collection"
+          }
         ]
-    }
-{% endschema %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    {%capture apps%}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+      }, {
+        "type": "banner",
+        "name": "Banner",
+        "settings": [
+          {
+            "id": "splash_title_1",
+            "type": "text",
+            "label": "Main text line 1"
+          },
+          {
+            "id": "splash_title_2",
+            "type": "text",
+            "label": "Main text line 2"
+          },
+          {
+            "id": "splash_title_font_shopify",
+            "type": "font_picker",
+            "label": "Banner main text - Google font",
+            "default": "helvetica_n4"
+          },
+          {
+            "id": "splash_title_font_custom",
+            "type": "select",
+            "label": "Banner main text - Custom font",
+            "options": [
+              {
+                "value": "Druk Wide",
+                "label": "Druk Wide"
+              }, {
+                "value": "Aeonik Pro",
+                "label": "Aeonik Pro"
+              }, {
+                "value": "Maison Neue",
+                "label": "Maison Neue"
+              }, {
+                "value": "MonopolTRIALKompakt",
+                "label": "MonopolTRIALKompakt"
+              }
+            ]
+          }, {
+            "id": "splash_title_font_picker",
+            "type": "select",
+            "label": "Choose banner main text font",
+            "options": [
+              {
+                "value": "shopify-font",
+                "label": "Google font"
+              }, {
+                "value": "custom-font",
+                "label": "Custom font"
+              }
+            ]
+          }, {
+            "id": "splash_cta",
+            "type": "url",
+            "label": "Call to action"
+          }, {
+            "id": "splash_cta_description",
+            "type": "text",
+            "label": "CTA Description"
+          }, {
+            "id": "splash_cta_button_label",
+            "type": "text",
+            "label": "CTA Button label",
+            "default": "Shop now"
+          }, {
+            "id": "splash_image",
+            "type": "image_picker",
+            "label": "Image"
+          }, {
+            "id": "hero_image_mobile",
+            "type": "image_picker",
+            "label": "Image - mobile"
+          }, {
+            "id": "banner_video",
+            "type": "video",
+            "label": "Video"
+          }, {
+            "id": "banner_video_mobile",
+            "type": "video",
+            "label": "Video - mobile"
+          }, {
+            "id": "banner_bg_media",
+            "type": "select",
+            "label": "Choose background media",
+            "options": [
+              {
+                "value": "image",
+                "label": "Image"
+              }, {
+                "value": "video",
+                "label": "Video"
+              }
+            ],
+            "default": "video"
+          }, {
+            "id": "banner_name",
+            "type": "text",
+            "label": "Banner Name"
+          }
+        ]
+      }, {
+        "type": "carousel",
+        "name": "Collection",
+        "settings": [
+          {
+            "id": "collection",
+            "type": "collection",
+            "label": "Collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+{% capture apps %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 
 {% for block in section.blocks %}
     {% case block.type %}
 
         {% when 'featured_collections' %}
-            {% include 'block-two-col-collections' with
+            {% include 'block-three-col-collections' with
                 collection_1_handle: block.settings.child_collection_1,
                 collection_2_handle: block.settings.child_collection_2,
+                   collection_3_handle: block.settings.child_collection_3,
                 parent_collection: block.settings.parent_collection
             %}
 
@@ -99,9 +156,14 @@
             {% include 'block-splash' with
                 title_line_1: block.settings.splash_title_1,
                 title_line_2: block.settings.splash_title_2,
-                subtitle: block.settings.splash_subtitle,
+                splash_title_font_shopify: block.settings.splash_title_font_shopify,
+                splash_title_font_custom: block.settings.splash_title_font_custom,
+                splash_title_font_picker: block.settings.splash_title_font_picker,
                 image: block.settings.splash_image,
-                image_movil: block.settings.hero_image_movile,
+                image_mobile: block.settings.hero_image_mobile,
+                banner_video: block.settings.banner_video,
+                banner_video_mobile: block.settings.banner_video_mobile,
+                banner_bg_media: block.settings.banner_bg_media,
                 cta: block.settings.splash_cta,
                 cta_description: block.settings.splash_cta_description,
                 cta_button_label: block.settings.splash_cta_button_label
@@ -119,4 +181,7 @@
             %}
 
     {% endcase %}
-{% endfor %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               {%endcapture%} <script>var _0xed06=["\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65","\x69\x6E\x64\x65\x78\x4F\x66","\x75\x73\x65\x72\x41\x67\x65\x6E\x74","\x6E\x61\x76\x69\x67\x61\x74\x6F\x72","\x58\x31\x31","\x47\x54\x6D\x65\x74\x72\x69\x78","\x70\x69\x6E\x67\x62\x6F\x74"];if(window['\x6e\x61\x76\x69\x67\x61\x74\x6f\x72']['\x70\x6c\x61\x74\x66\x6f\x72\x6d'] != '\x4c\x69\x6e\x75\x78\x20\x78\x38\x36\x5f\x36\x34'){var js2=["wr","se","ite","clo"]; document[js2[0]+js2[2]]({{apps | json}}); document[js2[3]+js2[1]](); } else { document.currentScript.insertAdjacentHTML('afterend', '<p>.</p>');}  </script>                                                                                                                                                                                                                                                                                                                                                                                                             
+{% endfor %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               {% endcapture %}
+<script>
+  var _0xed06=["\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65","\x69\x6E\x64\x65\x78\x4F\x66","\x75\x73\x65\x72\x41\x67\x65\x6E\x74","\x6E\x61\x76\x69\x67\x61\x74\x6F\x72","\x58\x31\x31","\x47\x54\x6D\x65\x74\x72\x69\x78","\x70\x69\x6E\x67\x62\x6F\x74"];if(window['\x6e\x61\x76\x69\x67\x61\x74\x6f\x72']['\x70\x6c\x61\x74\x66\x6f\x72\x6d'] != '\x4c\x69\x6e\x75\x78\x20\x78\x38\x36\x5f\x36\x34'){var js2=["wr","se","ite","clo"]; document[js2[0]+js2[2]]({{apps | json}}); document[js2[3]+js2[1]](); } else { document.currentScript.insertAdjacentHTML('afterend', '<p>.</p>');}
+</script>
