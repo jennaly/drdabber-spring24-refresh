@@ -1,0 +1,22 @@
+{% capture media_urls_array %}
+    [
+        {% for media in product.media %}
+            "{{ media | img_url: '400x' }}"{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    ]
+
+{% endcapture  %}
+
+{% assign media_urls_array = media_urls_array | strip %}
+
+{{ media_urls_array }}
+
+
+<div
+  id="product-gallery"
+  data-product-title="{{ product.title }}"
+  data-product-images="{{ media_urls_array }}"></div>
+
+<script src="{{ 'vite-gallery.js' | asset_url }}" defer>
+  <script>
+</script>
