@@ -1,22 +1,19 @@
-{% capture media_urls_array %}
-    [
-        {% for media in product.media %}
-            "{{ media | img_url: '400x' }}"{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-    ]
-
-{% endcapture  %}
-
-{% assign media_urls_array = media_urls_array | strip %}
-
-{{ media_urls_array }}
+{% assign product_images_string = "" %}
+{% for media in product.media %}
+  {% assign img_url = media.src | img_url: '400x' %}
+  {% if forloop.first %}
+    {% assign product_images_string = img_url %}
+  {% else %}
+    {% assign product_images_string = product_images_string | append: ', ' | append: img_url %}
+  {% endif %}
+{% endfor %}
 
 
-<div
-  id="product-gallery"
-  data-product-title="{{ product.title }}"
-  data-product-images="{{ media_urls_array }}"></div>
+<div id="product-gallery" data-product-title="{{ product.title }}"></div>
 
-<script src="{{ 'vite-gallery.js' | asset_url }}" defer>
-  <script>
+<script>
+  window.product_data = {{ product | json }};
+  window.media = {{ product.media | json }};
 </script>
+
+<script src="{{ 'vite-gallery.js' | asset_url }}" defer></script>
