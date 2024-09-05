@@ -1,19 +1,11 @@
-{% assign product_images_string = "" %}
-{% for media in product.media %}
-  {% assign img_url = media.src | img_url: '400x' %}
-  {% if forloop.first %}
-    {% assign product_images_string = img_url %}
-  {% else %}
-    {% assign product_images_string = product_images_string | append: ', ' | append: img_url %}
-  {% endif %}
-{% endfor %}
+<div id="product-gallery"></div>
 
-
-<div id="product-gallery" data-product-title="{{ product.title }}"></div>
 
 <script>
+  window.defaultVariantOnly = {{ product.has_only_default_variant | json}}
   window.product_data = {{ product | json }};
   window.media = {{ product.media | json }};
+  window.firstSelectedVariant = {{ product.selected_or_first_available_variant | json }};
 </script>
 
 <script src="{{ 'vite-gallery.js' | asset_url }}" defer></script>
