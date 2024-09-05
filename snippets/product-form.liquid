@@ -177,8 +177,8 @@
 
                         {% comment %} Option Radio Buttons {% endcomment %}
                         <div class="c-product-options_item_inner || u-mt-3">
-                            <div class="c-product-options_item_values" :class="[modifierClass([option.name, value]), { '-color-input': option.colors && option.colors[valueIndex] }]" v-for="(value, valueIndex) in option.values" :key="valueIndex">
-                                <input class="c-product-options_radio || c-form_radio" type="radio" :id="option.ids[valueIndex]" :name="option.name" :value="value" v-model="currentProductOptions[optionIndex]">
+                            <div class=" c-product-options_item_values" :class="[modifierClass([option.name, value]), { '-color-input': option.colors && option.colors[valueIndex] }]" v-for="(value, valueIndex) in option.values" :key="valueIndex">
+                                <input class="product-option-radio c-product-options_radio || c-form_radio" type="radio" :id="option.ids[valueIndex]" :name="option.name" :value="value" v-model="currentProductOptions[optionIndex]">
                                 <label v-if="option.colors && option.colors[valueIndex]" class="c-product-options_radioLabel || c-form_radioLabel" :for="option.ids[valueIndex]" :style="{ color: option.colors[valueIndex].hex}">
                                     <span>${ value }</span>
                                 </label>
