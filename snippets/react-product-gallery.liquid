@@ -1,4 +1,4 @@
-<div id="product-gallery"></div>
+<div id="product-gallery" style="height: 100%; width: 50%"></div>
 
 
 <script>
@@ -8,4 +8,4 @@
   window.firstSelectedVariant = {{ product.selected_or_first_available_variant | json }};
 </script>
 
-<script src="{{ 'vite-gallery.js' | asset_url }}" defer></script>
+<script src="{{ 'vite-gallery.js' | asset_url }}"></script>
