@@ -42,7 +42,7 @@ function Gallery({}) {
 
   return (
     <div style={{ height: 500, width: "100%", border: "1px solid #32a1ce" }}>
-      <GallerySlider />
+      <GallerySlider currentVariant={currentVariant} />
     </div>
   );
 }
