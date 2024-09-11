@@ -8,17 +8,18 @@ import "swiper/css";
 import "./styles/main.css";
 
 // import required modules
-import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
+import { Navigation, Pagination, Keyboard } from "swiper/modules";
 
-export default function GallerySlider() {
+export default function GallerySlider({
+  slidesArray,
+  currentIndex,
+  setCurrentIndex,
+}) {
   const [ourSwiperInstance, setSwiperInstance] = useState();
-  const [currentIndex, setCurrentIndex] = useState(3);
 
   const swiperRef = useRef();
 
   useEffect(() => {
-    // some type of logic to find the image index of the current selected variant
-
     // ourSwiperInstance.slideTo(index);
     swiperRef.current.slideTo(currentIndex);
   }, [currentIndex]);
@@ -30,38 +31,64 @@ export default function GallerySlider() {
           height: "100%",
           width: "100%",
         }}
-        loop={true}
         navigation={true}
         pagination={true}
-        mousewheel={true}
         keyboard={true}
-        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+        modules={[Navigation, Pagination, Keyboard]}
         spaceBetween={50}
         slidesPerView={1}
-        onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
         // onSwiper={(swiper) => setSwiperInstance(swiper)}
       >
-        <SwiperSlide>Slide 1 - index 0</SwiperSlide>
-        <SwiperSlide>Slide 2 - index 1</SwiperSlide>
-        <SwiperSlide>Slide 3 - index 2</SwiperSlide>
-        <SwiperSlide>Slide 4 - index 3</SwiperSlide>
+        {slidesArray.map((slide) => {
+          return (
+            <SwiperSlide>
+              {slide.map((asset) => {
+                if (asset.media_type === "video") {
+                  return <p>{asset.sources[0].url}</p>;
+                }
+                if (asset.media_type === "image") {
+                  return <p>{asset.src}</p>;
+                }
+              })}
+            </SwiperSlide>
+          );
+        })}
 
-        <button
-          className="swiper-button swiper-button-prev"
-          onClick={() => swiperRef.current.slidePrev()}
-        >
-          <BsArrowLeftCircle size={30} />
-        </button>
-
-        <button
-          className="swiper-button swiper-button-next"
-          onClick={() => swiperRef.current.slideNext()}
-        >
-          <BsArrowRightCircle size={30} />
-        </button>
+        {slidesArray.length > 1 && (
+          <div>
+            <button
+              className="swiper-button swiper-button-prev"
+              onClick={() => {
+                if (currentIndex == 0) {
+                  swiperRef.current.slideTo(slidesArray.length - 1);
+                  setCurrentIndex(slidesArray.length - 1);
+                } else {
+                  swiperRef.current.slideTo(currentIndex - 1);
+                  setCurrentIndex(currentIndex - 1);
+                }
+              }}
+            >
+              <BsArrowLeftCircle size={30} />
+            </button>
+            <button
+              className="swiper-button swiper-button-next"
+              onClick={() => {
+                if (currentIndex == slidesArray.length - 1) {
+                  swiperRef.current.slideTo(0);
+                  setCurrentIndex(0);
+                } else {
+                  swiperRef.current.slideTo(currentIndex + 1);
+                  setCurrentIndex(currentIndex + 1);
+                }
+              }}
+            >
+              <BsArrowRightCircle size={30} />
+            </button>
+          </div>
+        )}
       </Swiper>
     </>
   );
