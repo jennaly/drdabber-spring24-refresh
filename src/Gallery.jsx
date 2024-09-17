@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-
+import { useState, useEffect, useMemo } from "react";
 import GallerySlider from "./GallerySlider";
+import "./styles/main.css";
 
-function Gallery({}) {
+function Gallery() {
   const productMedia = window.media;
-  const firstSelectedVariant = window.firstSelectedVariant.title;
+  const firstSelectedVariant = window.firstSelectedVariant.title.toLowerCase();
 
   const [currentVariant, setCurrentVariant] = useState(firstSelectedVariant);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -14,36 +14,54 @@ function Gallery({}) {
       document.getElementsByClassName("product-option-radio")
     );
 
-    const handlers = allRadioButtons.map((radioButton) => {
-      return radioButton.addEventListener("click", (e) => {
-        // console.log("Click fired: ", e);
+    const handleClick = (e) => {
+      const variantButtonValue = e.target.value.toLowerCase();
+      setCurrentVariant(variantButtonValue);
+    };
 
-        setCurrentVariant(e.target.value);
-      });
-    });
+    allRadioButtons.forEach((button) =>
+      button.addEventListener("click", handleClick)
+    );
 
     return () => {
-      handlers.forEach(removeEventListener);
+      allRadioButtons.forEach((button) =>
+        button.removeEventListener("click", handleClick)
+      );
     };
   }, []);
 
-  console.log(currentVariant);
-
   const groupByVariant = (mediaArray) => {
-    return mediaArray.reduce((acc, item) => {
-      const variant = item.alt || "default";
-      acc["default"] = [];
-      if (!acc[variant]) {
-        acc[variant] = [];
-      }
-      acc[variant].push(item);
-      return acc;
-    }, {});
+    const result = mediaArray.reduce(
+      (acc, item) => {
+        const variant = (item.alt || "default").toLowerCase();
+
+        if (variant === "default") {
+          if (!acc.defaultGroup.default) {
+            acc.defaultGroup.default = [item];
+          } else {
+            acc.defaultGroup.default.push(item);
+          }
+        } else {
+          if (!acc.otherGroups[variant]) {
+            acc.otherGroups[variant] = [item];
+          } else {
+            acc.otherGroups[variant].push(item);
+          }
+        }
+
+        return acc;
+      },
+      { defaultGroup: {}, otherGroups: {} }
+    );
+
+    return { ...result.defaultGroup, ...result.otherGroups };
   };
 
-  const mediaByVariant = groupByVariant(productMedia);
+  const mediaByVariant = useMemo(
+    () => groupByVariant(productMedia),
+    [productMedia]
+  );
 
-  // logic to divide images to panels of 3 images
   const groupByThrees = (mediaObj) => {
     let slidesArray = [];
     let slidesIndexMap = {};
@@ -60,17 +78,17 @@ function Gallery({}) {
     return { slidesArray, slidesIndexMap };
   };
 
-  const { slidesArray, slidesIndexMap } = groupByThrees(mediaByVariant);
-  // console.log("media grouped by variant: ", mediaByVariant);
-  // console.log("media chunked by slides of 3: ", slidesArray);
-  // console.log("index reference map: ", slidesIndexMap);
+  const { slidesArray, slidesIndexMap } = useMemo(
+    () => groupByThrees(mediaByVariant),
+    [mediaByVariant]
+  );
 
   useEffect(() => {
-    setCurrentIndex(slidesIndexMap[currentVariant]);
-  }, [currentVariant]);
+    setCurrentIndex(slidesIndexMap[currentVariant] || 0);
+  }, [currentVariant, slidesIndexMap]);
 
   return (
-    <div style={{ height: 500, width: "100%", border: "1px solid #32a1ce" }}>
+    <div className="gallery-container">
       <GallerySlider
         slidesArray={slidesArray}
         currentIndex={currentIndex}

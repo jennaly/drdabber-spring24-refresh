@@ -1,13 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-// Import Swiper React components
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
-
-// Import Swiper styles
+import clsx from "clsx";
 import "swiper/css";
 import "./styles/main.css";
-
-// import required modules
 import { Navigation, Pagination, Keyboard } from "swiper/modules";
 
 export default function GallerySlider({
@@ -15,81 +11,115 @@ export default function GallerySlider({
   currentIndex,
   setCurrentIndex,
 }) {
-  const [ourSwiperInstance, setSwiperInstance] = useState();
-
-  const swiperRef = useRef();
+  const lastSlide = slidesArray.length - 1;
+  const swiperRef = useRef(null);
 
   useEffect(() => {
-    // ourSwiperInstance.slideTo(index);
-    swiperRef.current.slideTo(currentIndex);
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slideTo(currentIndex, 0);
+    }
   }, [currentIndex]);
 
+  const handleSlideChange = (swiper) => {
+    setCurrentIndex(swiper.activeIndex);
+  };
+
+  const handlePrevSlide = () => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slidePrev();
+    }
+  };
+
+  const handleNextSlide = () => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slideNext();
+    }
+  };
+
+  console.log(currentIndex);
+
   return (
-    <>
+    <div>
       <Swiper
-        style={{
-          height: "100%",
-          width: "100%",
-        }}
-        navigation={true}
-        pagination={true}
+        ref={swiperRef}
+        className="swiper"
         keyboard={true}
+        navigation={true}
         modules={[Navigation, Pagination, Keyboard]}
         spaceBetween={50}
         slidesPerView={1}
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
-        }}
-        // onSwiper={(swiper) => setSwiperInstance(swiper)}
+        onSlideChange={handleSlideChange}
       >
-        {slidesArray.map((slide) => {
-          return (
-            <SwiperSlide>
-              {slide.map((asset) => {
-                if (asset.media_type === "video") {
-                  return <p>{asset.sources[0].url}</p>;
-                }
-                if (asset.media_type === "image") {
-                  return <p>{asset.src}</p>;
-                }
-              })}
-            </SwiperSlide>
-          );
-        })}
+        {slidesArray.map((slide, index) => (
+          <SwiperSlide key={index}>
+            <div className="slide">
+              {slide.map((asset, assetIndex) => {
+                const isFirstAsset = assetIndex === 0;
+                const gridArea = isFirstAsset
+                  ? "1 / 1 / 3 / 2"
+                  : assetIndex === 1
+                  ? "1 / 2 / 2 / 3"
+                  : "2 / 2 / 3 / 3";
 
-        {slidesArray.length > 1 && (
-          <div>
-            <button
-              className="swiper-button swiper-button-prev"
-              onClick={() => {
-                if (currentIndex == 0) {
-                  swiperRef.current.slideTo(slidesArray.length - 1);
-                  setCurrentIndex(slidesArray.length - 1);
-                } else {
-                  swiperRef.current.slideTo(currentIndex - 1);
-                  setCurrentIndex(currentIndex - 1);
-                }
-              }}
-            >
-              <BsArrowLeftCircle size={30} />
-            </button>
-            <button
-              className="swiper-button swiper-button-next"
-              onClick={() => {
-                if (currentIndex == slidesArray.length - 1) {
-                  swiperRef.current.slideTo(0);
-                  setCurrentIndex(0);
-                } else {
-                  swiperRef.current.slideTo(currentIndex + 1);
-                  setCurrentIndex(currentIndex + 1);
-                }
-              }}
-            >
-              <BsArrowRightCircle size={30} />
-            </button>
-          </div>
-        )}
+                return (
+                  <div
+                    key={assetIndex}
+                    style={{ gridArea }}
+                    className="slide-asset-container"
+                  >
+                    {asset.media_type === "video" ? (
+                      <video
+                        className="slide-asset"
+                        poster={asset.preview_image.src}
+                        muted
+                        playsInline
+                        autoPlay
+                        loop
+                      >
+                        <source src={asset.sources[1].url} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    ) : asset.media_type === "image" ? (
+                      <img
+                        src={asset.src}
+                        alt={asset.alt}
+                        className="slide-asset"
+                      />
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
-    </>
+
+      {slidesArray.length > 1 && (
+        <div className="swiper-controls">
+          <button
+            className="swiper-button swiper-button-prev"
+            onClick={handlePrevSlide}
+          >
+            <BsArrowLeftCircle size={30} />
+          </button>
+          <div className="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal">
+            {slidesArray.map((_, index) => (
+              <span
+                key={index}
+                className={clsx("swiper-pagination-bullet", {
+                  "swiper-pagination-bullet-active": index === currentIndex,
+                })}
+              ></span>
+            ))}
+          </div>
+          <button
+            className="swiper-button swiper-button-next"
+            onClick={handleNextSlide}
+          >
+            <BsArrowRightCircle size={30} />
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
