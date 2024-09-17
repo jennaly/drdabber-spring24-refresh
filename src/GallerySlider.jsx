@@ -11,7 +11,6 @@ export default function GallerySlider({
   currentIndex,
   setCurrentIndex,
 }) {
-  const lastSlide = slidesArray.length - 1;
   const swiperRef = useRef(null);
 
   useEffect(() => {
