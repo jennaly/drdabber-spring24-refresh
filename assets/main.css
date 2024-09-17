@@ -2885,6 +2885,15 @@ html.has-swipe-cart-available .c-cart-modal_header::before {
   opacity: 1;
 }
 
+.product-hero-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 90rem;
+  align-items: stretch;
+}
+
 .c-product-gallery {
   position: relative;
   width: 100%;
