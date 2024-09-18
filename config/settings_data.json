@@ -68,10 +68,11 @@
           "hero_title_font_picker": "custom-font",
           "hero_title_1": "draped up",
           "hero_title_2": "dripped out",
-          "hero_cta": "shopify:\/\/collections\/boost-evo-color",
+          "hero_cta": "shopify:\/\/products\/dr-dabber-drop",
           "hero_cta_description": "",
-          "hero_cta_button_label": "shop Boost Evo™ Color",
+          "hero_cta_button_label": "shop the drop",
           "hero_image": "shopify:\/\/shop_images\/DRD-Colors_DesktopHeader.png",
+          "hero_video": "shopify:\/\/files\/videos\/Drop - Edit 7 - Horizontal Test 1.mp4",
           "hero_video_mobile": "shopify:\/\/files\/videos\/Drop - Edit 7 - Horizontal Test 1.mp4",
           "hero_background_media": "video"
         }
