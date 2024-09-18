@@ -5,6 +5,7 @@ import clsx from "clsx";
 import "swiper/css";
 import "./styles/main.css";
 import { Navigation, Pagination, Keyboard } from "swiper/modules";
+import ZoomModal from "./ZoomModal";
 
 export default function GallerySlider({
   slidesArray,
@@ -12,6 +13,9 @@ export default function GallerySlider({
   setCurrentIndex,
 }) {
   const swiperRef = useRef(null);
+  const [showZoomModal, setShowZoomModal] = useState(false);
+  const [activeAsset, setActiveAsset] = useState(null);
+  const [activeSlide, setActiveSlide] = useState(null);
 
   useEffect(() => {
     if (swiperRef.current && swiperRef.current.swiper) {
@@ -33,6 +37,12 @@ export default function GallerySlider({
     if (swiperRef.current && swiperRef.current.swiper) {
       swiperRef.current.swiper.slideNext();
     }
+  };
+
+  handleZoomClick = (asset, slide) => {
+    setActiveAsset(asset);
+    setActiveSlide(slide);
+    setShowZoomModal(true);
   };
 
   console.log(currentIndex);
@@ -65,6 +75,7 @@ export default function GallerySlider({
                     key={assetIndex}
                     style={{ gridArea }}
                     className="slide-asset-container"
+                    onClick={() => handleZoomClick(asset, slidesArray[index])}
                   >
                     {asset.media_type === "video" ? (
                       <video
@@ -118,6 +129,14 @@ export default function GallerySlider({
             <BsArrowRightCircle size={30} />
           </button>
         </div>
+      )}
+
+      {showZoomModal && activeAsset && (
+        <ZoomModal
+          activeAsset={activeAsset}
+          activeSlide={activeSlide}
+          setShowZoomModal={setShowZoomModal}
+        />
       )}
     </div>
   );

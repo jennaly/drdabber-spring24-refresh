@@ -542,6 +542,10 @@ a {
   color: currentColor;
 }
 
+.overflow-y-hidden {
+  overflow-y: hidden;
+}
+
 .o-scroll {
   min-height: 100vh;
 }
