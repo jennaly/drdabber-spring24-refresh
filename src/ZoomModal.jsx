@@ -66,7 +66,7 @@ const ZoomModal = ({
             onClick={handlePrevSlide}
             className="modal-slider-button modal-slider-button-prev"
           >
-            <BsArrowLeftCircle size={30} />
+            <BsArrowLeftCircle className="model-nav-button" />
           </button>
           <Swiper
             ref={modalSwiperRef}
@@ -75,23 +75,26 @@ const ZoomModal = ({
           >
             {activeSlide &&
               activeSlide.map((asset, index) => (
-                <SwiperSlide
-                  key={index}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <img
-                    src={asset.src}
-                    style={{
-                      maxWidth: "100%",
-                      maxHeight: "100%",
-                      objectFit: "contain",
-                    }}
-                    alt={asset.alt}
-                  />
+                <SwiperSlide key={index} className="flex-centered">
+                  {asset.media_type === "video" ? (
+                    <video
+                      className="slide-asset"
+                      poster={asset.preview_image.src}
+                      muted
+                      playsInline
+                      autoPlay
+                      loop
+                    >
+                      <source src={asset.sources[1].url} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : asset.media_type === "image" ? (
+                    <img
+                      className="slide-asset"
+                      src={asset.src}
+                      alt={asset.alt}
+                    />
+                  ) : null}
                 </SwiperSlide>
               ))}
           </Swiper>
@@ -99,7 +102,7 @@ const ZoomModal = ({
             onClick={handleNextSlide}
             className="modal-slider-button modal-slider-button-next"
           >
-            <BsArrowRightCircle size={30} />
+            <BsArrowRightCircle className="model-nav-button" />
           </button>
         </div>
 
@@ -107,7 +110,7 @@ const ZoomModal = ({
           {activeSlide &&
             activeSlide.map((asset, index) => (
               <div
-                className="modal-thumbnail-asset"
+                className="modal-thumbnail-asset-container"
                 onClick={() => handleThumbnailClick(index)}
               >
                 <div
@@ -117,9 +120,16 @@ const ZoomModal = ({
                   })}
                 ></div>
                 {asset.media_type === "video" ? (
-                  <img src={asset.preview_image.src}></img>
+                  <img
+                    src={asset.preview_image.src}
+                    className="modal-thumbnail-asset"
+                  ></img>
                 ) : asset.media_type === "image" ? (
-                  <img src={asset.src} alt={asset.alt} />
+                  <img
+                    src={asset.src}
+                    alt={asset.alt}
+                    className="modal-thumbnail-asset"
+                  />
                 ) : null}
               </div>
             ))}

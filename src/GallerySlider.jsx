@@ -112,7 +112,7 @@ export default function GallerySlider({
             className="slider-button slider-button-prev"
             onClick={handlePrevSlide}
           >
-            <BsArrowLeftCircle size={30} />
+            <BsArrowLeftCircle className="model-nav-button" />
           </button>
           <div className="slider-pagination slider-pagination-bullets slider-pagination-horizontal">
             {slidesArray.map((_, index) => (
@@ -128,7 +128,7 @@ export default function GallerySlider({
             className="slider-button slider-button-next"
             onClick={handleNextSlide}
           >
-            <BsArrowRightCircle size={30} />
+            <BsArrowRightCircle className="model-nav-button" />
           </button>
         </div>
       )}
