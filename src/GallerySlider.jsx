@@ -16,6 +16,7 @@ export default function GallerySlider({
   const [showZoomModal, setShowZoomModal] = useState(false);
   const [activeAsset, setActiveAsset] = useState(null);
   const [activeSlide, setActiveSlide] = useState(null);
+  const [activeAssetIndex, setActiveAssetIndex] = useState(null);
 
   useEffect(() => {
     if (swiperRef.current && swiperRef.current.swiper) {
@@ -39,13 +40,12 @@ export default function GallerySlider({
     }
   };
 
-  handleZoomClick = (asset, slide) => {
+  handleZoomClick = (asset, slide, assetIndex) => {
     setActiveAsset(asset);
     setActiveSlide(slide);
+    setActiveAssetIndex(assetIndex);
     setShowZoomModal(true);
   };
-
-  console.log(currentIndex);
 
   return (
     <div>
@@ -75,7 +75,9 @@ export default function GallerySlider({
                     key={assetIndex}
                     style={{ gridArea }}
                     className="slide-asset-container"
-                    onClick={() => handleZoomClick(asset, slidesArray[index])}
+                    onClick={() =>
+                      handleZoomClick(asset, slidesArray[index], assetIndex)
+                    }
                   >
                     {asset.media_type === "video" ? (
                       <video
@@ -105,25 +107,25 @@ export default function GallerySlider({
       </Swiper>
 
       {slidesArray.length > 1 && (
-        <div className="swiper-controls">
+        <div className="slider-controls">
           <button
-            className="swiper-button swiper-button-prev"
+            className="slider-button slider-button-prev"
             onClick={handlePrevSlide}
           >
             <BsArrowLeftCircle size={30} />
           </button>
-          <div className="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal">
+          <div className="slider-pagination slider-pagination-bullets slider-pagination-horizontal">
             {slidesArray.map((_, index) => (
               <span
                 key={index}
-                className={clsx("swiper-pagination-bullet", {
-                  "swiper-pagination-bullet-active": index === currentIndex,
+                className={clsx("slider-pagination-bullet", {
+                  "slider-pagination-bullet-active": index === currentIndex,
                 })}
               ></span>
             ))}
           </div>
           <button
-            className="swiper-button swiper-button-next"
+            className="slider-button slider-button-next"
             onClick={handleNextSlide}
           >
             <BsArrowRightCircle size={30} />
@@ -133,8 +135,9 @@ export default function GallerySlider({
 
       {showZoomModal && activeAsset && (
         <ZoomModal
-          activeAsset={activeAsset}
           activeSlide={activeSlide}
+          activeAssetIndex={activeAssetIndex}
+          setActiveAssetIndex={setActiveAssetIndex}
           setShowZoomModal={setShowZoomModal}
         />
       )}
