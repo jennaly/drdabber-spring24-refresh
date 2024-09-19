@@ -2770,7 +2770,7 @@ html.has-swipe-cart-available .c-cart-modal_header::before {
 @media (min-width: 1440px) {
   .c-product-form {
     /* max-width: 32.375rem; */
-    padding: 4.5rem;
+    padding: 4.5rem 0 4.5rem 4.5rem;
     width: 50%;
     max-width: 500px;
   }

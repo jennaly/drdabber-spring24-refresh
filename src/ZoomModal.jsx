@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Keyboard } from "swiper/modules";
 import clsx from "clsx";
 
 import "swiper/css/free-mode";
@@ -60,6 +62,10 @@ const ZoomModal = ({
 
   return (
     <div ref={modalRef} className="modal-container" onClick={handleCloseModal}>
+      <button onClick={handleCloseModal}>
+        <IoIosCloseCircleOutline className="modal-close-button" />
+      </button>
+
       <div ref={galleryRef} className="modal-main-gallery">
         <div className="modal-main-gallery-slider">
           <button
@@ -71,6 +77,9 @@ const ZoomModal = ({
           <Swiper
             ref={modalSwiperRef}
             onSlideChange={handleSlideChange}
+            keyboard={true}
+            navigation={true}
+            modules={[Navigation, Pagination, Keyboard]}
             style={{ width: "100%", height: "100%" }}
           >
             {activeSlide &&

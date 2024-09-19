@@ -104,6 +104,9 @@
   .modal-main-gallery-slider {
     height: 75%;
   }
+  .modal-main-gallery {
+    padding-top: 20px;
+  }
 }
 
 .modal-slider-button-prev {
@@ -229,9 +232,16 @@
 .model-nav-button {
   width: 30px;
 }
+.modal-close-button {
+  position: absolute;
+  top: 10%;
+  right: 10px;
+  width: 30px;
+}
 
 @media (min-width: 1024px) {
-  .model-nav-button {
+  .model-nav-button,
+  .modal-close-button {
     width: 35px;
   }
 }
