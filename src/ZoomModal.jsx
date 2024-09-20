@@ -1,13 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
-import { IoIosCloseCircleOutline } from "react-icons/io";
+import { AiTwotoneCloseCircle } from "react-icons/ai";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Keyboard } from "swiper/modules";
 import clsx from "clsx";
-
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
 
 const ZoomModal = ({
   activeSlide,
@@ -27,8 +23,17 @@ const ZoomModal = ({
 
   useEffect(() => {
     document.body.classList.add("overflow-y-hidden");
+    function handleEscapeKey(event) {
+      if (event.code === "Escape") {
+        handleCloseModal(event);
+      }
+    }
+
+    document.addEventListener("keydown", handleEscapeKey);
+
     return () => {
       document.body.classList.remove("overflow-y-hidden");
+      document.removeEventListener("keydown", handleEscapeKey);
     };
   }, []);
 
@@ -61,9 +66,13 @@ const ZoomModal = ({
   };
 
   return (
-    <div ref={modalRef} className="modal-container" onClick={handleCloseModal}>
-      <button onClick={handleCloseModal}>
-        <IoIosCloseCircleOutline className="modal-close-button" />
+    <div
+      ref={modalRef}
+      className="modal-container"
+      onClick={(e) => handleCloseModal(e)}
+    >
+      <button onClick={(e) => handleCloseModal(e)} aria-label="Close Modal">
+        <AiTwotoneCloseCircle className="modal-close-button" />
       </button>
 
       <div ref={galleryRef} className="modal-main-gallery">
