@@ -72,6 +72,15 @@
   background-color: rgba(0, 0, 0, 0.9);
 }
 
+@media (max-width: 768px) {
+  .modal-container {
+    margin-top: 2em;
+  }
+  .modal-main-gallery {
+    margin-top: 2.5em;
+  }
+}
+
 .modal-main-gallery {
   position: relative;
   display: flex;
@@ -92,7 +101,7 @@
   position: absolute;
   top: 50%;
   z-index: 10;
-  color: #ededed;
+  color: #696969;
 }
 
 .modal-main-gallery-slider {

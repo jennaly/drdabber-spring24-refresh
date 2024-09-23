@@ -23,6 +23,8 @@ const ZoomModal = ({
 
   useEffect(() => {
     document.body.classList.add("overflow-y-hidden");
+    document.querySelector("html").style.overflow = "hidden";
+
     function handleEscapeKey(event) {
       if (event.code === "Escape") {
         handleCloseModal(event);
@@ -33,6 +35,7 @@ const ZoomModal = ({
 
     return () => {
       document.body.classList.remove("overflow-y-hidden");
+      document.querySelector("html").style.overflow = "scroll";
       document.removeEventListener("keydown", handleEscapeKey);
     };
   }, []);
