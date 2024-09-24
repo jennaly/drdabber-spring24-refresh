@@ -3199,6 +3199,108 @@ html.is-gallery-ready .c-product-gallery {
   overflow: initial;
 }
 
+.product-lifestyle-gallery {
+  display: grid;
+  gap: 30px;
+  max-width: 90rem;
+  margin: 5rem auto;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.product-lifestyle-gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 425px) {
+  .product-lifestyle-gallery {
+    gap: 10px;
+  }
+  .product-lifestyle-gallery {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-lifestyle-gallery {
+    display: grid;
+    gap: 20px;
+    margin: 55px auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas: "img0 img0 img1" "img0 img0 img2" "img3 img5 img5" "img4 img5 img5";
+  }
+  .product-lifestyle-gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+  .lifestyle-image-0 {
+    grid-area: img0;
+  }
+  .lifestyle-image-1 {
+    grid-area: img1;
+  }
+  .lifestyle-image-2 {
+    grid-area: img2;
+  }
+  .lifestyle-image-3 {
+    grid-area: img3;
+  }
+  .lifestyle-image-4 {
+    grid-area: img4;
+  }
+  .lifestyle-image-5 {
+    grid-area: img5;
+  }
+
+  .lifestyle-image-0,
+  .lifestyle-image-5 {
+    aspect-ratio: 2 / 2;
+  }
+  .lifestyle-image-1,
+  .lifestyle-image-2,
+  .lifestyle-image-3,
+  .lifestyle-image-4 {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media (min-width: 769px) {
+  .product-lifestyle-gallery {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: "img0 img1 img3 img5" "img0 img2 img4 img5";
+  }
+
+  .product-lifestyle-gallery-image {
+    border-radius: 30px;
+  }
+
+  .lifestyle-image-0 {
+    grid-area: img0;
+  }
+  .lifestyle-image-1 {
+    grid-area: img1;
+  }
+  .lifestyle-image-2 {
+    grid-area: img2;
+  }
+  .lifestyle-image-3 {
+    grid-area: img3;
+  }
+  .lifestyle-image-4 {
+    grid-area: img4;
+  }
+  .lifestyle-image-5 {
+    grid-area: img5;
+  }
+}
+
 @keyframes spin {
   0% {
     transform: translate3d(0, -50%, 0) rotate(0deg);
