@@ -1,9 +1,12 @@
 <div class="c-product-hero u-relative">
-    <div class="o-grid -center-items-y u-grid-col-2@from-medium">
-        {% include 'product-gallery' %}
-        {% include 'product-form' %}
-    </div>
-
-    {% comment %} Model viewer {% endcomment %}
-    {% include 'product-model-viewer' %}
+  <div class="product-hero-container">
+    {% comment %} <div class="o-grid -center-items-y u-grid-col-2@from-medium"> {% endcomment %}
+    {% comment %} {% include 'product-gallery' %} {% endcomment %}
+    {% render 'react-product-gallery' %}
+    {% include 'product-form' %}
 </div>
+
+  {% comment %} {% render 'react-product-gallery' %} {% endcomment %}
+
+  {% comment %} Model viewer {% endcomment %}
+  {% include 'product-model-viewer' %}

@@ -1,0 +1,256 @@
+.slider {
+  height: 100%;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  display: none !important;
+}
+
+.slider-controls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+  align-items: end;
+}
+
+.slider-pagination {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  transition: 0.3s opacity;
+  transform: translateZ(0);
+  z-index: 10;
+  width: fit-content;
+}
+
+.slider-pagination-bullet.is-active:before,
+.slider-pagination-bullet.slider-pagination-bullet-active:before {
+  background-color: #00e2ed;
+}
+
+.slider-pagination-bullet:before {
+  display: block;
+  content: "";
+  width: 28px;
+  height: 1px;
+  background-color: #737373;
+}
+.slider-pagination-bullet {
+  display: block;
+  margin: 0 3px;
+  border-radius: 30px;
+  padding: 15px 0;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.slider-button-prev,
+.slider-button-next {
+  width: calc(var(--swiper-navigation-size) / 44 * 27);
+  height: var(--swiper-navigation-size);
+  margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #696969;
+}
+
+.modal-container {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+@media (max-width: 768px) {
+  .modal-container {
+    margin-top: 2em;
+  }
+  .modal-main-gallery {
+    margin-top: 2.5em;
+  }
+}
+
+.modal-main-gallery {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2vh;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  max-width: 90%;
+  width: 48rem;
+  height: fit-content;
+  overflow: hidden;
+}
+
+.modal-slider-button {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  color: #696969;
+}
+
+.modal-main-gallery-slider {
+  width: 100%;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .modal-main-gallery-slider {
+    height: 75%;
+  }
+  .modal-main-gallery {
+    padding-top: 20px;
+  }
+}
+
+.modal-slider-button-prev {
+  left: 10px;
+}
+
+.modal-slider-button-next {
+  right: 10px;
+}
+
+.modal-thumbnail-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.modal-slide-asset {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.modal-thumbnail-asset-container {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  cursor: pointer;
+  position: relative;
+  border-radius: 15px;
+}
+
+.modal-thumbnail-asset {
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-thumbnail-asset-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+}
+
+.modal-thumbnail-asset-overlay-active {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.slide {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+  aspect-ratio: 3/2;
+  width: 100%;
+}
+
+.slide-asset-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-asset {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.slide-asset:hover {
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .slide-asset {
+    border-radius: 20px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .slide-asset {
+    border-radius: 30px;
+  }
+}
+
+.gallery-container {
+  width: 100%;
+  /* height: 350px; */
+}
+
+@media (min-width: 1000px) {
+  .product-gallery-container {
+    width: 50%;
+  }
+}
+
+@media (max-width: 699px) {
+  .product-gallery-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (min-width: 700px) {
+  .product-gallery-container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+.flex-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.model-nav-button {
+  width: 30px;
+}
+.modal-close-button {
+  position: absolute;
+  top: 10%;
+  right: 10px;
+  width: 30px;
+}
+
+@media (min-width: 1024px) {
+  .model-nav-button,
+  .modal-close-button {
+    width: 35px;
+  }
+}

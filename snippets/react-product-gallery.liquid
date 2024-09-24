@@ -1,0 +1,13 @@
+<div id="product-gallery" class="product-gallery-container"></div>
+
+
+<script>
+  window.defaultVariantOnly = {{ product.has_only_default_variant | json}}
+  window.product_data = {{ product | json }};
+  window.media = {{ product.media | json }};
+  window.firstSelectedVariant = {{ product.selected_or_first_available_variant | json }};
+</script>
+
+<script src="{{ 'vite-gallery.js' | asset_url }}" defer></script>
+
+{% comment %} {{ 'vite-gallery.js' | asset_url | script_tag }} {% endcomment %}
