@@ -156,6 +156,19 @@
       </div>
     {% endif %}
 
+
+    {%- comment -%} Product Lifestyle Gallery {%- endcomment -%}
+    {% if product.metafields.custom.product_lifestyle_gallery %}
+      <div class="product-lifestyle-gallery">
+        {% for image in product.metafields.custom.product_lifestyle_gallery.value limit: 6 %}
+          {% assign index = forloop.index0 %}
+          <div class="image-wrapper lifestyle-image-{{ index }}">
+            <img src="{{ image | img_url: "2000x2000" }}" class="product-lifestyle-gallery-image">
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
     {% include 'product-accordions' %}
 
     {% if product_main_video_id != blank %}
