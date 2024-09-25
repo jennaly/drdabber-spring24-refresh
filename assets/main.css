@@ -3301,6 +3301,13 @@ html.is-gallery-ready .c-product-gallery {
   }
 }
 
+@media (max-width: 699px) {
+  .product-lifestyle-gallery {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 @keyframes spin {
   0% {
     transform: translate3d(0, -50%, 0) rotate(0deg);
