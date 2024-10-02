@@ -3208,7 +3208,7 @@ html.is-gallery-ready .c-product-gallery {
 .product-lifestyle-gallery {
   display: grid;
   gap: 30px;
-  max-width: 90rem;
+  max-width: 63.375rem;
   margin: 5rem auto;
   padding-left: 2.5rem;
   padding-right: 2.5rem;
@@ -3227,6 +3227,13 @@ html.is-gallery-ready .c-product-gallery {
   .product-lifestyle-gallery {
     padding-left: 20px;
     padding-right: 20px;
+  }
+}
+
+@media (min-width: 700px) {
+  .product-lifestyle-gallery {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 }
 
