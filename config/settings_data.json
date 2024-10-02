@@ -9,50 +9,50 @@
 */
 {
   "current": {
-    "support_url": "shopify:\/\/pages\/support",
-    "warranty_content": "<p>All Dr. Dabber Vaporizers are backed by our industry leading 1 year warranty (note: Dr. Dabber SWITCH has a 2 year warranty). If your product isn't working properly, you can reach out to our award winning customer service team by email, phone or live chat and we will get you up and running. We believe in building quality products that we can support, so feel free to reach out with any questions or concerns you may have.<\/p>",
-    "shipping_content": "<h6>Shipping<\/h6>\n<ul>\n<li>Free Domestic Shipping on all orders over $150<\/li>\n<li>Expedited delivery options also available<\/li>\n<li>Purchases are delivered in a plain cardboard box or envelope, with the exception of certain items<\/li>\n<li>See the delivery FAQs for details on shipping methods, costs and delivery times<\/li>\n<\/ul>\n\n<h6>Returns and exchanges<\/h6>\n<ul>\n<li>Items can be returned within 30 days of purchase as long as they are unopened, in original packaging<\/li>\n<li>See conditions and procedure in our return FAQs<\/li>\n<\/ul>",
+    "support_url": "shopify://pages/support",
+    "warranty_content": "<p>All Dr. Dabber Vaporizers are backed by our industry leading 1 year warranty (note: Dr. Dabber SWITCH has a 2 year warranty). If your product isn't working properly, you can reach out to our award winning customer service team by email, phone or live chat and we will get you up and running. We believe in building quality products that we can support, so feel free to reach out with any questions or concerns you may have.</p>",
+    "shipping_content": "<h6>Shipping</h6>\n<ul>\n<li>Free Domestic Shipping on all orders over $150</li>\n<li>Expedited delivery options also available</li>\n<li>Purchases are delivered in a plain cardboard box or envelope, with the exception of certain items</li>\n<li>See the delivery FAQs for details on shipping methods, costs and delivery times</li>\n</ul>\n\n<h6>Returns and exchanges</h6>\n<ul>\n<li>Items can be returned within 30 days of purchase as long as they are unopened, in original packaging</li>\n<li>See conditions and procedure in our return FAQs</li>\n</ul>",
     "top_bar_shipping": "Free shipping over $150",
-    "top_bar_url": "shopify:\/\/collections\/all",
+    "top_bar_url": "shopify://collections/all",
     "top_bar_text": "710 Sale still LIVE",
     "top_bar_button_label": "20%Off Accessories",
     "product_message_out_of_stock": "Currently out of stock",
     "product_message_variant_doesnt_exist": "The variant does not exist.",
     "product_message_quantity_not_available": "Quantity is not available.",
     "product_message_quantity_exceed": "Sorry you can't add more items.",
-    "about_excerpt": "Dr.Dabber® works tirelessly to develop and create the coolest, most innovative vaporizers on earth. We take chances that other companies won’t in the pursuit of creating the best vape pens and <a href=\"https:\/\/www.drdabber.com\/blogs\/news\/what-is-the-best-electric-dab-rig\">electric dab rigs <\/a>possible. We insist on using the best materials available to us, 'cost-cutting’ is not in our vocabulary.",
-    "about_button_link": "shopify:\/\/pages\/about-us",
+    "about_excerpt": "Dr.Dabber® works tirelessly to develop and create the coolest, most innovative vaporizers on earth. We take chances that other companies won’t in the pursuit of creating the best vape pens and <a href=\"https://www.drdabber.com/blogs/news/what-is-the-best-electric-dab-rig\">electric dab rigs </a>possible. We insist on using the best materials available to us, 'cost-cutting’ is not in our vocabulary.",
+    "about_button_link": "shopify://pages/about-us",
     "about_button_label": "About us",
     "about_decorative_label_a": "Elevate Higher™",
     "about_decorative_label_b": "Ultimate Dabbing Experience",
     "about_decorative_label_c": "Since 2013",
     "card_title_a": "Fast and Free Shipping",
     "card_text_a": "We process all orders within 2-4 business days and offer free shipping on all domestic orders over $150",
-    "card_icon_a": "shopify:\/\/shop_images\/shipping.png",
+    "card_icon_a": "shopify://shop_images/shipping.png",
     "card_title_b": "Flexible Payment Options",
     "card_text_b": "We accept as many payment options as possible, including Visa, MasterCard, Amex, Cryptocurrency & Sezzle.",
-    "card_icon_b": "shopify:\/\/shop_images\/payment.png",
+    "card_icon_b": "shopify://shop_images/payment.png",
     "card_title_c": "Rewards Program",
     "card_text_c": "With more ways to unlock exciting perks, this is your all access pass to exclusive rewards.",
-    "card_icon_c": "shopify:\/\/shop_images\/reward.png",
+    "card_icon_c": "shopify://shop_images/reward.png",
     "card_title_d": "Award Winning Customer Service",
     "card_text_d": "Customers can reach award winning customer service agents by phone, email or live chat.",
-    "card_icon_d": "shopify:\/\/shop_images\/service.png",
+    "card_icon_d": "shopify://shop_images/service.png",
     "cart_title": "Cart",
     "cart_empty": "Your cart is empty.",
     "cart_taxes_hint": "Shipping and taxes calculated at checkout.",
     "cart_conditions": "",
     "stamped_apikey": "pubkey-2oW9KsO5497PgJLKU0LTG3503zyre3",
     "product_carousel_product_page": "sale",
-    "socials_instagram_url": "https:\/\/www.instagram.com\/drdabber\/",
-    "socials_facebook_url": "https:\/\/www.facebook.com\/drdabber\/",
-    "socials_twitter_url": "https:\/\/twitter.com\/drdabber",
-    "socials_linkedin_url": "https:\/\/www.linkedin.com\/company\/dr.-dabber\/",
-    "socials_youtube_url": "https:\/\/www.youtube.com\/channel\/UC0NVkIgwKy-ttYw9RSumj6w",
-    "socials_discord_url": "https:\/\/discord.gg\/eAgBQDQ7Sp",
+    "socials_instagram_url": "https://www.instagram.com/drdabber/",
+    "socials_facebook_url": "https://www.facebook.com/drdabber/",
+    "socials_twitter_url": "https://twitter.com/drdabber",
+    "socials_linkedin_url": "https://www.linkedin.com/company/dr.-dabber/",
+    "socials_youtube_url": "https://www.youtube.com/channel/UC0NVkIgwKy-ttYw9RSumj6w",
+    "socials_discord_url": "https://discord.gg/eAgBQDQ7Sp",
     "contact_phone": "",
     "contact_email": "info@drdabber.com",
-    "top_bar_support_url": "shopify:\/\/pages\/support",
+    "top_bar_support_url": "shopify://pages/support",
     "top_bar_product_id": "boost-evo",
     "notification_product_id": "boost-evo",
     "notification_product_button_label": "Shop now",
@@ -68,12 +68,12 @@
           "hero_title_font_picker": "custom-font",
           "hero_title_1": "draped up",
           "hero_title_2": "dripped out",
-          "hero_cta": "shopify:\/\/products\/dr-dabber-drop",
+          "hero_cta": "shopify://products/dr-dabber-drop",
           "hero_cta_description": "",
           "hero_cta_button_label": "shop the drop",
-          "hero_image": "shopify:\/\/shop_images\/DRD-Colors_DesktopHeader.png",
-          "hero_video": "shopify:\/\/files\/videos\/Drop - Edit 7 - Horizontal Test 1.mp4",
-          "hero_video_mobile": "shopify:\/\/files\/videos\/Drop - Edit 7 - vertical.mp4",
+          "hero_image": "shopify://shop_images/DRD-Colors_DesktopHeader.png",
+          "hero_video": "shopify://files/videos/Drop - Edit 7 - Horizontal Test 1.mp4",
+          "hero_video_mobile": "shopify://files/videos/Drop - Edit 7 - vertical.mp4",
           "hero_background_media": "video"
         }
       },
@@ -97,10 +97,10 @@
               "splash_title_font_shopify": "helvetica_n4",
               "splash_title_font_custom": "Druk Wide",
               "splash_title_font_picker": "custom-font",
-              "splash_cta": "shopify:\/\/products\/switch-1",
+              "splash_cta": "shopify://products/switch-1",
               "splash_cta_description": "A proprietary vaporizer built for the discerning connoisseur.",
               "splash_cta_button_label": "Shop now",
-              "splash_image": "shopify:\/\/shop_images\/switch_x2_banner_final.jpg",
+              "splash_image": "shopify://shop_images/switch_x2_banner_final.jpg",
               "banner_bg_media": "image",
               "banner_name": ""
             }
@@ -119,12 +119,12 @@
               "splash_title_font_shopify": "helvetica_n4",
               "splash_title_font_custom": "Druk Wide",
               "splash_title_font_picker": "shopify-font",
-              "splash_cta": "shopify:\/\/collections\/boost-evo",
+              "splash_cta": "shopify://collections/boost-evo",
               "splash_cta_description": "Incorporating proprietary technology, with one goal in mind: the perfect dab.",
               "splash_cta_button_label": "SHOP NOW",
-              "splash_image": "shopify:\/\/shop_images\/boost-test-1900x800.jpg",
-              "banner_video": "shopify:\/\/files\/videos\/boost_black_timelapse.mp4",
-              "banner_bg_media": "video",
+              "splash_image": "shopify://shop_images/boost-test-1900x800.jpg",
+              "banner_video": "shopify://files/videos/boost_black_timelapse.mp4",
+              "banner_bg_media": "image",
               "banner_name": ""
             }
           },
@@ -143,11 +143,11 @@
               "splash_title_font_shopify": "helvetica_n4",
               "splash_title_font_custom": "Druk Wide",
               "splash_title_font_picker": "shopify-font",
-              "splash_cta": "shopify:\/\/products\/xs",
+              "splash_cta": "shopify://products/xs",
               "splash_cta_description": "Setting the standard for premium vaporizers.",
               "splash_cta_button_label": "SHOP NOW",
-              "splash_image": "shopify:\/\/shop_images\/xs_cloud_banner_night_3b.png",
-              "banner_video": "shopify:\/\/files\/videos\/final_5f1a69fbcf296d0015c00b66_653139.mp4",
+              "splash_image": "shopify://shop_images/xs_cloud_banner_night_3b.png",
+              "banner_video": "shopify://files/videos/final_5f1a69fbcf296d0015c00b66_653139.mp4",
               "banner_bg_media": "video",
               "banner_name": ""
             }
@@ -179,7 +179,7 @@
           "header_card1_title": "Dr.Dabber® <br> Knowledge Base",
           "header_card1_description": "We've got you covered with support documentation for all of our vaporizers and answers to our most commonly asked questions based on years of assisting hundreds of thousands of customers.",
           "header_card1_button_label": "Help center",
-          "header_card1_button_link": "https:\/\/drdabber.helpscoutdocs.com\/",
+          "header_card1_button_link": "https://drdabber.helpscoutdocs.com/",
           "header_card1_is_chat": false,
           "header_card2_title": "An Award-Winning<br> Support Team",
           "header_card2_description": "Backed by an industry-leading warranty and award-winning customer service, you can rest assured when you invest in a Dr. Dabber vaporizer.",
@@ -195,24 +195,24 @@
             "type": "document",
             "settings": {
               "document_product": "xs",
-              "document_guide": "https:\/\/drdabber.helpscoutdocs.com\/article\/114-xs-knowledge-base",
-              "document_manual": "https:\/\/drdabber.helpscoutdocs.com\/article\/115-xs-user-manual"
+              "document_guide": "https://drdabber.helpscoutdocs.com/article/114-xs-knowledge-base",
+              "document_manual": "https://drdabber.helpscoutdocs.com/article/115-xs-user-manual"
             }
           },
           "8bd1c61d-6734-4859-b9d3-62fe1c9a84c3": {
             "type": "document",
             "settings": {
               "document_product": "switch-1",
-              "document_guide": "https:\/\/drdabber.helpscoutdocs.com\/article\/98-switch-support",
-              "document_manual": "https:\/\/drdabber.helpscoutdocs.com\/article\/76-switch-user-manaul"
+              "document_guide": "https://drdabber.helpscoutdocs.com/article/98-switch-support",
+              "document_manual": "https://drdabber.helpscoutdocs.com/article/76-switch-user-manaul"
             }
           },
           "adf1f535-5080-4eef-9353-ab2c768fc9bc": {
             "type": "document",
             "settings": {
               "document_product": "boost-evo",
-              "document_guide": "https:\/\/drdabber.helpscoutdocs.com\/article\/119-boost-evo-knowledge-base",
-              "document_manual": "https:\/\/drdabber.helpscoutdocs.com\/article\/112-boost-evo-user-manual"
+              "document_guide": "https://drdabber.helpscoutdocs.com/article/119-boost-evo-knowledge-base",
+              "document_manual": "https://drdabber.helpscoutdocs.com/article/112-boost-evo-user-manual"
             }
           },
           "76435de3-1943-4663-85e0-61c0baf0ef68": {
@@ -220,24 +220,24 @@
             "disabled": true,
             "settings": {
               "document_product": "stella-vaporizer-kit",
-              "document_guide": "https:\/\/drdabber.helpscoutdocs.com\/article\/108-stella-support",
-              "document_manual": "https:\/\/drdabber.helpscoutdocs.com\/article\/109-stella-user-manual"
+              "document_guide": "https://drdabber.helpscoutdocs.com/article/108-stella-support",
+              "document_manual": "https://drdabber.helpscoutdocs.com/article/109-stella-user-manual"
             }
           },
           "3057c032-c1a8-4f26-b9b8-9ca637d6f71d": {
             "type": "document",
             "settings": {
               "document_product": "ghost-kit",
-              "document_guide": "https:\/\/drdabber.helpscoutdocs.com\/article\/79-ghost-support",
-              "document_manual": "https:\/\/drdabber.helpscoutdocs.com\/article\/100-ghost-user-manual"
+              "document_guide": "https://drdabber.helpscoutdocs.com/article/79-ghost-support",
+              "document_manual": "https://drdabber.helpscoutdocs.com/article/100-ghost-user-manual"
             }
           },
           "91089689-b3a5-4614-a3a9-0f5e3196b0ba": {
             "type": "document",
             "settings": {
               "document_product": "light-vaporizer-pen-kit",
-              "document_guide": "https:\/\/drdabber.helpscoutdocs.com\/article\/80-light-support",
-              "document_manual": "https:\/\/drdabber.helpscoutdocs.com\/article\/101-light-user-manual"
+              "document_guide": "https://drdabber.helpscoutdocs.com/article/80-light-support",
+              "document_manual": "https://drdabber.helpscoutdocs.com/article/101-light-user-manual"
             }
           }
         },
@@ -258,12 +258,12 @@
           "footer_card1_title": "Dr.Dabber® <br> Blog",
           "footer_card1_description": "Check out the Dr. Dabber blog for the latest news and updates on the industry, tips and tricks for all of our vaporizers, and more.",
           "footer_card1_button_label": "Read more",
-          "footer_card1_button_link": "shopify:\/\/blogs\/news",
+          "footer_card1_button_link": "shopify://blogs/news",
           "footer_card1_is_chat": false,
           "footer_card2_title": "Visit the Dr.Dabber<br> YouTube Channel",
           "footer_card2_description": "Whether it's function videos or tutorials you're looking for, the official Dr. Dabber Youtube channel is a great source of information.",
           "footer_card2_button_label": "Watch now",
-          "footer_card2_button_link": "https:\/\/www.youtube.com\/channel\/UC0NVkIgwKy-ttYw9RSumj6w",
+          "footer_card2_button_link": "https://www.youtube.com/channel/UC0NVkIgwKy-ttYw9RSumj6w",
           "footer_card2_is_chat": false
         }
       },
@@ -274,7 +274,7 @@
             "type": "faq_item",
             "settings": {
               "title": "Why should I choose Dr. Dabber vaporizers over the competition?",
-              "text": "<p>Because our <a href=\"https:\/\/www.drdabber.com\/collections\/vaporizers\"><span style=\"text-decoration:underline\">vaporizers<\/span><\/a> are purpose-built essential oil vaporizing tools. We analysed the market and adjusted our product to satisfy vaper's concerns with other products. The biggest difference with our <a href=\"https:\/\/www.drdabber.com\/\"><span style=\"text-decoration:underline\">vape pens<\/span><\/a> is that we utilize low heat, high resistance Titanium Technology which ensures you never burn or char your product. Our coils gently heat to the ideal temperature, instead of attempting to achieve the highest temperature possible as quickly as possible. Many <a href=\"https:\/\/www.drdabber.com\/collections\/vaporizers\"><span style=\"text-decoration:underline\">vaporizers<\/span><\/a> with a similar design will glow red hot almost instantly after pressing the button, which simply burns your product on contact. This seriously compromises flavor and efficacy.<\/p>",
+              "text": "<p>Because our <a href=\"https://www.drdabber.com/collections/vaporizers\"><span style=\"text-decoration:underline\">vaporizers</span></a> are purpose-built essential oil vaporizing tools. We analysed the market and adjusted our product to satisfy vaper's concerns with other products. The biggest difference with our <a href=\"https://www.drdabber.com/\"><span style=\"text-decoration:underline\">vape pens</span></a> is that we utilize low heat, high resistance Titanium Technology which ensures you never burn or char your product. Our coils gently heat to the ideal temperature, instead of attempting to achieve the highest temperature possible as quickly as possible. Many <a href=\"https://www.drdabber.com/collections/vaporizers\"><span style=\"text-decoration:underline\">vaporizers</span></a> with a similar design will glow red hot almost instantly after pressing the button, which simply burns your product on contact. This seriously compromises flavor and efficacy.</p>",
               "featured_cta_label": "",
               "featured_cta_url": ""
             }
@@ -283,7 +283,7 @@
             "type": "faq_item",
             "settings": {
               "title": "Which Dr. Dabber product is for me?",
-              "text": "<p>The Dr. <a href=\"https:\/\/www.drdabber.com\/products\/switch-bundle\" title=\"https:\/\/www.drdabber.com\/products\/switch-bundle\">Dabber Switch<\/a> is the next generation of <a href=\"https:\/\/www.drdabber.com\/collections\/vaporizers\"><span style=\"text-decoration:underline\">vaporizer<\/span><\/a>. Utilizing patent pending induction heating technology, the Switch delivers unparalleled performance with both oil and leaf products.<br\/>The Dr. Dabber <a href=\"https:\/\/www.drdabber.com\/products\/boost-evo-bundle\" title=\"https:\/\/www.drdabber.com\/products\/boost-evo-bundle\">Boost EVO<\/a> has been painstakingly built from the ground up, incorporating proprietary technology, with one goal in mind: the perfect dab.<br\/>The Dr. <a href=\"https:\/\/www.drdabber.com\/products\/stella-vaporizer-kit\" title=\"https:\/\/www.drdabber.com\/products\/stella-vaporizer-kit\">Dabber Stella<\/a> is the new standard for a premium <a href=\"https:\/\/www.drdabber.com\/collections\/vaporizers\"><span style=\"text-decoration:underline\">vaporizer<\/span><\/a> pen offering 4 heat settings, pass-through charging, and a floating vaporization chamber.<br\/>The Dr. Dabber Ghost is the original award-winning premium low-heat <a href=\"https:\/\/www.drdabber.com\/collections\/vaporizers\"><span style=\"text-decoration:underline\">vaporizer<\/span><\/a> pen.<br\/>The Dr. Dabber Light is a smaller, compact version of the Ghost with a smaller battery and a smaller loading chamber.<\/p>",
+              "text": "<p>The Dr. <a href=\"https://www.drdabber.com/products/switch-bundle\" title=\"https://www.drdabber.com/products/switch-bundle\">Dabber Switch</a> is the next generation of <a href=\"https://www.drdabber.com/collections/vaporizers\"><span style=\"text-decoration:underline\">vaporizer</span></a>. Utilizing patent pending induction heating technology, the Switch delivers unparalleled performance with both oil and leaf products.<br/>The Dr. Dabber <a href=\"https://www.drdabber.com/products/boost-evo-bundle\" title=\"https://www.drdabber.com/products/boost-evo-bundle\">Boost EVO</a> has been painstakingly built from the ground up, incorporating proprietary technology, with one goal in mind: the perfect dab.<br/>The Dr. <a href=\"https://www.drdabber.com/products/stella-vaporizer-kit\" title=\"https://www.drdabber.com/products/stella-vaporizer-kit\">Dabber Stella</a> is the new standard for a premium <a href=\"https://www.drdabber.com/collections/vaporizers\"><span style=\"text-decoration:underline\">vaporizer</span></a> pen offering 4 heat settings, pass-through charging, and a floating vaporization chamber.<br/>The Dr. Dabber Ghost is the original award-winning premium low-heat <a href=\"https://www.drdabber.com/collections/vaporizers\"><span style=\"text-decoration:underline\">vaporizer</span></a> pen.<br/>The Dr. Dabber Light is a smaller, compact version of the Ghost with a smaller battery and a smaller loading chamber.</p>",
               "featured_cta_label": "",
               "featured_cta_url": ""
             }
@@ -292,7 +292,7 @@
             "type": "faq_item",
             "settings": {
               "title": "What is Induction Heating?",
-              "text": "<p>The SWITCH is our first induction heating unit capable of vaporizing oil or leaf materials with precise power & carefully calibrated temperature profiles. In technical terms, induction heating is a precision directed energy delivery system using electromagnetic coupling to transmit energy in the form of an oscillating magnetic field into the induction cups. Advanced electronics are employed to create a high frequency alternating magnetic field. The magnetic field is absorbed by the induction cups. During this process of absorbing the induced magnetic field, heat is created. Utilizing induction heating means the SWITCH has a number of advantages including extremely fast heat up times, no exposed electronics, and no atomizer that needs to be replaced over time.<\/p>",
+              "text": "<p>The SWITCH is our first induction heating unit capable of vaporizing oil or leaf materials with precise power & carefully calibrated temperature profiles. In technical terms, induction heating is a precision directed energy delivery system using electromagnetic coupling to transmit energy in the form of an oscillating magnetic field into the induction cups. Advanced electronics are employed to create a high frequency alternating magnetic field. The magnetic field is absorbed by the induction cups. During this process of absorbing the induced magnetic field, heat is created. Utilizing induction heating means the SWITCH has a number of advantages including extremely fast heat up times, no exposed electronics, and no atomizer that needs to be replaced over time.</p>",
               "featured_cta_label": "",
               "featured_cta_url": ""
             }
@@ -301,7 +301,7 @@
             "type": "faq_item",
             "settings": {
               "title": "What is Titanium Technology?",
-              "text": "<p>Titanium Technology is the driving force behind Dr. Dabber&#x27;s incredible flavor. By employing Grade 2 titanium in our Ghost, Ghost Ceramic, Light, Globe and Glass atomizer coils, we are able to heat at a much lower temperature. This low temp, high resistance setup results in your heating coils staying at ideal temperature for longer, ensuring you do not burn your essential oils.<\/p>",
+              "text": "<p>Titanium Technology is the driving force behind Dr. Dabber&#x27;s incredible flavor. By employing Grade 2 titanium in our Ghost, Ghost Ceramic, Light, Globe and Glass atomizer coils, we are able to heat at a much lower temperature. This low temp, high resistance setup results in your heating coils staying at ideal temperature for longer, ensuring you do not burn your essential oils.</p>",
               "featured_cta_label": "",
               "featured_cta_url": ""
             }
@@ -324,7 +324,7 @@
             "settings": {
               "title": "Free Shipping",
               "content": "Dr. Dabber offers FREE ground delivery on qualifying domestic wholesale orders totalling $1,000.00 USD or more. Competitive rates available for orders requiring freight due to size and weight.",
-              "icon": "shopify:\/\/shop_images\/box.png"
+              "icon": "shopify://shop_images/box.png"
             }
           },
           "0eec5c39-6508-4e2c-8192-a3db1ce8599f": {
@@ -332,7 +332,7 @@
             "settings": {
               "title": "Early access to promos",
               "content": "Take advantage of current Dr. Dabber e-commerce promotions and always have the best deal in town!",
-              "icon": "shopify:\/\/shop_images\/tag.png"
+              "icon": "shopify://shop_images/tag.png"
             }
           },
           "00931833-565b-4e66-b86a-911d0358a33f": {
@@ -340,7 +340,7 @@
             "settings": {
               "title": "Merchandising",
               "content": "Let us set you up a beautiful display, custom built to fit your showroom. Provide an engaging experience for your customers, and present the newest products on the perfect stage.",
-              "icon": "shopify:\/\/shop_images\/shopping-bag.png"
+              "icon": "shopify://shop_images/shopping-bag.png"
             }
           },
           "97f0ffa4-7964-437e-8be9-481f8cd677b7": {
@@ -348,7 +348,7 @@
             "settings": {
               "title": "Content library",
               "content": "Our wholesalers and partners have access to a robust library of Dr. Dabber brand assets, images, videos and banner ads to help promote your store.",
-              "icon": "shopify:\/\/shop_images\/download-cloud.png"
+              "icon": "shopify://shop_images/download-cloud.png"
             }
           },
           "b8523852-e90d-4d0a-8fea-ab1462ff3c37": {
@@ -356,7 +356,7 @@
             "settings": {
               "title": "Activation teams",
               "content": "Allow us to educate your staff and patrons through unique and educational pop-up opportunities. Consumption and non-consumption settings are always welcomed!",
-              "icon": "shopify:\/\/shop_images\/users.png"
+              "icon": "shopify://shop_images/users.png"
             }
           },
           "2450e88d-77ee-49d5-ad23-38b06a1a94a5": {
@@ -364,7 +364,7 @@
             "settings": {
               "title": "VIP Support",
               "content": "Take advantage of our dedicated wholesale customer support line. We are here to answer your questions, and those of your customer. Give us a call, we are here to help!",
-              "icon": "shopify:\/\/shop_images\/call.png"
+              "icon": "shopify://shop_images/call.png"
             }
           }
         },
@@ -382,7 +382,7 @@
       "block-about-intro": {
         "type": "block-about-intro",
         "settings": {
-          "about_intro": "As a technology driven vaporizer company, Dr. Dabber focuses on creating products that are custom tailored to our customers’ needs. We understand those needs better than most because we’re just like you. We created Dr. Dabber in 2013 to solve the issue of questionable quality and dated technology that we had experienced ourselves as unsatisfied customers. We set out with a goal to create a better quality vaporizer, built out of the best materials and backed by an awesome customer support team.<br><br>\n\nFast forward to today and we’re proud to offer an entire line of award-winning vaporizers to suit every situation. What started with the Dr. Dabber Ghost, one of the most awarded vaporizer pens of all time, has turned into an operation where the entire design\/engineering process for each of our vaporizers is done in-house, from start to finish by our talented engineers and designers with the solitary goal of building proprietary technologies to improve every aspect of your experience possible. Rest assured when you invest in a Dr. Dabber product as all of our vaporizers are covered by an industry-leading warranty.<br><br>\n\nWhat we believe sets us apart from the rest is our dedication to our customers, which we put as much thought and effort into as we do creating the products you know and love. We believe in our products and our dedication truly shines through with our exceptionally knowledgeable in-house customer support team–a team that has earned multiple awards over the years for the support they’ve provided to countless customers all over the world. We will always go above and beyond to make sure the people that invest in us feel taken care of, no matter what the situation is. We don’t just want you to buy a Dr. Dabber product, we want you to join the Dr. Dabber Family!"
+          "about_intro": "As a technology driven vaporizer company, Dr. Dabber focuses on creating products that are custom tailored to our customers’ needs. We understand those needs better than most because we’re just like you. We created Dr. Dabber in 2013 to solve the issue of questionable quality and dated technology that we had experienced ourselves as unsatisfied customers. We set out with a goal to create a better quality vaporizer, built out of the best materials and backed by an awesome customer support team.<br><br>\n\nFast forward to today and we’re proud to offer an entire line of award-winning vaporizers to suit every situation. What started with the Dr. Dabber Ghost, one of the most awarded vaporizer pens of all time, has turned into an operation where the entire design/engineering process for each of our vaporizers is done in-house, from start to finish by our talented engineers and designers with the solitary goal of building proprietary technologies to improve every aspect of your experience possible. Rest assured when you invest in a Dr. Dabber product as all of our vaporizers are covered by an industry-leading warranty.<br><br>\n\nWhat we believe sets us apart from the rest is our dedication to our customers, which we put as much thought and effort into as we do creating the products you know and love. We believe in our products and our dedication truly shines through with our exceptionally knowledgeable in-house customer support team–a team that has earned multiple awards over the years for the support they’ve provided to countless customers all over the world. We will always go above and beyond to make sure the people that invest in us feel taken care of, no matter what the situation is. We don’t just want you to buy a Dr. Dabber product, we want you to join the Dr. Dabber Family!"
         }
       }
     },
@@ -391,7 +391,7 @@
     ],
     "blocks": {
       "18228966181090706294": {
-        "type": "shopify:\/\/apps\/selleasy\/blocks\/app-embed\/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+        "type": "shopify://apps/selleasy/blocks/app-embed/790c1a03-a71f-4bc1-9869-00dad526d3c2",
         "disabled": false,
         "settings": {
           "storefrontAccessToken": ""
