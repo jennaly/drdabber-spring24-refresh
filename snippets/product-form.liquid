@@ -12,6 +12,7 @@
 {% assign color_name = shop.metafields.color.color_name %}
 {% assign color_hex = shop.metafields.color.color_hex %}
 {% assign color_length = color_name.size | minus: 1 %}
+{% assign product_hero_description = product.metafields.custom.product_hero_description.value %}
 
 {% if color_name.size > 0 %}
 
@@ -133,6 +134,7 @@
                 </p>
             </div>
         </div>
+   
         <p v-if="!isCurrentVariantExist" >{{ product_message_does_not_exist }}</p>
 
         {%- comment -%} Front-end state helpers {%- endcomment -%}
@@ -146,6 +148,11 @@
         {%- endcomment -%}
 
         {% comment %} Product Form {% endcomment %}
+
+        {% if product_hero_description != blank %}
+            <p class="product-hero-desc">{{ product_hero_description }}</p>
+        {% endif %}
+
         <form class="c-product-form_form || c-form"
             :class="{
                 'has-error': isNotAvailable,

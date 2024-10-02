@@ -2898,6 +2898,12 @@ html.has-swipe-cart-available .c-cart-modal_header::before {
   align-items: stretch;
 }
 
+.product-hero-desc {
+  margin-top: 16px;
+  font-family: "Aeonik Pro";
+  font-size: 20px;
+}
+
 .c-product-gallery {
   position: relative;
   width: 100%;
