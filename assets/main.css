@@ -3210,8 +3210,17 @@ html.is-gallery-ready .c-product-gallery {
   gap: 30px;
   max-width: 63.375rem;
   margin: 5rem auto;
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
+}
+
+.product-lifestyle-gallery-text {
+  max-width: 63.375rem;
+  margin: 5rem auto;
+}
+
+@media (max-width: 1024px) {
+  .product-lifestyle-gallery-text {
+    margin: 5rem 2.5rem;
+  }
 }
 
 .product-lifestyle-gallery-image {
@@ -3283,6 +3292,13 @@ html.is-gallery-ready .c-product-gallery {
   }
 }
 
+@media (min-width: 1440px) {
+  .product-lifestyle-gallery {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 @media (min-width: 769px) {
   .product-lifestyle-gallery {
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -3319,6 +3335,45 @@ html.is-gallery-ready .c-product-gallery {
     padding-left: 20px;
     padding-right: 20px;
   }
+}
+
+.how-to-gallery-swiper {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  list-style: none;
+  z-index: 1;
+  display: block;
+  touch-action: pan-y;
+}
+
+@media (min-width: 700px) {
+  .how-to-gallery-swiper {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+@media (min-width: 1440px) {
+  .how-to-gallery-swiper {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: calc((100vw - 63.375rem) / 2);
+  }
+}
+
+.how-to-gallery-slide {
+  width: 300px !important;
+  height: auto;
+}
+
+.how-to-gallery-slide > img {
+  border-radius: 30px;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 
 @keyframes spin {

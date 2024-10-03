@@ -169,6 +169,18 @@
       </div>
     {% endif %}
 
+    {% if product.metafields.custom.product_how_to_gallery %}
+      <div class="how-to-gallery-swiper">
+        <div class="swiper-wrapper">
+          {% for image in product.metafields.custom.product_how_to_gallery.value %}
+            <div class="swiper-slide how-to-gallery-slide">
+              <img src="{{ image | img_url: "2000x2000" }}">
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
     {% include 'product-accordions' %}
 
     {% if product_main_video_id != blank %}
