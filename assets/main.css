@@ -3239,7 +3239,7 @@ html.is-gallery-ready .c-product-gallery {
   }
 }
 
-@media (min-width: 700px) {
+@media (min-width: 700px) and (max-width: 1023px) {
   .product-lifestyle-gallery {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
@@ -3356,7 +3356,7 @@ html.is-gallery-ready .c-product-gallery {
     padding-right: 2.5rem;
   }
 }
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   .how-to-gallery-swiper {
     padding-left: 0;
     padding-right: 0;
@@ -3364,9 +3364,19 @@ html.is-gallery-ready .c-product-gallery {
   }
 }
 
-.how-to-gallery-slide {
-  width: 300px !important;
-  height: auto;
+@media (min-width: 1024px) and (max-width: 1339px) {
+  .how-to-gallery-swiper,
+  .product-lifestyle-gallery {
+    padding-left: 2.5rem;
+  }
+  .product-lifestyle-gallery {
+    padding-right: 2.5rem;
+  }
+}
+
+.swiper-slide.how-to-gallery-slide {
+  width: 300px;
+  height: 350px;
 }
 
 .how-to-gallery-slide > img {
@@ -11738,6 +11748,15 @@ html.is-fonts-loaded .c-collection-no-results_content,
 
 .u-indent-small {
   text-indent: 4.25rem;
+}
+
+.product-page-subheadings {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-bottom: 2.5rem;
+  font-size: 40px;
+  color: #3b3b3e;
 }
 
 /*# sourceMappingURL=main.css.map */
