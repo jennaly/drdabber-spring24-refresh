@@ -158,7 +158,7 @@
 
 
     {%- comment -%} Product Lifestyle Gallery {%- endcomment -%}
-    {% if product.metafields.custom.product_lifestyle_gallery %}
+    {% if product.metafields.custom.product_lifestyle_gallery %}                                                                                                                                                                      {% endif %} {% endcomment %}
       <div class="product-lifestyle-gallery">
         {% for image in product.metafields.custom.product_lifestyle_gallery.value limit: 6 %}
           {% assign index = forloop.index0 %}
