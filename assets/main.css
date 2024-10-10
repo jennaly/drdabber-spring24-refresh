@@ -10274,13 +10274,13 @@ html.is-fonts-loaded .c-cart_empty,
 
 @media (max-width: 699px) {
   .c-product-wysiwyg {
-    margin-top: 6.625rem;
+    margin-top: 2rem;
   }
 }
 
 @media (min-width: 700px) {
   .c-product-wysiwyg {
-    margin-top: 9.25rem;
+    margin-top: 3rem;
   }
 }
 
@@ -11885,4 +11885,48 @@ html.is-fonts-loaded .c-collection-no-results_content,
   margin-bottom: 5rem;
 }
 
+.product-box-contents {
+  max-width: 63.375rem;
+  margin-left: 20px;
+  margin-right: 20px;
+  background: grey;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+.product-box-contents__img {
+  width: 55%;
+  object-fit: contain;
+}
+
+.product-box-contents__text {
+  width: fit-content;
+  font-size: clamp(0.875rem, 0.4563rem + 1.5764vw, 1.875rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (min-width: 700px) {
+  .product-box-contents {
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+    padding: 2em;
+  }
+  .product-box-contents__img {
+    width: 60%;
+    object-fit: contain;
+  }
+  .product-box-contents__text {
+    width: 30%;
+  }
+}
+
+@media (min-width: 1110px) {
+  .product-box-contents {
+    margin: 0 auto;
+  }
+}
 /*# sourceMappingURL=main.css.map */
