@@ -2904,6 +2904,10 @@ html.has-swipe-cart-available .c-cart-modal_header::before {
   font-size: 20px;
 }
 
+.product-hero-desc__delivery {
+  font-size: 20px;
+}
+
 .c-product-gallery {
   position: relative;
   width: 100%;
@@ -11889,7 +11893,7 @@ html.is-fonts-loaded .c-collection-no-results_content,
   max-width: 63.375rem;
   margin-left: 20px;
   margin-right: 20px;
-  background: grey;
+  background: #959595;
   border-radius: 15px;
   display: flex;
   justify-content: space-between;
@@ -11906,7 +11910,10 @@ html.is-fonts-loaded .c-collection-no-results_content,
   font-size: clamp(0.875rem, 0.4563rem + 1.5764vw, 1.875rem);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 4px;
+  color: #1f1512;
+  font-weight: 500;
 }
 
 @media (min-width: 700px) {
