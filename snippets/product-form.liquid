@@ -244,7 +244,7 @@
             {% include 'block-sezzle' %}
         </div>
 
-        <ul class="c-product-form_infos || u-mt-11">
+        {% comment %} <ul class="c-product-form_infos || u-mt-11">
             {% if settings.shipping_content != blank %}
             <li>
                 <button class="c-button -dark -icon-label" @click="openDelivery">
@@ -281,7 +281,12 @@
                     </a>
                 {% endif %}
             </li>
-        </ul>
+        </ul> {% endcomment %}
+
+        
+          {% if product.metafields.custom.product_delivery_est %}
+           <div class="product-hero-desc__delivery u-mt-11"><span>Ships {{ product.metafields.custom.product_delivery_est }}</span></div>
+          {% endif %}
     </div>
 </div>
 
