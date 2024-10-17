@@ -96,10 +96,10 @@
     </div>
 
     {%- comment -%} Featured Product Video Section {%- endcomment -%}
-    {% if featured_product_video != blank %}
+    {% if product.metafields.product.main-video != blank %}
       <div class="desktop section-product-video">
         <video
-          poster="{{ featured_product_video | img_url: 'master'  }}"
+          poster="{{ product.metafields.main-video-poster | default: '' }}"
           width="100%"
           height="auto"
           data-scroll
@@ -108,14 +108,14 @@
           muted
           playsinline
           autoplay>
-          <source src="{{ featured_product_video | file_url }}" type="video/mp4">
+          <source src="{{ product.metafields.product.main-video }}" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </div>
-      {% if featured_product_video_mobile != blank %}
+      {% if product.metafields.product.video-mobile != blank %}
         <div class="mobile section-product-video">
           <video
-            poster="{{ featured_product_video_mobile | img_url: 'master'  }}"
+            poster="{{ product.metafields.video_mobile_poster | default: '' }}"
             width="100%"
             height="auto"
             data-scroll
@@ -124,14 +124,14 @@
             muted
             playsinline
             autoplay>
-            <source src="{{ featured_product_video_mobile | file_url }}" type="video/mp4">
+            <source src="{{ product.metafields.product.video-mobile }}" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
       {% else %}
         <div class="mobile section-product-video">
           <video
-            poster="{{ featured_product_video | img_url: 'master'  }}"
+            poster="{{ product.metafields.video_mobile_poster | default: '' }}"
             width="100%"
             height="auto"
             data-scroll
@@ -140,7 +140,7 @@
             muted
             playsinline
             autoplay>
-            <source src="{{ featured_product_video | file_url }}" type="video/mp4">
+            <source src="{{ product.metafields.product.video-mobile }}" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
@@ -171,10 +171,11 @@
           </div>
         {% endfor %}
       </div>
-    {% endif %}
+  {% endif %}
 
-    {% if product.metafields.custom.product_how_to_gallery %}
-
+    {% comment %} HOW-TO GALLERY {% endcomment %}
+    {% assign how_to_images = product.metafields.product.how-to-images | parse_json %}
+    {% if how_to_images.size > 0 %}
       <div class="product-page-subheadings">
         <span>How To
         </span>
@@ -190,9 +191,9 @@
       </div>
       <div class="how-to-gallery-swiper">
         <div class="swiper-wrapper">
-          {% for image in product.metafields.custom.product_how_to_gallery.value %}
+          {% for image in how_to_images %}
             <div class="swiper-slide how-to-gallery-slide">
-              <img src="{{ image | img_url: "2000x2000" }}">
+              <img src="{{ image }}">
             </div>
           {% endfor %}
         </div>
