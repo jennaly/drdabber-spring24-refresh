@@ -11911,9 +11911,8 @@ html.is-fonts-loaded .c-collection-no-results_content,
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 4px;
   color: #1f1512;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 @media (min-width: 700px) {
@@ -11923,11 +11922,11 @@ html.is-fonts-loaded .c-collection-no-results_content,
     padding: 2em;
   }
   .product-box-contents__img {
-    width: 60%;
+    width: 50%;
     object-fit: contain;
   }
   .product-box-contents__text {
-    width: 30%;
+    width: 40%;
   }
 }
 
