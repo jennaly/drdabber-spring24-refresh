@@ -1,0 +1,28 @@
+{% if warranty_text != blank %}
+
+  <li class="c-product-warranty || c-accordions_item" data-accordions="item">
+
+    <button
+      type="button"
+      class="c-accordions_item_toggler"
+      data-accordions="toggler">
+      <span class="c-accordions_item_toggler_label">
+        {{ accordion_title }}
+        <span class="c-accordions_item_toggler_plus"></span>
+      </span>
+    </button>
+
+    <div class="c-accordions_item_content" data-accordions="content">
+      <div class="c-accordions_item_inner" data-accordions="inner">
+        <div class="c-product-text">
+
+          <p class="c-product-warranty_text|| c-text -aeonik -body1">
+            {{ warranty_text }}
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </li>
+
+{% endif %}

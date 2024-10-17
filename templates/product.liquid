@@ -41,9 +41,13 @@
 {% assign related_product_title = product.metafields.product.related_products_title %}{% assign related_products_collection = collections[product.metafields.product.related_products_collection] %}
 
 {% comment %} Featured product video {% endcomment %}
-{% assign featured_product_video = product.metafields.custom.featured_product_video %}
-{% assign featured_product_video_mobile = product.metafields.custom.featured_product_video_mobile %}
+{% assign featured_product_video = product.metafields.custom.featured_product_video %}{% assign featured_product_video_mobile = product.metafields.custom.featured_product_video_mobile %}
 
+{% comment %} Warranty  {% endcomment %}
+{% assign warranty_text = product.metafields.product-accordion.warranty-text.value %}
+
+{% comment %} Customer Support  {% endcomment %}
+{% assign customer_support_text = product.metafields.product-accordion.customer-support-text.value %}
 
 {% comment %} ----------- KLAVIO ---------- {% endcomment %}
 

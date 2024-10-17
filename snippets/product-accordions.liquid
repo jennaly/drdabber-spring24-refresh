@@ -5,75 +5,69 @@
 {% assign kit_title = "What's in the kit" %}
 {% assign readme_title = 'How to use' %}
 {% assign awards_title = 'Industry awards' %}
+{% assign warranty_title = 'Warranty' %}
+{% assign customer_support_title = 'Customer Support' %}
 
 
 {% comment %} --------------------- {% endcomment %}
 
 
 <div class="c-product-accordions">
-    <div class="o-container -default">
+  <div class="o-container -default">
 
-        {% if 
-            spec_titles_arr != nil or 
-            spec_descriptions_arr != nil or 
-            videos_arr != nil or 
-            feature_images_arr != nil or 
-            feature_descriptions_arr != nil or 
-            kit_image != nil or 
-            kit_product_handless != nil or 
-            readme_text != nil or
-            readme_link_labels != nil or
-            readme_links != nil or 
-            award_image_arr != nil or
-            award_description_arr != nil
-        %}  
-            <ul class="c-accordions -product" data-module-accordions="product">
+    {% if spec_titles_arr != nil or spec_descriptions_arr != nil or videos_arr != nil or feature_images_arr != nil or feature_descriptions_arr != nil or kit_image != nil or kit_product_handless != nil or readme_text != nil or readme_link_labels != nil or readme_links != nil or award_image_arr != nil or award_description_arr != nil
+    %}
+      <ul class="c-accordions -product" data-module-accordions="product">
 
-                {%- comment -%} Specs {%- endcomment -%}
-                {% include 'product-specs' with 
-                    accordion_title: specs_title,
-                    titles_arr: spec_titles_arr,
-                    descriptions_arr: spec_descriptions_arr
-                %}
+        {%- comment -%} Specs {%- endcomment -%}
+      {% include 'product-specs' with accordion_title: specs_title
+        , titles_arr: spec_titles_arr
+        , descriptions_arr: spec_descriptions_arr
+      %}
 
-                {%- comment -%} Videos {%- endcomment -%}
-                {% include 'product-videos' with 
-                    accordion_title: videos_title,
-                    videos_arr: videos_arr,
-              		is_vimeo: is_vimeo
-                %}
+        {%- comment -%} Videos {%- endcomment -%}
+      {% include 'product-videos' with accordion_title: videos_title
+        , videos_arr: videos_arr
+        , 	is_vimeo: is_vimeo
+      %}
 
-                {%- comment -%} Features {%- endcomment -%}
-                {% include 'product-features' with 
-                    accordion_title: features_title,
-                    images_arr: feature_images_arr,
-                    descriptions_arr: feature_descriptions_arr
-                %}
+        {%- comment -%} Features {%- endcomment -%}
+      {% include 'product-features' with accordion_title: features_title
+        , images_arr: feature_images_arr
+        , descriptions_arr: feature_descriptions_arr
+      %}
 
-                {%- comment -%} Kit {%- endcomment -%}
-                {% include 'product-kit' with 
-                    accordion_title: kit_title,
-                    image: kit_image,
-                    productHandles: kit_product_handless
-                %}
+        {%- comment -%} Kit {%- endcomment -%}
+      {% include 'product-kit' with accordion_title: kit_title
+        , image: kit_image
+        , productHandles: kit_product_handless
+      %}
 
-                {%- comment -%} Readme {%- endcomment -%}
-                {% include 'product-readme' with 
-                    accordion_title: readme_title,
-                    readme_text: readme_text,
-                    readme_link_labels: readme_link_labels,
-                    readme_links: readme_links
-                %}
+        {%- comment -%} Readme {%- endcomment -%}
+      {% include 'product-readme' with accordion_title: readme_title
+        , readme_text: readme_text
+        , readme_link_labels: readme_link_labels
+        , readme_links: readme_links
+      %}
 
-                {%- comment -%} Awards {%- endcomment -%}
-                {% include 'product-awards' with 
-                    accordion_title: awards_title,
-                    award_image_arr: award_image_arr,
-                    award_description_arr: award_description_arr
-                %}
+        {%- comment -%} Awards {%- endcomment -%}
+      {% include 'product-awards' with accordion_title: awards_title
+        , award_image_arr: award_image_arr
+        , award_description_arr: award_description_arr
+      %}
 
-            </ul>
-        {% endif %}
+        {%- comment -%} Warranty {%- endcomment -%}
+      {% include 'product-warranty' with accordion_title: warranty_title
+        , warranty_text: warranty_text
+      %}
 
-    </div>
+        {%- comment -%} Customer Support {%- endcomment -%}
+        {% include 'product-customer-support' with accordion_title: customer_support_title
+          , customer_support_text: customer_support_text
+        %}
+
+      </ul>
+    {% endif %}
+
+  </div>
 </div>
