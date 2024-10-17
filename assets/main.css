@@ -4580,7 +4580,7 @@ html.has-menu-open .c-menu_phone {
   }
 
   .c-accordions.-product > li .c-accordions_item_toggler::before {
-    content: counters(li, "", decimal-leading-zero);
+    /* content: counters(li, "", decimal-leading-zero); */
   }
 }
 
@@ -4633,7 +4633,7 @@ html.has-menu-open .c-menu_phone {
 
 @media (min-width: 1000px) {
   .c-accordions.-product .c-accordions_item_toggler {
-    padding-left: 8.87%;
+    padding-left: 2.87%;
   }
 
   .c-accordions.-product .c-accordions_item_toggler::before {
