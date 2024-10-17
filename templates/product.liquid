@@ -158,16 +158,16 @@
           </div>
         </div>
       </div>
-    {% endif %}
+  {% endif %}
 
-
-    {%- comment -%} Product Lifestyle Gallery {%- endcomment -%}
-    {% if product.metafields.custom.product_lifestyle_gallery %}
+    {% comment %} LIFESTYLE GALLERY {% endcomment %}
+    {% assign gallery_images = product.metafields.product.lifestyle-gallery-images | parse_json %}
+    {% if gallery_images.size > 0 %}
       <div class="product-lifestyle-gallery">
-        {% for image in product.metafields.custom.product_lifestyle_gallery.value limit: 6 %}
+        {% for gallery_image in gallery_images %}
           {% assign index = forloop.index0 %}
           <div class="image-wrapper lifestyle-image-{{ index }}">
-            <img src="{{ image | img_url: "2000x2000" }}" class="product-lifestyle-gallery-image">
+            <img src="{{ gallery_image }}" class="product-lifestyle-gallery-image">
           </div>
         {% endfor %}
       </div>
@@ -191,9 +191,9 @@
       </div>
       <div class="how-to-gallery-swiper">
         <div class="swiper-wrapper">
-          {% for image in how_to_images %}
+          {% for how_to_image in how_to_images %}
             <div class="swiper-slide how-to-gallery-slide">
-              <img src="{{ image }}">
+              <img src="{{ how_to_image }}">
             </div>
           {% endfor %}
         </div>
