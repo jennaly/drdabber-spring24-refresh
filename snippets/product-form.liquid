@@ -12,7 +12,8 @@
 {% assign color_name = shop.metafields.color.color_name %}
 {% assign color_hex = shop.metafields.color.color_hex %}
 {% assign color_length = color_name.size | minus: 1 %}
-{% assign product_hero_description = product.metafields.custom.product_hero_description.value %}
+{% assign product_hero_description = product.metafields.product.hero_description %}
+{% assign product_delivery_text = product.metafields.product.delivery-desc %}
 
 {% if color_name.size > 0 %}
 
@@ -150,7 +151,7 @@
         {% comment %} Product Form {% endcomment %}
 
         {% if product_hero_description != blank %}
-            <p class="product-hero-desc">{{ product_hero_description }}</p>
+            <p class="product-hero-desc"> {{ product_hero_description }}</p>
         {% endif %}
 
         <form class="c-product-form_form || c-form"
@@ -285,8 +286,8 @@
         </ul> {% endcomment %}
 
         
-          {% if product.metafields.custom.product_delivery_est %}
-           <div class="product-hero-desc__delivery u-mt-11"><span>Ships {{ product.metafields.custom.product_delivery_est }}</span></div>
+          {% if product_delivery_text %}
+           <div class="product-hero-desc__delivery u-mt-11"><span>{{ product_delivery_text }}</span></div>
           {% endif %}
     </div>
 </div>
