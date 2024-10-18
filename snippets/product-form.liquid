@@ -80,7 +80,7 @@
 
         <div class="c-product-form_tags">
             <div>
-                <div v-if="rating" class="c-tag -stroke -cyan -icon">
+                <div v-if="rating" class="c-tag -stroke -grey -icon">
                     <span class="c-tag_label || c-label -aeonik -overline -uppercase">${ rating }</span>
                     <span class="c-tag_icon">
                         <svg role="img" aria-label="Star">
@@ -89,7 +89,7 @@
                     </span>
                 </div>
                 <div v-if="!isOutOfStock" class="u-mt-1">
-                    <span class="c-label -uppercase -aeonik -small -cyan">In stock</span>
+                    <span class="c-label -uppercase -aeonik -small">In stock</span>
                 </div>
                 <div v-if="isOutOfStock" class="u-mt-1">
                     <span class="c-label -uppercase -aeonik -small || u-color-out-of-stock">Out of stock</span>
@@ -97,7 +97,7 @@
             </div>
 
             <div>
-                <div v-if="currentVariantSale" class="c-tag -stroke -white">
+                <div v-if="currentVariantSale" class="c-tag -stroke -grey">
                     <span class="c-tag_label || c-label -aeonik -overline -uppercase">
                         Sale ${currentVariantSale}%
                     </span>

@@ -1,43 +1,45 @@
 {% if kit_product_handles.size > 0 %}
 
-    {% assign kit_product_handles_arr = kit_product_handles[0] | split: '|' %}
-        
-    <li class="c-product-kit || c-accordions_item" data-accordions="item">
-        
-        <button type="button" class="c-accordions_item_toggler" data-accordions="toggler">
-            <span class="c-accordions_item_toggler_label">
-                {{ accordion_title }}
-                <span class="c-accordions_item_toggler_plus"></span>
-            </span>
-        </button>
+  {% assign kit_product_handles_arr = kit_product_handles[0] | split: '|' %}
 
-        <div class="c-accordions_item_content" data-accordions="content">
-            <div class="c-accordions_item_inner" data-accordions="inner">
-                {% if image != blank and image != nil%}
-                    <div class="c-product-kit_visual">
-                        <div class="c-lazy">
-                            <img
-                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
-                                data-src="{{image}}"
-                                alt="alt text"
-                                data-lazy
-                            >
-                        </div>
-                    </div>
-                {% endif %}
+  <li class="c-product-kit || c-accordions_item" data-accordions="item">
 
-                <div class="c-product-kit_list || c-wysiwyg">
-                    <ul>
-                        {% for product_handle in kit_product_handles_arr %}
-                            {% assign product = all_products[product_handle] %}
-                            <li>
-                                <a href="{{product.url}}">{{ product.title }}</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+    <button
+      type="button"
+      class="c-accordions_item_toggler"
+      data-accordions="toggler">
+      <span class="c-accordions_item_toggler_label">
+        {{ accordion_title }}
+        <span class="c-accordions_item_toggler_plus"></span>
+      </span>
+    </button>
+
+    <div class="c-accordions_item_content" data-accordions="content">
+      <div class="c-accordions_item_inner" data-accordions="inner">
+        {% if image != blank and image != nil %}
+          <div class="c-product-kit_visual">
+            <div class="c-lazy">
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                data-src="{{image}}"
+                alt="alt text"
+                data-lazy>
             </div>
+          </div>
+        {% endif %}
+
+        <div class="c-product-kit_list || c-wysiwyg">
+          <ul>
+            {% for product_handle in kit_product_handles_arr %}
+              {% assign product = all_products[product_handle] %}
+              <li>
+                <a href="{{product.url}}">{{ product.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
         </div>
-    </li>
+      </div>
+    </div>
+  </li>
 
 {% endif %}

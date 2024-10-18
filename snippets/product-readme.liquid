@@ -7,7 +7,6 @@
         {% if forloop.last == false %}::{% endif%}
     {% endfor %}
 {% endcapture %}
-
 {% assign list_arr = list_str | split: "::" %}
 
 
@@ -15,42 +14,48 @@
 
 
 {% if readme_text != blank or list_arr.size > 0 and list_arr[0] != blank %}
-    
-    <li class="c-product-readme || c-accordions_item" data-accordions="item">
-        
-        <button type="button" class="c-accordions_item_toggler" data-accordions="toggler">
-            <span class="c-accordions_item_toggler_label">
-                {{ accordion_title }}
-                <span class="c-accordions_item_toggler_plus"></span>
-            </span>
-        </button>
 
-        <div class="c-accordions_item_content" data-accordions="content">
-            <div class="c-accordions_item_inner" data-accordions="inner">
-                <div class="c-product-text">
-                    {% if readme_text != blank and readme_text != nil %} 
-                        <p class="c-product-readme_instructions || c-text -aeonik -body1 || u-indent-small">
-                            {{ readme_text }}
-                        </p>
-                    {% endif %}
-                    
-                    {% if list_arr.size > 0 %}
-                        <ul class="c-product-readme_ctas || o-grid u-grid-col-2@from-small -gutter-x-small -gutter-small">
-                            {% for list_item in list_arr %}
-                                <li>
-                                    {% assign values = list_item | split: "|||" %}
-                                    <a href="{{values[1]}}" class="c-button -small -transparent -fluid || -hover-fill-primary" target="_blank" rel="noopener">
-                                        <span class="c-button_label">{{values[0]}}</span>
-                                    </a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                </div>
-            </div>
+  <li class="c-product-readme || c-accordions_item" data-accordions="item">
+
+    <button
+      type="button"
+      class="c-accordions_item_toggler"
+      data-accordions="toggler">
+      <span class="c-accordions_item_toggler_label">
+        {{ accordion_title }}
+        <span class="c-accordions_item_toggler_plus"></span>
+      </span>
+    </button>
+
+    <div class="c-accordions_item_content" data-accordions="content">
+      <div class="c-accordions_item_inner" data-accordions="inner">
+        <div class="c-product-text">
+          {% if readme_text != blank and readme_text != nil %}
+            <p class="c-product-readme_instructions || c-text -aeonik -body1 || u-indent-small">
+              {{ readme_text }}
+            </p>
+          {% endif %}
+
+          {% if list_arr.size > 0 %}
+            <ul class="c-product-readme_ctas || o-grid u-grid-col-2@from-small -gutter-x-small -gutter-small">
+              {% for list_item in list_arr %}
+                <li>
+                  {% assign values = list_item | split: "|||" %}
+                  <a
+                    href="{{values[1]}}"
+                    style="border: 1px solid #424245; color: #424245"
+                    class="c-button -small -transparent -fluid || -hover-fill-primary"
+                    target="_blank"
+                    rel="noopener">
+                    <span class="c-button_label">{{ values[0] }}</span>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
         </div>
-    </li>
+      </div>
+    </div>
+  </li>
 
 {% endif %}
-
-
