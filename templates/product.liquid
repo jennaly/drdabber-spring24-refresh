@@ -198,47 +198,58 @@
           {% endfor %}
         </div>
       </div>
-    {% endif %}
+  {% endif %}
 
-    {% if product.metafields.custom.product_features %}
-      <div class="product-page-subheadings">
-        <span>Features
-        </span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="35"
-          height="35"
-          fill="currentColor"
-          class="bi bi-arrow-down-circle"
-          viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
-        </svg>
-      </div>
-      {% assign product_features = product.metafields.custom.product_features.value %}
-      <div class="product-features">
-        {% for feature in product_features %}
-          {% assign is_even = forloop.index | modulo: 2 %}
-          <div class="product-features__wrapper">
-            <div class="product-features__container {% if is_even == 0 %}product-features__container--reverse{% endif %}">
-              <div class="product-features__image ">
-                <img
-                  src="{{ feature.image }}"
-                  alt="{{ feature.mainText }}"
-                  class="product-features__img {% if is_even == 1 %}product-features__img--left{% else %}product-features__img--right{% endif %}">
-              </div>
-              <div class="product-features__content {% if is_even == 1 %}product-features__content--left{% else %}product-features__content--right{% endif %}">
-                <p class="product-features__main-text">{{ feature.mainText }}</p>
-                {% if feature.subText %}
-                  <p class="product-features__sub-text">{{ feature.subText }}</p>
-                {% endif %}
+
+    {% comment %} PRODUCT FEATURES GRAPHICS {% endcomment %}
+    {% assign features = product.metafields.product %}
+
+    {% if features.features-graphics-heading and features.features-graphics-image %}
+      {% assign headings = features.features-graphics-heading | parse_json %}
+      {% assign subtexts = features.features-graphics-subtext | parse_json %}
+      {% assign images = features.features-graphics-image | parse_json %}
+
+      {% if headings.size > 0 and images.size > 0 %}
+        <div class="product-page-subheadings">
+          <span>Features</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            fill="currentColor"
+            class="bi bi-arrow-down-circle"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
+          </svg>
+        </div>
+
+        <div class="product-features">
+          {% for heading in headings %}
+            {% assign index = forloop.index0 %}
+            {% assign is_even = forloop.index | modulo: 2 %}
+
+            <div class="product-features__wrapper">
+              <div class="product-features__container {% if is_even == 0 %}product-features__container--reverse{% endif %}">
+                <div class="product-features__image">
+                  <img
+                    src="{{ images[index] }}"
+                    alt="{{ heading }}"
+                    class="product-features__img product-features__img--{% if is_even == 1 %}left{% else %}right{% endif %}">
+                </div>
+                <div class="product-features__content product-features__content--{% if is_even == 1 %}left{% else %}right{% endif %}">
+                  <p class="product-features__main-text">{{ heading }}</p>
+                  {% if subtexts[index] %}
+                    <p class="product-features__sub-text">{{ subtexts[index] }}</p>
+                  {% endif %}
+                </div>
               </div>
             </div>
-          </div>
-        {% endfor %}
-      </div>
+          {% endfor %}
+        </div>
+      {% endif %}
     {% endif %}
 
-    {% comment %} Product Contents Section/ What's In The Box {% endcomment %}
+    {% comment %} BOX CONTENTS/WHAT'S IN THE BOX SECTION {% endcomment %}
     {% if product.metafields.product.box-contents-img != blank or product.metafields.box-contents-item-text != blank %}
       <div class="product-page-subheadings">
         <span>What's In The Box
