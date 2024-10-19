@@ -87,13 +87,13 @@
   {% include 'product-hero' %}
 
     <div class="c-section">
-
-    <div class="c-product-standfirst || o-container -default">
-      {% if product_additional_description != blank and product_additional_description != nil %}
-        {% include 'block-multi-text-wide' with text: product_additional_description
-        %}
-      {% endif %}
-    </div>
+    {% comment %} 
+          <div class="c-product-standfirst || o-container -default">
+            {% if product_additional_description != blank and product_additional_description != nil %}
+              {% include 'block-multi-text-wide' with text: product_additional_description
+              %}
+            {% endif %}
+        </div> {% endcomment %}
 
     {%- comment -%} Featured Product Video Section {%- endcomment -%}
     {% if product.metafields.product.main-video != blank %}
