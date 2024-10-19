@@ -24,7 +24,7 @@
                     <div class="c-product-review_summary_inner">
                         <div class="c-product-review_summary_col">
                             <div class="c-product-review_summary_col_inner">
-                                <p class="c-product-review_summary_title || c-heading -aeonik -h6">${metrics.rating}</p>
+                                <p class="c-product-review_summary_title || c-heading -druk">${metrics.rating}</p>
                                 <ul class="c-rating-stars -wide">
                                     <li class="c-rating-stars_item" :class="{'is-active': index - .5 <= metrics.rating}" v-for="index in 5" :key="index">
                                         <svg role="img" aria-label="Star">
@@ -92,7 +92,7 @@
 
                         <div class="c-product-review_sort">
                             <label class="u-screen-reader-text" for="sort">Sort review</label>
-                            <div class="c-form_select -tiny">
+                            <div class="c-form_select -tiny" style="border:1px solid #424245">
                                 <select class="c-form_input c-form_select_input -review" name="sort" id="sort" v-model="sortedBy">
                                     <option v-for="(sortObj, sortIndex) in sortOptions" :key="sortIndex" :value="sortObj.value">${sortObj.label}</option>
                                 </select>
@@ -116,9 +116,9 @@
 
                                         <div class="c-review_infos_col">
                                             <h3 class="c-review_author || c-text -aeonik -body1">${review.author}</h3>
-                                            <p v-if="review.status" class="c-review_status || c-label -mono -small -uppercase || u-color-cyan">${review.status}</p>
+                                            <p v-if="review.status" class="c-review_status || c-label -mono -small -uppercase || u-color-grey">${review.status}</p>
                                             <ul class="c-review_rating || c-rating-stars">
-                                                <li class="c-rating-stars_item" :class="{'is-active': index <= review.reviewRating}" v-for="index in 5" :key="index">
+                                                <li class="c-rating-stars_item" :class="{'is-active': index <= review.reviewRating} u-color-cyan" v-for="index in 5" :key="index">
                                                     <svg role="img" aria-label="Star">
                                                         <use xlink:href="#icon-star"></use>
                                                     </svg>
