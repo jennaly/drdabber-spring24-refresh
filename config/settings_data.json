@@ -127,6 +127,12 @@
               "banner_name": ""
             }
           },
+          "177c5fa0-73bb-4203-bc26-96bf5c4ce194": {
+            "type": "carousel",
+            "settings": {
+              "collection": "apparel"
+            }
+          },
           "87062842-11b5-43ac-8eab-66d321f2b7f8": {
             "type": "carousel",
             "disabled": true,
@@ -149,12 +155,6 @@
               "banner_bg_media": "image",
               "banner_name": ""
             }
-          },
-          "177c5fa0-73bb-4203-bc26-96bf5c4ce194": {
-            "type": "carousel",
-            "settings": {
-              "collection": "apparel"
-            }
           }
         },
         "block_order": [
@@ -162,9 +162,9 @@
           "25cf076d-52ec-4226-b239-7ce42b636793",
           "9e2a93b5-f106-4790-9e53-288f9a82191a",
           "57915bbf-7b79-4de4-9a05-e396c50174af",
+          "177c5fa0-73bb-4203-bc26-96bf5c4ce194",
           "87062842-11b5-43ac-8eab-66d321f2b7f8",
-          "254f43ad-ae34-4432-8379-13c4f3837255",
-          "177c5fa0-73bb-4203-bc26-96bf5c4ce194"
+          "254f43ad-ae34-4432-8379-13c4f3837255"
         ],
         "settings": {
         }
