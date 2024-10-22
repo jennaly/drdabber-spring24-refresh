@@ -85,7 +85,7 @@
             "settings": {
               "child_collection_1": "xs",
               "child_collection_2": "boost-evo",
-              "child_collection_3": "",
+              "child_collection_3": "light-collection",
               "parent_collection": "vaporizers"
             }
           },
