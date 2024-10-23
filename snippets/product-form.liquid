@@ -2,294 +2,320 @@
 {% assign product_first_available_variant_id = product.selected_or_first_available_variant.id %}
 {% assign product_options_with_values_json = product.options_with_values | json %}
 
-
 {% assign product_message_out_of_stock = settings.product_message_out_of_stock %}
 {% assign product_message_quantity_not_available = settings.product_message_quantity_not_available %}
-{% assign product_message_does_not_exist= settings.product_message_variant_doesnt_exist %}
-{% assign product_message_quantity_exceed= settings.product_message_quantity_exceed %}
-
+{% assign product_message_does_not_exist = settings.product_message_variant_doesnt_exist %}
+{% assign product_message_quantity_exceed = settings.product_message_quantity_exceed %}
 
 {% assign color_name = shop.metafields.color.color_name %}
 {% assign color_hex = shop.metafields.color.color_hex %}
 {% assign color_length = color_name.size | minus: 1 %}
 {% assign product_hero_description = product.metafields.product.hero_description %}
-{% assign product_delivery_text = product.metafields.product.delivery-desc %}
+{% assign product_delivery_text = product.metafields.product['delivery-desc'] %}
 
 {% if color_name.size > 0 %}
+  {% assign product_colors_json = '' %}
 
-    {% assign product_colors_json = '' %}
-
-    {% for i in (0..color_length)  %}
-        {% if color_name.size == 1 %}
-            {% capture color_object %}[{"name":"{{ color_name[i] }}","hex":"{{ color_hex[i] }}"}]{% endcapture %}
-        {% elsif forloop.first == true %}
-            {% capture color_object %}[{"name":"{{ color_name[i] }}","hex":"{{ color_hex[i] }}"},{% endcapture %}
-        {% elsif forloop.last == true %}
-            {% capture color_object %}{"name":"{{ color_name[i] }}","hex":"{{ color_hex[i] }}"}]{% endcapture %}
-        {% else %}
-            {% capture color_object %}{"name":"{{ color_name[i] }}","hex":"{{ color_hex[i] }}"},{% endcapture %}
-        {% endif %}
-        {% assign product_colors_json = product_colors_json | append: color_object %}
-    {% endfor %}
+  {% for i in (0..color_length) %}
+    {% if color_name.size == 1 %}
+      {% capture color_object %}[{"name":"{{ color_name[i] }}","hex":"{{ color_hex[i] }}"}]{% endcapture %}
+    {% elsif forloop.first == true %}
+      {% capture color_object %}[{"name":"{{ color_name[i] }}","hex":"{{ color_hex[i] }}"},{% endcapture %}
+    {% elsif forloop.last == true %}
+      {% capture color_object %}{"name":"{{ color_name[i] }}","hex":"{{ color_hex[i] }}"}]{% endcapture %}
+    {% else %}
+      {% capture color_object %}{"name":"{{ color_name[i] }}","hex":"{{ color_hex[i] }}"},{% endcapture %}
+    {% endif %}
+    {% assign product_colors_json = product_colors_json | append: color_object %}
+  {% endfor %}
 
 {% else %}
-    {% assign product_colors_json = '[]' %}
+  {% assign product_colors_json = '[]' %}
 {% endif %}
-
 
 {% if product.variants.size > 0 %}
-    {% assign product_quantities_json = '' %}
-    {% for variant in product.variants  %}
-        {% if product.variants.size == 1 %}
-            {% capture variant_quantity_object %}[{"id":{{ variant.id }},"quantity":{{ variant.inventory_quantity }}}]{% endcapture %}
-        {% elsif forloop.first == true %}
-            {% capture variant_quantity_object %}[{"id":{{ variant.id }},"quantity":{{ variant.inventory_quantity }}},{% endcapture %}
-        {% elsif forloop.last == true %}
-            {% capture variant_quantity_object %}{"id":{{ variant.id }},"quantity":{{ variant.inventory_quantity }}}]{% endcapture %}
-        {% else %}
-            {% capture variant_quantity_object %}{"id":{{ variant.id }},"quantity":{{ variant.inventory_quantity }}},{% endcapture %}
-        {% endif %}
-        {% assign product_quantities_json = product_quantities_json | append: variant_quantity_object %}
-    {% endfor %}
+  {% assign product_quantities_json = '' %}
+  {% for variant in product.variants %}
+    {% if product.variants.size == 1 %}
+      {% capture variant_quantity_object %}[{"id":{{ variant.id }},"quantity":{{ variant.inventory_quantity }}}]{% endcapture %}
+    {% elsif forloop.first == true %}
+      {% capture variant_quantity_object %}[{"id":{{ variant.id }},"quantity":{{ variant.inventory_quantity }}},{% endcapture %}
+    {% elsif forloop.last == true %}
+      {% capture variant_quantity_object %}{"id":{{ variant.id }},"quantity":{{ variant.inventory_quantity }}}]{% endcapture %}
+    {% else %}
+      {% capture variant_quantity_object %}{"id":{{ variant.id }},"quantity":{{ variant.inventory_quantity }}},{% endcapture %}
+    {% endif %}
+    {% assign product_quantities_json = product_quantities_json | append: variant_quantity_object %}
+  {% endfor %}
 
 {% else %}
-    {% assign product_quantities_json = '[]' %}
+  {% assign product_quantities_json = '[]' %}
 {% endif %}
-
 
 {% comment %} --------------------- {% endcomment %}
 
 <script data-product-form="productVariants" type="application/json" id="productFormVariants">
-    {{ product_variants_json }}
+  {{ product_variants_json }}
 </script>
 
 <script data-product-form="productOptions" type="application/json" id="productFormOptions">
-    {{ product_options_with_values_json }}
+  {{ product_options_with_values_json }}
 </script>
 
 <div
-    class="c-product-form"
-    :class="{'is-ready': isReady}"
-    data-module-product-form
-    data-product-form-current-variant-id='{{ product_first_available_variant_id }}'
-    data-product-form-quantities='{{ product_quantities_json }}'
-    data-product-form-colors='{{ product_colors_json }}'
+  class="c-product-form"
+  :class="{'is-ready': isReady}"
+  data-module-product-form
+  data-product-form-current-variant-id="{{ product_first_available_variant_id }}"
+  data-product-form-quantities="{{ product_quantities_json }}"
+  data-product-form-colors="{{ product_colors_json }}"
 >
-
-    <div class="c-product-form_header">
-
-        <div class="c-product-form_tags">
-            <div>
-                <div v-if="rating" class="c-tag -stroke -cyan -icon">
-                    <span class="c-tag_label || c-label -aeonik -overline -uppercase">${ rating }</span>
-                    <span class="c-tag_icon">
-                        <svg role="img" aria-label="Star">
-                            <use xlink:href="#icon-star"></use>
-                        </svg>
-                    </span>
-                </div>
-                <div v-if="!isOutOfStock" class="u-mt-1">
-                    <span class="c-label -uppercase -aeonik -small -cyan">In stock</span>
-                </div>
-                <div v-if="isOutOfStock" class="u-mt-1">
-                    <span class="c-label -uppercase -aeonik -small || u-color-out-of-stock">Out of stock</span>
-                </div>
-            </div>
-
-            <div>
-                <div v-if="currentVariantSale" class="c-tag -stroke -white">
-                    <span class="c-tag_label || c-label -aeonik -overline -uppercase">
-                        Sale ${currentVariantSale}%
-                    </span>
-                </div>
-            </div>
+  <div class="c-product-form_header">
+    <div class="c-product-form_tags">
+      <div>
+        <div v-if="rating" class="c-tag -stroke -cyan -icon">
+          <span class="c-tag_label || c-label -aeonik -overline -uppercase">${ rating }</span>
+          <span class="c-tag_icon">
+            <svg role="img" aria-label="Star">
+              <use xlink:href="#icon-star"></use>
+            </svg>
+          </span>
         </div>
-
-        {% comment %} Product Title {% endcomment %}
-        <h1 class="c-heading -aeonik -subtitle1 || u-mt-3">
-            <span>{{product.title}}</span>
-            <span v-if="allProductVariants.length > 1">${ currentVariantName }</span>
-        </h1>
-      
-     
-<!-- Stamped - Begin badge 
-
-<span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-title="{{ product.title | escape }}" data-product-type="{{ product.type }}" style="display: block;">{{ product.metafields.stamped.badge }}</span>
-<!-- Stamped - End badge -->
- 
-
-        {% comment %} Product Price {% endcomment %}
-        <div class="c-product-form_price || u-mt-4">
-            <div v-if="!isOutOfStock && isCurrentVariantExist" class="c-product-form_price_item -currentPrice">
-                <h2 class="u-screen-reader-text">Price</h2>
-                <p class="c-product-form_price_content">
-                    <span class="c-label -aeonik -product-price">${ currentVariantPrice }</span>
-                    <span class="c-label -mono -tiny">{{ cart.currency.iso_code }}</span>
-                </p>
-            </div>
-            <div v-if="!isOutOfStock && isCurrentVariantExist && currentOriginalVariantPrice && currentOriginalVariantPrice != currentVariantPrice" class="c-product-form_price_item -oldPrice">
-                <h2 class="u-screen-reader-text">Original price</h2>
-                <p class="c-product-form_price_content">
-                    <span class="c-label -aeonik -product-price">${ currentOriginalVariantPrice }</span>
-                    <span class="c-label -mono -tiny">{{ cart.currency.iso_code }}</span>
-                </p>
-            </div>
+        <div v-if="!isOutOfStock" class="u-mt-1">
+          <span class="c-label -uppercase -aeonik -small -cyan">In stock</span>
         </div>
-   
-        <p v-if="!isCurrentVariantExist" >{{ product_message_does_not_exist }}</p>
-
-        {%- comment -%} Front-end state helpers {%- endcomment -%}
-
-        {%- comment -%}
-            <p v-if="isOutOfStock">{{ product_message_out_of_stock }}</p>
-        {%- endcomment -%}
-
-        {%- comment -%}
-            <p>${isCurrentVariantExist}</p>
-        {%- endcomment -%}
-
-        {% comment %} Product Form {% endcomment %}
-
-        {% if product_hero_description != blank %}
-            <p class="product-hero-desc"> {{ product_hero_description }}</p>
-        {% endif %}
-
-        <form class="c-product-form_form || c-form"
-            :class="{
-                'has-error': isNotAvailable,
-                'is-out-of-stock': isOutOfStock,
-                'is-not-exist': !isCurrentVariantExist,
-                'is-quantity-not-available': isQuantityNotAvailable
-            }"
-            @submit.prevent="onSubmit"
-            >
-
-            {% if product.has_only_default_variant %}
-                {% comment %} NO VARIANT {% endcomment %}
-            {% else %}
-                {% comment %} Options {% endcomment %}
-                <div class="c-product-options">
-
-                    <h2 class="u-screen-reader-text">Options</h2>
-
-                    {% comment %} Options Group{% endcomment %}
-                    <div class="c-product-options_item || u-mt-6" :class="[modifierClass([option.name])]" v-for="(option, optionIndex) in allProductOptions" :key="optionIndex">
-
-                        {% comment %} Option Title {% endcomment %}
-                        <h3 class="u-screen-reader-text">${ option.name }</h3>
-
-                        <p class="c-label -mono -tiny -letter-spacing -uppercase">
-                            <span>${ option.name }&nbsp;:&nbsp;</span>
-                            <span>${ currentProductOptions[optionIndex] }</span>
-                        </p>
-
-                        {% comment %} Option Radio Buttons {% endcomment %}
-                        <div class="c-product-options_item_inner || u-mt-3">
-                            <div class=" c-product-options_item_values" :class="[modifierClass([option.name, value]), { '-color-input': option.colors && option.colors[valueIndex] }]" v-for="(value, valueIndex) in option.values" :key="valueIndex">
-                                <input class="product-option-radio c-product-options_radio || c-form_radio" type="radio" :id="option.ids[valueIndex]" :name="option.name" :value="value" v-model="currentProductOptions[optionIndex]">
-                                <label v-if="option.colors && option.colors[valueIndex]" class="c-product-options_radioLabel || c-form_radioLabel" :for="option.ids[valueIndex]" :style="{ color: option.colors[valueIndex].hex}">
-                                    <span>${ value }</span>
-                                </label>
-                                <label v-else class="c-product-options_radioLabel || c-form_radioLabel" :for="option.ids[valueIndex]">
-                                    <span>${ value }</span>
-                                </label>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            {% endif %}
-
-            <div class="c-product-form_cart || u-mt-8">
-                {% comment %} Quantity {% endcomment %}
-                <div class="c-product-form_quantity || c-form_quantity || c-label -mono -big">
-                    <label class="u-screen-reader-text" for="productQuantity">Quantity</label>
-                    <button class="c-form_quantityButton" type="button" @click="decreaseQuantity">
-                        <span>-</span>
-                    </button>
-                    <input class="c-form_quantityInput" type="number" name="productQuantity" readonly="readonly" min="1" v-model.number="quantity">
-                    <button class="c-form_quantityButton" type="button" @click="increaseQuantity">
-                        <span>+</span>
-                    </button>
-                </div>
-
-                {% comment %} Submit {% endcomment %}
-              
-                <div class="c-product-form_submit">
-                  <div id="nft-widget-buttons-wrapper" style="display:none">
-                   <button id="gateWidgetAddBtn" class="c-button -light -small -fluid" type="submit" :disabled="isNotAvailable" data-native-pre-order-btn>
-                        <span v-if="isOutOfStock" class="c-button_label">Out of stock</span>
-                        <span v-else class="c-button_label">Add to cart</span>
-                    </button>
-                  </div>
-
-                    </div>
-            </div>
-
-            {% comment %} Errors {% endcomment %}
-
-            {%- comment -%}
-                <div class="c-product-form_error">
-                    <p class="c-product-form_error_message -outOfStock">{{ product_message_out_of_stock }}</p>
-                    <p class="c-product-form_error_message -quantityNotAvailable">{{ product_message_quantity_not_available }} (max ${ currentVariantQuantity })</p>
-                    <p class="c-product-form_error_message -notExist">{{ product_message_does_not_exist }}</p>
-                </div>
-            {%- endcomment -%}
-
-          <div id="preproduct-pledge" data-id="{{product.id}}" style="text-align:left!important;"></div> 
-
-        </form>
-
-        <div class="u-mt-11">
-            {% include 'block-sezzle' %}
+        <div v-if="isOutOfStock" class="u-mt-1">
+          <span class="c-label -uppercase -aeonik -small || u-color-out-of-stock">Out of stock</span>
         </div>
+      </div>
 
-        {% comment %} DELIVERY-WARRANTY-SUPPORT ICONS {% endcomment %}
-        {% comment %} <ul class="c-product-form_infos || u-mt-11">
-            {% if settings.shipping_content != blank %}
-            <li>
-                <button class="c-button -dark -icon-label" @click="openDelivery">
-                    <span class="c-button_icon">
-                        <svg role="img" aria-label="Delivery">
-                            <use xlink:href="#icon-delivery"></use>
-                        </svg>
-                    </span>
-                    <span class="c-button_label">Delivery</span>
-                </button>
-            </li>
-            {% endif %}
-            {% if settings.warranty_content != blank %}
-            <li>
-                <button class="c-button -dark -icon-label" @click="openWarranty">
-                    <span class="c-button_icon">
-                        <svg role="img" aria-label="Warranty">
-                            <use xlink:href="#icon-warranty"></use>
-                        </svg>
-                    </span>
-                    <span class="c-button_label">Warranty</span>
-                </button>
-            </li>
-            {% endif %}
-            <li>
-                {% if settings.support_url != blank %}
-                    <a class="c-button -dark -icon-label" href="{{ settings.support_url }}">
-                        <span class="c-button_icon">
-                            <svg role="img" aria-label="Support">
-                                <use xlink:href="#icon-support"></use>
-                            </svg>
-                        </span>
-                        <span class="c-button_label">Get support</span>
-                    </a>
-                {% endif %}
-            </li>
-        </ul> {% endcomment %}
-
-        
-          {% if product_delivery_text %}
-           <div class="product-hero-desc__delivery u-mt-11"><span>{{ product_delivery_text }}</span></div>
-          {% endif %}
+      <div>
+        <div v-if="currentVariantSale" class="c-tag -stroke -white">
+          <span class="c-tag_label || c-label -aeonik -overline -uppercase"> Sale ${currentVariantSale}% </span>
+        </div>
+      </div>
     </div>
+
+    {% comment %} Product Title {% endcomment %}
+    <h1 class="c-heading -aeonik -subtitle1 || u-mt-3">
+      <span>{{ product.title }}</span>
+      <span v-if="allProductVariants.length > 1">${ currentVariantName }</span>
+    </h1>
+
+    <!--
+      Stamped - Begin badge
+
+      <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-title="{{ product.title | escape }}" data-product-type="{{ product.type }}" style="display: block;">{{ product.metafields.stamped.badge }}</span>
+      <!-- Stamped - End badge
+    -->
+
+    {% comment %} Product Price {% endcomment %}
+    <div class="c-product-form_price || u-mt-4">
+      <div v-if="!isOutOfStock && isCurrentVariantExist" class="c-product-form_price_item -currentPrice">
+        <h2 class="u-screen-reader-text">Price</h2>
+        <p class="c-product-form_price_content">
+          <span class="c-label -aeonik -product-price">${ currentVariantPrice }</span>
+          <span class="c-label -mono -tiny">{{ cart.currency.iso_code }}</span>
+        </p>
+      </div>
+      <div
+        v-if="!isOutOfStock && isCurrentVariantExist && currentOriginalVariantPrice && currentOriginalVariantPrice != currentVariantPrice"
+        class="c-product-form_price_item -oldPrice"
+      >
+        <h2 class="u-screen-reader-text">Original price</h2>
+        <p class="c-product-form_price_content">
+          <span class="c-label -aeonik -product-price">${ currentOriginalVariantPrice }</span>
+          <span class="c-label -mono -tiny">{{ cart.currency.iso_code }}</span>
+        </p>
+      </div>
+    </div>
+
+    <p v-if="!isCurrentVariantExist">{{ product_message_does_not_exist }}</p>
+
+    {%- comment -%} Front-end state helpers {%- endcomment -%}
+
+    {%- comment -%}
+      <p v-if="isOutOfStock">{{ product_message_out_of_stock }}</p>
+    {%- endcomment -%}
+
+    {%- comment -%}
+      <p>${isCurrentVariantExist}</p>
+    {%- endcomment -%}
+
+    {% comment %} Product Form {% endcomment %}
+
+    {% if product_hero_description != blank %}
+      <p class="product-hero-desc">{{ product_hero_description }}</p>
+    {% endif %}
+
+    <form
+      class="c-product-form_form || c-form"
+      :class="
+        {
+            'has-error': isNotAvailable,
+            'is-out-of-stock': isOutOfStock,
+            'is-not-exist': !isCurrentVariantExist,
+            'is-quantity-not-available': isQuantityNotAvailable
+        }
+      "
+      @submit.prevent="onSubmit"
+    >
+      {% if product.has_only_default_variant %}
+        {% comment %} NO VARIANT {% endcomment %}
+      {% else %}
+        {% comment %} Options {% endcomment %}
+        <div class="c-product-options">
+          <h2 class="u-screen-reader-text">Options</h2>
+
+          {% comment %} Options Group{% endcomment %}
+          <div
+            class="c-product-options_item || u-mt-6"
+            :class="[modifierClass([option.name])]"
+            v-for="(option, optionIndex) in allProductOptions"
+            :key="optionIndex"
+          >
+            {% comment %} Option Title {% endcomment %}
+            <h3 class="u-screen-reader-text">${ option.name }</h3>
+
+            <p class="c-label -mono -tiny -letter-spacing -uppercase">
+              <span>${ option.name }&nbsp;:&nbsp;</span>
+              <span>${ currentProductOptions[optionIndex] }</span>
+            </p>
+
+            {% comment %} Option Radio Buttons {% endcomment %}
+            <div class="c-product-options_item_inner || u-mt-3">
+              <div
+                class=" c-product-options_item_values"
+                :class="[modifierClass([option.name, value]), { '-color-input': option.colors && option.colors[valueIndex] }]"
+                v-for="(value, valueIndex) in option.values"
+                :key="valueIndex"
+              >
+                <input
+                  class="product-option-radio c-product-options_radio || c-form_radio"
+                  type="radio"
+                  :id="option.ids[valueIndex]"
+                  :name="option.name"
+                  :value="value"
+                  v-model="currentProductOptions[optionIndex]"
+                >
+                <label
+                  v-if="option.colors && option.colors[valueIndex]"
+                  class="c-product-options_radioLabel || c-form_radioLabel"
+                  :for="option.ids[valueIndex]"
+                  :style="{ color: option.colors[valueIndex].hex}"
+                >
+                  <span>${ value }</span>
+                </label>
+                <label v-else class="c-product-options_radioLabel || c-form_radioLabel" :for="option.ids[valueIndex]">
+                  <span>${ value }</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="c-product-form_cart || u-mt-8">
+        {% comment %} Quantity {% endcomment %}
+        <div class="c-product-form_quantity || c-form_quantity || c-label -mono -big">
+          <label class="u-screen-reader-text" for="productQuantity">Quantity</label>
+          <button class="c-form_quantityButton" type="button" @click="decreaseQuantity">
+            <span>-</span>
+          </button>
+          <input
+            class="c-form_quantityInput"
+            type="number"
+            name="productQuantity"
+            readonly="readonly"
+            min="1"
+            v-model.number="quantity"
+          >
+          <button class="c-form_quantityButton" type="button" @click="increaseQuantity">
+            <span>+</span>
+          </button>
+        </div>
+
+        {% comment %} Submit {% endcomment %}
+
+        <div class="c-product-form_submit">
+          <div id="nft-widget-buttons-wrapper">
+            <button
+              id="gateWidgetAddBtn"
+              class="c-button -light -small -fluid"
+              type="submit"
+              :disabled="isNotAvailable"
+              data-native-pre-order-btn
+            >
+              <span v-if="isOutOfStock" class="c-button_label">Out of stock</span>
+              <span v-else class="c-button_label">Add to cart</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {% comment %} Errors {% endcomment %}
+
+      {%- comment -%}
+        <div class="c-product-form_error">
+            <p class="c-product-form_error_message -outOfStock">{{ product_message_out_of_stock }}</p>
+            <p class="c-product-form_error_message -quantityNotAvailable">{{ product_message_quantity_not_available }} (max ${ currentVariantQuantity })</p>
+            <p class="c-product-form_error_message -notExist">{{ product_message_does_not_exist }}</p>
+        </div>
+      {%- endcomment -%}
+
+      <div id="preproduct-pledge" data-id="{{product.id}}" style="text-align:left!important;"></div>
+    </form>
+
+    <div class="u-mt-11">
+      {% include 'block-sezzle' %}
+    </div>
+
+    {% comment %} DELIVERY-WARRANTY-SUPPORT ICONS {% endcomment %}
+    {% comment %}
+      <ul class="c-product-form_infos || u-mt-11">
+          {% if settings.shipping_content != blank %}
+          <li>
+              <button class="c-button -dark -icon-label" @click="openDelivery">
+                  <span class="c-button_icon">
+                      <svg role="img" aria-label="Delivery">
+                          <use xlink:href="#icon-delivery"></use>
+                      </svg>
+                  </span>
+                  <span class="c-button_label">Delivery</span>
+              </button>
+          </li>
+          {% endif %}
+          {% if settings.warranty_content != blank %}
+          <li>
+              <button class="c-button -dark -icon-label" @click="openWarranty">
+                  <span class="c-button_icon">
+                      <svg role="img" aria-label="Warranty">
+                          <use xlink:href="#icon-warranty"></use>
+                      </svg>
+                  </span>
+                  <span class="c-button_label">Warranty</span>
+              </button>
+          </li>
+          {% endif %}
+          <li>
+              {% if settings.support_url != blank %}
+                  <a class="c-button -dark -icon-label" href="{{ settings.support_url }}">
+                      <span class="c-button_icon">
+                          <svg role="img" aria-label="Support">
+                              <use xlink:href="#icon-support"></use>
+                          </svg>
+                      </span>
+                      <span class="c-button_label">Get support</span>
+                  </a>
+              {% endif %}
+          </li>
+      </ul>
+    {% endcomment %}
+
+    {% if product_delivery_text %}
+      <div class="product-hero-desc__delivery u-mt-11">
+        <span>{{ product_delivery_text }}</span>
+      </div>
+    {% endif %}
+  </div>
 </div>
-
-
