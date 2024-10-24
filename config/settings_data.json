@@ -221,6 +221,14 @@
               "document_manual": "https://drdabber.helpscoutdocs.com/article/76-switch-user-manaul"
             }
           },
+          "document_ApgNfX": {
+            "type": "document",
+            "settings": {
+              "document_product": "dr-dabber-drop",
+              "document_guide": "https://drdabber.helpscoutdocs.com/article/124-drop-knowledge-base",
+              "document_manual": "https://drdabber.helpscoutdocs.com/article/123-drop-user-manual"
+            }
+          },
           "76435de3-1943-4663-85e0-61c0baf0ef68": {
             "type": "document",
             "disabled": true,
@@ -252,6 +260,7 @@
           "adf1f535-5080-4eef-9353-ab2c768fc9bc",
           "8c09591f-ba34-4d5f-8107-fa1350664746",
           "8bd1c61d-6734-4859-b9d3-62fe1c9a84c3",
+          "document_ApgNfX",
           "76435de3-1943-4663-85e0-61c0baf0ef68",
           "3057c032-c1a8-4f26-b9b8-9ca637d6f71d",
           "91089689-b3a5-4614-a3a9-0f5e3196b0ba"
