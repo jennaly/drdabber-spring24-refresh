@@ -13,9 +13,9 @@
     "warranty_content": "<p>All Dr. Dabber Vaporizers are backed by our industry leading 1 year warranty (note: Dr. Dabber SWITCH has a 2 year warranty). If your product isn't working properly, you can reach out to our award winning customer service team by email, phone or live chat and we will get you up and running. We believe in building quality products that we can support, so feel free to reach out with any questions or concerns you may have.</p>",
     "shipping_content": "<h6>Shipping</h6>\n<ul>\n<li>Free Domestic Shipping on all orders over $150</li>\n<li>Expedited delivery options also available</li>\n<li>Purchases are delivered in a plain cardboard box or envelope, with the exception of certain items</li>\n<li>See the delivery FAQs for details on shipping methods, costs and delivery times</li>\n</ul>\n\n<h6>Returns and exchanges</h6>\n<ul>\n<li>Items can be returned within 30 days of purchase as long as they are unopened, in original packaging</li>\n<li>See conditions and procedure in our return FAQs</li>\n</ul>",
     "top_bar_shipping": "Free shipping over $150",
-    "top_bar_url": "shopify://products/boost-evo",
-    "top_bar_text": "Free Glass with Every Boost Evo Purchase",
-    "top_bar_button_label": "Choose Now",
+    "top_bar_url": "shopify://collections/switch2",
+    "top_bar_text": "Switch² Available Now",
+    "top_bar_button_label": "Shop Now",
     "product_message_out_of_stock": "Currently out of stock",
     "product_message_variant_doesnt_exist": "The variant does not exist.",
     "product_message_quantity_not_available": "Quantity is not available.",
@@ -66,14 +66,14 @@
           "hero_title_font_shopify": "helvetica_n4",
           "hero_title_font_custom": "Druk Wide",
           "hero_title_font_picker": "custom-font",
-          "hero_title_1": "experience",
-          "hero_title_2": "the drop",
-          "hero_cta": "shopify://products/dr-dabber-drop",
+          "hero_title_1": "It's time",
+          "hero_title_2": "to switch",
+          "hero_cta": "shopify://products/switch2",
           "hero_cta_description": "",
-          "hero_cta_button_label": "SHOP NOW",
+          "hero_cta_button_label": "Shop Switch²",
           "hero_image": "shopify://shop_images/drop_webheader_V2_desktop_1.png",
-          "hero_video": "shopify://files/videos/Drop - Edit 7 - Horizontal Test 1.mp4",
-          "hero_video_mobile": "shopify://files/videos/Drop - Edit 7 - vertical.mp4",
+          "hero_video": "shopify://files/videos/Switch 2 - Morning Routine (1080p).mp4",
+          "hero_video_mobile": "shopify://files/videos/Switch 2 - Morning Routine - Vertical (1080p).mp4",
           "hero_background_media": "video"
         }
       },
@@ -83,24 +83,24 @@
           "93854b7f-705e-42f6-b95b-ccba2c76dcd6": {
             "type": "featured_collections",
             "settings": {
-              "child_collection_1": "xs",
+              "child_collection_1": "switch2",
               "child_collection_2": "boost-evo",
-              "child_collection_3": "light-collection",
+              "child_collection_3": "xs",
               "parent_collection": "vaporizers"
             }
           },
           "25cf076d-52ec-4226-b239-7ce42b636793": {
             "type": "banner",
             "settings": {
-              "splash_title_1": "Switch",
+              "splash_title_1": "Switch²",
               "splash_title_2": "",
               "splash_title_font_shopify": "helvetica_n4",
               "splash_title_font_custom": "Druk Wide",
               "splash_title_font_picker": "custom-font",
-              "splash_cta": "shopify://products/switch-1",
-              "splash_cta_description": "A proprietary vaporizer built for the discerning connoisseur.",
-              "splash_cta_button_label": "Shop now",
-              "splash_image": "shopify://shop_images/switch_x2_banner_final.jpg",
+              "splash_cta": "shopify://products/switch2",
+              "splash_cta_description": "The Ultimate Electric Dab Rig",
+              "splash_cta_button_label": "Shop Now",
+              "splash_image": "shopify://shop_images/SW2_web_banner_f.png",
               "banner_bg_media": "image",
               "banner_name": ""
             }
