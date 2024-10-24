@@ -189,6 +189,22 @@
       "block-documents": {
         "type": "block-documents",
         "blocks": {
+          "document_6dGaT3": {
+            "type": "document",
+            "settings": {
+              "document_product": "switch2",
+              "document_guide": "https://drdabber.helpscoutdocs.com/article/126-switch2-knowledge-base",
+              "document_manual": "https://drdabber.helpscoutdocs.com/article/127-switch2-user-manual"
+            }
+          },
+          "adf1f535-5080-4eef-9353-ab2c768fc9bc": {
+            "type": "document",
+            "settings": {
+              "document_product": "boost-evo",
+              "document_guide": "https://drdabber.helpscoutdocs.com/article/119-boost-evo-knowledge-base",
+              "document_manual": "https://drdabber.helpscoutdocs.com/article/112-boost-evo-user-manual"
+            }
+          },
           "8c09591f-ba34-4d5f-8107-fa1350664746": {
             "type": "document",
             "settings": {
@@ -203,14 +219,6 @@
               "document_product": "switch-1",
               "document_guide": "https://drdabber.helpscoutdocs.com/article/98-switch-support",
               "document_manual": "https://drdabber.helpscoutdocs.com/article/76-switch-user-manaul"
-            }
-          },
-          "adf1f535-5080-4eef-9353-ab2c768fc9bc": {
-            "type": "document",
-            "settings": {
-              "document_product": "boost-evo",
-              "document_guide": "https://drdabber.helpscoutdocs.com/article/119-boost-evo-knowledge-base",
-              "document_manual": "https://drdabber.helpscoutdocs.com/article/112-boost-evo-user-manual"
             }
           },
           "76435de3-1943-4663-85e0-61c0baf0ef68": {
@@ -240,9 +248,10 @@
           }
         },
         "block_order": [
+          "document_6dGaT3",
+          "adf1f535-5080-4eef-9353-ab2c768fc9bc",
           "8c09591f-ba34-4d5f-8107-fa1350664746",
           "8bd1c61d-6734-4859-b9d3-62fe1c9a84c3",
-          "adf1f535-5080-4eef-9353-ab2c768fc9bc",
           "76435de3-1943-4663-85e0-61c0baf0ef68",
           "3057c032-c1a8-4f26-b9b8-9ca637d6f71d",
           "91089689-b3a5-4614-a3a9-0f5e3196b0ba"
