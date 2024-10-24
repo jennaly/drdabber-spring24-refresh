@@ -72,8 +72,8 @@
           "hero_cta_description": "",
           "hero_cta_button_label": "Shop Switch²",
           "hero_image": "shopify://shop_images/drop_webheader_V2_desktop_1.png",
-          "hero_video": "shopify://files/videos/Switch 2 - Morning Routine (1080p).mp4",
-          "hero_video_mobile": "shopify://files/videos/Switch 2 - Morning Routine - Vertical (1080p).mp4",
+          "hero_video": "shopify://files/videos/Switch 2 - Morning Routine (1080p - no logo).mp4",
+          "hero_video_mobile": "shopify://files/videos/Switch 2 - Morning Routine - Vertical (1080p - no logo).mp4",
           "hero_background_media": "video"
         }
       },
