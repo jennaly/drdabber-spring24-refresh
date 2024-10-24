@@ -1,26 +1,25 @@
 <head>
-
   <link
     rel="preconnect"
     href="https://fonts.shopifycdn.com"
-    crossorigin>
+    crossorigin
+  >
 
   <link
     rel="preload"
     as="font"
     href="{{ section.settings.hero_title_font_shopify | font_url }}"
     type="font/woff2"
-    crossorigin>
-
+    crossorigin
+  >
 </head>
 
 {% style %}
-
   {{ section.settings.hero_title_font_shopify | font_face: font_display: 'swap' }}
 
   {% if section.settings.hero_title_font_picker == "shopify-font" %}
     #heroMainText {
-      font-family: {{ section.settings.hero_title_font_shopify.family }}, 
+      font-family: {{ section.settings.hero_title_font_shopify.family }},
       {{ section.settings.hero_title_font_shopify.fallback_families }};
     }
   {% endif %}
@@ -30,119 +29,129 @@
       font-family: {{ section.settings.hero_title_font_custom }};
     }
   {% endif %}
-
 {% endstyle %}
 
 {% schema %}
-  {
-    "name": "Hero",
-    "settings": [
-      {
-        "id": "hero_title_font_shopify",
-        "type": "font_picker",
-        "label": "Hero title - Google font",
-        "default": "helvetica_n4"
-      },
-      {
-        "id": "hero_title_font_custom",
-        "type": "select",
-        "label": "Hero title - Custom font",
-        "options": [
-          {
-            "value": "Druk Wide",
-            "label": "Druk Wide"
-          }, {
-            "value": "Aeonik Pro",
-            "label": "Aeonik Pro"
-          }, {
-            "value": "Maison Neue",
-            "label": "Maison Neue"
-          }, {
-            "value": "MonopolTRIALKompakt",
-            "label": "MonopolTRIALKompakt"
-          }
-        ],
-        "default": "Druk Wide"
-      },
-      {
-        "id": "hero_title_font_picker",
-        "type": "select",
-        "label": "Choose hero title font",
-        "options": [
-          {
-            "value": "shopify-font",
-            "label": "Google font"
-          }, {
-            "value": "custom-font",
-            "label": "Custom font"
-          }
-        ],
-        "default": "custom-font"
-      },
-      {
-        "id": "hero_title_1",
-        "type": "text",
-        "label": "Main text line 1"
-      }, {
-        "id": "hero_title_2",
-        "type": "text",
-        "label": "Main text line 2"
-      }, {
-        "id": "hero_cta",
-        "type": "url",
-        "label": "Call to action"
-      }, {
-        "id": "hero_cta_description",
-        "type": "text",
-        "label": "CTA Description"
-      }, {
-        "id": "hero_cta_button_label",
-        "type": "text",
-        "label": "CTA Button label",
-        "default": "Shop now"
-      }, {
-        "id": "hero_image",
-        "type": "image_picker",
-        "label": "Hero Image"
-      }, {
-        "id": "hero_image_mobile",
-        "type": "image_picker",
-        "label": "Hero Image - mobile"
-      }, {
-        "id": "hero_video",
-        "type": "video",
-        "label": "Hero Background Video"
-      }, {
-        "id": "hero_video_mobile",
-        "type": "video",
-        "label": "Hero Background Video - mobile"
-      }, {
-        "id": "hero_background_media",
-        "type": "select",
-        "label": "Choose background media",
-        "options": [
-          {
-            "value": "image",
-            "label": "Image"
-          }, {
-            "value": "video",
-            "label": "Video"
-          }
-        ],
-        "default": "video"
-      }
-    ]
-  }{% endschema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "id": "hero_title_font_shopify",
+      "type": "font_picker",
+      "label": "Hero title - Google font",
+      "default": "helvetica_n4"
+    },
+    {
+      "id": "hero_title_font_custom",
+      "type": "select",
+      "label": "Hero title - Custom font",
+      "options": [
+        {
+          "value": "Druk Wide",
+          "label": "Druk Wide"
+        }, {
+          "value": "Aeonik Pro",
+          "label": "Aeonik Pro"
+        }, {
+          "value": "Maison Neue",
+          "label": "Maison Neue"
+        }, {
+          "value": "MonopolTRIALKompakt",
+          "label": "MonopolTRIALKompakt"
+        }
+      ],
+      "default": "Druk Wide"
+    },
+    {
+      "id": "hero_title_font_picker",
+      "type": "select",
+      "label": "Choose hero title font",
+      "options": [
+        {
+          "value": "shopify-font",
+          "label": "Google font"
+        }, {
+          "value": "custom-font",
+          "label": "Custom font"
+        }
+      ],
+      "default": "custom-font"
+    },
+    {
+      "id": "hero_title_1",
+      "type": "text",
+      "label": "Main text line 1"
+    }, {
+      "id": "hero_title_2",
+      "type": "text",
+      "label": "Main text line 2"
+    }, {
+      "id": "hero_cta",
+      "type": "url",
+      "label": "Call to action"
+    }, {
+      "id": "hero_cta_description",
+      "type": "text",
+      "label": "CTA Description"
+    }, {
+      "id": "hero_cta_button_label",
+      "type": "text",
+      "label": "CTA Button label",
+      "default": "Shop now"
+    }, {
+      "id": "hero_image",
+      "type": "image_picker",
+      "label": "Hero Image"
+    }, {
+      "id": "hero_image_mobile",
+      "type": "image_picker",
+      "label": "Hero Image - mobile"
+    }, {
+      "id": "hero_video",
+      "type": "video",
+      "label": "Hero Background Video"
+    }, {
+      "id": "hero_video_mobile",
+      "type": "video",
+      "label": "Hero Background Video - mobile"
+    }, {
+      "id": "hero_background_media",
+      "type": "select",
+      "label": "Choose background media",
+      "options": [
+        {
+          "value": "image",
+          "label": "Image"
+        }, {
+          "value": "video",
+          "label": "Video"
+        }
+      ],
+      "default": "video"
+    }
+  ]
+}
+{% endschema %}
 {% comment %} Titles {% endcomment %}
 
-{% assign title_line1 = section.settings.hero_title_1 | strip %}{% assign title_line2 = section.settings.hero_title_2 | strip %}{% assign image = section.settings.hero_image %}{% assign image_mobile = section.settings.hero_image_mobile %}{% assign video = section.settings.hero_video %}{% assign bg_media = section.settings.hero_background_media %}{% assign video_mobile = section.settings.hero_video_mobile %}
+{% assign title_line1 = section.settings.hero_title_1 | strip -%}
+{%- assign title_line2 = section.settings.hero_title_2 | strip -%}
+{%- assign image = section.settings.hero_image -%}
+{%- assign image_mobile = section.settings.hero_image_mobile -%}
+{%- assign video = section.settings.hero_video -%}
+{%- assign bg_media = section.settings.hero_background_media -%}
+{%- assign video_mobile = section.settings.hero_video_mobile %}
 {% comment %} CTA {% endcomment %}
 
 {% assign cta = section.settings.hero_cta | strip %}
 {% comment %} Other CTA {% endcomment %}
-{% assign cta_description = section.settings.hero_cta_description | strip %}{% assign cta_button_label = section.settings.hero_cta_button_label | strip %}
+{% assign cta_description = section.settings.hero_cta_description | strip -%}
+{%- assign cta_button_label = section.settings.hero_cta_button_label | strip %}
 {% comment %} RANDOM {% endcomment %}
-{% assign min = 100000 %}{% assign max = 999999 %}{% assign diff = max | minus: min %}{% assign randomNumber = "now" | date: "%N" | modulo: diff | plus: min %}
+{% assign min = 100000 -%}
+{%- assign max = 999999 -%}
+{%- assign diff = max | minus: min -%}
+{%- assign randomNumber = 'now' | date: '%N' | modulo: diff | plus: min %}
 {% comment %} --------------------- {% endcomment %}
 
 {% if title_line1 != blank and title_line2 != blank and image != blank and cta != blank %}
@@ -152,7 +161,6 @@
         <div class="c-splash_content">
           <div class="c-splash_content_col -flex -absolute@to-large">
             <span class="c-splash_data">A{{ randomNumber }}</span>
-
           </div>
 
           <div class="c-splash_content_col">
@@ -176,7 +184,7 @@
 
             {% if cta != blank %}
               {% if cta_button_label != blank %}
-                <div>
+                <div style="display:flex; height:100%; align-items:flex-end">
                   <a href="{{ cta }}" class="c-button -small -fill-primary -banner-CTA-hover || c-splash_button">
                     <span class="c-button_label">{{ cta_button_label }}</span>
                   </a>
@@ -188,7 +196,7 @@
       </div>
 
       <div class="c-figure || c-splash_figure || c-lazy">
-        {% if bg_media == "video" %}
+        {% if bg_media == 'video' %}
           {% if video != blank %}
             <video
               class="desktop c-lazy c-banner_video"
@@ -199,7 +207,8 @@
               muted
               playsinline
               autoplay
-              preload="auto">
+              preload="auto"
+            >
               <source src="{{ video.sources[1].url }}" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -215,7 +224,8 @@
               muted
               playsinline
               autoplay
-              preload="auto">
+              preload="auto"
+            >
               <source src="{{ video_mobile.sources[1].url }}" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -229,7 +239,8 @@
               muted
               playsinline
               autoplay
-              preload="auto">
+              preload="auto"
+            >
               <source src="{{ video.sources[1].url }}" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -243,7 +254,8 @@
               data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
               data-scroll
               data-scroll-call="lazyLoad, Scroll"
-              alt="{{title_line1}} {{title_line2}}">
+              alt="{{title_line1}} {{title_line2}}"
+            >
           {% endif %}
 
           {% if image_mobile != blank %}
@@ -252,7 +264,8 @@
               src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3C/svg%3E"
               data-src="{{ image_mobile | img_url: "1920x950", crop: 'center' }}"
               data-scroll
-              data-scroll-call="lazyLoad, Scroll">
+              data-scroll-call="lazyLoad, Scroll"
+            >
           {% else %}
             <img
               class="mobile c-lazy_image || c-splash_image"
@@ -260,7 +273,8 @@
               data-src="{{ image | img_url: "1920x950", crop: 'center' }}"
               data-scroll
               data-scroll-call="lazyLoad, Scroll"
-              alt="{{title_line1}} {{title_line2}}">
+              alt="{{title_line1}} {{title_line2}}"
+            >
           {% endif %}
         {% endif %}
       </div>
