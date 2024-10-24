@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "404": {
@@ -14,7 +23,7 @@
   "shopify": {
     "checkout": {
       "shipping": {
-        "shipping_method_notice": "Please allow 2-4 business days of processing time before orders are shipped. Delivery dates below are an estimated time of arrival and shipments may arrive later than time estimated. A signature is required on all orders of $250 or more. All international orders may be subject to import duties and taxes at the receiver's expense. Free Shipping is shipped with UPS or USPS. "
+        "shipping_method_notice": "Please allow 2-4 business days of processing time before orders are shipped. Delivery dates below are an estimated time of arrival and shipments may arrive later than time estimated. All international orders may be subject to import duties and taxes at the receiver's expense. Free Shipping is shipped with UPS or USPS. "
       }
     }
   }
