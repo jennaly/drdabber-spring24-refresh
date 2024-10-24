@@ -508,6 +508,17 @@
       {% include 'sca.storelocator' %}
 </head>
     <body>
+
+<script>
+      let url = window.location.href;
+      if (url.includes('/collections/switch')) {
+        location.href = '/products/switch2';
+      }
+      if (url.includes('/collections/switch')) {
+        location.href = '/products/switch2';
+      }
+</script>
+      
       {% comment %}
           SVGS tags. Need to be included in templates because Shopify structure
           doesn't allow sprite.svg in /assets
